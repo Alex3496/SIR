@@ -11,7 +11,7 @@
             Realiza tus cotizaciones
           </h1>
           <h4>
-            Por mar, tierra y aire con las empresas registrades en nuestro sitio
+            Por mar, tierra y aire con las empresas REGISTRADAS EN NUESTRO SITIO
           </h4>
         </div>
         <div class="col-12 col-lg-6">
