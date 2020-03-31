@@ -1,0 +1,152 @@
+/*-----------VARIABLES-------------*/
+
+:root {
+    --main-color: #374a9d;
+    --main-hover-color: #05a4e6;
+    --gray-page: #414141;
+}
+
+.btn-SIR {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.btn-SIR:hover {
+    background-color: var(--main-hover-color);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-----------HEADER-------------*/
+#header {
+    background-color: #c8c8c8;
+}
+
+#header img {
+    width: 80px;
+}
+#header a {
+    color: black;
+}
+
+/*-----------MAIN-------------*/
+
+main {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    background-color: rgb(56, 55, 55);
+    background-blend-mode: soft-light;
+}
+
+#quote-card {
+    margin: auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 65vh;
+    border-radius: 20px;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    color: black;
+}
+
+#btn-quote {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+/*-----------NEWS-------------*/
+
+#cuadro {
+    height: 7px;
+    width: 168px;
+    background-color: var(--gray-page);
+    margin: auto;
+}
+
+/*-----------FOOTER-------------*/
+
+#footer {
+    background-color: var(--gray-page);
+    color: gainsboro;
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+#footer #logo {
+    height: 65px;
+}
+
+#footer .social img {
+    height: 35px;
+    padding-right: 22px;
+}
+
+/*==============ABOUT US VIEW =================*/
+
+/*--------------------us----------------------*/
+
+#Us {
+    margin-top: 5rem;
+}
+
+#Us p {
+    text-align: justify;
+    margin: 40px 0 40px 0;
+}
+
+#Us img {
+    width: 95%;
+    border-radius: 10px;
+}
+
+#Us_content {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+#Us_content p,
+#Us_content h2,
+#Us_content ul {
+    margin-top: 2rem;
+}
+
+/*==============CONTACT VIEW =================*/
+
+/*------------------------------------------*/
+
+#contact {
+    margin-top: 50px;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#contact img {
+    width: 50px;
+    margin: 1rem 0;
+}
+
+#messageArea {
+    margin-top: 40px;
+}
+#messageArea button {
+    width: 120px;
+    text-align: center;
+}
+
+#messageArea input,
+#messageArea textarea,
+#messageArea button {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 20px;
+}

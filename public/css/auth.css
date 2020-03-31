@@ -1,0 +1,29 @@
+
+/*-----------VARIABLES-------------*/
+
+:root{
+    --main-color:#374A9D;
+    --main-hover-color:#05A4E6;
+    --gray-page:#414141;
+
+}
+
+.btn-SIR{
+    background-color: var(--main-color);
+    color: white;
+}
+
+.btn-SIR:hover{
+    background-color: var(--main-hover-color);
+}
+
+/*-----------NAVBAR-------------*/
+#logo{
+    width: 80px;
+}
+
+.navbar{
+    background-color: #C8C8C8; 
+}
+
+
