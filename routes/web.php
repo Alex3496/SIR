@@ -14,14 +14,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+// PUBLIC VIEWS
+
+Route::get('/', 'PublicController@index');
+
+Route::get('/aboutUs', 'PublicController@aboutUs');
+
+Route::get('/contact', 'PublicController@contactUs');
+
+Route::get('/faqs', 'PublicController@Faqs');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/aboutUs', 'PublicController@aboutUs');
-
-Route::get('/contact', 'PublicController@contactUs');

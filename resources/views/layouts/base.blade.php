@@ -40,7 +40,7 @@
             <a class="nav-link" href="{{url('/aboutUs')}}">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FAQs</a>
+            <a class="nav-link" href="{{url('/faqs')}}">FAQs</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('/contact') }}">Contacto</a>

@@ -70,7 +70,7 @@
         <div class="form-group row">
           <div class="col-md-8">
             <button type="submit" class="btn btn-SIR ml-auto">
-              {{ __('Register') }}
+              {{ __('Enviar') }}
             </button>
           </div>
         </div>

@@ -137,6 +137,8 @@ main {
 
 #messageArea {
     margin-top: 40px;
+    margin-bottom: 50px;
+
 }
 #messageArea button {
     width: 120px;
@@ -150,3 +152,27 @@ main {
     -moz-border-radius: 25px;
     border-radius: 20px;
 }
+
+
+/*==============FAQs VIEW =================*/
+
+/*------------------------------------------*/
+
+#questions-card{
+    margin: 25px auto 60px;
+}
+
+#questions-card .btn{
+    width: 80%;
+    display: block;
+    margin: 10px auto;
+    text-align: left;   
+    color: black;
+
+}
+
+#questions-card .answer{
+    width: 80%;
+    margin: auto;
+}
+
