@@ -30,3 +30,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::get('/pruebaAdmin', function()
+{
+	return view('layouts.admin.dashboard');
+});
