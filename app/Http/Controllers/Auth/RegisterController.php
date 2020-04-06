@@ -29,7 +29,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function redirectTo()
+    {
+        if (auth()->user()->role == 'admin') {
+            return '/admin';
+        }
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.
@@ -51,14 +59,14 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'LastName' => ['required', 'string', 'max:255'],
+            /*'LastName' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'numeric','min:9'],
             'company' => ['required', 'string', 'max:255'],
             'company_address' => ['required', 'string', 'max:255'],
             'ZIPcode' => ['required', 'string', 'max:10'],
             'city' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
-            'type_company_user' => ['required', 'string', 'max:255'],
+            'type_company_user' => ['required', 'string', 'max:255'],*/
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -74,14 +82,15 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'last_name' => $data['LastName'],
+            'role' => $data['role'],
+            /*'last_name' => $data['LastName'],
             'phone' => $data['phone'],
             'company_name' => $data['company'],
             'company_address' => $data['company_address'],
             'zip_code' => $data['ZIPcode'],
             'city' => $data['city'],
             'country' => $data['country'],
-            'type_company_user' => $data['type_company_user'],
+            'type_company_user' => $data['type_company_user'],*/
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

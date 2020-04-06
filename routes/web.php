@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 // PUBLIC VIEWS
 
-Route::get('/', 'PublicController@index');
+Route::get('/', 'PublicController@index')->name('principal');
 
 Route::get('/aboutUs', 'PublicController@aboutUs');
 
@@ -26,12 +26,17 @@ Route::get('/contact', 'PublicController@contactUs');
 Route::get('/faqs', 'PublicController@Faqs');
 
 
+//USER ROUTES
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//ADMIN ROUTES
 
-Route::get('/pruebaAdmin', function()
+
+Route::get('/admin', function()
 {
-	return view('layouts.admin.dashboard');
-});
+	return view('layouts.dashboardAdmin.home');
+
+})->middleware('admin');
