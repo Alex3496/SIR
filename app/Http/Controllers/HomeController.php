@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $user=Auth::user();
 
-        return view('home',[
+        return view('layouts.dashboardUser.home',[
             'user'=>$user
         ]);
     }

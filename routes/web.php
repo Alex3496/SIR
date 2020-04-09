@@ -32,6 +32,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('profile','User\ProfileUserController@edit')->name('profile.edit');
+
 //ADMIN ROUTES
 
 
@@ -39,4 +41,4 @@ Route::get('/admin', function()
 {
 	return view('layouts.dashboardAdmin.home');
 
-})->middleware('admin');
+})->name('admin')->middleware('admin');

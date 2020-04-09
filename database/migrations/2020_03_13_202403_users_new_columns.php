@@ -15,15 +15,15 @@ class UsersNewColumns extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
            
-           $table->string('role');
-            /*$table->string('last_name',250);
-            $table->string('phone',15);
-            $table->string('company_name');
-            $table->string('company_address');
-            $table->string('city');
-            $table->string('zip_code',10);
-            $table->string('country');
-            $table->string('type_company_user');*/
+            $table->string('role')->default('user');
+            $table->string('last_name',250)->nullable();
+            $table->string('phone',16)->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('zip_code',10)->nullable();
+            $table->string('type_company_user')->nullable();
 
         });
     }
@@ -38,16 +38,15 @@ class UsersNewColumns extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
 
-             $table->dropColumn('role');
-
-            /*$table->dropColumn('last_name');
+            $table->dropColumn('role');
+            $table->dropColumn('last_name');
             $table->dropColumn('phone');
             $table->dropColumn('company_name');
             $table->dropColumn('company_address');
             $table->dropColumn('city');
             $table->dropColumn('zip_code');
             $table->dropColumn('country');
-            $table->dropColumn('type_company_user');*/
+            $table->dropColumn('type_company_user');
         });
     }
 }
