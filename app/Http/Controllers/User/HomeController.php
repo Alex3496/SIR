@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
+namespace App\Http\Controllers\user;
 
+use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,8 +27,8 @@ class HomeController extends Controller
     {
         $user=Auth::user();
 
-        return view('layouts.dashboardUser.home',[
-            'user'=>$user
+        return view('User.home',[
+            'user' => $user
         ]);
     }
 }

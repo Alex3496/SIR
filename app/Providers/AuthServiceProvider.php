@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //DEFIENE GATES IN HERE
+        // Protect routes if the user isnt an admin
+        Gate::define('manager-area',function($user){
+            return $user->hasRole('admin');
+        });
     }
 }

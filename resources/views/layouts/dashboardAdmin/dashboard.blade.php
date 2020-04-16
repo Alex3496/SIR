@@ -9,14 +9,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>Dashboartd Admin</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="adminLTE/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="adminLTE/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('adminLTE/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+
+  @yield('extraCss')
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -31,9 +36,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('principal')}}" class="nav-link">Home</a>
       </li>
-     
     </ul>
 
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link btn btn-outline-secondary" data-toggle="dropdown" href="#">
+          Admin
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header">Options</span>
+          <div class="dropdown-divider"></div>
+          <a href="{{ route('logout') }}" 
+             class="dropdown-item" 
+             onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+            <i class="fas fa-sign-out-alt mr-2"></i> Log out
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>     
+        </div>
+      </li>
+    </ul>
   </nav>
   <!-- /.navbar -->
 
@@ -72,15 +97,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Control Sidebar
-  <aside class="control-sidebar control-sidebar-dark">
-     Control sidebar content goes here
-    <div class="p-3">
-      <h5>Title</h5>
-      <p>Sidebar content</p>
-    </div>
-  </aside>
-  /.control-sidebar -->
 
   <!-- Main Footer -->
   <footer class="main-footer">
@@ -97,10 +113,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="adminLTE/plugins/jquery/jquery.min.js"></script>
+<script src="{{asset('adminLTE/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="adminLTE/js/adminlte.min.js"></script>
+<script src="{{asset('adminLTE/js/adminlte.min.js')}}"></script>
+
+
+@yield('extraScript')
 </body>
 </html>

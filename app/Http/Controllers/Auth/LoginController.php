@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -30,8 +30,8 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        if (auth()->user()->role == 'admin') {
-            return '/admin';
+        if (Auth::user()->hasRole('admin')) {
+            return $this->redirectTo = route('admin.users.index');
         }
         return '/home';
     }

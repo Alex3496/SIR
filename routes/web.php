@@ -30,15 +30,24 @@ Route::get('/faqs', 'PublicController@Faqs');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'User\HomeController@index')->name('home');
 
 Route::get('profile','User\ProfileUserController@edit')->name('profile.edit');
 
+Route::put('/profile/{user}','User\ProfileUserController@update')->name('profile.update');
+
+//Route::resource('profile','User\ProfileUserController',['except' =>['index','show','create','store','destroy']]);
+
 //ADMIN ROUTES
 
+//     folder              route            names
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manager-area')->group(function(){
+	Route::resource('/users','UserController',['except' =>['show','create','store']]);
+});
 
+/*
 Route::get('/admin', function()
 {
 	return view('layouts.dashboardAdmin.home');
 
-})->name('admin')->middleware('admin');
+})->name('admin')->middleware('admin');*/

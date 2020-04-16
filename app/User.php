@@ -17,8 +17,7 @@ class User extends Authenticatable
      */
     
     protected $fillable = [
-        'name', 'email', 'password',/*'last_name','phone', 'company_name', 'company_address','zip_code',
-        'city','country','type_company_user'*/
+        'name', 'email', 'password','phone', 'company_name', 'type_company_user'
     ];
 
     /**
@@ -38,4 +37,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role','role_user');
+    }
+
+
+    //Check if user have any of the roles that we pass by parameter (array)
+    public function hasAnyRoles($roles)
+    {
+        if($this->roles()->whereIn('name',$roles)->first())
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    //Check if user have a specific role
+    public function hasRole($role)
+    {
+        if($this->roles()->where('name',$role)->first())
+        {
+            return true;
+        }
+
+        return false;
+    }
+    
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Auth;
 
 class ConfirmPasswordController extends Controller
 {
@@ -30,8 +31,8 @@ class ConfirmPasswordController extends Controller
 
     protected function redirectTo()
     {
-        if (auth()->user()->role == 'admin') {
-            return '/admin';
+        if (Auth::user()->hasRole('admin')) {
+            return $this->redirectTo = route('admin.users.index');
         }
         return '/home';
     }
