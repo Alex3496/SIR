@@ -52,8 +52,6 @@ class ProfileUserController extends Controller
 
         $user->save();
 
-
-
         return back()->with('status', 'Actualizado con exito');
     }
 

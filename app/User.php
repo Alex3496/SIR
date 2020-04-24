@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     
     protected $fillable = [
-        'name', 'email', 'password','phone', 'company_name', 'type_company_user'
+        'name', 'email', 'password', 'type_company_user', 'company_name', 'position', 'phone'
     ];
 
     /**
@@ -38,13 +38,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    //----------------RELATIONS--------------
     public function roles()
     {
         return $this->belongsToMany('App\Role','role_user');
     }
 
+    public function post()
+    {
+        return $this->hasMany(Tariff::class);
+    }
 
+    //----------------GATES--------------
+    
     //Check if user have any of the roles that we pass by parameter (array)
     public function hasAnyRoles($roles)
     {

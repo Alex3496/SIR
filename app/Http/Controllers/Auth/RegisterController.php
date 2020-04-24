@@ -59,14 +59,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'type_company_user' => 'in:Shipper,Carriers,Broker',
+            'company_name' => ['required', 'string', 'max:255'],
+            'position' => ['required', 'string', 'max:120'],
             'name' => ['required', 'string', 'max:255'],
             'phone' => 'required|numeric|regex:/[0-9]{10}/',
-            'company_name' => ['required', 'string', 'max:255'],
-            //'company_address' => ['required', 'string', 'max:255'],
-            //'ZIPcode' => ['required', 'string', 'max:10'],
-            //'city' => ['required', 'string', 'max:255'],
-            //'country' => ['required', 'string', 'max:255'],
-            'type_company_user' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -81,15 +78,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
+            'type_company_user' => $data['type_company_user'],
+            'company_name' => $data['company_name'],
+            'position' => $data['position'],
             'name' => $data['name'],
             'phone' => $data['phone'],
-            'company_name' => $data['company_name'],
-            //'company_address' => $data['company_address'],
-            //'zip_code' => $data['ZIPcode'],
-            //'city' => $data['city'],
-            //'country' => $data['country'],
-            'type_company_user' => $data['type_company_user'],
-
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

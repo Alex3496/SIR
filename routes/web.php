@@ -36,11 +36,11 @@ Route::get('profile','User\ProfileUserController@edit')->name('profile.edit');
 
 Route::put('/profile/{user}','User\ProfileUserController@update')->name('profile.update');
 
-//Route::resource('profile','User\ProfileUserController',['except' =>['index','show','create','store','destroy']]);
+Route::resource('tariffs','User\TariffsController',['except' => ['create','show']]);
 
 //ADMIN ROUTES
 
-//     folder              route            names
+//     folder              route            names                      gate
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manager-area')->group(function(){
 	Route::resource('/users','UserController',['except' =>['show','create','store']]);
 });

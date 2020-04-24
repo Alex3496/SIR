@@ -27,21 +27,33 @@ class UsersTableSeeder extends Seeder
         $admin = User::create([
         	'name' => 'Admin User',
         	'email' => 'admin@admin.com',
-        	'password' => Hash::make('Alex1996')
+        	'password' => Hash::make('Alex1996'),
+            'phone' => '0',
+            'company_name' => 'n/a',
+            'position' => 'n/a',
+            'type_company_user' => 'n/a',
 
         ]);
 
         $editor = User::create([
         	'name' => 'Editor User',
         	'email' => 'editor@editor.com',
-        	'password' => Hash::make('Alex1996')
+        	'password' => Hash::make('Alex1996'),
+            'phone' => '0',
+            'company_name' => 'n/a',
+            'position' => 'n/a',
+            'type_company_user' => 'n/a',
 
         ]);
 
         $user = User::create([
         	'name' => 'Simple User',
         	'email' => 'user@user.com',
-        	'password' => Hash::make('Alex1996')
+        	'password' => Hash::make('Alex1996'),
+            'phone' => '0',
+            'company_name' => 'n/a',
+            'position' => 'n/a',
+            'type_company_user' => 'n/a',
 
         ]);
 
