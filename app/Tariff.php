@@ -8,10 +8,11 @@ class Tariff extends Model
 {
 
     protected $fillable = [
-        'origin', 'destiny', 'date', 'weight', 'distance', 'type_equipment', 'user_id'
+        'type_tariff','origin', 'destiny', 'date', 'max_weight','min_weight','type_weight', 'distance', 'type_equipment','rate','collection_Address', 
+        'user_id'
     ];
 
-    //--------------Relations
+    //--------------Relations----------------//
     public function user()
     {
     	return $this->belongsTo(User::class);

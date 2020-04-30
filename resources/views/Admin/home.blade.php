@@ -1,19 +1,21 @@
 @extends('layouts.dashboardAdmin.dashboard')
 @section('extraCss')
 <!-- Ionicons -->
-<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')}}"/>
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 <!-- DataTables -->
-<link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"/>
-<link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}" />
+@endsection
 @section('content')
-<section class="content">
+<div class="container-fluid">
+  <!--Start row User List-->
   <div class="row">
     <div class="col-12">
+      <!--start card User List-->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Usuarios</h3>
+          <h3 class="card-title">{{ __('Lista de Tarifas') }}</h3>
         </div>
-        <!-- /.card-header -->
         <div class="card-body">
           <table id="example2" class="table table-bordered table-hover">
             <thead>
@@ -40,33 +42,26 @@
                   <a href="{{ route('admin.users.edit',$user->id) }}" class="float-left">
                     <button type="submit" class="btn btn-primary">Edit</button>
                   </a>
-
                   <form action="{{ route('admin.users.destroy',$user) }}" method="POST" class="float-left">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
                   </form>
-                  
                 </td>
               </tr>
               @endforeach
             </tbody>
-            <tfoot>
-              <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Actions</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
-        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
+      <!--/end card-->
     </div>
   </div>
-</section>
+  <!--/End row Tariff List-->
+</div>
+
+
+
 @endsection
 @section('extraScript')
 <!-- DataTables -->
@@ -83,7 +78,7 @@
       "responsive": true,
       "autoWidth": false,
     });
-    $('#example2').DataTable({
+    $("#example2").DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
@@ -92,6 +87,6 @@
       "autoWidth": false,
       "responsive": true,
     });
-  });
+  }); 
 </script>
 @endsection

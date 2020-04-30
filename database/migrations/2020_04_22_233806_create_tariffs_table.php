@@ -15,13 +15,18 @@ class CreateTariffsTable extends Migration
     {
         Schema::create('tariffs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned(); 
+            $table->bigInteger('user_id')->unsigned();
+            $table->string('type_tariff'); 
             $table->string('origin');
             $table->string('destiny');
             $table->date('date');
-            $table->integer('weight');
-            $table->integer('distance');
+            $table->integer('max_weight')->nullable();
+            $table->integer('min_weight')->nullable();
+            $table->string('type_weight',7)->nullable();
+            $table->integer('distance')->nullable();
             $table->string('type_equipment');
+            $table->decimal('rate',9,2);
+            $table->text('collection_Address');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

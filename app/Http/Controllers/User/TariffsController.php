@@ -46,11 +46,29 @@ class TariffsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(tariffsRequest $request)
-    {
-        $request->request->add(['user_id' => Auth::user()->id]);
+    {        
         //dd($request->all());
 
-        $tariff = Tariff::create($request->all());
+        if($request->request->get('type_tariff') == 'maritime')
+        {
+            $user = Tariff::create([
+                'user_id' => Auth::user()->id,
+                'type_tariff' => $request['type_tariff'],
+                'origin' => $request['origin'],
+                'destiny' => $request['destiny'],
+                'date' => $request['date'],
+                'type_equipment' => $request['type_equipment'],
+                'rate' => $request['rate'],
+                'collection_Address' => $request['collection_Address'],
+            ]);
+        }
+        else
+        {
+            //Add field user_id to the request array
+            $request->request->add(['user_id' => Auth::user()->id]);
+
+            $tariff = Tariff::create($request->all());
+        }
 
         return back();
 
@@ -92,10 +110,31 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffToUpdate=Tariff::where('user_id',$user->id)
-                            ->where('id',$id)->first();
+        $tariffToUpdate=Tariff::where('user_id',$user->id)->where('id',$id)->first();
         //dd($tariffToUpdate);                  
-        $tariffToUpdate->update($request->all());
+
+        if($request['type_tariff'] == 'maritime')
+        {
+            $tariffToUpdate->type_tariff=$request['type_tariff'];
+            $tariffToUpdate->origin=$request['origin'];
+            $tariffToUpdate->destiny=$request['destiny'];
+            $tariffToUpdate->date=$request['date'];
+            $tariffToUpdate->type_equipment=$request['type_equipment'];
+            $tariffToUpdate->rate=$request['rate'];
+            $tariffToUpdate->collection_Address=$request['collection_Address'];
+
+            $tariffToUpdate->min_weight=null;
+            $tariffToUpdate->max_weight=null;
+            $tariffToUpdate->type_weight=null;
+            $tariffToUpdate->distance=null;
+
+            $tariffToUpdate->save();
+
+        }
+        else
+        {
+            $tariffToUpdate->update($request->all());
+        }
 
         return redirect()->route('tariffs.index');
     }

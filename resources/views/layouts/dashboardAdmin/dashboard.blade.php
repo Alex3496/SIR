@@ -13,6 +13,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('adminLTE/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
@@ -116,6 +118,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('adminLTE/js/adminlte.min.js')}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{asset('adminLTE/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  bsCustomFileInput.init();
+});
+</script>
 <!--JS used in specific views -->
 @yield('extraScript')
 </body>
