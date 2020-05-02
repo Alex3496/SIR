@@ -49,6 +49,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('profile.company')}}" class="nav-link">
+              <i class="nav-icon fas  fa-building"></i>
+              <p>
+               {{ __('Empresa') }}
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

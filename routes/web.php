@@ -36,6 +36,12 @@ Route::get('profile','User\ProfileUserController@edit')->name('profile.edit');
 
 Route::put('/profile/{user}','User\ProfileUserController@update')->name('profile.update');
 
+Route::get('profile/company','User\ProfileUserController@showCompany')->name('profile.company');
+
+Route::post('profile/company','User\ProfileUserController@storeCompany')->name('profile.companyStore');
+
+Route::post('profile/insurance','User\ProfileUserController@storeInsurance')->name('profile.insuranceStore');
+
 Route::resource('tariffs','User\TariffsController',['except' => ['create','show']]);
 
 //ADMIN ROUTES

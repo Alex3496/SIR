@@ -49,6 +49,15 @@ class User extends Authenticatable
         return $this->hasMany(Tariff::class);
     }
 
+    public function dataset()
+    {
+        return $this->hasOne('App\company_dataset');
+    }
+    public function insurance()
+    {
+        return $this->hasOne('App\Insurance');
+    }
+
     //----------------GATES--------------
     
     //Check if user have any of the roles that we pass by parameter (array)

@@ -14,9 +14,6 @@
     </div>
   </div>
   <!--start row card Add Tariff-->
-  @if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
   <div class="row">
     <div class="col-md-11">
       @if (session('status'))
