@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\userRequest;
+use App\Http\Requests\{userRequest,datasetRequest,insuranceRequest};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
 use App\{User,company_dataset,Insurance};
@@ -83,7 +83,7 @@ class ProfileUserController extends Controller
      * @param  \App\Http\Requests\userRequest;  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeCompany(Request $request)
+    public function storeCompany(datasetRequest $request)
     {
         //dd($request->all());
         $user=Auth::user()->id;
@@ -95,7 +95,7 @@ class ProfileUserController extends Controller
             ,
             [
                 'dba_name' => $request->dba_name,
-                'scac_code' => $request->scac_code,
+                'scac_code' => strtoupper($request->scac_code),
                 'caat' => $request->caat,
                 'mc_number' => $request->mc_number,
                 'num_trucks' => $request->num_trucks,
@@ -118,7 +118,7 @@ class ProfileUserController extends Controller
      *
      * @param  \App\Http\Requests\Request;  $request
      */
-    public function storeInsurance(Request $request)
+    public function storeInsurance(insuranceRequest $request)
     {
         //dd($request->all());
         $user=Auth::user()->id;
@@ -131,8 +131,11 @@ class ProfileUserController extends Controller
             [
                 'name_insurance' => $request->name_insurance, 
                 'contact_name' => $request->contact_name, 
-                'contact_phone' => $request->contact_phone, 
-                'contact_email' => $request->contact_email, 
+                'general_liability_ins' => $request->has('general_liability_ins'),
+                'commercial_general_liability' => $request->has('commercial_general_liability'),
+                'auto_liability' => $request->has('auto_liability'),
+                'motor_truck_cargo' => $request->has('motor_truck_cargo'),
+                'trailer_interchange' => $request->has('trailer_interchange'),
             ]
         );
 

@@ -18,8 +18,11 @@ class CreateInsurancesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('name_insurance')->nullable();
             $table->string('contact_name')->nullable();
-            $table->string('contact_phone')->nullable();
-            $table->string('contact_email')->nullable();
+            $table->boolean('general_liability_ins')->nullable();
+            $table->boolean('commercial_general_liability')->nullable();
+            $table->boolean('auto_liability')->nullable();
+            $table->boolean('motor_truck_cargo')->nullable();
+            $table->boolean('trailer_interchange')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

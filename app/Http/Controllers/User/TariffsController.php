@@ -70,7 +70,7 @@ class TariffsController extends Controller
             $tariff = Tariff::create($request->all());
         }
 
-        return back();
+        return back()->with('status', 'Agregado con exito');;
 
     }
 
@@ -136,7 +136,7 @@ class TariffsController extends Controller
             $tariffToUpdate->update($request->all());
         }
 
-        return redirect()->route('tariffs.index');
+        return redirect()->route('tariffs.index')->with('status', 'Editado con Exito');;
     }
 
     /**
