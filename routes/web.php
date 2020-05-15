@@ -41,8 +41,18 @@ Route::get('profile/company','User\ProfileUserController@showCompany')->name('pr
 Route::post('profile/company','User\ProfileUserController@storeCompany')->name('profile.companyStore');
 
 Route::post('profile/insurance','User\ProfileUserController@storeInsurance')->name('profile.insuranceStore');
+	
+	//tariffs routes
 
 Route::resource('tariffs','User\TariffsController',['except' => ['create','show']]);
+
+Route::get('tariffs/create/truck','User\TariffsController@addTruckTariff')->name('tariff.turckAdd');
+
+Route::get('tariffs/create/train','User\TariffsController@addTrainTariff')->name('tariff.trainAdd');
+
+Route::get('tariffs/create/maritime','User\TariffsController@addMaritimeTariff')->name('tariff.maritimeAdd');
+
+Route::get('tariffs/create/aerial','User\TariffsController@addAerialTariff')->name('tariff.aerialAdd');
 
 //ADMIN ROUTES
 

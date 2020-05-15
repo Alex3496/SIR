@@ -25,6 +25,9 @@ class CreateTariffsTable extends Migration
             $table->string('type_weight',7)->nullable();
             $table->integer('distance')->nullable();
             $table->string('type_equipment');
+            $table->integer('height')->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('length')->nullable();
             $table->decimal('rate',9,2);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
