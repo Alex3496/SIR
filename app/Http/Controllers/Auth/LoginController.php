@@ -26,12 +26,13 @@ class LoginController extends Controller
      *
      * @var string
      */
+
     //protected $redirectTo = RouteServiceProvider::HOME;
 
     protected function redirectTo()
     {
         if (Auth::user()->hasRole('admin')) {
-            return $this->redirectTo = route('admin.users.index');
+            return $this->redirectTo = route('admin.index');
         }
         return '/home';
     }

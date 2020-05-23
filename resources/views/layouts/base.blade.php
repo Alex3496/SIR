@@ -11,7 +11,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <!-- Local CSS-->
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
   
   <title>SIR</title>
 </head>

@@ -245,7 +245,7 @@ class TariffsController extends Controller
             $tariffToUpdate->update($request->all());
         }
 
-        return redirect()->route('tariffs.index')->with('status', 'Editado con Exito');;
+        return redirect()->route('tariffs.index')->with('status', 'Editado con Exito');
     }
 
     /**

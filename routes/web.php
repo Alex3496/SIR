@@ -41,6 +41,8 @@ Route::get('profile/company','User\ProfileUserController@showCompany')->name('pr
 Route::post('profile/company','User\ProfileUserController@storeCompany')->name('profile.companyStore');
 
 Route::post('profile/insurance','User\ProfileUserController@storeInsurance')->name('profile.insuranceStore');
+
+Route::post('profile/avatar','User\ProfileUserController@updateAvatar')->name('profile.avatar');
 	
 	//tariffs routes
 
@@ -58,6 +60,7 @@ Route::get('tariffs/create/aerial','User\TariffsController@addAerialTariff')->na
 
 //     folder              route            names                      gate
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manager-area')->group(function(){
+	Route::get('home','AdminController@index')->name('index');
 	Route::resource('/users','UserController',['except' =>['show','create','store']]);
 });
 

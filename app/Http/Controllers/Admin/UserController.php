@@ -23,7 +23,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('Admin.home',compact('users'));
+        return view('Admin.Users.Index',compact('users'));
     }
 
 
@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
 
-        return view('Admin.UserEdit',[
+        return view('Admin.Users.Edit',[
             'user' => $user,
             'roles' => $roles 
         ]);

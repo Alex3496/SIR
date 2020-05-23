@@ -81,5 +81,15 @@ class User extends Authenticatable
 
         return false;
     }
+
+
+    //----------------ATTRIBUTES--------------
+
+    public function getGetImageAttribute()
+    {
+        if ($this->avatar) {
+            return url('storage/' . $this->avatar);
+        }
+    }
     
 }

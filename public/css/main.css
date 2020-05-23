@@ -176,3 +176,27 @@ main {
     margin: auto;
 }
 
+
+/*==============SIDE NAV BAR =================*/
+
+#profile-image{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+}
+
+
+/*==============PROFILE VIEW =================*/
+
+#avatar-box{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 250px;
+    height: 250px;
+}
+
+

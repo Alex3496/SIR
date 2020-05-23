@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\{userRequest,datasetRequest,insuranceRequest};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
@@ -140,6 +141,32 @@ class ProfileUserController extends Controller
         );
 
         return back()->with('status', 'Actualizado con exito');
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $user = Auth::user();
+
+        //dd($user->avatar);
+
+        if($user->avatar == 'avatars/avatar.jpg'){
+            $user->avatar =  $request->file('avatar')->store('avatars', 'public');
+            $user->save();
+        }else{
+
+            Storage::disk('public')->delete($user->avatar);
+            $user->avatar = $request->file('avatar')->store('avatars', 'public');
+            $user->save();
+        }
+
+
+
+        return back()->with('status', 'Imagen de perfil actualizada con exito');
+
     }
 
 }

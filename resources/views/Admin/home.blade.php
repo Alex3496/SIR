@@ -11,50 +11,7 @@
   <!--Start row User List-->
   <div class="row">
     <div class="col-12">
-      <!--start card User List-->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">{{ __('Lista de Tarifas') }}</h3>
-        </div>
-        <div class="card-body">
-          <table id="example2" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($users as $user)
-              <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{implode(', ',$user->roles()->get()->pluck('name')->toArray())}}</td>
-                  <!--@foreach($user->roles as $role)
-                  {{ $role->name }}
-                  @endforeach-->
-
-                <td>
-                  <a href="{{ route('admin.users.edit',$user->id) }}" class="float-left">
-                    <button type="submit" class="btn btn-primary">Edit</button>
-                  </a>
-                  <form action="{{ route('admin.users.destroy',$user) }}" method="POST" class="float-left">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                  </form>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!--/end card-->
+      home
     </div>
   </div>
   <!--/End row Tariff List-->

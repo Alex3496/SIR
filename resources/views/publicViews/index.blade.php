@@ -17,26 +17,30 @@
         <div class="col-12 col-lg-6">
           <div id="quote-card" >
             <form>
-
-              <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="options" id="option1" checked> Terrestre
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option2"> Marítimo
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option3"> Aereo
-                </label>
+              <div class="col d-flex justify-content-center mb-2 mt-0">
+                <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="option" id="option1" checked> {{__('Camión')}}
+                  </label>
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="option" id="option1" > {{__('Tren')}}
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="option" id="option2"> {{__('Marítimo')}}
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="option" id="option3"> {{__('Areo')}}
+                  </label>
+                </div>               
               </div>
 
               <div class="form-group">
-                <label for="origin">Origen</label>
+                <label for="origin">{{__('Origen')}}</label>
                 <input type="text" class="form-control" id="origin" placeholder="Pais, Ciudad, Puerto">
               </div>
 
               <div class="form-group">
-                <label for="destination">Destino</label>
+                <label for="destination">{{__('Destino')}}</label>
                 <input type="text" class="form-control" id="destination" placeholder="Pais, Ciudad, Puerto">
               </div>
 
