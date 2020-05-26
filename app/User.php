@@ -44,9 +44,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role','role_user');
     }
 
-    public function post()
+    public function tariffs()
     {
         return $this->hasMany(Tariff::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
     public function dataset()

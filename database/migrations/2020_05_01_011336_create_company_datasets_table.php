@@ -15,7 +15,9 @@ class CreateCompanyDatasetsTable extends Migration
     {
         Schema::create('company_datasets', function (Blueprint $table) {
             $table->id();
+
             $table->bigInteger('user_id')->unsigned();
+
             $table->string('dba_name')->nullable();
             $table->string('scac_code')->nullable();
             $table->string('caat')->nullable();
@@ -27,8 +29,12 @@ class CreateCompanyDatasetsTable extends Migration
             $table->string('warehouse')->nullable();
             $table->string('fiscal_warehouse')->nullable();
             $table->string('position')->nullable();
+
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

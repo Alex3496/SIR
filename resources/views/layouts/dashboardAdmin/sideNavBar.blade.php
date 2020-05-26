@@ -27,7 +27,7 @@
             <a href="{{route('admin.index')}}" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
-                Home
+                {{__('Inicio')}}
               </p>
             </a>
           </li>
@@ -35,7 +35,15 @@
             <a href="{{route('admin.users.index')}}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
-                Users
+                {{__('Usuarios')}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admin.posts.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                {{__('Artículos')}}
               </p>
             </a>
           </li>

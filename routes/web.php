@@ -25,6 +25,8 @@ Route::get('/contact', 'PublicController@contactUs');
 
 Route::get('/faqs', 'PublicController@Faqs');
 
+Route::get('/blog', 'PublicController@posts')->name('posts');
+
 
 //USER ROUTES
 
@@ -60,8 +62,12 @@ Route::get('tariffs/create/aerial','User\TariffsController@addAerialTariff')->na
 
 //     folder              route            names                      gate
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manager-area')->group(function(){
+
 	Route::get('home','AdminController@index')->name('index');
+	
 	Route::resource('/users','UserController',['except' =>['show','create','store']]);
+
+	Route::resource('posts','PostController',['except' =>'show']);
 });
 
 /*

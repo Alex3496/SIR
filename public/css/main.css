@@ -176,8 +176,39 @@ main {
     margin: auto;
 }
 
+/*==============POSTS VIEW =================*/
 
-/*==============SIDE NAV BAR =================*/
+/*------------------------------------------*/
+
+.posts .card{
+   margin: 2rem 0rem;
+   border: 0; 
+}
+
+.posts #posts-left-side{
+    min-height: 22rem;
+    margin: 1rem 0rem;
+    padding-left: 1rem
+}
+
+.posts #posts-right-side{
+    min-height: 18rem;
+    padding: 0 1rem;
+
+}
+
+.posts img{
+    margin: 1rem 0rem;
+    border-radius: 5px;
+}
+
+.posts button {
+    border-radius: 20px
+}
+
+
+
+/*==============SIDE NAV BAR (USER)=================*/
 
 #profile-image{
     background-repeat: no-repeat;
@@ -189,7 +220,7 @@ main {
 }
 
 
-/*==============PROFILE VIEW =================*/
+/*==============PROFILE VIEW (USER) =================*/
 
 #avatar-box{
     background-repeat: no-repeat;

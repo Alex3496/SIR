@@ -18,11 +18,26 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
+	$types_company_user = ['Shipper','Carriers','Broker'];
+
     return [
+
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+       /* 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password*/
+       	'password' => bcrypt('123456789'),
         'remember_token' => Str::random(10),
+
+        'type_company_user' => $types_company_user[rand(0,2)],
+        'company_name' => $faker->company,
+        'position' => $faker->jobTitle,
+        'phone' => $faker->tollFreePhoneNumber,
+
+        'company_address' => $faker->address,
+        'city' => $faker->city,
+        'country' => $faker->country,
+        'zip_code' => $faker->postcode,
     ];
 });

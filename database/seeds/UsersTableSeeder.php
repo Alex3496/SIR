@@ -60,6 +60,12 @@ class UsersTableSeeder extends Seeder
         $admin->roles()->attach(1);
         $editor->roles()->attach(2);
         $user->roles()->attach(3);
-;
+
+        factory(User::class, 30)->create()->each(function($user){
+
+            $user->roles()->attach(3);
+
+        });
+
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInsurancesTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateInsurancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('insurances', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
 
             $table->bigInteger('user_id')->unsigned();
 
-            $table->string('name_insurance')->nullable();
-            $table->string('contact_name')->nullable();
-            $table->boolean('general_liability_ins')->nullable();
-            $table->boolean('commercial_general_liability')->nullable();
-            $table->boolean('auto_liability')->nullable();
-            $table->boolean('motor_truck_cargo')->nullable();
-            $table->boolean('trailer_interchange')->nullable();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->text('body');
+            $table->text('iframe')->nullable();
 
             $table->timestamps();
 
@@ -41,6 +39,6 @@ class CreateInsurancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('insurances');
+        Schema::dropIfExists('posts');
     }
 }

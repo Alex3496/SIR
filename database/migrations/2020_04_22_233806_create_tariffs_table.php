@@ -15,13 +15,14 @@ class CreateTariffsTable extends Migration
     {
         Schema::create('tariffs', function (Blueprint $table) {
             $table->id();
+
             $table->bigInteger('user_id')->unsigned();
-            $table->string('type_tariff'); 
+
+            $table->string('type_tariff',30); // enum : truck,train,maritime,aerial
             $table->string('origin');
             $table->string('destiny');
-            //$table->date('date');
-            $table->integer('max_weight')->nullable();
             $table->integer('min_weight')->nullable();
+            $table->integer('max_weight')->nullable();
             $table->string('type_weight',7)->nullable();
             $table->integer('distance')->nullable();
             $table->string('type_equipment');
@@ -29,8 +30,13 @@ class CreateTariffsTable extends Migration
             $table->integer('width')->nullable();
             $table->integer('length')->nullable();
             $table->decimal('rate',9,2);
+
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
         });
     }
 

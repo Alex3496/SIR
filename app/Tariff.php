@@ -11,6 +11,7 @@ class Tariff extends Model
         'type_tariff','origin', 'destiny', 'max_weight','min_weight','type_weight', 'distance', 'type_equipment','rate',
         'user_id'
     ];
+    
 
     //--------------Relations----------------//
     public function user()
