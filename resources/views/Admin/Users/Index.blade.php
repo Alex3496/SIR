@@ -9,8 +9,8 @@
 @section('content')
 <div class="container-fluid">
   <!--Start row User List-->
-  <div class="row">
-    <div class="col-12">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
       <!--start card User List-->
       <div class="card">
         <div class="card-header">

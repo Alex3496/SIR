@@ -4,6 +4,7 @@
     --main-color: #374a9d;
     --main-hover-color: #05a4e6;
     --gray-page: #414141;
+    --gray-light: #c8c8c8 ;
 }
 
 .btn-SIR {
@@ -23,7 +24,7 @@
 
 /*-----------HEADER-------------*/
 #header {
-    background-color: #c8c8c8;
+    background-color: var(--gray-light);
 }
 
 #header img {
@@ -47,7 +48,7 @@ main {
 #quote-card {
     margin: auto;
     padding: 30px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.75);
     max-width: 65vh;
     border-radius: 20px;
     margin-top: 22px;
@@ -180,9 +181,14 @@ main {
 
 /*------------------------------------------*/
 
+ #title-blog{
+    margin: 4rem 0;
+ }
+
 .posts .card{
    margin: 2rem 0rem;
-   border: 0; 
+
+   
 }
 
 .posts #posts-left-side{
@@ -206,6 +212,22 @@ main {
     border-radius: 20px
 }
 
+#categories-card{
+    background-color: var(--gray-light);
+    border: 0;
+}
+
+#categories-card h4{
+    margin: 1rem;
+}
+
+#categories-card li{
+    list-style:none;
+}
+
+#categories-card a{
+    color: black;
+}
 
 
 /*==============SIDE NAV BAR (USER)=================*/

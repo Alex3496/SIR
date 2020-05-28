@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\{Post,Category};
 
 class PublicController extends Controller
 {
@@ -34,6 +34,11 @@ class PublicController extends Controller
 
         $posts = Post::orderBy('id','DESC')->paginate(3);
 
-        return view('publicViews.blog',compact('posts'));
+        $categories = Category::orderBy('name')->get();
+
+        return view('publicViews.posts',[
+            'posts' => $posts,
+            'categories' => $categories,
+        ]);
     }
 }

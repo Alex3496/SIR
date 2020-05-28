@@ -119,7 +119,9 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
+                    
                     <label for="type_equipment">{{ __('Tipo de equipo') }}</label>
+
                     <div class="input-group input-group-sm">
                       <select class="form-control" id="type_equipment" name="type_equipment">
                         <option value="Box" @if(old('type_equipment')=='Box' )selected @endif

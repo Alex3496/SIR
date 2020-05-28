@@ -10,7 +10,7 @@ class Post extends Model
     use Sluggable;
 
     protected $fillable = [
-        'title', 'body', 'iframe', 'image', 'user_id',
+       'category_id', 'title', 'excerpt','body', 'iframe', 'image', 'user_id',
     ];
 
     /**
@@ -28,15 +28,34 @@ class Post extends Model
         ];
     }
 
-    //--------------RELATIONS---------------
+    //--------------RELATIONS-------------------
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    //--------------ATRIBUTTES------------------
+    
     public function getGetExcerptAttribute()
     {
         return substr($this->body, 0, 150);
+    }
+
+    public function getGetImageAttribute()
+    {
+        if ($this->image) {
+            return url('storage/' . $this->image);
+        }
     }
 }

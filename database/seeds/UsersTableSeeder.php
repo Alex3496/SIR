@@ -57,9 +57,21 @@ class UsersTableSeeder extends Seeder
 
         ]);
 
+        $vicente = User::create([
+            'name' => 'Vicente Sanchez',
+            'email' => 'vicente@admin.com',
+            'password' => Hash::make('123456'),
+            'phone' => '0',
+            'company_name' => 'n/a',
+            'position' => 'n/a',
+            'type_company_user' => 'n/a',
+
+        ]);
+
         $admin->roles()->attach(1);
         $editor->roles()->attach(2);
         $user->roles()->attach(3);
+        $vicente->role()->attach(1);
 
         factory(User::class, 30)->create()->each(function($user){
 

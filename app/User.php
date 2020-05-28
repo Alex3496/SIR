@@ -41,7 +41,7 @@ class User extends Authenticatable
     //----------------RELATIONS--------------
     public function roles()
     {
-        return $this->belongsToMany('App\Role','role_user');
+        return $this->belongsToMany(Role::class);
     }
 
     public function tariffs()

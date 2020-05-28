@@ -12,6 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	//calls all the seeders
+
+        factory(App\Category::class, 5)->create();
+        factory(App\Tag::class,12)->create();
+
         $this->call(UsersTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(TariffsTableSeeder::class);

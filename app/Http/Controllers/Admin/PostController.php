@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
-use App\Post;
+use App\{Post,Category,Tag};
 
 class PostController extends Controller
 {
@@ -37,7 +40,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Category::orderBy('name','ASC')->get();
+
+        $tags = Tag::orderBy('name','ASC')->get();
+        
+        //dd([$categories,$tags]);
+
+        return view('Admin.posts.create',compact('categories','tags'));
     }
 
     /**
@@ -46,9 +56,22 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $request['user_id'] = Auth::user()->id;
+        
+        $tags = $request['tags'];
+
+        $post = Post::create($request->all());
+        
+        $post->tags()->attach($tags);
+
+        if ($request->file('image')) {
+            $post->image = $request->file('image')->store('posts', 'public');
+            $post->save();
+        }
+
+        return redirect()->route('admin.posts.index')->with('status','Etiqueta creda con exito');
     }
 
     /**
@@ -59,7 +82,15 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::where('id',$id)->first();
+
+        $postTags = $post->tags->pluck('id')->toArray();
+
+        $categories = Category::orderBy('name','ASC')->get();
+
+        $tags = Tag::orderBy('name','ASC')->get();
+
+        return view('Admin.posts.edit',compact('post','categories','tags','postTags'));
     }
 
     /**
@@ -69,9 +100,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $postToUpdate = Post::where('id',$id)->first();
+
+        $postToUpdate->update($request->all());
+
+        if ($request->file('image')) {
+
+            Storage::disk('public')->delete($postToUpdate->image);
+            $postToUpdate->image = $request->file('image')->store('posts', 'public');
+            $postToUpdate->save();
+        }
+
+        return redirect()->route('admin.posts.index')->with('status','Articulo actualizada con exito');
     }
 
     /**
@@ -82,6 +124,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::where('id',$id)->first();
+
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')->with('status','Eliminado con exito');
     }
 }

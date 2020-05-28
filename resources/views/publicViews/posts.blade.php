@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			<div class="col text-center">
+			<div class="col text-center" id="title-blog">
 			<h1>Noticias</h1>
 			<div id="cuadro"></div>
 			</div>
@@ -14,16 +14,11 @@
 				@foreach($posts as $post)
 
 					<div class="card ">
-						<div class="row">
-							<div class="col-6">
+						<div class="row d-flex">
+							<div class="col-md-6 ">
 								<div id="posts-left-side" class="d-flex flex-column">
 									<h5 class="card-title">{{$post->title}}</h5>
-									<p class="card-text">{{$post->get_excerpt}}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									<p class="card-text">{{$post->excerpt}}</p>
 									<div class="mt-auto pt-4 d-flex justify-content-around align-items-center" >
 										<p class="text-muted  mb-0">
 	                        <em>
@@ -36,10 +31,24 @@
 								</div>
 							</div>
 
-							<div class="col-6">
+							<div class="col-md-6 order-first order-md-1">
 								<div id="posts-right-side">
-									<img src="{{$post->image}}" class="img-fluid">
-									<p><span class="badge badge-secondary">New</span></p>
+									<!-- quitar esto solo eroa prueba -->
+									<img 
+										@if($post->id <= 30)
+											src="{{$post->image}}" class="img-fluid">
+										@else
+											src="{{$post->get_image}}" class="img-fluid">
+										@endif
+
+									<p>
+									@foreach($post->tags as $tag)
+										<span class="badge badge-secondary">{{$tag->name}}</span>
+									@endforeach
+									</p>
+									<p>
+										<span class="badge badge-primary">{{$post->category->name}}</span>
+									</p>
 								</div>
 							</div>	
 						</div>
@@ -49,7 +58,16 @@
 
 			</div>
 			<div class="col-md-3">
-				categorias
+				<div class="card" id="categories-card">
+					<h4 class="card-title text-center">{{__('Categorias')}}</h4>
+					<ul >
+						@foreach($categories as $category)
+						<li>
+							<a href="#">{{$category->name}}</a>
+						</li>
+						@endforeach
+					</ul>
+				</div>
 			</div>	
 		</div>
 		<div class="d-flex justify-content-center">
