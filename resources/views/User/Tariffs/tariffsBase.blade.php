@@ -58,13 +58,13 @@
             <tbody>
               @foreach($tariffs as $tariff)
               <tr>
-                <td>{{ $tariff->type_tariff }}</td>
+                <td>{{ $tariff->get_type_tariff }}</td>
                 <td>{{ $tariff->origin }}</td>
                 <td>{{ $tariff->destiny }}</td>
                 <td>{{ $tariff->created_at->format('d-m-Y') }}</td>
                 <td>{{ $tariff->min_weight }} - {{ $tariff->max_weight }} {{ $tariff->type_weight }}</td>
                 <td>{{ $tariff->distance }}</td>
-                <td>{{ $tariff->type_equipment }}</td>
+                <td>{{ $tariff->get_type_equipment }}</td>
                 <td>$ {{ $tariff->rate }}</td>
                 <td>
                   <div>

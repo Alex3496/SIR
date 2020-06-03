@@ -9,7 +9,7 @@ $factory->define(App\Tariff::class, function (Faker $faker) {
 
     return [
     	'user_id' => rand(4,30),
-        'type_tariff' => 'truck',
+        'type_tariff' => $faker->randomElement(['TRUCK','TRAIN','MARITIME','AERIAL']),
         'origin' => $faker->city,
         'destiny' => $faker->city,
         'min_weight' => rand(1,50),

@@ -208,7 +208,7 @@ main {
     border-radius: 5px;
 }
 
-.posts button {
+.posts a {
     border-radius: 20px
 }
 
@@ -229,6 +229,17 @@ main {
     color: black;
 }
 
+/*==============POST VIEW =================*/
+
+/*------------------------------------------*/
+
+.post .card{
+    border: 0;
+}
+
+.post .card{
+    border: 0;
+}
 
 /*==============SIDE NAV BAR (USER)=================*/
 

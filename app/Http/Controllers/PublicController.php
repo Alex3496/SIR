@@ -41,4 +41,17 @@ class PublicController extends Controller
             'categories' => $categories,
         ]);
     }
+
+    public function post($slug)
+    {
+
+        $post = Post::where('slug',$slug)->first();
+
+        $categories = Category::orderBy('name')->get();
+
+        return view('publicViews.post',[
+            'post' => $post,
+            'categories' => $categories,
+        ]);
+    }
 }

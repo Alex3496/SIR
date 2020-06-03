@@ -25,8 +25,8 @@
 	                            &ndash; {{ $post->user->name }}
 	                        </em>
 	                        {{$post->created_at->format('d M Y')}}
-	                    </p>
-										<button class="btn btn-SIR">Leer mas</button>
+	                  </p>
+										<a href="{{route('post',$post->slug)}}" class="btn btn-SIR">Leer mas</a>
 									</div>
 								</div>
 							</div>
@@ -60,7 +60,7 @@
 			<div class="col-md-3">
 				<div class="card" id="categories-card">
 					<h4 class="card-title text-center">{{__('Categorias')}}</h4>
-					<ul >
+					<ul>
 						@foreach($categories as $category)
 						<li>
 							<a href="#">{{$category->name}}</a>

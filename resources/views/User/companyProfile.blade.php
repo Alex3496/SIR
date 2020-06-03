@@ -296,7 +296,7 @@
             <div class="row">
               <div class="col">
                 <div class="form-group mt-4">
-                  <button class="btn btn-primary btn-block" type="submit">{{ __('Save') }}</button>
+                  <button class="btn btn-primary btn-block" type="submit">{{ __('Guardar') }}</button>
                 </div>
               </div>
             </div>
@@ -420,7 +420,7 @@
             <div class="row">
               <div class="col">
                 <div class="form-group">
-                  <button class="btn btn-primary btn-block" type="submit">{{ __('Save') }}</button>
+                  <button class="btn btn-primary btn-block" type="submit">{{ __('Guardar') }}</button>
                 </div>
               </div>
             </div>

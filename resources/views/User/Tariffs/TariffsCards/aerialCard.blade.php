@@ -28,10 +28,10 @@
           <div class="form">
               <!-- card row 1-->
               <div class="row">
-              	<input type="hidden" id="type_tariff" name="type_tariff" value="aerial">
+              	<input type="hidden" id="type_tariff" name="type_tariff" value="AERIAL">
                 <div class="col-md">
                   <div class="form-group">
-                    <label for="origin">{{ __('Origen') }}</label>
+                    <label for="origin">{{ __('Origen') }} *</label>
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" id="origin" name="origin" required
                       value="{{ old('origin',$tariffToUpdate->origin ?? '') }}" />
@@ -46,7 +46,7 @@
 
                 <div class="col-md">
                   <div class="form-group">
-                    <label for="destiny">{{ __('Destino') }}</label>
+                    <label for="destiny">{{ __('Destino') }} *</label>
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" id="destiny" name="destiny"
                         value="{{ old('destiny',$tariffToUpdate->destiny ?? '') }}" />
@@ -120,7 +120,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     
-                    <label for="type_equipment">{{ __('Tipo de equipo') }}</label>
+                    <label for="type_equipment">{{ __('Tipo de equipo') }} *</label>
 
                     <div class="input-group input-group-sm">
                       <select class="form-control" id="type_equipment" name="type_equipment">
@@ -132,17 +132,17 @@
                           @endif>
                           {{ __('Caja') }}
                         </option>
-                        <option value="Package" @if(old('type_equipment')=='package' )selected @endif
+                        <option value="Package" @if(old('type_equipment')=='Package' )selected @endif
                           @if(isset($tariffToUpdate)) 
-                            @if($tariffToUpdate->type_equipment == 'package')
+                            @if($tariffToUpdate->type_equipment == 'Package')
                               selected
                             @endif
                           @endif>
                           {{ __('Bulto') }}
                         </option>
-                        <option value="Pallet" @if(old('type_equipment')=='pallet' )selected @endif 
+                        <option value="Pallet" @if(old('type_equipment')=='Pallet' )selected @endif 
                         @if(isset($tariffToUpdate)) 
-                          @if($tariffToUpdate->type_equipment == 'pallet')
+                          @if($tariffToUpdate->type_equipment == 'Pallet')
                             selected
                           @endif
                         @endif>
@@ -158,7 +158,7 @@
 
                 <div class="col-sm-2">
                   <div class="form-group">
-                    <label for="height">{{__('Alto')}}<small style="color:gray"> ft.</small> </label>
+                    <label for="height">{{__('Alto')}} *<small style="color:gray"> ft.</small> </label>
                     <div class="input-group input-group-sm">
                       <input type="number"  class="form-control" min="0" max="100" name="height" id="height"
                       value="{{old('height',$tariffToUpdate->height ?? '')}}">
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-sm-2">
                   <div class="form-group">
-                    <label for="width">{{__('Ancho')}}<small style="color:gray"> ft.</small> </label>
+                    <label for="width">{{__('Ancho')}} *<small style="color:gray"> ft.</small> </label>
                     <div class="input-group input-group-sm">
                       <input type="number"  class="form-control" min="0" max="100" name="width" id="width"
                       value="{{old('width',$tariffToUpdate->width ?? '')}}">
@@ -182,7 +182,7 @@
                 </div>
                 <div class="col-sm-2">
                   <div class="form-group">
-                    <label for="length">{{__('largo')}}<small style="color:gray"> ft.</small> </label>
+                    <label for="length">{{__('largo')}} *<small style="color:gray"> ft.</small> </label>
                     <div class="input-group input-group-sm">
                       <input type="number"  class="form-control" min="0" max="100" name="length" id="length"
                       value="{{old('length',$tariffToUpdate->length ?? '')}}">
@@ -199,7 +199,7 @@
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label for="rate">{{ __('Tarifa') }} <small style="color:gray">dlls.</small></label>
+                    <label for="rate">{{ __('Tarifa') }} *<small style="color:gray"> dlls.</small></label>
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" id="rate" name="rate"
                         value="{{ old('rate',$tariffToUpdate->rate ?? '') }}" />

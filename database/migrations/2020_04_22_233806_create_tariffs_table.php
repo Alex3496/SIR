@@ -18,7 +18,7 @@ class CreateTariffsTable extends Migration
 
             $table->bigInteger('user_id')->unsigned();
 
-            $table->string('type_tariff',30); // enum : truck,train,maritime,aerial
+            $table->string('type_tariff',30); // enum : TRUCK,TRAIN,MARITIME,AERIAL
             $table->string('origin');
             $table->string('destiny');
             $table->integer('min_weight')->nullable();

@@ -25,27 +25,27 @@ class tariffsRequest extends FormRequest
     {
 
         $rules = [
-            'type_tariff' => ['required','in:truck,train,maritime,aerial'],
+            'type_tariff' => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
             'origin' => 'required|regex:/^[\pL\s\-]+$/u',
             'destiny' => 'required|regex:/^[\pL\s\-]+$/u',
             'min_weight' => ['required','numeric','min:1'],
             'max_weight' => ['required','numeric','max:999999'],
             'type_weight' => ['required','in:kg,lb'],
-            'distance' => ['required','numeric'],
+            'distance' => ['numeric','nullable'],
             'rate' => ['required','numeric'],
 
         ];
 
-        if ($this->request->get('type_tariff') == 'truck') {
+        if ($this->request->get('type_tariff') == 'TRUCK') {
             $rules['type_equipment'] = ['required','in:Dry Box 48 ft,Dry Box 53 ft,Refrigerated Box 53 ft,Plataform 48 ft,Plataform 53 ft'];                            
         }
 
-        if ($this->request->get('type_tariff') == 'train') {
+        if ($this->request->get('type_tariff') == 'TRAIN') {
             $rules['type_equipment'] = 
             ['required','in:Dry Box 53 ft,Container 20 ft,Container 40 ft,Container 40 ft High cube'];                            
         }
 
-        if ($this->request->get('type_tariff') == 'maritime') {
+        if ($this->request->get('type_tariff') == 'MARITIME') {
             $rules['type_equipment'] = ['required','in:,Container 20 ft,Container 40 ft,Container 40 ft High cube'];
             $rules['min_weight'] = 'nullable';
             $rules['max_weight'] = 'nullable';
@@ -53,7 +53,7 @@ class tariffsRequest extends FormRequest
             $rules['distance'] = 'nullable';                             
         }
 
-        if ($this->request->get('type_tariff') == 'aerial') {
+        if ($this->request->get('type_tariff') == 'AERIAL') {
             $rules['type_equipment'] = ['required','in:Box,Package,Pallet'];
             $rules['distance'] = 'nullable';
             $rules['height'] = ['required','numeric','min:1','max:100'];

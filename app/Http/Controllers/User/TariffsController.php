@@ -100,7 +100,7 @@ class TariffsController extends Controller
     {        
         //dd($request->all());
 
-        if($request->request->get('type_tariff') == 'maritime')
+        if($request->request->get('type_tariff') == 'MARITIME')
         {
             // way 1 to save
             $tariff = Tariff::create([
@@ -112,8 +112,9 @@ class TariffsController extends Controller
                 'rate' => $request['rate'],               
             ]);
         } 
-        else if($request->request->get('type_tariff') == 'aerial')
+        else if($request->request->get('type_tariff') == 'AERIAL')
         {
+
             // way 2 to save
             $tariff = new Tariff();
 
@@ -163,7 +164,7 @@ class TariffsController extends Controller
 
         //dd($tariffToUpdate);
         
-        if($tariffToUpdate->type_tariff == 'truck')
+        if($tariffToUpdate->type_tariff == 'TRUCK')
         {
             return view('User.Tariffs.TariffsCards.truckCard',[
                 'user'=>$user,
@@ -172,7 +173,7 @@ class TariffsController extends Controller
             ]);
         }
 
-        if($tariffToUpdate->type_tariff == 'train')
+        if($tariffToUpdate->type_tariff == 'TRAIN')
         {
             return view('User.Tariffs.TariffsCards.trainCard',[
                 'user'=>$user,
@@ -181,7 +182,7 @@ class TariffsController extends Controller
             ]);
         }
 
-        if($tariffToUpdate->type_tariff == 'maritime')
+        if($tariffToUpdate->type_tariff == 'MARITIME')
         {
             return view('User.Tariffs.TariffsCards.maritimeCard',[
                 'user'=>$user,
@@ -191,7 +192,7 @@ class TariffsController extends Controller
         }
 
 
-        if($tariffToUpdate->type_tariff == 'aerial')
+        if($tariffToUpdate->type_tariff == 'AERIAL')
         {
             return view('User.Tariffs.TariffsCards.aerialCard',[
                 'user'=>$user,
@@ -216,7 +217,7 @@ class TariffsController extends Controller
         $tariffToUpdate=Tariff::where('user_id',$user->id)->where('id',$id)->first();
         //dd($tariffToUpdate);                  
 
-        if($request['type_tariff'] == 'maritime')
+        if($request['type_tariff'] == 'MARITIME')
         {
             $tariffToUpdate->type_tariff=$request['type_tariff'];
             $tariffToUpdate->origin=$request['origin'];
@@ -227,7 +228,7 @@ class TariffsController extends Controller
             $tariffToUpdate->save();
 
         }
-        else if($request['type_tariff'] == 'aerial')
+        else if($request['type_tariff'] == 'AERIAL')
         {
             $tariffToUpdate->update($request->all());
 

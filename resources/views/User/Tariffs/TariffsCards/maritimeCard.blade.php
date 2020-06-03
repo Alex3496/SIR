@@ -28,10 +28,10 @@
           <div class="form">
               <!-- card row 1-->
               <div class="row">
-              	<input type="hidden" id="type_tariff" name="type_tariff" value="maritime">
+              	<input type="hidden" id="type_tariff" name="type_tariff" value="MARITIME">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="origin">{{ __('Origen') }}</label>
+                    <label for="origin">{{ __('Origen') }} *</label>
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" id="origin" name="origin" required
                       value="{{ old('origin',$tariffToUpdate->origin ?? '') }}" />
@@ -46,7 +46,7 @@
 
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label for="destiny">{{ __('Destino') }}</label>
+                    <label for="destiny">{{ __('Destino') }} *</label>
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" id="destiny" name="destiny"
                         value="{{ old('destiny',$tariffToUpdate->destiny ?? '') }}" />
@@ -63,7 +63,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label for="type_equipment">{{ __('Tipo de equipo') }}</label>
+                    <label for="type_equipment">{{ __('Tipo de equipo') }} *</label>
                     <div class="input-group input-group-sm">
                       <select class="form-control" id="type_equipment" name="type_equipment">
                         <option value="Container 20 ft" @if(old('type_equipment')=='Container 20 ft' )selected @endif
@@ -100,7 +100,7 @@
 
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label for="rate">{{ __('Tarifa') }} <small style="color:gray">dlls.</small></label>
+                    <label for="rate">{{ __('Tarifa') }} *<small style="color:gray"> dlls.</small></label>
                     <div class="input-group input-group-sm">
                       <input type="text" class="form-control" id="rate" name="rate"
                         value="{{ old('rate',$tariffToUpdate->rate ?? '') }}" />

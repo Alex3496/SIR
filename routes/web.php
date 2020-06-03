@@ -27,6 +27,8 @@ Route::get('/faqs', 'PublicController@Faqs');
 
 Route::get('/blog', 'PublicController@posts')->name('posts');
 
+Route::get('/blog/{slug}', 'PublicController@post')->name('post');
+
 
 //USER ROUTES
 
