@@ -20,20 +20,18 @@ class TariffsController extends Controller
         $this->middleware('auth');
     }
 
-     /**
-     * Show the view for manage the user tariffs
-     *
-     * @return \Illuminate\View\View
-     */
+     
     public function index()
     {
+        
         $user=Auth::user();
-
-        $tariffs=Tariff::where('user_id',$user->id)->get();
 
         return view('User.Tariffs.TariffsCards.menuCards',[
             'user'=>$user,
-            'tariffs' => $tariffs,
+            'truckTariffs' => $this->getTruckTariffs($user->id),
+            'trainTariffs' => $this->getTrainTariffs($user->id),
+            'maritimeTariffs' => $this->getMaritimeTariffs($user->id),
+            'aerialTariffs' => $this->getAerialTariffs($user->id),
             'tariffToUpdate' => null
         ]);
     }
@@ -42,11 +40,9 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffs=Tariff::where('user_id',$user->id)->get();
-
         return view('User.Tariffs.TariffsCards.truckCard',[
             'user'=>$user,
-            'tariffs' => $tariffs,
+            'truckTariffs' => $this->getTruckTariffs($user->id),
             'tariffToUpdate' => null
         ]);
     }
@@ -55,11 +51,9 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffs=Tariff::where('user_id',$user->id)->get();
-
         return view('User.Tariffs.TariffsCards.trainCard',[
             'user'=>$user,
-            'tariffs' => $tariffs,
+            'trainTariffs' => $this->getTrainTariffs($user->id),
             'tariffToUpdate' => null
         ]);
     }
@@ -68,11 +62,9 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffs=Tariff::where('user_id',$user->id)->get();
-
         return view('User.Tariffs.TariffsCards.maritimeCard',[
             'user'=>$user,
-            'tariffs' => $tariffs,
+            'maritimeTariffs' => $this->getMaritimeTariffs($user->id),
             'tariffToUpdate' => null
         ]);
     }
@@ -81,11 +73,9 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffs=Tariff::where('user_id',$user->id)->get();
-
         return view('User.Tariffs.TariffsCards.aerialCard',[
             'user'=>$user,
-            'tariffs' => $tariffs,
+            'aerialTariffs' => $this->getAerialTariffs($user->id),
             'tariffToUpdate' => null
         ]);
     }
@@ -157,8 +147,6 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffs=Tariff::where('user_id',$user->id)->get();
-
         $tariffToUpdate=Tariff::where('user_id',$user->id)
                             ->where('id',$id)->first();
 
@@ -168,7 +156,7 @@ class TariffsController extends Controller
         {
             return view('User.Tariffs.TariffsCards.truckCard',[
                 'user'=>$user,
-                'tariffs' => $tariffs,
+                'truckTariffs' => $this->getTruckTariffs($user->id),
                 'tariffToUpdate' => $tariffToUpdate
             ]);
         }
@@ -177,7 +165,7 @@ class TariffsController extends Controller
         {
             return view('User.Tariffs.TariffsCards.trainCard',[
                 'user'=>$user,
-                'tariffs' => $tariffs,
+                'trainTariffs' => $this->getTrainTariffs($user->id),
                 'tariffToUpdate' => $tariffToUpdate
             ]);
         }
@@ -186,7 +174,7 @@ class TariffsController extends Controller
         {
             return view('User.Tariffs.TariffsCards.maritimeCard',[
                 'user'=>$user,
-                'tariffs' => $tariffs,
+                'maritimeTariffs' => $this->getMaritimeTariffs($user->id),
                 'tariffToUpdate' => $tariffToUpdate
             ]);
         }
@@ -196,7 +184,7 @@ class TariffsController extends Controller
         {
             return view('User.Tariffs.TariffsCards.aerialCard',[
                 'user'=>$user,
-                'tariffs' => $tariffs,
+                'aerialTariffs' => $this->getAerialTariffs($user->id),
                 'tariffToUpdate' => $tariffToUpdate
             ]);
         }
@@ -262,5 +250,36 @@ class TariffsController extends Controller
         $tariff->delete();
 
         return redirect()->route('tariffs.index')->with('status', 'Eliminado con exito'); 
+    }
+
+
+    /*-------------------------------------------------------------------------------------*/
+
+    public function getTruckTariffs($user_id)
+    {
+        return $truckTariffs=Tariff::where('user_id',$user_id)
+            ->where('type_tariff','TRUCK')
+            ->get();
+    }
+
+    public function getTrainTariffs($user_id)
+    {
+        return $truckTariffs=Tariff::where('user_id',$user_id)
+            ->where('type_tariff','TRAIN')
+            ->get();
+    }
+
+    public function getMaritimeTariffs($user_id)
+    {
+        return $truckTariffs=Tariff::where('user_id',$user_id)
+            ->where('type_tariff','MARITIME')
+            ->get();
+    }
+
+     public function getAerialTariffs($user_id)
+    {
+        return $truckTariffs=Tariff::where('user_id',$user_id)
+            ->where('type_tariff','AERIAL')
+            ->get();
     }
 }

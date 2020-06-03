@@ -10,7 +10,7 @@
 					</div>
 				</div>
 				<div class="row mt-3 ml-3 mb-4">
-					<a href="{{route('tariff.turckAdd')}}" class="btn btn-info col-xl-2 mt-2 mr-3">{{__('Camion')}}</a>
+					<a href="{{route('tariff.turckAdd')}}" class="btn btn-info col-xl-2 mt-2 mr-3">{{__('Camión')}}</a>
 					<a href="{{route('tariff.trainAdd')}}" class="btn btn-info col-xl-2 mt-2 mr-3">{{__('Tren')}}</a>
 					<a href="{{route('tariff.maritimeAdd')}}" class="btn btn-info col-xl-2 mt-2 mr-3">{{__('Maritimo')}}</a>
 					<a href="{{route('tariff.aerialAdd')}}" class="btn btn-info col-xl-2 mt-2 mr-3">{{__('Aéreo')}}</a>

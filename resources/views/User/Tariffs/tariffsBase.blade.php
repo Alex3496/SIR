@@ -35,58 +35,29 @@
   <!--Start row Tariff List-->
   <div class="row">
     <div class="col-12">
-      <!--start card-->
-      <div class="card" id="card-tariffs-list">
-        <div class="card-header">
-          <h3 class="card-title">{{ __('Lista de Tarifas') }}</h3>
-        </div>
-        <div class="card-body">
-          <table id="example2" class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>{{ __('Tipo de transporte') }}</th>
-                <th>{{ __('Origen') }}</th>
-                <th>{{ __('Destino') }}</th>
-                <th>{{ __('Fecha') }}</th>
-                <th>{{ __('Peso') }}</th>
-                <th>{{ __('Distancia') }}</th>
-                <th>{{ __('Tipo de equipo') }}</th>
-                <th>{{ __('Tarifas') }}</th>
-                <th>{{ __('Acciones') }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($tariffs as $tariff)
-              <tr>
-                <td>{{ $tariff->get_type_tariff }}</td>
-                <td>{{ $tariff->origin }}</td>
-                <td>{{ $tariff->destiny }}</td>
-                <td>{{ $tariff->created_at->format('d-m-Y') }}</td>
-                <td>{{ $tariff->min_weight }} - {{ $tariff->max_weight }} {{ $tariff->type_weight }}</td>
-                <td>{{ $tariff->distance }}</td>
-                <td>{{ $tariff->get_type_equipment }}</td>
-                <td>$ {{ $tariff->rate }}</td>
-                <td>
-                  <div>
-                    <!-- Edit button -->
-                    <a href="{{ route('tariffs.edit',$tariff->id) }}" class="d-inline">
-                      <button type="submit" class="btn btn-primary">Edit</button>
-                    </a>
-                    <!-- Delete button -->
-                    <form action="{{ route('tariffs.destroy',$tariff->id) }}" method="POST" class="d-inline">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Desea Eliminar?") }}')">Delete</button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-        <!--/end card-->
+      <!--start truck card-->
+      @if(isset($truckTariffs) && !count($truckTariffs) == 0)
+        @include('User.Tariffs.lists.truck')
+      @endif
+      <!--/end card-->
+
+      <!--start train card-->
+      @if(isset($trainTariffs) && !count($trainTariffs) == 0)
+        @include('User.Tariffs.lists.train')
+      @endif
+      <!--/end card-->
+
+      <!--start train card-->
+      @if(isset($maritimeTariffs) && !count($maritimeTariffs) == 0)
+        @include('User.Tariffs.lists.maritime')
+      @endif
+      <!--/end card-->
+
+      <!--start train card-->
+      @if(isset($aerialTariffs) && !count($aerialTariffs) == 0)
+        @include('User.Tariffs.lists.aerial')
+      @endif
+      <!--/end card-->
     </div>
   </div>
   <!--/End row Tariff List-->
@@ -108,7 +79,7 @@
       "responsive": true,
       "autoWidth": false,
     });
-    $("#example2").DataTable({
+    $(".example2").DataTable({
       "paging": true,
       "lengthChange": false,
       "searching": false,
@@ -117,6 +88,7 @@
       "autoWidth": false,
       "responsive": true,
     });
+
   }); 
 </script>
 <script>
