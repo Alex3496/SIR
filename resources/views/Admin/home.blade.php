@@ -10,9 +10,18 @@
 <div class="container-fluid">
   <!--Start row User List-->
   <div class="row">
-    <div class="col-12">
-      home
-    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3>{{$usersCount}}</h3>
+
+          <p>Usuarios Totales</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-users"></i>
+        </div>
+      </div>
+    </div>  
   </div>
   <!--/End row Tariff List-->
 </div>

@@ -1,8 +1,5 @@
 @extends('User.Tariffs.tariffsBase')
 @section('tariffCard')
-@if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
 <div class="row">
 	<div class="col-10 ">
 		<div class="card card-info">
@@ -59,25 +56,12 @@
 
                 <div class="col-sm-2 hide">
                   <div class="form-group">
-                    <label for="min_weight">{{ __('Peso min.') }}</label>
+                    <label for="approx_weight">{{ __('Peso apox.') }}*</label>
                     <div class="input-group input-group-sm">
-                      <input type="number" class="form-control" id="min_weight" name="min_weight"
-                        value="{{ old('min_weight',$tariffToUpdate->min_weight ?? '') }}" />
+                      <input type="number" class="form-control" id="approx_weight" name="approx_weight"
+                        value="{{ old('approx_weight',$tariffToUpdate->approx_weight ?? '') }}" />
                     </div>
-                    @error('min_weight')
-                    <small class="mt-0" style="color:red">{{ $message }}</small>
-                    @enderror
-                  </div>
-                </div>
-                  
-                <div class="col-sm-2 hide">
-                  <div class="form-group">
-                    <label for="max_weight">{{ __('Peso max.') }}</label>
-                    <div class="input-group input-group-sm">
-                      <input type="number" class="form-control" id="max_weight" name="max_weight"
-                        value="{{ old('max_weight',$tariffToUpdate->max_weight ?? '') }}" />
-                    </div>
-                   @error('max_weight')
+                    @error('approx_weight')
                     <small class="mt-0" style="color:red">{{ $message }}</small>
                     @enderror
                   </div>

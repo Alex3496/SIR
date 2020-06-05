@@ -38,14 +38,14 @@
                   {{ $role->name }}
                   @endforeach-->
 
-                <td>
+                <td class="d-flex justify-content-around">
                   <a href="{{ route('admin.users.edit',$user->id) }}" class="float-left">
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button type="submit" class="btn btn-primary">{{__('Editar')}}</button>
                   </a>
                   <form action="{{ route('admin.users.destroy',$user) }}" method="POST" class="float-left">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">{{__('Borrar')}}</button>
                   </form>
                 </td>
               </tr>

@@ -28,8 +28,7 @@ class tariffsRequest extends FormRequest
             'type_tariff' => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
             'origin' => 'required|regex:/^[\pL\s\-]+$/u',
             'destiny' => 'required|regex:/^[\pL\s\-]+$/u',
-            'min_weight' => ['required','numeric','min:1'],
-            'max_weight' => ['required','numeric','max:999999'],
+            'approx_weight' => ['required','numeric','min:1','max:9999999'],
             'type_weight' => ['required','in:kg,lb'],
             'distance' => ['numeric','nullable'],
             'rate' => ['required','numeric'],
@@ -47,8 +46,7 @@ class tariffsRequest extends FormRequest
 
         if ($this->request->get('type_tariff') == 'MARITIME') {
             $rules['type_equipment'] = ['required','in:,Container 20 ft,Container 40 ft,Container 40 ft High cube'];
-            $rules['min_weight'] = 'nullable';
-            $rules['max_weight'] = 'nullable';
+            $rules['approx_weight'] = 'nullable';
             $rules['type_weight'] = 'nullable'; 
             $rules['distance'] = 'nullable';                             
         }

@@ -34,11 +34,9 @@ class PublicController extends Controller
 
         $posts = Post::orderBy('id','DESC')->paginate(3);
 
-        $categories = Category::orderBy('name')->get();
-
         return view('publicViews.posts',[
             'posts' => $posts,
-            'categories' => $categories,
+            'categories' => $this->getCategories(),
         ]);
     }
 
@@ -47,11 +45,31 @@ class PublicController extends Controller
 
         $post = Post::where('slug',$slug)->first();
 
-        $categories = Category::orderBy('name')->get();
-
         return view('publicViews.post',[
             'post' => $post,
-            'categories' => $categories,
+            'categories' => $this->getCategories(),
         ]);
+    }
+
+    public function postsCategories($name)
+    {
+        $category = Category::where('name',$name)->first();
+
+        $posts = Post::where('category_id',$category->id)
+                        ->orderBy('id','DESC')
+                        ->paginate(3);
+
+        return view('publicViews.posts',[
+            'posts' => $posts,
+            'categories' => $this->getCategories(),
+        ]);
+
+    }
+
+/*-----------------------------------------------------------------*/
+
+    public function getCategories()
+    {
+        return $categories = Category::orderBy('name')->get();
     }
 }

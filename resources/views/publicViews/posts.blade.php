@@ -63,7 +63,7 @@
 					<ul>
 						@foreach($categories as $category)
 						<li>
-							<a href="#">{{$category->name}}</a>
+							 <a href="{{route('posts.categories',$category->name)}}">{{ $category->name }}</a>
 						</li>
 						@endforeach
 					</ul>

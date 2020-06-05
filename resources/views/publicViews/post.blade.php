@@ -7,11 +7,17 @@
       <div id="cuadro"> </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col">
+        <h2 class="pl-4">{{ $post->title }}</h2>
+    </div>
+  </div>
+
   <div class="row post">
     <div class="col-md-8">
       <div class="card ">
         <div class="card-body">
-          <h2 class="card-title">{{ $post->title }}</h2>
           <img class="img-fluid mt-2 mb-4"
           	@if($post-> id <= 30) 
           		src="{{ $post->image }}">
@@ -50,13 +56,14 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3 d-none d-md-block">
+
+    <div class="col-md-3 d-none d-md-block pt-4">
       <div class="card" id="categories-card">
         <h4 class="card-title text-center">{{ __('Categorias') }}</h4>
         <ul>
           @foreach($categories as $category)
           <li>
-            <a href="#">{{ $category->name }}</a>
+            <a href="{{route('posts.categories',$category->name)}}">{{ $category->name }}</a>
           </li>
           @endforeach
         </ul>

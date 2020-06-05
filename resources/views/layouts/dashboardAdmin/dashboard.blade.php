@@ -21,6 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
   <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
+  <link rel="icon" href="{{ asset('images/logo.png') }}">
   @yield('extraCss')
 
 </head>

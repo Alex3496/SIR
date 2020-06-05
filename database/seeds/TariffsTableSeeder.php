@@ -11,6 +11,6 @@ class TariffsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Tariff::class, 40)->create();
+        factory(App\Tariff::class, 80)->create();
     }
 }

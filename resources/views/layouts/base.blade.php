@@ -12,6 +12,7 @@
 
   <!-- Local CSS-->
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  <link rel="icon" href="{{ asset('images/logo.png') }}">
   
   <title>SIR</title>
 </head>

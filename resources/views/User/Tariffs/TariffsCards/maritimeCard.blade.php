@@ -1,8 +1,5 @@
 @extends('User.Tariffs.tariffsBase')
 @section('tariffCard')
-@if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
 <div class="row">
 	<div class="col-10 ">
 		<div class="card card-info">

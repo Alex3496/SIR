@@ -112,8 +112,7 @@ class TariffsController extends Controller
             $tariff->type_tariff = $request['type_tariff'];
             $tariff->origin = $request['origin'];
             $tariff->destiny = $request['destiny'];
-            $tariff->max_weight = $request['max_weight'];
-            $tariff->min_weight = $request['min_weight'];
+            $tariff->approx_weight = $request['approx_weight'];
             $tariff->type_weight = $request['type_weight'];
             $tariff->type_equipment = $request['type_equipment'];
             $tariff->height = $request['height'];

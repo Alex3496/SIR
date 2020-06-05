@@ -8,7 +8,7 @@ class Tariff extends Model
 {
 
     protected $fillable = [
-        'type_tariff','origin', 'destiny', 'max_weight','min_weight','type_weight', 'distance', 'type_equipment','rate',
+        'type_tariff','origin', 'destiny', 'approx_weight','type_weight', 'distance', 'type_equipment','rate',
         'user_id'
     ];
     
