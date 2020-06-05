@@ -56,7 +56,7 @@
 
                 <div class="col-sm-2 hide">
                   <div class="form-group">
-                    <label for="approx_weight">{{ __('Peso apox.') }}*</label>
+                    <label for="approx_weight">{{ __('Peso estimado') }}*</label>
                     <div class="input-group input-group-sm">
                       <input type="number" class="form-control" id="approx_weight" name="approx_weight"
                         value="{{ old('approx_weight',$tariffToUpdate->approx_weight ?? '') }}" />
