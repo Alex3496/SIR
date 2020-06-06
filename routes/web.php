@@ -68,6 +68,8 @@ Route::get('tariffs/create/aerial','User\TariffsController@addAerialTariff')->na
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manager-area')->group(function(){
 
 	Route::get('home','AdminController@index')->name('index');
+
+	Route::get('profile','AdminController@showProfile')->name('profile');
 	
 	Route::resource('/users','UserController',['except' =>['show','create','store']]);
 

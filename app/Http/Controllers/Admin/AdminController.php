@@ -22,4 +22,10 @@ class AdminController extends Controller
 
     	return view('Admin.home',compact('usersCount'));
     }
+
+    public function showProfile()
+    {
+
+        return view('Admin.profile.index');
+    }
 }

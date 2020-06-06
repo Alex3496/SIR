@@ -65,6 +65,13 @@
         </ul>
       </li>
 
+      <li class="nav-item">
+        <a href="{{ route('admin.profile') }}" class="nav-link">
+          <i class="nav-icon fas fa-user"> </i>
+          <p>{{ __('Perfil') }}</p>
+        </a>
+      </li>
+
     </ul>
   </nav>
   <!-- /.sidebar-menu -->
