@@ -7,12 +7,12 @@
     <table id="example2" class="table table-bordered table-hover example2">
       <thead>
         <tr>
+          <th>{{ __('Fecha') }}</th>
           <th>{{ __('Origen') }}</th>
           <th>{{ __('Destino') }}</th>
-          <th>{{ __('Fecha') }}</th>
+          <th>{{ __('Tipo de equipo') }}</th>
           <th>{{ __('Peso') }}<small style="color: gray"> Aprox.</small></th>
           <th>{{ __('Distancia') }}</th>
-          <th>{{ __('Tipo de equipo') }}</th>
           <th>{{ __('Tarifas') }}</th>
           <th>{{ __('Acciones') }}</th>
         </tr>
@@ -20,12 +20,12 @@
       <tbody>
         @foreach($aerialTariffs as $tariff)
         <tr>
+          <td>{{ $tariff->created_at->format('d-m-Y') }}</td>
           <td>{{ $tariff->origin }}</td>
           <td>{{ $tariff->destiny }}</td>
-          <td>{{ $tariff->created_at->format('d-m-Y') }}</td>
+          <td>{{ $tariff->get_type_equipment }}</td>
           <td>{{ $tariff->approx_weight }} {{ $tariff->type_weight }}</td>
           <td>{{ $tariff->distance }}</td>
-          <td>{{ $tariff->get_type_equipment }}</td>
           <td>$ {{ $tariff->rate }}</td>
           <td>
             <div class="d-flex justify-content-center">

@@ -7,37 +7,37 @@
     <table id="example2" class="table table-bordered table-hover example2">
       <thead>
         <tr>
+          <th>{{ __('Fecha') }}</th>
           <th>{{ __('Origen') }}</th>
           <th>{{ __('Destino') }}</th>
-          <th>{{ __('Fecha') }}</th>
+          <th>{{ __('Tipo de equipo') }}</th>
           <th>{{ __('Peso') }}<small style="color: gray"> Aprox.</small></th>
           <th>{{ __('Distancia') }}</th>
-          <th>{{ __('Tipo de equipo') }}</th>
-          <th>{{ __('Tarifas') }}</th>
+          <th>{{ __('Tarifa') }}</th>
           <th>{{ __('Acciones') }}</th>
         </tr>
       </thead>
       <tbody>
         @foreach($truckTariffs as $tariff)
         <tr>
+          <td>{{ $tariff->created_at->format('d-m-Y') }}</td>
           <td>{{ $tariff->origin }}</td>
           <td>{{ $tariff->destiny }}</td>
-          <td>{{ $tariff->created_at->format('d-m-Y') }}</td>
+          <td>{{ $tariff->get_type_equipment }}</td>
           <td>{{ $tariff->approx_weight }} {{ $tariff->type_weight }}</td>
           <td>{{ $tariff->distance }}</td>
-          <td>{{ $tariff->get_type_equipment }}</td>
           <td>$ {{ $tariff->rate }}</td>
           <td>
             <div class="d-flex justify-content-center">
               <!-- Edit button -->
               <a href="{{ route('tariffs.edit',$tariff->id) }}" >
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary">{{__('Editar')}}</button>
               </a>
               <!-- Delete button -->
               <form action="{{ route('tariffs.destroy',$tariff->id) }}" method="POST" class="ml-2">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Desea Eliminar?") }}')">Delete</button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Desea Eliminar?") }}')">{{__('Eliminar')}}</button>
               </form>
             </div>
           </td>

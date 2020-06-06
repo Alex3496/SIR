@@ -88,7 +88,6 @@ class TariffsController extends Controller
      */
     public function store(tariffsRequest $request)
     {        
-        //dd($request->all());
 
         if($request->request->get('type_tariff') == 'MARITIME')
         {
@@ -127,7 +126,6 @@ class TariffsController extends Controller
         {
             //Add field user_id to the request array
             $request->request->add(['user_id' => Auth::user()->id]);
-            //dd($request->all());
             $tariff = Tariff::create($request->all());
         }
 

@@ -14,6 +14,11 @@
   @endif
   <div class="row">
     <div class="col-lg-7">
+      <!-- card -->
+        
+      <!-- /card -->
+
+
       <div class="card ">
         <div class="card-header" style="background-color:#343a40; color: white">
           <h2 class="card-title">{{ __('Perfil') }}</h2>
