@@ -1,78 +1,59 @@
 @extends('layouts.dashboardUser.dashboard')
 @section('content')
 <div class="container-fluid">
-  @if (session('status'))
-    <div class="row">
-      <div class="col-md-10">
-        <div class="alert alert-success alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <h5><i class="icon fas fa-check"></i>Exito</h5>
-          <p>{{ session('status') }}</p>
-        </div>
+
+  <div class="row">
+    <div class="col-md-10">
+    @if (session('status'))
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-check"></i>Exito</h5>
+        <p>{{ session('status') }}</p>
       </div>
+    @endif
+    @if ($errors->any())
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-ban"></i>Alerta</h5>
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
+    @if (session('errorB'))
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h5><i class="icon fas fa-ban"></i>Alerta</h5>
+        <p>{{ session('errorB') }}</p>
+      </div>
+    @endif
+
     </div>
-  @endif
+  </div>
+
+
   <div class="row">
     <div class="col-lg-7">
-      <!-- card -->
-        
+
+      <!-- profile card -->
+        @include('layouts.cards.personalInfo')
       <!-- /card -->
 
 
       <div class="card ">
         <div class="card-header" style="background-color:#343a40; color: white">
-          <h2 class="card-title">{{ __('Perfil') }}</h2>
+          <h2 class="card-title">{{ __('Información de la compañia') }}</h2>
         </div>
         <div class="card-body">
-          <h4 class="mb-4 mt-2">
-            <b>{{ __('Información Personal') }}</b>
-          </h4>
-          <form action="{{ route('profile.update',$user) }}" method="POST">
+          <form action="{{ route('company.update') }}" method="POST">
             @csrf
             @method('PUT')
             <!--form  start -->
-            <!--Name -->
-            <div class="row">
-              <div class="col-sm-6 ">
-                <div class="form-group">
-                  <label for="name">{{ __('Nombre') }}</label>
-                  <input class="form-control" type="text" id="name" name="name" value="{{ old('name', $user->name) }}"/>
-                  @error('name')
-                    <small class="mt-0" style="color:red">{{ $message }}</small>
-                  @enderror
-                </div>
-              </div>
-            </div>
             
-            <!--phone -->
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="phone">{{ __('Telfono') }}</label>
-                  <input class="form-control" type="tel" id="phone" name="phone" value="{{ old('phone', $user->phone) }}"/>
-                  @error('phone')
-                    <small class="mt-0" style="color:red">{{ $message }}</small>
-                  @enderror
-                </div>
-              </div>
-            </div>
-            <!--email -->
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="email">{{ __('Correo') }}</label>
-                  <input class="form-control" type="email" id="email" name="email" value="{{ old('email', $user->email) }}"/>
-                  @error('email')
-                    <small class="mt-0" style="color:red">{{ $message }}</small>
-                  @enderror
-                </div>
-              </div>
-            </div>
-            
-            <h4 class="mb-4 mt-4">
-              <b>{{ __('Información de la compañia') }}</b>
-            </h4>
-              <!--Type company -->
+            <!--Type company -->
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -91,18 +72,6 @@
                   <label for="company_name">{{ __('Nombre Compañia') }}</label>
                   <input class="form-control" type="text" id="company_name" name="company_name" value="{{ old('company_name', $user->company_name) }}"/>
                   @error('company_name')
-                    <small class="mt-0" style="color:red">{{ $message }}</small>
-                  @enderror
-                </div>
-              </div>
-            </div>
-              <!--position -->
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="position">{{ __('Puesto') }}</label>
-                  <input class="form-control" type="text" id="position" name="position" value="{{ old('position', $user->position) }}"/>
-                  @error('position')
                     <small class="mt-0" style="color:red">{{ $message }}</small>
                   @enderror
                 </div>
@@ -171,42 +140,22 @@
     </div>
     
     <div class="col-xl-3">
-      <div class="card ">
-       <div class="card-header" style="background-color:#343a40; color: white">
-         <h2 class="card-title">{{ __('Imagen de perfil') }}</h2>
-       </div>
-       <div class="card-body">
-        <div class="row">
-          <div class="col d-flex justify-content-center">
-            <div id="avatar-box" style="background-image:url('{{$user->get_image}}')">
-            </div>
-          </div>
-        </div>
-        <form action="{{route('profile.avatar')}}" method="POST" enctype="multipart/form-data">
-          @csrf
-          <div class="row">
-            <div class="col mt-4">
-              <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="avatar" name="avatar">
-                  <label class="custom-file-label" for="avatar">{{__('Seleccionar imagen')}}</label>
-                </div>
-              </div>
-              @error('avatar')
-                <small class="mt-0" style="color:red">{{ $message }}</small>
-              @enderror
-            </div>
-          </div>
+      
+      @include('layouts.cards.avatar')
 
-          <div class="row">
-            <div class="col">
-              <button type="submit" class="btn btn-primary btn-block">Guardar</button>
-            </div>
-          </div>
-        </form>
-       </div>
-      </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+  @include('layouts.modals.name')
+
+  @include('layouts.modals.phone')
+
+  @include('layouts.modals.email')
+
+  @include('layouts.modals.password')
+
+  @include('layouts.modals.position')
+
 @endsection

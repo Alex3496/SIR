@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Dashboartd {{$user->name}}</title>
+  <title>Dashboard {{$user->name}}</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
   <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
-  <link rel="icon" href="{{ asset('images/logo.png') }}">
+  <link rel="icon" href="{{ asset('images/logos/logo.png') }}">
   <!--Css used in specific views -->
   @yield('extraCss')
 
@@ -37,7 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{route('principal')}}" class="nav-link">Home</a>
+        <a href="{{route('principal')}}" class="nav-link">{{__('Inicio')}}</a>
       </li>
     </ul>
 

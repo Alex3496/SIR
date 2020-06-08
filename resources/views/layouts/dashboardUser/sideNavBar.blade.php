@@ -2,7 +2,7 @@
   Brand Logo
 -->
 <a href="{{ route('principal') }}" class="brand-link">
-  <img src="{{ asset('images/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"/>
+  <img src="{{ asset('images/logos/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"/>
   <span class="brand-text font-weight-light">SIR</span>
 </a>
 <!-- Sidebar -->
@@ -47,7 +47,7 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="{{ route('profile.edit') }}" class="nav-link">
+            <a href="{{ route('profile.index') }}" class="nav-link">
               <i class="nav-icon fas fa-user"> </i>
               <p>{{ __('Perfil') }}</p>
             </a>

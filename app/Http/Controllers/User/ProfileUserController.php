@@ -4,9 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\{userRequest,datasetRequest,insuranceRequest};
+use App\Http\Requests\{CompanyRequest,datasetRequest,insuranceRequest, ProfileRequest};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
+use Illuminate\Support\Facades\Hash;
 use App\{User,company_dataset,Insurance};
 class ProfileUserController extends Controller
 {
@@ -22,11 +23,11 @@ class ProfileUserController extends Controller
     }
 
     /**
-     * Show the form for editing the profile.
+     * Show the view to edit the profile
      *
      * @return \Illuminate\View\View
      */
-    public function edit()
+    public function index()
     {
         $user=Auth::user();
 
@@ -36,24 +37,53 @@ class ProfileUserController extends Controller
     }
 
 
+
+    public function updateProfile(ProfileRequest $request)
+    {
+        $user = Auth::user();
+
+        $user->update($request->only(['name', 'phone', 'email','position']));
+
+        return back()->with('status', 'Actualizado con exito');
+    }
+
+
+
+    public function updatePassword(Request $request)
+    {
+        $user = Auth::user();
+
+        $request = $request->validate([
+            'password' => 'required|string|max:50',
+            'new_password' => 'required|min:8|string|max:50|confirmed',
+        ]);
+
+        if(Hash::check($request['password'],$user->password)){
+            $user->password = Hash::make($request['new_password']);
+            $user->save();
+
+            return back()->with('status', 'Contraseña actualizad con exito');
+
+        } else {
+
+            return back()->with('errorB', 'Contraseña no coincide');
+
+        }
+             
+    }
+
+
     /**
      * Update the user auth.
      *
-     * @param  \App\Http\Requests\userRequest;  $request
+     * @param  \App\Http\Requests\CompanyRequest;  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(userRequest $request, User $user)
+    public function updateCompany(CompanyRequest $request)
     {
-        //dd($request->all());
-        $user->update($request->all());
+        $user = Auth::user();
 
-        //this aren't in the fillable array of user
-        $user->company_address = $request->company_address;
-        $user->city = $request->city;
-        $user->country = $request->country;
-        $user->zip_code = $request->zip_code;
-
-        $user->save();
+        $user->update($request->only(['company_name','company_address','city','zip_code','country']));
 
         return back()->with('status', 'Actualizado con exito');
     }
@@ -70,7 +100,6 @@ class ProfileUserController extends Controller
         $dataset = company_dataset::where('user_id',$user->id)->first();
         $insurance = User::find($user->id)->insurance;
 
-        //dd($insurance);
         return view('User.companyProfile',[
             'user'=>$user,
             'dataset'=>$dataset,
@@ -151,8 +180,6 @@ class ProfileUserController extends Controller
 
         $user = Auth::user();
 
-        //dd($user->avatar);
-
         if($user->avatar == 'avatars/avatar.jpg'){
             $user->avatar =  $request->file('avatar')->store('avatars', 'public');
             $user->save();
@@ -162,8 +189,6 @@ class ProfileUserController extends Controller
             $user->avatar = $request->file('avatar')->store('avatars', 'public');
             $user->save();
         }
-
-
 
         return back()->with('status', 'Imagen de perfil actualizada con exito');
 

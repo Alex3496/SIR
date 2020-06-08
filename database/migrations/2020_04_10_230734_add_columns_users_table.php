@@ -15,9 +15,9 @@ class AddColumnsUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->string('type_company_user',30); // enum : Shipper,Carriers,Broker
+            $table->string('type_company_user'); // enum : Shipper,Carriers,Broker
             $table->string('company_name');
-            $table->string('position',120);
+            $table->string('position');
             $table->string('phone',16);
 
             $table->string('company_address')->nullable();

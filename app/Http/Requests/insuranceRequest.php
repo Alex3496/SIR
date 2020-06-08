@@ -24,8 +24,8 @@ class insuranceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_insurance' => ['string','max:150','nullable'],
-            'contact_name' => ['string','max:150','nullable'],
+            'name_insurance' => ['string','max:60','nullable'],
+            'contact_name' => ['string','max:50','nullable'],
             
             'general_liability_ins' => ['boolean'],
             'commercial_general_liability' => ['boolean'],

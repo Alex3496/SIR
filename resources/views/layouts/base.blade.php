@@ -12,7 +12,7 @@
 
   <!-- Local CSS-->
   <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-  <link rel="icon" href="{{ asset('images/logo.png') }}">
+  <link rel="icon" href="{{ asset('images/logos/logo.png') }}">
   
   <title>SIR</title>
 </head>
@@ -23,7 +23,7 @@
   <nav id="header" class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href=" {{url('/') }}">
-        <img src="{{asset('images/logo.png')}}" alt="logo SIR">
+        <img src="{{ asset('images/logos/logo.png') }}" alt="logo SIR">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -82,19 +82,19 @@
     <div class="container ">
       <div class="row">
         <div class="col-1">
-          <a href=""><img id=logo src="{{asset('images/logo.png')}}"></a>
+          <a href=""><img id=logo src="{{ asset('images/logos/logo.png') }}"></a>
         </div>
         <div class="col-8 text-center">
           <h4>© 2020 Todos los derechos reservados. IBooking System</h4>
         </div>
         <div class="col">
-          <a href="" class="social"><img src="{{asset('images/facebook.png')}}" alt="facebook"></a>
+          <a href="" class="social"><img src="{{asset('images/logos/facebook.png')}}" alt="facebook"></a>
 
-          <a href="" class="social"><img src="{{asset('images/twitter.png')}}" alt="twitter"></a>
+          <a href="" class="social"><img src="{{asset('images/logos/twitter.png')}}" alt="twitter"></a>
 
-          <a href="" class="social"><img src="{{asset('images/gmail.png')}}" alt="gmail"></a>
+          <a href="" class="social"><img src="{{asset('images/logos/gmail.png')}}" alt="gmail"></a>
 
-          <a href="" class="social"><img src="{{asset('images/linkedin.png')}}" alt="linkedin"></a>
+          <a href="" class="social"><img src="{{asset('images/logos/linkedin.png')}}" alt="linkedin"></a>
         </div>
       </div>
     </div>

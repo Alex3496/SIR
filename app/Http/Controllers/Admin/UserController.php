@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Role;
 use Illuminate\Http\Request;
@@ -16,29 +17,37 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a list of all users
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $user = Auth::user();
+
         $users = User::all();
-        return view('Admin.Users.Index',compact('users'));
+
+        return view('Admin.Users.Index',compact('users','user'));
     }
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Show all the information of a specific user 
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
+        $userToEdit = $user;
+
         $roles = Role::all();
+
+        $user = Auth::user();
 
         return view('Admin.Users.Edit',[
             'user' => $user,
+            'userToEdit' => $userToEdit,
             'roles' => $roles 
         ]);
     }

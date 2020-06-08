@@ -3,7 +3,7 @@
 <section class="container-fluid">
 
 
-  <h2 class="text-center mb-4">{{ __('Información del usuario ID: ') . $user->id . ' ' . $user->name }}</h2>
+  <h2 class="text-center mb-4">{{ __('Información del usuario ID: ') . $userToEdit->id . ' ' . $userToEdit->name }}</h2>
 
 
   <!-- row -->
@@ -22,7 +22,7 @@
         </div>
         <div class="card-body">
           <h4 class="mb-4 mt-2"><b>{{ __('Información Personal') }}</b></h4>
-          <form action="{{ route('profile.update',$user) }}" method="POST">
+          <form action="{{ route('profile.update',$userToEdit) }}" method="POST">
             @csrf
             @method('PUT')
             <!--form  start -->
@@ -32,7 +32,7 @@
               <!--Name -->
               <div class="form-group col-md">
                 <label for="name">{{ __('Nombre') }}</label>
-                <input class="form-control" type="text" id="name" name="name" value="{{ old('name', $user->name) }}"/>
+                <input class="form-control" type="text" id="name" name="name" value="{{ old('name', $userToEdit->name) }}"/>
                 @error('name')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -41,7 +41,7 @@
               <!--phone -->
               <div class="form-group col-md">
                 <label for="phone">{{ __('Telfono') }}</label>
-                <input class="form-control" type="tel" id="phone" name="phone" value="{{ old('phone', $user->phone) }}"/>
+                <input class="form-control" type="tel" id="phone" name="phone" value="{{ old('phone', $userToEdit->phone) }}"/>
                 @error('phone')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -54,7 +54,7 @@
             <!--email -->
               <div class="form-group col-md-6">
                 <label for="email">{{ __('Correo') }}</label>
-                <input class="form-control" type="email" id="email" name="email" value="{{ old('email', $user->email) }}"/>
+                <input class="form-control" type="email" id="email" name="email" value="{{ old('email', $userToEdit->email) }}"/>
                 @error('email')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -63,7 +63,7 @@
               <!--position -->
               <div class="form-group col-md-6">
                 <label for="position">{{ __('Puesto') }}</label>
-                <input class="form-control" type="text" id="position" name="position" value="{{ old('position', $user->position) }}"/>
+                <input class="form-control" type="text" id="position" name="position" value="{{ old('position', $userToEdit->position) }}"/>
                 @error('position')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -79,7 +79,7 @@
               <!--Type company -->
               <div class="form-group col-md-6">
                 <label for="type_company_user">{{ __('Tipo Compañia') }}</label>
-                <input class="form-control" type="text" id="type_company_user" name="type_company_user" disabled="" value="{{ old('type_company_user', $user->type_company_user) }}"/>
+                <input class="form-control" type="text" id="type_company_user" name="type_company_user" disabled="" value="{{ old('type_company_user', $userToEdit->type_company_user) }}"/>
                 @error('type_company_user')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -90,7 +90,7 @@
               <!--company name -->
               <div class="form-group col">
                 <label for="company_name">{{ __('Nombre Compañia') }}</label>
-                <input class="form-control" type="text" id="company_name" name="company_name" value="{{ old('company_name', $user->company_name) }}"/>
+                <input class="form-control" type="text" id="company_name" name="company_name" value="{{ old('company_name', $userToEdit->company_name) }}"/>
                 @error('company_name')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -101,7 +101,7 @@
             <!--company address -->
               <div class="form-group col">
                 <label for="company_address">{{ __('Direccion de la Empresa') }}</label>
-                <input class="form-control" type="text" id="company_address" name="company_address" value="{{ old('company_address', $user->company_address) }}"/>
+                <input class="form-control" type="text" id="company_address" name="company_address" value="{{ old('company_address', $userToEdit->company_address) }}"/>
                 @error('company_address')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -112,7 +112,7 @@
             <!--city -->
               <div class="form-group col-md-6">
                 <label for="city">{{ __('Ciudad') }}</label>
-                <input class="form-control" type="text" id="city" name="city" value="{{ old('city', $user->city) }}"/>
+                <input class="form-control" type="text" id="city" name="city" value="{{ old('city', $userToEdit->city) }}"/>
                 @error('city')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -123,7 +123,7 @@
             <!--Postal Code -->
               <div class="form-group col-md-6">
                 <label for="zip_code">{{ __('Codigo Postal') }}</label>
-                <input class="form-control" type="text" id="zip_code" name="zip_code" value="{{ old('zip_code', $user->zip_code) }}"/>
+                <input class="form-control" type="text" id="zip_code" name="zip_code" value="{{ old('zip_code', $userToEdit->zip_code) }}"/>
                 @error('zip_code')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -134,7 +134,7 @@
             <!--Counrty -->
               <div class="form-group col-md-6">
                 <label for="country">{{ __('País') }}</label>
-                <input class="form-control" type="text" id="country" name="country" value="{{ old('country', $user->country) }}"/>
+                <input class="form-control" type="text" id="country" name="country" value="{{ old('country', $userToEdit->country) }}"/>
                 @error('country')
                   <small class="mt-0" style="color:red">{{ $message }}</small>
                 @enderror
@@ -281,22 +281,22 @@
           <h2 class="card-title">{{__('Info basica')}}</h2>  
         </div>
         <div class="card-body">
-          <form action="{{ route('admin.users.update',$user) }}" method="POST">
+          <form action="{{ route('admin.users.update',$userToEdit) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
               <label for="name">{{__('Nombre')}}</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{ old('name',$user->name) }}"/>
+              <input type="text" class="form-control" id="name" name="name" value="{{ old('name',$userToEdit->name) }}"/>
             </div>
 
             <div class="form-group">
               <label for="email">{{__('Email')}}</label>
-              <input type="text" class="form-control" id="email" name="email" value="{{ old('emial',$user->email) }}"/>
+              <input type="text" class="form-control" id="email" name="email" value="{{ old('emial',$userToEdit->email) }}"/>
             </div>
             @foreach($roles as $role)
             <div class="form-check">
               <input type="checkbox" class="form-check-input" name="roles[]" value="{{$role->id}}"
-              @if($user->roles->pluck('id')->contains($role->id)) checked @endif>
+              @if($userToEdit->roles->pluck('id')->contains($role->id)) checked @endif>
               <label class="form-check-label" >{{$role->name}}</label>
             </div>
             @endforeach

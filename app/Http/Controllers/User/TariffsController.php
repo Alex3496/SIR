@@ -222,7 +222,6 @@ class TariffsController extends Controller
             $tariffToUpdate->width=$request['width'];
             $tariffToUpdate->length=$request['length'];
 
-
             $tariffToUpdate->save();
 
         }

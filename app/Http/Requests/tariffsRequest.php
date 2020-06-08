@@ -26,12 +26,12 @@ class tariffsRequest extends FormRequest
 
         $rules = [
             'type_tariff' => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
-            'origin' => 'required|regex:/^[\pL\s\-]+$/u',
-            'destiny' => 'required|regex:/^[\pL\s\-]+$/u',
-            'approx_weight' => ['required','numeric','min:1','max:9999999'],
+            'origin' => 'required|regex:/^[\pL\s\-]+$/u|max:50',
+            'destiny' => 'required|regex:/^[\pL\s\-]+$/u|max50',
+            'approx_weight' => ['required','numeric','min:1','max:999999'],
             'type_weight' => ['required','in:kg,lb'],
-            'distance' => ['numeric','nullable'],
-            'rate' => ['required','numeric'],
+            'distance' => ['numeric','nullable','max:9999999'],
+            'rate' => ['required','numeric','max:999999'],
 
         ];
 

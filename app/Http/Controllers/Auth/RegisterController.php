@@ -60,12 +60,12 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'type_company_user' => 'in:Shipper,Carriers,Broker',
-            'company_name' => ['required', 'string', 'max:255'],
-            'position' => ['required', 'string', 'max:120'],
-            'name' => ['required', 'string', 'max:255'],
+            'company_name' => ['required', 'string', 'max:60','min:4'],
+            'position' => ['required', 'string', 'max:50','min:3'],
+            'name' => ['required', 'string', 'max:50','min:2'],
             'phone' => 'required|numeric|regex:/[0-9]{10}/',
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:62', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed','max:50'],
         ]);
     }
 

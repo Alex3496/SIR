@@ -38,9 +38,13 @@ Auth::routes();
 
 Route::get('/home', 'User\HomeController@index')->name('home');
 
-Route::get('profile','User\ProfileUserController@edit')->name('profile.edit');
+Route::get('profile','User\ProfileUserController@index')->name('profile.index');
 
-Route::put('/profile/{user}','User\ProfileUserController@update')->name('profile.update');
+Route::put('profile','User\ProfileUserController@updateProfile')->name('profile.update');
+
+Route::put('password','User\ProfileUserController@updatePassword')->name('password.update');
+
+Route::put('company','User\ProfileUserController@updateCompany')->name('company.update');
 
 Route::get('profile/company','User\ProfileUserController@showCompany')->name('profile.company');
 
@@ -70,8 +74,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 	Route::get('home','AdminController@index')->name('index');
 
 	Route::get('profile','AdminController@showProfile')->name('profile');
+
+	Route::put('profile','AdminController@updateProfile')->name('profile.update');
+
+	Route::put('password','AdminController@updatePassword')->name('password.update');
 	
-	Route::resource('/users','UserController',['except' =>['show','create','store']]);
+	Route::resource('users','UserController',['except' =>['show','create','store']]);
 
 	Route::resource('posts','PostController',['except' =>'show']);
 

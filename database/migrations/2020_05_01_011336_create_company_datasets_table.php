@@ -28,7 +28,6 @@ class CreateCompanyDatasetsTable extends Migration
             $table->string('fast')->nullable();
             $table->string('warehouse')->nullable();
             $table->string('fiscal_warehouse')->nullable();
-            $table->string('position')->nullable();
 
             $table->timestamps();
 

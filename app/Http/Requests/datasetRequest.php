@@ -24,11 +24,11 @@ class datasetRequest extends FormRequest
     public function rules()
     {
         return [
-            'dba_name' => ['string','max:80','nullable'],
-            'scac_code' => ['string','max:4','nullable'],
-            'caat' => ['string','max:20','nullable'],
-            'mc_number' => ['string','max:20','nullable'],
-            'num_trucks' => ['numeric','max:10000','nullable'],
+            'dba_name' => ['string','max:60','nullable'],
+            'scac_code' => ['string','max:10','nullable'],
+            'caat' => ['string','max:35','nullable'],
+            'mc_number' => ['string','max:35','nullable'],
+            'num_trucks' => ['numeric','max:50000','nullable'],
             
             'certificate_ctpat' => ['string','max:250','nullable'],
             'certificate_oae' => ['string','max:250','nullable'],

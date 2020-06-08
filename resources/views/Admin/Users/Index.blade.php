@@ -28,21 +28,21 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($users as $user)
+              @foreach($users as $userB)
               <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{implode(', ',$user->roles()->get()->pluck('name')->toArray())}}</td>
+                <td>{{ $userB->id }}</td>
+                <td>{{ $userB->name }}</td>
+                <td>{{ $userB->email }}</td>
+                <td>{{implode(', ',$userB->roles()->get()->pluck('name')->toArray())}}</td>
                   <!--@foreach($user->roles as $role)
                   {{ $role->name }}
                   @endforeach-->
 
                 <td class="d-flex justify-content-around">
-                  <a href="{{ route('admin.users.edit',$user->id) }}" class="float-left">
+                  <a href="{{ route('admin.users.edit',$userB->id) }}" class="float-left">
                     <button type="submit" class="btn btn-primary">{{__('Editar')}}</button>
                   </a>
-                  <form action="{{ route('admin.users.destroy',$user) }}" method="POST" class="float-left">
+                  <form action="{{ route('admin.users.destroy',$userB) }}" method="POST" class="float-left">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">{{__('Borrar')}}</button>

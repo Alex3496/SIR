@@ -22,6 +22,11 @@
     justify-content: center;
 }
 
+.no-border{
+    border-color: transparent;
+    background-color: white !important;
+}
+
 /*-----------HEADER-------------*/
 #header {
     background-color: var(--gray-light);
