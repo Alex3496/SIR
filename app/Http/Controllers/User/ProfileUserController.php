@@ -97,14 +97,10 @@ class ProfileUserController extends Controller
     public function showCompany()
     {
         $user = Auth::user();
-        $dataset = company_dataset::where('user_id',$user->id)->first();
-        $insurance = User::find($user->id)->insurance;
+        $dataset = $user->dataset;
+        $insurance = $user->insurance;
 
-        return view('User.companyProfile',[
-            'user'=>$user,
-            'dataset'=>$dataset,
-            'insurance'=>$insurance,
-        ]);
+        return view('User.companyProfile',compact('user','dataset','insurance'));
     }
 
     /**
@@ -113,9 +109,8 @@ class ProfileUserController extends Controller
      * @param  \App\Http\Requests\userRequest;  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeCompany(datasetRequest $request)
+    public function storeDataset(datasetRequest $request)
     {
-        //dd($request->all());
         $user=Auth::user()->id;
 
         $dataset = company_dataset::updateOrCreate(
@@ -139,6 +134,7 @@ class ProfileUserController extends Controller
             ]
         );
 
+
         return back()->with('status', 'Actualizado con exito');
     }
 
@@ -148,7 +144,7 @@ class ProfileUserController extends Controller
      *
      * @param  \App\Http\Requests\Request;  $request
      */
-    public function storeInsurance(insuranceRequest $request)
+    public function updateInsurance(insuranceRequest $request)
     {
         //dd($request->all());
         $user=Auth::user()->id;

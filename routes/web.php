@@ -36,35 +36,39 @@ Route::get('categoria/{name}', 'PublicController@postsCategories')->name('posts.
 
 Auth::routes();
 
-Route::get('/home', 'User\HomeController@index')->name('home');
+Route::namespace('User')->group(function(){
 
-Route::get('profile','User\ProfileUserController@index')->name('profile.index');
+	Route::get('/home', 'HomeController@index')->name('home');
 
-Route::put('profile','User\ProfileUserController@updateProfile')->name('profile.update');
+	Route::get('profile','ProfileUserController@index')->name('profile.index');
 
-Route::put('password','User\ProfileUserController@updatePassword')->name('password.update');
+	Route::put('profile','ProfileUserController@updateProfile')->name('profile.update');
 
-Route::put('company','User\ProfileUserController@updateCompany')->name('company.update');
+	Route::put('password','ProfileUserController@updatePassword')->name('password.update');
 
-Route::get('profile/company','User\ProfileUserController@showCompany')->name('profile.company');
+	Route::put('company','ProfileUserController@updateCompany')->name('company.update');
 
-Route::post('profile/company','User\ProfileUserController@storeCompany')->name('profile.companyStore');
+	Route::get('profile/company','ProfileUserController@showCompany')->name('profile.company');
 
-Route::post('profile/insurance','User\ProfileUserController@storeInsurance')->name('profile.insuranceStore');
+	Route::post('profile/dataset','ProfileUserController@storeDataset')->name('profile.datasetStore');
 
-Route::post('profile/avatar','User\ProfileUserController@updateAvatar')->name('profile.avatar');
-	
-	//tariffs routes
+	Route::post('profile/insurance','ProfileUserController@storeInsurance')->name('profile.insuranceStore');
 
-Route::resource('tariffs','User\TariffsController',['except' => ['create','show']]);
+	Route::post('profile/avatar','ProfileUserController@updateAvatar')->name('profile.avatar');
+		
+		//tariffs routes
 
-Route::get('tariffs/create/truck','User\TariffsController@addTruckTariff')->name('tariff.turckAdd');
+	Route::resource('tariffs','TariffsController',['except' => ['create','show']]);
 
-Route::get('tariffs/create/train','User\TariffsController@addTrainTariff')->name('tariff.trainAdd');
+	Route::get('tariffs/create/truck','TariffsController@addTruckTariff')->name('tariff.turckAdd');
 
-Route::get('tariffs/create/maritime','User\TariffsController@addMaritimeTariff')->name('tariff.maritimeAdd');
+	Route::get('tariffs/create/train','TariffsController@addTrainTariff')->name('tariff.trainAdd');
 
-Route::get('tariffs/create/aerial','User\TariffsController@addAerialTariff')->name('tariff.aerialAdd');
+	Route::get('tariffs/create/maritime','TariffsController@addMaritimeTariff')->name('tariff.maritimeAdd');
+
+	Route::get('tariffs/create/aerial','TariffsController@addAerialTariff')->name('tariff.aerialAdd');
+});
+
 
 //ADMIN ROUTES
 
@@ -81,6 +85,14 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 	
 	Route::resource('users','UserController',['except' =>['show','create','store']]);
 
+	Route::put('users/{user}/profile','UserController@updateProfiles')->name('updateProfile');
+
+	Route::put('users/{user}/company','UserController@updateCompany')->name('updateCompany');
+
+	Route::put('users/{user}/dataset','UserController@updateDataset')->name('updateDataset');
+
+	Route::put('users/{user}/insurance','UserController@updateInsurance')->name('updateInsurance');
+
 	Route::resource('posts','PostController',['except' =>'show']);
 
 	Route::resource('categories','CategoryController',['except' =>'show']);
@@ -88,9 +100,4 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 	Route::resource('tags','TagController',['except' =>'show']);
 });
 
-/*
-Route::get('/admin', function()
-{
-	return view('layouts.dashboardAdmin.home');
 
-})->name('admin')->middleware('admin');*/

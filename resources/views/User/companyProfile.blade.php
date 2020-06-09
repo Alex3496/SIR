@@ -25,7 +25,7 @@
         </div>
         <div class="card-body">
           <!-- START FORM-->
-          <form action="{{route('profile.companyStore')}}" method="POST">
+          <form action="{{route('profile.datasetStore')}}" method="POST">
             @csrf
 
             <!--Company Name -->

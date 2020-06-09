@@ -27,19 +27,19 @@ class ProfileRequest extends FormRequest
 
         //dd($this->request);
 
-        if ($this->request->get('name') || $this->request->get('name') == null ) {
+        if ($this->request->has('name') ) {
             $rules['name'] = ['required','string','max:50'];                           
         }
 
-        if ($this->request->get('phone')) {
+        if ($this->request->has('phone')) {
             $rules['phone'] = ['required','numeric','digits_between :7,12'];                           
         }
 
-        if ($this->request->get('email')) {
+        if ($this->request->has('email')) {
             $rules['email'] = ['required','email','unique:users'];                           
         }
 
-        if ($this->request->get('position')) {
+        if ($this->request->has('position')) {
             $rules['position'] = ['required', 'string', 'max:120'];                          
         }
 
