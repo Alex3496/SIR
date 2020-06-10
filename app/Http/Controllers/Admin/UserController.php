@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\{User,Role,company_dataset,Insurance};
 use Illuminate\Http\Request;
 use App\Http\Requests\{ProfileRequest,CompanyRequest,datasetRequest,insuranceRequest};
+use CountryState;
 
 class UserController extends Controller
 {
@@ -44,8 +45,9 @@ class UserController extends Controller
         $insurance = $userToEdit->insurance;
         $roles = Role::all();
         $user = Auth::user();
+        $countries = CountryState::getCountries('spa');
 
-        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user'));
+        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user','countries'));
     }
 
     /**

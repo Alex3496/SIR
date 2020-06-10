@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
 use Illuminate\Support\Facades\Hash;
 use App\{User,company_dataset,Insurance};
+use CountryState;
 class ProfileUserController extends Controller
 {
 
@@ -31,9 +32,9 @@ class ProfileUserController extends Controller
     {
         $user=Auth::user();
 
-        return view('User.profile',[
-            'user'=>$user
-        ]);
+        $countries = CountryState::getCountries('spa');
+
+        return view('User.profile',compact('user','countries'));
     }
 
 
