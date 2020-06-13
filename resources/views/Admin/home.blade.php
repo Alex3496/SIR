@@ -21,7 +21,19 @@
           <i class="fas fa-users"></i>
         </div>
       </div>
-    </div>  
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{$usersMonth}}</h3>
+
+          <p>Usuarios último mes</p>
+        </div>
+        <div class="icon">
+          <i class="fas  fa-calendar"></i>
+        </div>
+      </div>
+    </div>    
   </div>
   <!--/End row Tariff List-->
 </div>

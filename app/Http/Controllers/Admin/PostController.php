@@ -19,22 +19,23 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Diplay posts, if user is admin show all post,
+     * if is editor only show theirs
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $user = Auth::user();
 
-    	$posts = Post::orderBy('id','DESC')->get();
+        if($user->hasRole('admin')) $posts = Post::orderBy('id','DESC')->paginate(15);
+        else $posts = Post::orderBy('id','DESC')->where('user_id',$user->id)->paginate(15);
 
-    	//dd($posts);
-
-        return view('Admin.posts.index',compact('posts'));
+        return view('Admin.posts.index',compact('posts','user'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new post.
      *
      * @return \Illuminate\Http\Response
      */
@@ -45,13 +46,13 @@ class PostController extends Controller
 
         $tags = Tag::orderBy('name','ASC')->get();
         
-        //dd([$categories,$tags]);
+        $user = Auth::user();
 
-        return view('Admin.posts.create',compact('categories','tags'));
+        return view('Admin.posts.create',compact('categories','tags','user'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created post in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -82,15 +83,16 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::where('id',$id)->first();
+        $post = Post::find($id);
+        $user = Auth::user();
+
+        if($user->hasRole('editor')) $this->authorize('pass',$post);
 
         $postTags = $post->tags->pluck('id')->toArray();
-
         $categories = Category::orderBy('name','ASC')->get();
-
         $tags = Tag::orderBy('name','ASC')->get();
 
-        return view('Admin.posts.edit',compact('post','categories','tags','postTags'));
+        return view('Admin.posts.edit',compact('post','categories','tags','postTags','user'));
     }
 
     /**
@@ -102,7 +104,9 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-        $postToUpdate = Post::where('id',$id)->first();
+        $postToUpdate = Post::find($id);
+
+        if(Auth::user()->hasRole('Editor')) $this->authorize('pass',$postToUpdate);
 
         $postToUpdate->update($request->all());
 
@@ -124,7 +128,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::where('id',$id)->first();
+        $post = Post::find($id);
+
+        if(Auth::user()->hasRole('Editor')) $this->authorize('pass',$post);
 
         $post->delete();
 

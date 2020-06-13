@@ -10,8 +10,10 @@
             @csrf
             <!-- Type company -->
             <div class="row justify-content-center form-group">
-              <div class="col-md-10 d-flex align-items-center justify-content-center">
+              <div class="col-md-4 text-md-right">
                 <label class="mr-3 pt-2">Tipo de Cuenta</label>
+              </div>
+              <div class="col-md-7 d-flex align-items-center justify-content-left">
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="type_company_user" id="Shipper" value="Shipper" checked {{ (old('type_company_user') == 'Shipper') ? 'checked' : '' }}/>
                   <label class="form-check-label" for="Shipper">Shipper</label>

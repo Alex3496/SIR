@@ -42,6 +42,9 @@
               @endforeach
             </tbody>
           </table>
+          <div class="d-flex justify-content-center mt-2">
+            {{$posts->render()}}
+          </div>
         </div>
       </div>
     </div>

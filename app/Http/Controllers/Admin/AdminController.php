@@ -13,19 +13,31 @@ use App\{User,Role};
 class AdminController extends Controller
 {
 
+    private $month;
+    private $year;
+
 	public function __construct()
     {
-        $this->middleware('auth');    
+        $this->middleware('auth');
+        $this->month = date('m');
+        $this->year = date('Y');    
     }
 
 	
     public function index()
-    {
+    {   
     	$usersCount = Role::find(3)->users->count();
+        $usersMonth = User::whereMonth('created_at','=',$this->month)->whereYear('created_at','=', $this->year)
+            ->whereHas('roles', function($q){$q->where('name', 'user');})->count(); //Do scope
 
         $user = Auth::user();
 
-    	return view('Admin.home',compact('usersCount','user'));
+    	return view('Admin.home',[
+            'usersCount' => $usersCount,
+            'user' => $user,
+            'usersMonth' => $usersMonth,
+
+        ]);
     }
 
 

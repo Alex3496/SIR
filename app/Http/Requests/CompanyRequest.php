@@ -24,7 +24,7 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => ['required', 'string', 'max:60','min:4'],
+            'company_name' => ['required', 'string', 'max:60','min:3'],
             'company_address' => ['required', 'string', 'max:250','min:4'],
             'zip_code' => ['required', 'string', 'max:10'],
             'city' => ['required', 'string', 'max:50'],

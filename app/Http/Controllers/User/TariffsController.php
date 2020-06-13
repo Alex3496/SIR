@@ -144,10 +144,9 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffToUpdate=Tariff::where('user_id',$user->id)
-                            ->where('id',$id)->first();
+        $tariffToUpdate=Tariff::find($id);
 
-        //dd($tariffToUpdate);
+        $this->authorize('pass',$tariffToUpdate);
         
         if($tariffToUpdate->type_tariff == 'TRUCK')
         {
@@ -199,8 +198,9 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
 
-        $tariffToUpdate=Tariff::where('user_id',$user->id)->where('id',$id)->first();
-        //dd($tariffToUpdate);                  
+        $tariffToUpdate=Tariff::find($id);
+
+        $this->authorize('pass',$tariffToUpdate);              
 
         if($request['type_tariff'] == 'MARITIME')
         {
@@ -241,9 +241,12 @@ class TariffsController extends Controller
      */
     public function destroy(Tariff $tariff)
     {
-        //dd($tariff);  
 
-        $tariff->delete();
+        $tariffToDelete=Tariff::find($tariff->id);
+
+        $this->authorize('pass',$tariffToDelete);  
+
+        $tariffToDelete->delete();
 
         return redirect()->route('tariffs.index')->with('status', 'Eliminado con exito'); 
     }

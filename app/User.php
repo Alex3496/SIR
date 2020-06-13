@@ -99,5 +99,27 @@ class User extends Authenticatable
             return url('images/logos/avatar.jpg');
         }
     }
+
+    //----------------SCOPES--------------
+
+    public function scopename($query, $name)
+    {
+        if($name){
+            return $query->where('name','LIKE',"%$name%");
+        }
+    }
+
+    public function scopecompany($query,$company)
+    {
+        if($company){
+            return $query->where('company_name','LIKE',"%$company%");
+        }
+    }
+    public function scopeemail($query, $email)
+    {
+        if($email){
+            return $query->where('email','LIKE',"%$email%");
+        }
+    }
     
 }

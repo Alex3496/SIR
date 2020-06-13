@@ -49,7 +49,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -60,7 +60,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'type_company_user' => 'in:Shipper,Carriers,Broker',
-            'company_name' => ['required', 'string', 'max:60','min:4'],
+            'company_name' => ['required', 'string', 'max:60','min:3'],
             'position' => ['required', 'string', 'max:50','min:3'],
             'name' => ['required', 'string', 'max:50','min:2'],
             'phone' => 'required|numeric|regex:/[0-9]{10}/',

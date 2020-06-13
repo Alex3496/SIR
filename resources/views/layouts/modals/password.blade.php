@@ -15,7 +15,7 @@
         </button>
       </div>
       @if($user->hasRole('user'))
-      	{!! Form::open(['route' => 'password.update', 'method' => 'PUT']) !!}
+      	{!! Form::open(['route' => 'password.update', 'method' => 'PUT','autocomplete' => 'off']) !!}
       @else
       	{!! Form::open(['route' => 'admin.password.update', 'method' => 'PUT']) !!}
       @endif
@@ -25,7 +25,7 @@
 			      	<div class="form-group">
 			        	{!! Form::label('password', 'Contraseña actual'); !!}
 		    				
-		    				{!! Form::password('password', ['class' => 'form-control']); !!}
+		    				{!! Form::password('password', ['class' => 'form-control','autocomplete' => 'new-password']); !!}
 		  				</div>
 	      		</div>
 	      	</div>

@@ -9,18 +9,48 @@
 @section('content')
 <div class="container-fluid">
   <!--Start row User List-->
-  <div class="row justify-content-center">
-    <div class="col-md-10">
+    <div class="row justify-content-center">
+      <div class="col-md-11">
+        <div class="card">
+          <div class="card-body">
+            {!! Form::open(['route' => 'admin.users.find', 'method' => 'GET']) !!}
+              <div class="row">
+                <div class="col-md mb-2">
+                  {!! Form::text('company_name',null,['class' => 'form-control', 'placeholder' => 'Nombre de la Empresa']) !!}
+                </div>
+                <div class="col-md mb-2">
+                  {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Nombre']) !!}
+                </div>
+                <div class="col-md mb-2">
+                  {!! Form::text('email',null,['class' => 'form-control', 'placeholder' => 'Correo']) !!}
+                </div>
+                <div class="col-md-2">
+                  {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!}
+                </div>
+              </div>
+            {!! Form::close() !!}
+          </div>  
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+    <div class="col-md-11">
       <!--start card User List-->
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">{{ __('Lista de Usuarios') }}</h3>
+          <div class="card-tools">
+            <a href="{{ route('admin.users.create') }}" class="btn btn-secondary mr-3">{{__('Crear Usuario')}}</a>
+          </div>
         </div>
         <div class="card-body">
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th>Id</th>
+                <th>{{__('Tipo de Empresa')}}</th>
+                <th>{{__('nombre de la Empresa')}}</th>
                 <th>{{__('Nombre')}}</th>
                 <th>{{__('Email')}}</th>
                 <th>{{__('Rol')}}</th>
@@ -31,6 +61,8 @@
               @foreach($users as $userB)
               <tr>
                 <td>{{ $userB->id }}</td>
+                <td>{{ $userB->type_company_user }}</td>
+                <td>{{ $userB->company_name }}</td>
                 <td>{{ $userB->name }}</td>
                 <td>{{ $userB->email }}</td>
                 <td>{{implode(', ',$userB->roles()->get()->pluck('name')->toArray())}}</td>

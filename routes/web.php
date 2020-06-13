@@ -83,7 +83,17 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 	Route::put('password','AdminController@updatePassword')->name('password.update');
 	
-	Route::resource('users','UserController',['except' =>['show','create','store']]);
+	Route::resource('posts','PostController',['except' =>'show']);
+
+	Route::resource('categories','CategoryController',['except' =>'show']);
+
+	Route::resource('tags','TagController',['except' =>'show']);
+});
+
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-only')->group(function(){
+
+	Route::resource('users','UserController',['except' =>['show']]);
 
 	Route::put('users/{user}/profile','UserController@updateProfiles')->name('updateProfile');
 
@@ -93,11 +103,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 	Route::put('users/{user}/insurance','UserController@updateInsurance')->name('updateInsurance');
 
-	Route::resource('posts','PostController',['except' =>'show']);
+	Route::get('users/find','UserController@find')->name('users.find');
 
-	Route::resource('categories','CategoryController',['except' =>'show']);
 
-	Route::resource('tags','TagController',['except' =>'show']);
 });
-
-

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\{User,Role,company_dataset,Insurance};
 use Illuminate\Http\Request;
-use App\Http\Requests\{ProfileRequest,CompanyRequest,datasetRequest,insuranceRequest};
+use App\Http\Requests\{ProfileRequest,CompanyRequest,datasetRequest,insuranceRequest,UserRegRequest};
 use CountryState;
 
 class UserController extends Controller
@@ -26,11 +26,39 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $users = User::all();
+        $users = User::all()->except(Auth::id());
 
         return view('Admin.Users.Index',compact('users','user'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $user = Auth::user();
+
+        return view('Admin.Users.create',compact('user'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(UserRegRequest $request)
+    {
+        if($request['role'] == '2' || $request['role'] == '1') $request['type_company_user'] = 'Administrador';
+
+        $user = User::create($request->all());
+
+        $user->roles()->attach($request['role']);
+
+        return redirect()->route('admin.users.index')->with('status','creado con exito');
+    }
 
     /**
      * Show all the information of a specific user 
@@ -129,7 +157,6 @@ class UserController extends Controller
 
                 'warehouse' => $request->warehouse, 
                 'fiscal_warehouse' => $request->fiscal_warehouse, 
-                'position' => $request->position, 
             ]
         );
         return back()->with('status', 'Actualizado con exito');
@@ -177,5 +204,19 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index');
+    }
+
+    public function find (Request $request)
+    {
+
+        $users = User::orderby('id','DESC')
+            ->name($request->name)
+            ->company($request->company_name)
+            ->email($request->email)
+            ->get();
+
+        $user = Auth::user();
+
+        return view('Admin.Users.Index',compact('users','user'));
     }
 }
