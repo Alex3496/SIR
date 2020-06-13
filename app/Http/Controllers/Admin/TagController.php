@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 use App\Tag;
 
@@ -21,12 +22,11 @@ class TagController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
 
     	$tags = Tag::orderBy('id','DESC')->get();
 
-    	//dd($posts);
-
-        return view('Admin.tags.index',compact('tags'));
+        return view('Admin.tags.index',compact('tags','user'));
     }
 
     /**
@@ -36,7 +36,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('Admin.tags.create');
+         $user = Auth::user();
+        return view('Admin.tags.create',compact('user'));
     }
 
     /**
@@ -66,9 +67,10 @@ class TagController extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $tag = Tag::where('id',$id)->first();
 
-        return view('Admin.tags.edit',compact('tag'));
+        return view('Admin.tags.edit',compact('tag','user'));
     }
 
     /**
