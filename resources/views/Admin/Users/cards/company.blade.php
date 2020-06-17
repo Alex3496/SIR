@@ -35,6 +35,25 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
+        {!! Form::label('country', 'País') !!}
+
+        {!! Form::select('country',$countries,$userToEdit->country,['class' =>'form-control']) !!}
+        @error('country')
+          <small class="mt-0" style="color:red">{{ $message }}</small>
+        @enderror
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        {!! Form::label('state', 'Estado') !!}
+        {!! Form::select('state', $states , $userToEdit->state , ['class' =>'form-control']) !!}
+        @error('state')
+          <small class="mt-0" style="color:red">{{ $message }}</small>
+        @enderror
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
         {!! Form::label('city', 'Ciudad') !!}
         {!! Form::text('city',$userToEdit->city,['class' =>'form-control']) !!}
         @error('city')
@@ -47,16 +66,6 @@
         {!! Form::label('zip_code', 'Código postal') !!}
         {!! Form::text('zip_code',$userToEdit->zip_code,['class' =>'form-control']) !!}
         @error('zip_code')
-          <small class="mt-0" style="color:red">{{ $message }}</small>
-        @enderror
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6">
-        {!! Form::label('country', 'País') !!}
-
-        {!! Form::select('country',$countries,$userToEdit->country,['class' =>'form-control']) !!}
-        @error('country')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror
       </div>

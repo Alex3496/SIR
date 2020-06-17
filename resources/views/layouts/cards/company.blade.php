@@ -5,13 +5,13 @@
   <div class="card-body">
     {!! Form::open(['route' => ['company.update'], 'method' => 'PUT']) !!}
     <div class="row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-lg-6">
         {!! Form::label('type_company_user', 'Tipo de Compañia') !!}
         {!! Form::text('type_company_user',$user->type_company_user,['class' =>'form-control', 'disabled' =>'']) !!}
       </div>
     </div>
     <div class="row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-lg-6">
         {!! Form::label('company_name', 'Nombre') !!}
         {!! Form::text('company_name',$user->company_name,['class' =>'form-control']) !!}
         @error('company_name')
@@ -29,7 +29,27 @@
       </div>
     </div>
     <div class="row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-lg-6">
+        {!! Form::label('country', 'País') !!}
+
+        {!! Form::select('country', $countries , $user->country , ['class' =>'form-control']) !!}
+
+        @error('country')
+          <small class="mt-0" style="color:red">{{ $message }}</small>
+        @enderror
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        {!! Form::label('state', 'Estado') !!}
+        {!! Form::select('state', $states , $user->state , ['class' =>'form-control']) !!}
+        @error('state')
+          <small class="mt-0" style="color:red">{{ $message }}</small>
+        @enderror
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6">
         {!! Form::label('city', 'Ciudad') !!}
         {!! Form::text('city',$user->city,['class' =>'form-control']) !!}
         @error('city')
@@ -38,21 +58,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-lg-6">
         {!! Form::label('zip_code', 'Código postal') !!}
         {!! Form::text('zip_code',$user->zip_code,['class' =>'form-control']) !!}
         @error('zip_code')
-          <small class="mt-0" style="color:red">{{ $message }}</small>
-        @enderror
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6">
-        {!! Form::label('country', 'País') !!}
-
-        {!! Form::select('country',$countries,$user->country,['class' =>'form-control']) !!}
-
-        @error('country')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror
       </div>

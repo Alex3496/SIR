@@ -74,8 +74,13 @@ class UserController extends Controller
         $roles = Role::all();
         $user = Auth::user();
         $countries = CountryState::getCountries('spa');
+        if($userToEdit->country){
+            $states = CountryState::getStates($userToEdit->country);
+        }else{
+            $states = [];
+        }
 
-        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user','countries'));
+        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user','countries','states'));
     }
 
     /**
@@ -124,7 +129,7 @@ class UserController extends Controller
     public function updateCompany(CompanyRequest $request, User $user)
     {
 
-        $user->update($request->only(['company_name', 'company_address', 'zip_code','city','country']));
+        $user->update($request->only(['company_name', 'company_address', 'zip_code','city','country','state']));
 
         return back()->with('status', 'Actualizado con exito');
 

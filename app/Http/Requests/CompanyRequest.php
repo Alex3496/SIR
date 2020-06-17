@@ -28,6 +28,7 @@ class CompanyRequest extends FormRequest
             'company_address' => ['required', 'string', 'max:250','min:4'],
             'zip_code' => ['required', 'string', 'max:10'],
             'city' => ['required', 'string', 'max:50'],
+            'state' => ['required', 'string', 'max:3'],
             'country' => ['required', 'string', 'max:2'],
         ];
     }

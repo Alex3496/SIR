@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\{CompanyRequest,datasetRequest,insuranceRequest, ProfileRequest};
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
-use Illuminate\Support\Facades\Hash;
 use App\{User,company_dataset,Insurance};
+use App\Http\Requests\{CompanyRequest,datasetRequest,insuranceRequest, ProfileRequest};
+
 use CountryState;
+
 class ProfileUserController extends Controller
 {
 
@@ -30,12 +32,19 @@ class ProfileUserController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
 
+        $user=Auth::user();
         $countries = CountryState::getCountries('spa');
+        
+        if($user->country){
+            $states = CountryState::getStates($user->country);
+        }else{
+            $states = [];
+        }
+
         asort($countries);
 
-        return view('User.profile',compact('user','countries'));
+        return view('User.profile',compact('user','countries','states'));
     }
 
 
@@ -85,7 +94,7 @@ class ProfileUserController extends Controller
     {
         $user = Auth::user();
 
-        $user->update($request->only(['company_name','company_address','city','zip_code','country']));
+        $user->update($request->only(['company_name','company_address','city','zip_code','country','state']));
 
         return back()->with('status', 'Actualizado con exito');
     }

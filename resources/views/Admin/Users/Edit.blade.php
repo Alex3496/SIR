@@ -108,5 +108,28 @@
 
   }
 </script>
-@endsection
 
+<script>
+  
+  $(function(){
+  $('#country').on('change',onSelectCountry);
+});
+
+function onSelectCountry() {
+  var country_code = $(this).val();
+
+  var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+
+  $.get(url,function(data) {
+    console.log(data);
+    var html_select = '';
+    Object.keys(data).forEach(function(key) {
+        html_select += '<option value = "'+key+'">'+data[key]+'</option>'; 
+    })
+    $('#state').html(html_select);
+  });
+}
+
+</script>
+
+@endsection

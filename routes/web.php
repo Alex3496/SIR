@@ -70,7 +70,7 @@ Route::namespace('User')->group(function(){
 });
 
 
-//ADMIN ROUTES
+//ADMINATRATIVE ROUTES
 
 //     folder              route            names                      gate
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manager-area')->group(function(){
@@ -90,7 +90,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 	Route::resource('tags','TagController',['except' =>'show']);
 });
 
-
+// ONLY FOR ADMIN
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-only')->group(function(){
 
 	Route::resource('users','UserController',['except' =>['show']]);

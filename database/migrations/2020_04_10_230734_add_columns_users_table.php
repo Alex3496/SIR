@@ -22,6 +22,7 @@ class AddColumnsUsersTable extends Migration
 
             $table->string('company_address')->nullable();
             $table->string('city')->nullable();
+            $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('zip_code',10)->nullable();
 
