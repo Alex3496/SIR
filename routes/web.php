@@ -34,7 +34,7 @@ Route::get('categoria/{name}', 'PublicController@postsCategories')->name('posts.
 
 //USER ROUTES
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::namespace('User')->group(function(){
 
@@ -44,7 +44,7 @@ Route::namespace('User')->group(function(){
 
 	Route::put('profile','ProfileUserController@updateProfile')->name('profile.update');
 
-	Route::put('password','ProfileUserController@updatePassword')->name('password.update');
+	Route::put('password','ProfileUserController@changePassword')->name('password.change');
 
 	Route::put('company','ProfileUserController@updateCompany')->name('company.update');
 
@@ -81,7 +81,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 	Route::put('profile','AdminController@updateProfile')->name('profile.update');
 
-	Route::put('password','AdminController@updatePassword')->name('password.update');
+	Route::put('password','AdminController@changePassword')->name('password.change');
 	
 	Route::resource('posts','PostController',['except' =>'show']);
 

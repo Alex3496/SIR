@@ -7,7 +7,7 @@
         <div class="card-body">
           <h3 class="text-center mb-4 mt-4">{{ __('Restablecer contraseña') }}</h3>
           @if (session('status'))
-          <div class="alert alert-success" role="alert">{{ session('status') }}</div>
+          <div class="alert alert-success" role="alert">{{ __('Se ha enviado a tu correo un enlace para resetear tu contraseña') }}</div>
           @endif
           <form method="POST" action="{{ route('password.email') }}">
             @csrf

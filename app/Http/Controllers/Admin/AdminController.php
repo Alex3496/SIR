@@ -62,7 +62,7 @@ class AdminController extends Controller
 
 
 
-    public function updatePassword(Request $request)
+    public function changePassword(Request $request)
     {
         $user = Auth::user();
 

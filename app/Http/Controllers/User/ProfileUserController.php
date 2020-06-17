@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Http\Request;
+use App\Http\Requests\{CompanyRequest,datasetRequest,insuranceRequest, ProfileRequest};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\{CompanyRequest,datasetRequest,insuranceRequest, ProfileRequest};
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
 use Illuminate\Support\Facades\Hash;
 use App\{User,company_dataset,Insurance};
@@ -33,6 +33,7 @@ class ProfileUserController extends Controller
         $user=Auth::user();
 
         $countries = CountryState::getCountries('spa');
+        asort($countries);
 
         return view('User.profile',compact('user','countries'));
     }
@@ -50,7 +51,7 @@ class ProfileUserController extends Controller
 
 
 
-    public function updatePassword(Request $request)
+    public function changePassword(Request $request)
     {
         $user = Auth::user();
 

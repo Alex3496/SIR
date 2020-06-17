@@ -8,6 +8,7 @@
 @endsection
 @section('content')
 <div class="container-fluid">
+  @include('layouts.alerts.emailVerifyAlert')
   <!--Start row User List-->
   <div class="row">
     <div class="col-lg-3 col-6">

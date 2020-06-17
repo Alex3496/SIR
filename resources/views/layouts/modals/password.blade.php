@@ -15,9 +15,9 @@
         </button>
       </div>
       @if($user->hasRole('user'))
-      	{!! Form::open(['route' => 'password.update', 'method' => 'PUT','autocomplete' => 'off']) !!}
+      	{!! Form::open(['route' => 'password.change', 'method' => 'PUT','autocomplete' => 'off']) !!}
       @else
-      	{!! Form::open(['route' => 'admin.password.update', 'method' => 'PUT']) !!}
+      	{!! Form::open(['route' => 'admin.password.change', 'method' => 'PUT']) !!}
       @endif
 	      <div class="modal-body mt-3">
 	      	<div class="row m-0">

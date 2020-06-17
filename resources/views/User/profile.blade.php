@@ -66,3 +66,7 @@
   @include('layouts.modals.position')
 
 @endsection
+
+@section('extraScript')
+  <script src="{{asset('js/countries.js')}}"></script>
+@endsection

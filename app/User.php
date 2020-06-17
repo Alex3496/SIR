@@ -6,7 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+use App\Notifications\{VerifyEmailNotification,ResetPasswordNotification};
+
+class User extends Authenticatable implements MustVerifyEmail 
 {
     use Notifiable;
 
@@ -120,6 +122,29 @@ class User extends Authenticatable
         if($email){
             return $query->where('email','LIKE',"%$email%");
         }
+    }
+
+    //----------------NOTIFICATIONS----------------
+
+     /**
+     * Send the email verification notification. Copy to model user to override the method
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailNotification);
+    }
+
+    /**
+     * Send the password reset notification. Copy to model user to override the method
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
     
 }
