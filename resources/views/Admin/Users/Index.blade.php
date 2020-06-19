@@ -77,7 +77,7 @@
                   <form action="{{ route('admin.users.destroy',$userB) }}" method="POST" class="float-left">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">{{__('Borrar')}}</button>
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Desea Eliminar?')">{{__('Borrar')}}</button>
                   </form>
                 </td>
               </tr>

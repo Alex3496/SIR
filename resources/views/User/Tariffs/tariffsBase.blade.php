@@ -92,38 +92,44 @@
   }); 
 </script>
 <script>
-  function checked()
-  {
-    if(document.getElementById("maritime").checked == true){
-      hide();
-    }else if(document.getElementById("truck").checked == true){
-      show();
-    }else if(document.getElementById("train").checked == true){
-      show();
-    }else if(document.getElementById("aerial").checked == true){
-      show();
-    }      
-  }
-  
-  function hide()
-  {
-    var x = document.getElementsByClassName("hide");
-    for(var i=0; i<x.length; i++)
-    {
-      x[i].style.display="none";
-    }  
-  }
-      
-  function show()
-  {
-    var x = document.getElementsByClassName("hide");
-    for(var i=0; i<x.length; i++)
-    {
-      x[i].style.display="block";
-    }  
-  }
-  
-  document.onload = checked();
-  
+
+$(function(){
+  $('#origin_country').on('click',onSelectCountry);
+});
+
+function onSelectCountry() {
+  var country_code = $(this).val();
+
+  var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+
+  $.get(url,function(data) {
+    console.log(data);
+    var html_select = '';
+    Object.keys(data).forEach(function(key) {
+        html_select += '<option value = "'+key+'">'+data[key]+'</option>'; 
+    })
+    $('#origin_state').html(html_select);
+  });
+}
+
+$(function(){
+  $('#destiny_country').on('click',onSelectCountry2);
+});
+
+function onSelectCountry2() {
+  var country_code = $(this).val();
+
+  var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+
+  $.get(url,function(data) {
+    console.log(data);
+    var html_select = '';
+    Object.keys(data).forEach(function(key) {
+        html_select += '<option value = "'+key+'">'+data[key]+'</option>'; 
+    })
+    $('#destiny_state').html(html_select);
+  });
+}
+
 </script>
 @endsection

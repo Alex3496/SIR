@@ -12,7 +12,6 @@
           <th>{{ __('Destino') }}</th>
           <th>{{ __('Tipo de equipo') }}</th>
           <th>{{ __('Peso') }}<small style="color: gray"> Aprox.</small></th>
-          <th>{{ __('Distancia') }}</th>
           <th>{{ __('Tarifas') }}</th>
           <th>{{ __('Acciones') }}</th>
         </tr>
@@ -25,7 +24,6 @@
           <td>{{ $tariff->destiny }}</td>
           <td>{{ $tariff->get_type_equipment }}</td>
           <td>{{ $tariff->approx_weight }} {{ $tariff->type_weight }}</td>
-          <td>{{ $tariff->distance }}</td>
           <td>$ {{ $tariff->rate }}</td>
           <td>
             <div class="d-flex justify-content-center">

@@ -74,6 +74,7 @@ class UserController extends Controller
         $roles = Role::all();
         $user = Auth::user();
         $countries = CountryState::getCountries('spa');
+        asort($countries);
         if($userToEdit->country){
             $states = CountryState::getStates($userToEdit->country);
         }else{

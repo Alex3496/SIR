@@ -20,7 +20,11 @@ class CreateTariffsTable extends Migration
 
             $table->string('type_tariff',30); // enum : TRUCK,TRAIN,MARITIME,AERIAL
             $table->string('origin');
+            $table->string('origin_state')->nullable();
+            $table->string('origin_country')->nullable();
             $table->string('destiny');
+            $table->string('destiny_state')->nullable();
+            $table->string('destiny_country')->nullable();
             $table->integer('approx_weight')->nullable();
             $table->string('type_weight',7)->nullable();
             $table->integer('distance')->nullable();

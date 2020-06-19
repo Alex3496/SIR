@@ -109,9 +109,8 @@
   }
 </script>
 
-<script>
-  
-  $(function(){
+<script>  
+$(function(){
   $('#country').on('change',onSelectCountry);
 });
 

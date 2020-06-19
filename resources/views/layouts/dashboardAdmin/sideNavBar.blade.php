@@ -73,6 +73,13 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a href="{{ route('admin.locations.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-map"> </i>
+          <p>{{ __('Ubicaciones') }}</p>
+        </a>
+      </li>
+
     </ul>
   </nav>
   <!-- /.sidebar-menu -->

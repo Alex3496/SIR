@@ -4,8 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Tariff;
+use App\{Tariff,Location};
 use App\Http\Requests\tariffsRequest;
+
+use CountryState;
 
 class TariffsController extends Controller
 {
@@ -23,7 +25,6 @@ class TariffsController extends Controller
      
     public function index()
     {
-        
         $user=Auth::user();
 
         return view('User.Tariffs.TariffsCards.menuCards',[
@@ -43,7 +44,8 @@ class TariffsController extends Controller
         return view('User.Tariffs.TariffsCards.truckCard',[
             'user'=>$user,
             'truckTariffs' => $this->getTruckTariffs($user->id),
-            'tariffToUpdate' => null
+            'tariffToUpdate' => null,
+            'countries' => $this->getCountries(),
         ]);
     }
 
@@ -54,7 +56,8 @@ class TariffsController extends Controller
         return view('User.Tariffs.TariffsCards.trainCard',[
             'user'=>$user,
             'trainTariffs' => $this->getTrainTariffs($user->id),
-            'tariffToUpdate' => null
+            'tariffToUpdate' => null,
+            'countries' => $this->getCountries(),
         ]);
     }
 
@@ -65,7 +68,9 @@ class TariffsController extends Controller
         return view('User.Tariffs.TariffsCards.maritimeCard',[
             'user'=>$user,
             'maritimeTariffs' => $this->getMaritimeTariffs($user->id),
-            'tariffToUpdate' => null
+            'tariffToUpdate' => null,
+            'countries' => $this->getCountries(),
+
         ]);
     }
 
@@ -76,7 +81,8 @@ class TariffsController extends Controller
         return view('User.Tariffs.TariffsCards.aerialCard',[
             'user'=>$user,
             'aerialTariffs' => $this->getAerialTariffs($user->id),
-            'tariffToUpdate' => null
+            'tariffToUpdate' => null,
+            'countries' => $this->getCountries(),
         ]);
     }
 
@@ -89,45 +95,33 @@ class TariffsController extends Controller
     public function store(tariffsRequest $request)
     {        
 
+        $request['user_id'] = Auth::user()->id;
+
         if($request->request->get('type_tariff') == 'MARITIME')
         {
-            // way 1 to save
-            $tariff = Tariff::create([
-                'user_id' => Auth::user()->id,
-                'type_tariff' => $request['type_tariff'],
-                'origin' => $request['origin'],
-                'destiny' => $request['destiny'],
-                'type_equipment' => $request['type_equipment'],
-                'rate' => $request['rate'],               
-            ]);
+            $tariff = Tariff::create($request->only(['user_id','type_tariff','origin','origin_country',
+                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate']));
+
         } 
         else if($request->request->get('type_tariff') == 'AERIAL')
         {
-
-            // way 2 to save
-            $tariff = new Tariff();
-
-            $tariff->user_id = Auth::user()->id;
-            $tariff->type_tariff = $request['type_tariff'];
-            $tariff->origin = $request['origin'];
-            $tariff->destiny = $request['destiny'];
-            $tariff->approx_weight = $request['approx_weight'];
-            $tariff->type_weight = $request['type_weight'];
-            $tariff->type_equipment = $request['type_equipment'];
+            $tariff = Tariff::create($request->all());
+          
+            //This are not in the fillable array for security reasons
             $tariff->height = $request['height'];
             $tariff->width = $request['width'];
             $tariff->length = $request['length'];
-            $tariff->rate = $request['rate'];
 
             $tariff->save();
 
         }
         else
         {
-            //Add field user_id to the request array
-            $request->request->add(['user_id' => Auth::user()->id]);
             $tariff = Tariff::create($request->all());
         }
+
+        $this->storeLocation($request['origin'],$request['origin_state'],$request['origin_country']);
+        $this->storeLocation($request['destiny'],$request['destiny_state'],$request['destiny_country']);
 
         return redirect()->route('tariffs.index')->with('status', 'Agregado con exito');
 
@@ -143,8 +137,11 @@ class TariffsController extends Controller
     public function edit($id)
     {
         $user=Auth::user();
-
         $tariffToUpdate=Tariff::find($id);
+
+        $countries = $this->getCountries();
+        $states_origin = CountryState::getStates($tariffToUpdate->origin_country);
+        $states_destiny = CountryState::getStates($tariffToUpdate->destiny_country);
 
         $this->authorize('pass',$tariffToUpdate);
         
@@ -153,7 +150,10 @@ class TariffsController extends Controller
             return view('User.Tariffs.TariffsCards.truckCard',[
                 'user'=>$user,
                 'truckTariffs' => $this->getTruckTariffs($user->id),
-                'tariffToUpdate' => $tariffToUpdate
+                'tariffToUpdate' => $tariffToUpdate,
+                'countries' => $countries,
+                'states_origin' => $states_origin,
+                'states_destiny' => $states_destiny,
             ]);
         }
 
@@ -162,7 +162,10 @@ class TariffsController extends Controller
             return view('User.Tariffs.TariffsCards.trainCard',[
                 'user'=>$user,
                 'trainTariffs' => $this->getTrainTariffs($user->id),
-                'tariffToUpdate' => $tariffToUpdate
+                'tariffToUpdate' => $tariffToUpdate,
+                'countries' => $countries,
+                'states_origin' => $states_origin,
+                'states_destiny' => $states_destiny,
             ]);
         }
 
@@ -171,7 +174,10 @@ class TariffsController extends Controller
             return view('User.Tariffs.TariffsCards.maritimeCard',[
                 'user'=>$user,
                 'maritimeTariffs' => $this->getMaritimeTariffs($user->id),
-                'tariffToUpdate' => $tariffToUpdate
+                'tariffToUpdate' => $tariffToUpdate,
+                'countries' => $countries,
+                'states_origin' => $states_origin,
+                'states_destiny' => $states_destiny,
             ]);
         }
 
@@ -181,7 +187,10 @@ class TariffsController extends Controller
             return view('User.Tariffs.TariffsCards.aerialCard',[
                 'user'=>$user,
                 'aerialTariffs' => $this->getAerialTariffs($user->id),
-                'tariffToUpdate' => $tariffToUpdate
+                'tariffToUpdate' => $tariffToUpdate,
+                'countries' => $countries,
+                'states_origin' => $states_origin,
+                'states_destiny' => $states_destiny,
             ]);
         }
 
@@ -275,10 +284,41 @@ class TariffsController extends Controller
             ->get();
     }
 
-     public function getAerialTariffs($user_id)
+    public function getAerialTariffs($user_id)
     {
         return $truckTariffs=Tariff::where('user_id',$user_id)
             ->where('type_tariff','AERIAL')
             ->get();
+    }
+
+    public function getCountries()
+    {
+        $countries = CountryState::getCountries('spa');
+        asort($countries);
+        return $countries;
+    }
+
+    /**
+    *   Store the locations (origin, destiny) of the tariff
+    *   in the Locations table, create if don't exist.
+    *
+    *   @param string $city
+    *   @param string $state (code)
+    *   @param string $country (code)
+    */
+    public function storeLocation($city,$state_code,$country_code)
+    {
+        $countries = CountryState::getCountries('spa');
+        $country = $countries[$country_code];
+        $state =  CountryState::getStateName($state_code,$country_code);
+
+        Location::firstOrCreate([
+                'city' => $city,'state' => $state,'country' => $country,]
+            ,[
+                'state_code' => $state_code,
+                'country_code' => $country_code,
+                'status' => 'PENDING', 
+        ]);
+
     }
 }

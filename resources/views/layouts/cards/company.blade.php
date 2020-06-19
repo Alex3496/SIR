@@ -31,9 +31,7 @@
     <div class="row">
       <div class="form-group col-lg-6">
         {!! Form::label('country', 'País') !!}
-
         {!! Form::select('country', $countries , $user->country , ['class' =>'form-control']) !!}
-
         @error('country')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror

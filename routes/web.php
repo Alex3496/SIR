@@ -105,5 +105,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 
 	Route::get('users/find','UserController@find')->name('users.find');
 
+	Route::resource('locations','LocationController');
 
 });
