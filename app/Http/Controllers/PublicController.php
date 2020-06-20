@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SearchTeariffsRequest;
 use App\{Post,Category,Location,Tariff};
 
 class PublicController extends Controller
@@ -66,7 +67,7 @@ class PublicController extends Controller
 
     }
 
-    public function tariffsResults(Request $request)
+    public function tariffsResults(SearchTeariffsRequest $request)
     {
 
         $originLocation = Location::complete($request->location_origin)->first();

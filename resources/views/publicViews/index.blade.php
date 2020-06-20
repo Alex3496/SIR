@@ -37,12 +37,18 @@
               <input list="locations-origin" type="text" class="form-control" 
               id="origin-user" name="location_origin" placeholder="Pais, Ciudad, Puerto" autocomplete="off"/>
               <datalist id="locations-origin"> </datalist>
+              @error('location_origin')
+                <small class="mt-0" style="color:red">{{ $message }}</small>
+              @enderror
             </div>
             <div class="form-group">
               <label for="destiny">{{ __('Destino') }}</label>
               <input list="locations-destiny" type="text" class="form-control" 
               id="destiny-user" name="location_destiny" placeholder="Pais, Ciudad, Puerto" autocomplete="off"/>
               <datalist id="locations-destiny"> </datalist>
+              @error('location_destiny')
+                <small class="mt-0" style="color:red">{{ $message }}</small>
+              @enderror
             </div>
             <div class="form-group">
               <label for="send-date">Fecha de envío</label>
