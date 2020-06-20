@@ -1,13 +1,13 @@
 @extends('layouts.base')
 @section('content')
-<div class="container-md">
+<div class="container-md container-results">
   <div class="row">
     <div class="col">
       <div class="card mt-2 mb-2">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6 mb-4 d-flex align-items-center">
-              <img src="{{ asset('images/logos/ubicacion.png') }}" style="max-height: 64px;"/>
+              <img src="{{ asset('images/logos/ubicacion.png') }}" class="serch-img"/>
               <div class=" text-center-md ml-2 mt-2" style="width: 85%; ">
                 <div style="height: 50%">
                   <b>Origen:</b>
@@ -20,14 +20,14 @@
               </div>
             </div>
             <div class="col-md-5 mb-4 d-flex align-items-center">
-              <img src="{{ asset('images/logos/grua.png') }}" style="max-height: 64px;"/>
+              <img src="{{ asset('images/logos/grua.png') }}" class="serch-img" />
               <div class="align-middle ml-1 mt-2">
                 Tipo de contenedor:
                 <b>{{$dataSearch['tpye_equipment']}}</b>
               </div>
             </div>
-            <div class="col-md-1 d-flex align-items-center mb-2">
-              <a href="#" style="color:gray;">
+            <div class="col-md-1 d-flex align-items-center justify-content-center mb-2">
+              <a style="color:gray;" data-toggle="modal" data-target="#serchTariff">
                 <u>Editar</u>
               </a>
             </div>
@@ -43,10 +43,23 @@
           <div class="col">{{$tariffs->count()}} Resultado(s)</div>
         </div>
         <div class="row">
+        	@if($tariffs->count() == 0)
+        	<div class="col text-center" style="margin-top: 8rem; margin-bottom: 4rem">
+        		<h2>Lo sentimos, no se encontró ningún resultado.</h2>
+        		<h4>Prueba introduciendo otros datos.</h4>
+        	</div>
+        	@else
           <div class="col">@include('publicViews.cards.ResultTariffs')</div>
+          @endif
         </div>
       </div>
     </div>
   </div>
 </div>
+
+@include('publicViews.modals.search')
+
+@endsection
+@section('scripts')
+<script src="{{asset('js/countries.js')}}" ></script>
 @endsection

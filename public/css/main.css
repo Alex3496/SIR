@@ -246,6 +246,22 @@ main {
     border: 0;
 }
 
+/*==============Tariffs VIEW =================*/
+
+/*------------------------------------------*/
+
+.logo-company-tariff-card{
+    max-height: 88px;
+}
+
+.container-results{
+    min-height: 40rem;
+}
+
+.serch-img{
+    max-height: 64px;
+}
+
 /*==============SIDE NAV BAR (USER)=================*/
 
 #profile-image{

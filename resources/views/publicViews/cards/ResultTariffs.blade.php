@@ -12,17 +12,17 @@
 				<div>
 					<small>{{__('Origen')}}:</small>
 					<h2>{{$tariff->origin}}</h2>
-					<h5>{{$tariff->origin_state}}, {{$tariff->origin_country}}</h5>
+					<h5>{{$tariff->get_state_origin}}, {{$tariff->get_country_origin}}</h5>
 				</div>
 				<hr>
 				<div>
 					<small>{{__('Destino')}}:</small>
 					<h2>{{$tariff->destiny}}</h2>
-					<h5>{{$tariff->destiny_state}}, {{$tariff->destiny_country}}</h5>
+					<h5>{{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</h5>
 				</div>
 				<hr>
 				<div class="d-flex align-items-center">
-					<img src="{{$tariff->user->get_image}}" style="max-height: 64px;">
+					<img src="{{$tariff->user->get_image}}" class="logo-company-tariff-card">
 					<div class="ml-4">
 						<small>{{__('Empresa')}}:</small>
 						<h5>{{ $tariff->user->company_name }}</h5>
@@ -34,7 +34,7 @@
 				<h2>${{$tariff->rate}}</h2><span>dlls.</span>
 			</div>
 			<div class="d-flex justify-content-center">
-				<a href="" class="btn btn-SIR">Accion</a>
+				<a href="" class="btn btn-SIR btn-block">Accion</a>
 			</div>
 			</div>
 		</div>

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use CountryState;
+
 class Tariff extends Model
 {
 
@@ -85,5 +87,25 @@ class Tariff extends Model
         if ($this->type_equipment == 'Pallet') {
             return 'Pallet';
         }
+    }
+
+    public function getGetStateOriginAttribute()
+    {
+        return CountryState::getStateName($this->origin_state,$this->origin_country);
+    }
+
+    public function getGetCountryOriginAttribute()
+    {
+        return CountryState::getCountryName($this->origin_country);
+    }
+
+    public function getGetStateDestinyAttribute()
+    {
+        return CountryState::getStateName($this->destiny_state,$this->destiny_country);
+    }
+
+    public function getGetCountryDestinyAttribute()
+    {
+        return CountryState::getCountryName($this->destiny_country);
     }
 }
