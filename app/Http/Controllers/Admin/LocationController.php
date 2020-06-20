@@ -67,12 +67,15 @@ class LocationController extends Controller
         $country = $countries[$request->country];
         $state =  CountryState::getStateName($request->state,$request->country);
 
+        $locationComplete = $request->city.', '.$state.', '.$country;
+
         $new = Location::firstOrCreate([
                 'city' => $request->city,'state' => $state,'country' => $country,]
             ,[
                 'state_code' => $request->state,
                 'country_code' => $request->country,
-                'status' => $request->status, 
+                'status' => $request->status,
+                'location_complete' => $locationComplete, 
         ]);
 
         return redirect()->route('admin.locations.index')->with('status','Creado con exito');
@@ -121,6 +124,8 @@ class LocationController extends Controller
         $country = $countries[$request->country];
         $state =  CountryState::getStateName($request->state,$request->country);
 
+        $locationComplete = $request->city.', '.$state.', '.$country;
+
         if(is_null($location)){
 
             $locationToUpdate = Location::find($id);
@@ -131,6 +136,7 @@ class LocationController extends Controller
             $locationToUpdate->country = $country;
             $locationToUpdate->country_code = $request->country;
             $locationToUpdate->status = $request->status;
+            $locationToUpdate->location_complete = $locationComplete;
             
             $locationToUpdate->save();
 

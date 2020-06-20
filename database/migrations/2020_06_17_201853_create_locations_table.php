@@ -22,6 +22,7 @@ class CreateLocationsTable extends Migration
             $table->string('country');
             $table->string('country_code');
             $table->enum('status',['ACCEPTED','PENDING','REJECTED']);
+            $table->string('location_complete');
 
 
             $table->timestamps();

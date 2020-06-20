@@ -138,12 +138,13 @@ class TariffsController extends Controller
     {
         $user=Auth::user();
         $tariffToUpdate=Tariff::find($id);
+        
+        $this->authorize('pass',$tariffToUpdate);
 
         $countries = $this->getCountries();
         $states_origin = CountryState::getStates($tariffToUpdate->origin_country);
         $states_destiny = CountryState::getStates($tariffToUpdate->destiny_country);
 
-        $this->authorize('pass',$tariffToUpdate);
         
         if($tariffToUpdate->type_tariff == 'TRUCK')
         {
@@ -205,21 +206,15 @@ class TariffsController extends Controller
      */
     public function update(tariffsRequest $request, $id)
     {
-        $user=Auth::user();
-
         $tariffToUpdate=Tariff::find($id);
 
         $this->authorize('pass',$tariffToUpdate);              
 
         if($request['type_tariff'] == 'MARITIME')
         {
-            $tariffToUpdate->type_tariff=$request['type_tariff'];
-            $tariffToUpdate->origin=$request['origin'];
-            $tariffToUpdate->destiny=$request['destiny'];
-            $tariffToUpdate->type_equipment=$request['type_equipment'];
-            $tariffToUpdate->rate=$request['rate'];
 
-            $tariffToUpdate->save();
+            $tariffToUpdate->update($request->only(['type_tariff','origin','origin_country',
+                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate']));
 
         }
         else if($request['type_tariff'] == 'AERIAL')
@@ -312,12 +307,15 @@ class TariffsController extends Controller
         $country = $countries[$country_code];
         $state =  CountryState::getStateName($state_code,$country_code);
 
+
+        $locationComplete = $city.', '.$state.', '.$country;
         Location::firstOrCreate([
                 'city' => $city,'state' => $state,'country' => $country,]
             ,[
                 'state_code' => $state_code,
                 'country_code' => $country_code,
-                'status' => 'PENDING', 
+                'status' => 'PENDING',
+                'location_complete' => $locationComplete, 
         ]);
 
     }

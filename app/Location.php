@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     protected $fillable = [
-       'city', 'state', 'country','state_code','country_code','status', 
+       'city', 'state', 'country','state_code','country_code','status','location_complete' 
     ];
 
     //----------------SCOPES--------------
@@ -36,9 +36,14 @@ class Location extends Model
     public function scopestatus($query, $status)
     {
         if($status){
-        	$query->whereIn('status',$status);
-        	
-            return $query;
+            return $query->whereIn('status',$status);
+        }
+    }
+
+    public function scopecomplete($query, $location_complete)
+    {
+        if($location_complete){
+            return $query->where('location_complete',$location_complete);
         }
     }
 }

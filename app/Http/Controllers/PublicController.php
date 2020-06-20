@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{Post,Category};
+use App\{Post,Category,Location,Tariff};
 
 class PublicController extends Controller
 {
-    //
+    //--------------------------------views----------------------------------------
 
     public function index()
     {
@@ -66,7 +66,21 @@ class PublicController extends Controller
 
     }
 
-/*-----------------------------------------------------------------*/
+    public function tariffsResults(Request $request)
+    {
+
+        $originLocation = Location::complete($request->location_origin)->first();
+        $destinyLocation = Location::complete($request->location_destiny)->first();
+
+        $tariffs = Tariff::where('type_tariff',$request->type_tariff)
+            ->where('origin',$originLocation->city)->where('destiny',$destinyLocation->city)->get();
+
+        $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment']);
+
+        return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch'));
+    }
+
+/*------------------------------Methods-----------------------------------*/
 
     public function getCategories()
     {
