@@ -46,6 +46,7 @@ class TariffsController extends Controller
             'truckTariffs' => $this->getTruckTariffs($user->id),
             'tariffToUpdate' => null,
             'countries' => $this->getCountries(),
+            'states' => $this->getStates('MX'),
         ]);
     }
 
@@ -58,6 +59,7 @@ class TariffsController extends Controller
             'trainTariffs' => $this->getTrainTariffs($user->id),
             'tariffToUpdate' => null,
             'countries' => $this->getCountries(),
+            'states' => $this->getStates('MX'),
         ]);
     }
 
@@ -70,6 +72,7 @@ class TariffsController extends Controller
             'maritimeTariffs' => $this->getMaritimeTariffs($user->id),
             'tariffToUpdate' => null,
             'countries' => $this->getCountries(),
+            'states' => $this->getStates('MX'),
 
         ]);
     }
@@ -83,6 +86,7 @@ class TariffsController extends Controller
             'aerialTariffs' => $this->getAerialTariffs($user->id),
             'tariffToUpdate' => null,
             'countries' => $this->getCountries(),
+            'states' => $this->getStates('MX'),
         ]);
     }
 
@@ -97,6 +101,9 @@ class TariffsController extends Controller
 
         $request['user_id'] = Auth::user()->id;
 
+        $request['origin'] = ucwords(strtolower($request->origin));
+        $request['destiny'] = ucwords(strtolower($request->destiny)); 
+        
         if($request->request->get('type_tariff') == 'MARITIME')
         {
             $tariff = Tariff::create($request->only(['user_id','type_tariff','origin','origin_country',
@@ -208,7 +215,9 @@ class TariffsController extends Controller
     {
         $tariffToUpdate=Tariff::find($id);
 
-        $this->authorize('pass',$tariffToUpdate);              
+        $this->authorize('pass',$tariffToUpdate);
+         $request['origin'] = ucwords(strtolower($request->origin));
+        $request['destiny'] = ucwords(strtolower($request->destiny));               
 
         if($request['type_tariff'] == 'MARITIME')
         {
@@ -233,6 +242,8 @@ class TariffsController extends Controller
         {
             $tariffToUpdate->update($request->all());
         }
+        $this->storeLocation($request['origin'],$request['origin_state'],$request['origin_country']);
+        $this->storeLocation($request['destiny'],$request['destiny_state'],$request['destiny_country']);
 
         return redirect()->route('tariffs.index')->with('status', 'Editado con Exito');
     }
@@ -291,6 +302,11 @@ class TariffsController extends Controller
         $countries = CountryState::getCountries('spa');
         asort($countries);
         return $countries;
+    }
+
+    public function getStates($country)
+    {
+        return CountryState::getStates('MX');
     }
 
     /**

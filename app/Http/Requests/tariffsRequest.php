@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use CountryState;
 
 class tariffsRequest extends FormRequest
 {
@@ -23,14 +25,16 @@ class tariffsRequest extends FormRequest
      */
     public function rules()
     {
+        $countries = CountryState::getCountries();
+        $countries = array_keys($countries);
 
         $rules = [
             'type_tariff' => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
             'origin' => 'required|regex:/^[\pL\s\-]+$/u|max:50',
-            'origin_country' => 'required|string|max:3',
+            'origin_country' => ['required',Rule::in($countries)],
             'origin_state' => 'required|string|max:3',
             'destiny' => 'required|regex:/^[\pL\s\-]+$/u|max:50',
-            'destiny_country' => 'required|string|max:3',
+            'destiny_country' => ['required',Rule::in($countries)],
             'destiny_state' => 'required|string|max:3',
             'approx_weight' => ['required','numeric','min:1','max:9999'],
             'type_weight' => ['required','in:kg,lb'],

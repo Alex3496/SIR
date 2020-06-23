@@ -27,7 +27,7 @@
           <div class="form-group col-md">
             {!! Form::label('origin_country', 'Pais origen') !!}
             <div class="input-group-sm">
-              {!! Form::select('origin_country', $countries , $tariffToUpdate->origin_country ?? '' , ['class' =>'form-control']) !!}
+              {!! Form::select('origin_country', $countries , $tariffToUpdate->origin_country ?? 'MX' , ['class' =>'form-control']) !!}
             </div>
             @error('origin_country')
               <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -37,7 +37,7 @@
           <div class="form-group col-md">
             {!! Form::label('origin_state', 'Estado origen') !!}
             <div class="input-group-sm">
-              {!! Form::select('origin_state', $states_origin ?? [], $tariffToUpdate->origin_state ?? '', ['class' =>'form-control']) !!}
+              {!! Form::select('origin_state', $states_origin ?? $states, $tariffToUpdate->origin_state ?? '', ['class' =>'form-control']) !!}
             </div>
             @error('origin_state')
               <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -61,7 +61,7 @@
           <div class="form-group col-md">
             {!! Form::label('destiny_country', 'Pais destino') !!}
             <div class="input-group-sm">
-              {!! Form::select('destiny_country', $countries , $tariffToUpdate->destiny_country ?? '' , ['class' =>'form-control']) !!}
+              {!! Form::select('destiny_country', $countries , $tariffToUpdate->destiny_country ?? 'MX' , ['class' =>'form-control']) !!}
             </div>
             @error('destiny_country')
               <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -71,7 +71,7 @@
           <div class="form-group col-md">
             {!! Form::label('destiny_state', 'Estado destino') !!}
             <div class="input-group-sm">
-              {!! Form::select('destiny_state', $states_destiny ?? [] , $tariffToUpdate->destiny_state ?? '' , ['class' =>'form-control']) !!}
+              {!! Form::select('destiny_state', $states_destiny ?? $states , $tariffToUpdate->destiny_state ?? '' , ['class' =>'form-control']) !!}
             </div>
             @error('destiny_state')
               <small class="mt-0" style="color:red">{{ $message }}</small>
