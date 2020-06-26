@@ -40,7 +40,7 @@ class SearchTeariffsRequest extends FormRequest
         return [
             'required'      => 'Este campo es requerido.',
             'in'            => 'Valor inválido.',
-            'max'           => 'Máximo 100 caracteres'
+            'max'           => 'Máximo 100 caracteres',
 
         ];
     }

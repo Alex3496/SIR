@@ -54,12 +54,12 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'required'                => 'Este campo es requerido.'
+            'required'                => 'Este campo es requerido.',
             'numeric'                 => 'El valor debe ser numérico.',
             'phone.digits_between'    => 'El campo teléfono debe de tener de 7 a 12 dígitos.',
             'email.unique'            => 'El email ya está registrado.',
             'name.max'                => 'Máximo 50 caracteres',
-            'position.max'            => 'Máximo 120 caracteres'
+            'position.max'            => 'Máximo 120 caracteres',
         ];
     }
 }

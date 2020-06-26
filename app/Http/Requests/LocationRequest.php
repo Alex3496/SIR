@@ -27,7 +27,7 @@ class LocationRequest extends FormRequest
             'city'      => 'required|string|max:50',
             'state'     => 'required|string|max:3',
             'country'   => 'required|string|max:3',
-            'status'    => 'required|in:ACCEPTED,PENDING,REJECTED'     
+            'status'    => 'required|in:ACCEPTED,PENDING,REJECTED',     
         ];
     }
 
@@ -42,7 +42,7 @@ class LocationRequest extends FormRequest
         return [
             'required'      => 'Este campo es requerido.',
             'in'            => 'Valor inválido.',
-            'city.max'      => 'Máximo 50 caracteres.'
+            'city.max'      => 'Máximo 50 caracteres.',
         ];
     }
 }
