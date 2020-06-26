@@ -1,6 +1,6 @@
 
 $(function(){
-	$('#country').on('change',onSelectCountry);
+	$('#country').on('click',onSelectCountry);
 });
 
 function onSelectCountry() {

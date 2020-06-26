@@ -18,14 +18,12 @@ class ProfileRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     * if user injects fields in html, apply rules
      * @return array
      */
     public function rules()
     {
         $rules = [];
-
-        //dd($this->request);
 
         if ($this->request->has('name') ) {
             $rules['name'] = ['required','string','max:50'];                           
@@ -46,5 +44,22 @@ class ProfileRequest extends FormRequest
         //dd($rules);
 
         return $rules;
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'required'                => 'Este campo es requerido.'
+            'numeric'                 => 'El valor debe ser numérico.',
+            'phone.digits_between'    => 'El campo teléfono debe de tener de 7 a 12 dígitos.',
+            'email.unique'            => 'El email ya está registrado.',
+            'name.max'                => 'Máximo 50 caracteres',
+            'position.max'            => 'Máximo 120 caracteres'
+        ];
     }
 }

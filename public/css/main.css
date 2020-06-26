@@ -48,17 +48,25 @@ main {
     color: white;
     background-color: rgb(56, 55, 55);
     background-blend-mode: soft-light;
+    min-height: 35rem;
 }
 
-#quote-card {
-    margin: auto;
+#main-text{
+    margin: 2rem 0;
+}
+
+#main-row{
+    min-height: 35rem;
+}
+
+#quote-card{
     padding: 30px;
     background-color: rgba(255, 255, 255, 0.75);
     max-width: 65vh;
     border-radius: 20px;
-    margin-top: 22px;
-    margin-bottom: 22px;
     color: black;
+    margin: 2.5rem auto 2.5rem auto;
+    max-width: 30rem;
 }
 
 #btn-quote {
@@ -261,6 +269,19 @@ main {
 .serch-img{
     max-height: 64px;
 }
+
+/*==============Booking VIEW =================*/
+
+/*------------------------------------------*/
+
+#info-column{
+    min-height: 25rem;
+}
+
+#info-inner{
+    height: 80%;
+}
+
 
 /*==============SIDE NAV BAR (USER)=================*/
 

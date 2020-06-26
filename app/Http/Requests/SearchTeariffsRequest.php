@@ -24,9 +24,9 @@ class SearchTeariffsRequest extends FormRequest
     public function rules()
     {
         return [
-            'type_tariff' => 'required|in:TRUCK,TRAIN,MARITIME,AERIAL',
-            'location_origin' => 'required|string|max:100',
-            'location_destiny' =>'required|string|max:100',
+            'type_tariff'       => 'required|in:TRUCK,TRAIN,MARITIME,AERIAL',
+            'location_origin'   => 'required|string|max:100',
+            'location_destiny'  => 'required|string|max:100',
         ];
     }
 
@@ -38,10 +38,9 @@ class SearchTeariffsRequest extends FormRequest
     public function messages()
     {
         return [
-            'type_tariff.required' => 'Selecciona una opción',
-            'type_tariff.in' => 'Selecciona una opción valida',
-            'location_origin.required' => 'No dejes el campo vacio',
-            'location_destiny.required' => 'No dejes el campo vacio',
+            'required'      => 'Este campo es requerido.',
+            'in'            => 'Valor inválido.',
+            'max'           => 'Máximo 100 caracteres'
 
         ];
     }

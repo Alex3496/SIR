@@ -13,7 +13,7 @@
     <div class="row">
       <div class="form-group col-lg-6">
         {!! Form::label('company_name', 'Nombre') !!}
-        {!! Form::text('company_name',$user->company_name,['class' =>'form-control']) !!}
+        {!! Form::text('company_name',$user->company_name,['class' =>'form-control','autocomplete' => 'off']) !!}
         @error('company_name')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror
@@ -22,7 +22,7 @@
     <div class="row">
       <div class="form-group col">
         {!! Form::label('company_address', 'Dirección') !!}
-        {!! Form::text('company_address',$user->company_address,['class' =>'form-control']) !!}
+        {!! Form::text('company_address',$user->company_address,['class' =>'form-control', 'autocomplete' => 'off']) !!}
         @error('company_address')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror
@@ -31,7 +31,7 @@
     <div class="row">
       <div class="form-group col-lg-6">
         {!! Form::label('country', 'País') !!}
-        {!! Form::select('country', $countries , $user->country , ['class' =>'form-control']) !!}
+        {!! Form::select('country', $countries , $user->country ?? 'MX', ['class' =>'form-control']) !!}
         @error('country')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror

@@ -33,6 +33,9 @@ class Location extends Model
         }
     }
 
+    /*
+     *   @param $status type array
+     */
     public function scopestatus($query, $status)
     {
         if($status){

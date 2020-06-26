@@ -34,25 +34,27 @@
             <div class="form-group">
               <label for="origin">{{ __('Origen') }}</label>
               <input list="locations-origin" type="text" class="form-control" 
-              id="origin-user" name="location_origin" placeholder="Pais, Ciudad, Puerto" autocomplete="off"/>
+              id="origin-user" name="location_origin" placeholder="Pais, Estado, Ciudad" autocomplete="off" 
+              value="{{$dataSearch['location_origin']}}" />
               <datalist id="locations-origin"> </datalist>
             </div>
             <div class="form-group">
               <label for="destiny">{{ __('Destino') }}</label>
               <input list="locations-destiny" type="text" class="form-control" 
-              id="destiny-user" name="location_destiny" placeholder="Pais, Ciudad, Puerto" autocomplete="off"/>
+              id="destiny-user" name="location_destiny" placeholder="Pais, Estado, Ciudad" autocomplete="off"
+              value="{{$dataSearch['location_destiny']}}" />
               <datalist id="locations-destiny"> </datalist>
-            </div>
-            <div class="form-group">
-              <label for="send-date">Fecha de envío</label>
-              <input type="date" class="form-control" id="send-date"/>
             </div>
             <div class="form-group">
               <label for="type-Load">Tipo de carga</label>
               <select class="custom-select" id="type-Load" name="tpye_equipment">
-                <option value="LCL" selected>LCL</option>
-                <option value="FLC">FLC</option>
-                <option value="BULK">BULK</option>
+                <option value="Dry Box" selected>{{__('Caja Seca')}}</option>
+                <option value="Refrigerated">{{__('Caja Refrigerada')}}</option>
+                <option value="Plataform">{{__('Plataforma')}}</option>
+                <option value="Container">{{__('Contenedor')}}</option>
+                <option value="Box">{{__('Caja')}}</option>
+                <option value="Package">{{__('Bulto')}}</option>
+                <option value="Pallet">{{__('Pallet')}}</option>
               </select>
             </div>
             <div class="row">

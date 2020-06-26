@@ -33,13 +33,12 @@ class ProfileUserController extends Controller
     public function index()
     {
 
-        $user=Auth::user();
+        $user = Auth::user();
         $countries = CountryState::getCountries('spa');
-        
+        $states = CountryState::getStates('MX');
+
         if($user->country){
             $states = CountryState::getStates($user->country);
-        }else{
-            $states = [];
         }
 
         asort($countries);
@@ -77,8 +76,7 @@ class ProfileUserController extends Controller
 
         } else {
 
-            return back()->with('errorB', 'Contraseña no coincide');
-
+            return back()->with('errorPassword', 'Contraseña no coincide');
         }
              
     }
@@ -141,7 +139,6 @@ class ProfileUserController extends Controller
 
                 'warehouse' => $request->warehouse, 
                 'fiscal_warehouse' => $request->fiscal_warehouse, 
-                'position' => $request->position, 
             ]
         );
 

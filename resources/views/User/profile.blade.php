@@ -23,11 +23,11 @@
       </div>
     @endif
 
-    @if (session('errorB'))
+    @if (session('errorPassword'))
       <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="icon fas fa-ban"></i>Alerta</h5>
-        <p>{{ session('errorB') }}</p>
+        <p>{{ session('errorPassword') }}</p>
       </div>
     @endif
 

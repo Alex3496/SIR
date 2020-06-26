@@ -74,7 +74,11 @@ class PublicController extends Controller
         $destinyLocation = Location::complete($request->location_destiny)->first();
 
         $tariffs = Tariff::where('type_tariff',$request->type_tariff)
-            ->where('origin',$originLocation->city)->where('destiny',$destinyLocation->city)->get();
+            ->origin($originLocation->city)
+            ->destiny($destinyLocation->city)
+            ->equipment($request->tpye_equipment)->get();
+
+        $request['tpye_equipment']= $this->translate($request->tpye_equipment);
 
         $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment']);
 
@@ -86,5 +90,16 @@ class PublicController extends Controller
     public function getCategories()
     {
         return $categories = Category::orderBy('name')->get();
+    }
+
+    public function translate($tpye_equipment)
+    {
+        if($tpye_equipment == 'Dry Box') return 'Caja Seca';
+        if($tpye_equipment == 'Refrigerated') return 'Caja Refrigerada';
+        if($tpye_equipment == 'Plataform') return 'Plataforma';
+        if($tpye_equipment == 'Container') return 'Contenedor';
+        if($tpye_equipment == 'Box') return 'Caja';
+        if($tpye_equipment == 'Package') return 'Bulto';
+        return 'Pallet';
     }
 }

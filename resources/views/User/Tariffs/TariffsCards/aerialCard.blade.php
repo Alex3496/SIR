@@ -46,7 +46,7 @@
           <div class="form-group col-md">
             {!! Form::label('origin', 'Ciudad origen') !!}
             <div class="input-group-sm">
-              {!! Form::text('origin',$tariffToUpdate->origin ?? '',['class' => 'form-control']) !!}
+              {!! Form::text('origin',$tariffToUpdate->origin ?? '',['class' => 'form-control','autocomplete' => 'off']) !!}
             </div>
             @error('origin')
               <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -80,7 +80,7 @@
           <div class="form-group col-md">
             {!! Form::label('destiny', 'Ciudad destino') !!}
             <div class="input-group-sm">
-              {!! Form::text('destiny',$tariffToUpdate->destiny ?? '',['class' => 'form-control']) !!}
+              {!! Form::text('destiny',$tariffToUpdate->destiny ?? '',['class' => 'form-control','autocomplete' => 'off']) !!}
             </div>
             @error('destiny')
               <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -171,7 +171,7 @@
           <div class="form-group col-md-2">
             {!! Form::label('rate','Tarifa * ') !!}<small style="color:gray">dlls.</small>
             <div class="input-group-sm">
-              {!! Form::text('rate',$tariffToUpdate->rate ?? '',['class' => 'form-control']) !!}
+              {!! Form::text('rate',$tariffToUpdate->rate ?? '',['class' => 'form-control','autocomplete' => 'off']) !!}
             </div>
             @error('rate')
               <small class="mt-0" style="color:red">{{ $message }}</small>

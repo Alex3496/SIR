@@ -24,11 +24,11 @@ class PostRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'category_id' => 'required|integer',
-            'title' => 'required',
-            'excerpt' => 'required', 
-            'body' => 'required',
-            'tags' => 'required|array',
+            'category_id'   => 'required|integer',
+            'title'         => 'required',
+            'excerpt'       => 'required', 
+            'body'          => 'required',
+            'tags'          => 'required|array',
         ];
 
         if ($this->request->get('image')) {
@@ -36,5 +36,17 @@ class PostRequest extends FormRequest
         }
 
         return $rules;
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'required'      => 'Este campo es requerido.',
+        ];
     }
 }

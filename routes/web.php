@@ -69,6 +69,12 @@ Route::namespace('User')->group(function(){
 	Route::get('tariffs/create/maritime','TariffsController@addMaritimeTariff')->name('tariff.maritimeAdd');
 
 	Route::get('tariffs/create/aerial','TariffsController@addAerialTariff')->name('tariff.aerialAdd');
+
+		//Booking routes
+
+	Route::get('booking/{id}','BookingController@show')->name('booking.show')->middleware('auth');
+
+	Route::get('booking/send/message','BookingController@sendMessage')->name('booking.send')->middleware('auth');
 });
 
 

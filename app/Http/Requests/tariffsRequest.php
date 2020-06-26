@@ -29,17 +29,17 @@ class tariffsRequest extends FormRequest
         $countries = array_keys($countries);
 
         $rules = [
-            'type_tariff' => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
-            'origin' => 'required|regex:/^[\pL\s\-]+$/u|max:50',
-            'origin_country' => ['required',Rule::in($countries)],
-            'origin_state' => 'required|string|max:3',
-            'destiny' => 'required|regex:/^[\pL\s\-]+$/u|max:50',
-            'destiny_country' => ['required',Rule::in($countries)],
-            'destiny_state' => 'required|string|max:3',
-            'approx_weight' => ['required','numeric','min:1','max:9999'],
-            'type_weight' => ['required','in:kg,lb'],
-            'distance' => ['numeric','nullable','max:9999999','min:0'],
-            'rate' => ['required','numeric','max:999999','min:1'],
+            'type_tariff'       => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
+            'origin'            => 'required|regex:/^[\pL\s\-]+$/u|max:50',
+            'origin_country'    => ['required',Rule::in($countries)],
+            'origin_state'      => 'required|string|max:3',
+            'destiny'           => 'required|regex:/^[\pL\s\-]+$/u|max:50',
+            'destiny_country'   => ['required',Rule::in($countries)],
+            'destiny_state'     => 'required|string|max:3',
+            'approx_weight'     => ['required','numeric','min:1','max:9999'],
+            'type_weight'       => ['required','in:kg,lb'],
+            'distance'          => ['numeric','nullable','max:9999999','min:0'],
+            'rate'              => ['required','numeric','max:999999','min:1'],
 
         ];
 
@@ -53,18 +53,18 @@ class tariffsRequest extends FormRequest
         }
 
         if ($this->request->get('type_tariff') == 'MARITIME') {
-            $rules['type_equipment'] = ['required','in:,Container 20 ft,Container 40 ft,Container 40 ft High cube'];
-            $rules['approx_weight'] = 'nullable';
-            $rules['type_weight'] = 'nullable'; 
-            $rules['distance'] = 'nullable';                             
+            $rules['type_equipment']    = ['required','in:,Container 20 ft,Container 40 ft,Container 40 ft High cube'];
+            $rules['approx_weight']     = 'nullable';
+            $rules['type_weight']       = 'nullable'; 
+            $rules['distance']          = 'nullable';                             
         }
 
         if ($this->request->get('type_tariff') == 'AERIAL') {
-            $rules['type_equipment'] = ['required','in:Box,Package,Pallet'];
-            $rules['distance'] = 'nullable';
-            $rules['height'] = ['required','numeric','min:1','max:100'];
-            $rules['width'] = ['required','numeric','min:1','max:100'];  
-            $rules['length'] = ['required','numeric','min:1','max:100'];                              
+            $rules['type_equipment']    = ['required','in:Box,Package,Pallet'];
+            $rules['distance']          = 'nullable';
+            $rules['height']            = ['required','numeric','min:1','max:100'];
+            $rules['width']             = ['required','numeric','min:1','max:100'];  
+            $rules['length']            = ['required','numeric','min:1','max:100'];                              
         }  
  
 
@@ -81,16 +81,13 @@ class tariffsRequest extends FormRequest
     public function messages()
     {
         return [
-            'origin.regex' => 'Only letters',
-            'destiny.regex' => 'Only letters',
-            'destiny.required' => 'This field is required',
-            'min_weight.required' => 'This field is required',
-            'max_weight.required' => 'This field is required',
-            'type_weight.required' => 'This field is required',
-            'distance.required' => 'This field is required',
-            'type_equipment.required' => 'This field is required',
-            'rate.required' => 'This field is required',
-            'type_equipment.in' => 'Invalid value',
+
+            'required'              => 'Este campo es requerido.',
+            'origin.regex'          => 'Solo caracteres alfabéticos.',
+            'destiny.regex'         => 'Solo caracteres alfabéticos.',
+            'in'                    => 'Valor inválido.',
+            'origin.max'            => 'Máximo 50 caracteres',
+            'destiny.max'           => 'Máximo 50 caracteres',
         ];
     }
 }

@@ -3,12 +3,12 @@
 <!-- Start Main -->
 <main id="main" style="background-image: url(images/barco.jpg);">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-12 col-lg-6">
+    <div class="row align-items-center" id="main-row">
+      <div class="col-lg-6" id="main-text">
         <h1>Realiza tus cotizaciones</h1>
         <h4>Por mar, tierra y aire con las empresas REGISTRADAS EN NUESTRO SITIO</h4>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-lg-6 ">
         <div id="quote-card">
           <form action="{{ route('tariffsResults') }}" method="GET">
             @csrf
@@ -51,15 +51,15 @@
               @enderror
             </div>
             <div class="form-group">
-              <label for="send-date">Fecha de envío</label>
-              <input type="date" class="form-control" id="send-date"/>
-            </div>
-            <div class="form-group">
               <label for="type-Load">Tipo de carga</label>
               <select class="custom-select" id="type-Load" name="tpye_equipment">
-                <option value="LCL" selected>LCL</option>
-                <option value="FLC">FLC</option>
-                <option value="BULK">BULK</option>
+                <option value="Dry Box" selected>{{__('Caja Seca')}}</option>
+                <option value="Refrigerated">{{__('Caja Refrigerada')}}</option>
+                <option value="Plataform">{{__('Plataforma')}}</option>
+                <option value="Container">{{__('Contenedor')}}</option>
+                <option value="Box">{{__('Caja')}}</option>
+                <option value="Package">{{__('Bulto')}}</option>
+                <option value="Pallet">{{__('Pallet')}}</option>
               </select>
             </div>
             <div class="row">

@@ -18,19 +18,19 @@ class UserRegRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
+     *  Rules for de admin user when creates a new user
      * @return array
      */
     public function rules()
     {
         $rules = [
-            'role' => 'required|in:1,2,3',
-            'company_name' => ['required', 'string', 'max:60','min:3'],
-            'position' => ['required', 'string', 'max:50','min:3'],
-            'name' => ['required', 'string', 'max:50','min:2'],
-            'phone' => 'required|numeric|regex:/[0-9]{10}/',
-            'email' => ['required', 'string', 'email', 'max:62', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed','max:50'],
+            'role'          => 'required|in:1,2,3',
+            'company_name'  => ['required', 'string', 'max:60','min:3'],
+            'position'      => ['required', 'string', 'max:50','min:3'],
+            'name'          => ['required', 'string', 'max:50','min:2'],
+            'phone'         => 'required|numeric|regex:/[0-9]{10}/',
+            'email'         => ['required', 'string', 'email', 'max:62', 'unique:users'],
+            'password'      => ['required', 'string', 'min:8', 'confirmed','max:50'],
         ];
 
         if($this->request->get('role') == '1'){
@@ -38,5 +38,18 @@ class UserRegRequest extends FormRequest
         }
 
         return $rules;
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+
+            'required'              => 'Este campo es requerido.',
+        ];
     }
 }

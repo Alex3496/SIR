@@ -24,11 +24,25 @@ class LocationRequest extends FormRequest
     public function rules()
     {
         return [
-            'city' => 'required|string|max:50',
-            'state' => 'required|string|max:3',
-            'country' => 'required|string|max:3',
-            'status' => 'required|in:ACCEPTED,PENDING,REJECTED'
-            
+            'city'      => 'required|string|max:50',
+            'state'     => 'required|string|max:3',
+            'country'   => 'required|string|max:3',
+            'status'    => 'required|in:ACCEPTED,PENDING,REJECTED'     
+        ];
+    }
+
+
+     /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'required'      => 'Este campo es requerido.',
+            'in'            => 'Valor inválido.',
+            'city.max'      => 'Máximo 50 caracteres.'
         ];
     }
 }

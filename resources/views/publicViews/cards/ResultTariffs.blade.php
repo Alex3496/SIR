@@ -33,8 +33,12 @@
 			<div  class="d-flex justify-content-center">
 				<h2>${{$tariff->rate}}</h2><span>dlls.</span>
 			</div>
+			<div class="text-center">
+				<small>{{__('Tipo de Contenedor')}} :</small><br>
+				<label>{{$tariff->get_type_equipment}}</label>
+			</div>
 			<div class="d-flex justify-content-center">
-				<a href="" class="btn btn-SIR btn-block">Accion</a>
+				<a href="{{route('booking.show',$tariff->id)}}" class="btn btn-SIR btn-block">{{__('Booking')}}</a>
 			</div>
 			</div>
 		</div>
