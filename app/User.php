@@ -41,15 +41,22 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    //----------------RELATIONS--------------
+    //----------------RELATIONS--------------------
     public function roles()
     {
         return $this->belongsToMany(Role::class);
     }
 
+    //user can create/owns many tariffs
     public function tariffs()
     {
         return $this->hasMany(Tariff::class);
+    }
+
+    //user can save many tariffs in his "favorite list"
+    public function tariffsFav()
+    {
+        return $this->belongsToMany(Tariff::class);
     }
 
     public function posts()

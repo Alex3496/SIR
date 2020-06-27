@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\user;
 
-use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
+use Illuminate\Support\Facades\Auth; /*IMPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Save;
 
 class HomeController extends Controller
 {
@@ -25,10 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
+        $user = Auth::user();
 
-        return view('User.home',[
-            'user' => $user
+        $tariffsSaved = $user->tariffsFav;
+
+        return view('User.home.index',[
+            'user'          => $user,
+            'tariffsSaved'  => $tariffsSaved,
         ]);
     }
 }

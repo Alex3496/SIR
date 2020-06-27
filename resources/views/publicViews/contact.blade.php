@@ -37,36 +37,50 @@
   <div class="row">
     <div class="col-md-8">
 
-      <form action="">
+
+
+      {!! Form::open(['route' => 'infomation.send', 'method' => 'GET']) !!}
         <div class="form-group row">
           <div class="col-md-6">
-            <label for="name" class="">Nombre</label>
-            <input type="text" class="form-control" name="name" id="name">
+            {!! Form::label('name','Nombre *') !!}
+            {!! Form::text('name',null,['class' => 'form-control','autocomplete' => 'off']) !!}
+            @error('name')
+              <small class="mt-0" style="color:red">{{ $message }}</small>
+            @enderror
           </div>
           <div class="col-md-6">
-            <label for="lastName" class="">Apellido</label>
-            <input type="text" class="form-control" name="lastName" id="lastName">
+            {!! Form::label('lastName','Apellido *') !!}
+            {!! Form::text('lastName',null,['class' => 'form-control','autocomplete' => 'off']) !!}
+            @error('lastName')
+              <small class="mt-0" style="color:red">{{ $message }}</small>
+            @enderror
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-md-6">
-            <label for="email" class="">Correo</label>
-            <input type="email" class="form-control" name="email" id="email">
+            {!! Form::label('email','Correo *') !!}
+            {!! Form::email('email',null,['class' => 'form-control']) !!}
+            @error('email')
+              <small class="mt-0" style="color:red">{{ $message }}</small>
+            @enderror
           </div>
           <div class="col-md-6">
-            <label for="phone" class="">Telefono</label>
-            <input type="tel" class="form-control" name="phone" id="phone">
+            {!! Form::label('phone','Teléfono') !!}
+            {!! Form::text('phone',null,['class' => 'form-control','autocomplete' => 'off']) !!}
+            @error('phone')
+              <small class="mt-0" style="color:red">{{ $message }}</small>
+            @enderror
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-md-8">
-            <label for="message" class="">Mensaje</label>
-            <textarea type="text" class="form-control" name="message" id="message" rows="5"> </textarea>
+            {!! Form::label('message','Mensaje *') !!}
+            {!! Form::textarea('message',null,['class' => 'form-control', 'rows' => 5,'autocomplete' => 'off']) !!}
+            @error('message')
+              <small class="mt-0" style="color:red">{{ $message }}</small>
+            @enderror
           </div>
         </div>
-
         <div class="form-group row">
           <div class="col-md-8">
             <button type="submit" class="btn btn-SIR ml-auto">
@@ -74,7 +88,8 @@
             </button>
           </div>
         </div>
-      </form>
+      {!! Form::close() !!}
+
     </div>
   </div>
 </div>

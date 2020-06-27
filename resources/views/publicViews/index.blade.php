@@ -3,6 +3,19 @@
 <!-- Start Main -->
 <main id="main" style="background-image: url(images/barco.jpg);">
   <div class="container">
+
+    <div class="row">
+      <div class="col">
+        @if (session('status'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('status') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+      </div>
+    </div>
     <div class="row align-items-center" id="main-row">
       <div class="col-lg-6" id="main-text">
         <h1>Realiza tus cotizaciones</h1>

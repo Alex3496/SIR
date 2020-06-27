@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\User;
 
+use App\{Tariff,Location};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\{Tariff,Location};
 use App\Http\Requests\tariffsRequest;
 
 use CountryState;
@@ -144,7 +144,7 @@ class TariffsController extends Controller
     public function edit($id)
     {
         $user=Auth::user();
-        $tariffToUpdate=Tariff::find($id);
+        $tariffToUpdate=Tariff::findOrFail($id);
         
         $this->authorize('pass',$tariffToUpdate);
 
@@ -213,7 +213,7 @@ class TariffsController extends Controller
      */
     public function update(tariffsRequest $request, $id)
     {
-        $tariffToUpdate=Tariff::find($id);
+        $tariffToUpdate=Tariff::findOrFail($id);
 
         $this->authorize('pass',$tariffToUpdate);
          $request['origin'] = ucwords(strtolower($request->origin));
@@ -257,7 +257,7 @@ class TariffsController extends Controller
     public function destroy(Tariff $tariff)
     {
 
-        $tariffToDelete=Tariff::find($tariff->id);
+        $tariffToDelete=Tariff::findOrFail($tariff->id);
 
         $this->authorize('pass',$tariffToDelete);  
 

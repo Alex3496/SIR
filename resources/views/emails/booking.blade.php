@@ -89,7 +89,7 @@
                 <li><b>{{__('Fecha de envio')}}:</b> {{$user['date']}}</li>
               @endif
               @if($user['message'])
-                <li><b>{{__('Mesanje')}}</b><br><p>$user['message']</p></li>
+                <li><b>{{__('Mesanje')}}</b><br><p>{{$user['message']}}</p></li>
               @endif
             </ul>
             <hr>

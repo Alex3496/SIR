@@ -110,6 +110,8 @@ class PostController extends Controller
 
         $postToUpdate->update($request->all());
 
+        $postToUpdate->tags()->sync($request['tags']);
+
         if ($request->file('image')) {
 
             Storage::disk('public')->delete($postToUpdate->image);

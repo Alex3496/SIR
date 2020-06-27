@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\SearchTeariffsRequest;
+use App\Mail\InfoMessage;
+use Illuminate\Support\Facades\Mail;
 use App\{Post,Category,Location,Tariff};
+use App\Http\Requests\{SearchTeariffsRequest,InformationRequest};
 
 class PublicController extends Controller
 {
@@ -83,6 +85,15 @@ class PublicController extends Controller
         $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment']);
 
         return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch'));
+    }
+
+    public function sendInformation(InformationRequest $request)
+    {
+        $information = $request->all();
+
+        Mail::to('informacion@ibookingsystem.com')->send(new InfoMessage($request));
+
+        return redirect()->route('principal')->with('status','Tu mensaje ha sido enviado, recibiras una repuesta proximamente');
     }
 
 /*------------------------------Methods-----------------------------------*/

@@ -33,6 +33,8 @@ Route::get('categoria/{name}', 'PublicController@postsCategories')->name('posts.
 
 Route::get('/tariffs-results/', 'PublicController@tariffsResults')->name('tariffsResults');
 
+Route::get('/infomation/send', 'PublicController@sendInformation')->name('infomation.send');
+
 
 //USER ROUTES
 
@@ -75,6 +77,10 @@ Route::namespace('User')->group(function(){
 	Route::get('booking/{id}','BookingController@show')->name('booking.show')->middleware('auth');
 
 	Route::get('booking/send/message','BookingController@sendMessage')->name('booking.send')->middleware('auth');
+
+	Route::get('booking/{id}/save', 'BookingController@saveBooking')->name('booking.save')->middleware('auth');
+
+	Route::get('booking/{id}/remove', 'BookingController@removeBooking')->name('booking.remove')->middleware('auth');
 });
 
 

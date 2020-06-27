@@ -97,7 +97,7 @@
                 </div>
               </div>
               <div class="d-flex justify-content-center mb-3">
-              	<a href="{{route('booking.send')}}" class="btn btn-secondary btn-block">{{ __('Guardar') }}</a>
+              	<a href="{{route('booking.save',$tariff->id)}}" class="btn btn-secondary btn-block">{{ __('Guardar') }}</a>
               </div>
             </div>
           </div>

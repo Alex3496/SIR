@@ -16,9 +16,15 @@ class Tariff extends Model
     
 
     //--------------Relations----------------//
+    
     public function user()
     {
     	return $this->belongsTo(User::class);
+    }
+
+    public function userfav()
+    {
+        return $this->belongsToMany(User::class);
     }
 
     //--------------SCOPES----------------//
@@ -43,6 +49,7 @@ class Tariff extends Model
             return $query->where('type_equipment','LIKE',"$type_equipment%");
         }
     }
+
 
     //--------------ATRIBUTTES------------------
     

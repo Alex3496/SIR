@@ -10,8 +10,18 @@
 @endif
 <div class="container">
 	<div class="row">
-		<div class="col text-center">
-			<h2>No Tienes niniguna tarifa guarda</h2>
+		<div class="col">
+
+			@if(!$tariffsSaved->isEmpty())
+			<h2>{{__('Lista de tarifas guardadas')}}</h2>
+				@foreach($tariffsSaved as $tariff)
+					@include('User.home.cards.tariff')
+				@endforeach
+			@else
+			<h2 class="text-center">{{__('No tienes ninguna tarifa gaurdada')}}</h2>
+			@endif
+
+
 		</div>
 	</div>
 </div>
