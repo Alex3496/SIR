@@ -70,7 +70,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $category = Category::where('id',$id)->first();
+        $category = Category::findOrFail($id);
 
         return view('Admin.categories.edit',compact('category','user'));
     }
@@ -107,7 +107,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::where('id',$id)->first();
+        $category = Category::findOrFail($id);
 
         $category->delete();
 

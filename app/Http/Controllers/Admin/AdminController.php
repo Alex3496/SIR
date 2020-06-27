@@ -26,7 +26,7 @@ class AdminController extends Controller
 	
     public function index()
     {   
-    	$usersCount = Role::find(3)->users->count();
+    	$usersCount = Role::findOrFail(3)->users->count();
         $usersMonth = User::whereMonth('created_at','=',$this->month)->whereYear('created_at','=', $this->year)
             ->whereHas('roles', function($q){$q->where('name', 'user');})->count(); //Do scope
 

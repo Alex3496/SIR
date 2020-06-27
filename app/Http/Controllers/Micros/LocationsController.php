@@ -10,7 +10,12 @@ use CountryState;
 class LocationsController extends Controller
 {
     
-
+	/**
+	*	get states of a country
+	*
+	*	@param $code string - ex. US 
+	*	@return array
+	*/
 	public function  getStates($code)
 	{
 		$states = CountryState::getStates($code);
@@ -20,10 +25,16 @@ class LocationsController extends Controller
 		return $states;
 	}
 
+	/**
+	*	get concidences of table locations
+	*
+	*	@param $code string
+	*	@return array
+	*/
 	public function getLocations($code)
 	{
 
-		$locations = Location::where('location_complete','LIKE',"$code%")->pluck('location_complete','id');
+		$locations = Location::where('location_complete','LIKE',"%$code%")->pluck('location_complete','id');
 
 		return $locations;
 	}

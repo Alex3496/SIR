@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\{User,Role,company_dataset,Insurance};
+use App\{User,Role,company_dataset,Insurance,Tariff};
 use Illuminate\Http\Request;
 use App\Http\Requests\{ProfileRequest,CompanyRequest,datasetRequest,insuranceRequest,UserRegRequest};
 use CountryState;
@@ -206,6 +206,13 @@ class UserController extends Controller
         //dd($user);
 
         $user->roles()->detach();
+
+        //Detach tariff's user of all the favs of users
+        $tariffsUser = Tariff::where('user_id',$user->id)->get();
+
+        foreach ($tariffsUser as $tariff) {
+            $tariff->userfav()->detach();
+        }
 
         $user->delete();
 

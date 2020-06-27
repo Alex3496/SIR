@@ -83,7 +83,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $user = Auth::user();
 
         if($user->hasRole('editor')) $this->authorize('pass',$post);
@@ -104,7 +104,7 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, $id)
     {
-        $postToUpdate = Post::find($id);
+        $postToUpdate = Post::findOrFail($id);
 
         if(Auth::user()->hasRole('Editor')) $this->authorize('pass',$postToUpdate);
 
@@ -130,7 +130,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
 
         if(Auth::user()->hasRole('Editor')) $this->authorize('pass',$post);
 

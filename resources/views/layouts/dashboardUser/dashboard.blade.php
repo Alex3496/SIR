@@ -49,12 +49,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{$user->name}}
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-header">Options</span>
+          <span class="dropdown-header">{{__('Opciones')}}</span>
           <div class="dropdown-divider"></div>
           <a href="{{ route('logout') }}" 
              class="dropdown-item" 
              onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-            <i class="fas fa-sign-out-alt mr-2"></i> Log out
+            <i class="fas fa-sign-out-alt mr-2"></i>{{__('Cerrar sesión')}}
           </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -78,12 +78,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row mb-2">
           <div class="col-sm-6">
            
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

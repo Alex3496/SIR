@@ -259,7 +259,10 @@ class TariffsController extends Controller
 
         $tariffToDelete=Tariff::findOrFail($tariff->id);
 
-        $this->authorize('pass',$tariffToDelete);  
+        $this->authorize('pass',$tariffToDelete); 
+
+        //detach all tariffs of users fav list 
+        $tariffToDelete->userfav()->detach();
 
         $tariffToDelete->delete();
 

@@ -101,7 +101,7 @@ class LocationController extends Controller
     public function edit($id)
     {
         $user= Auth::user();
-        $location = Location::find($id);
+        $location = Location::findOrFail($id);
         $countries = CountryState::getCountries('spa');
         $states = CountryState::getStates($location->country_code);
         asort($countries);
@@ -128,7 +128,7 @@ class LocationController extends Controller
 
         if(is_null($location)){
 
-            $locationToUpdate = Location::find($id);
+            $locationToUpdate = Location::findOrFail($id);
 
             $locationToUpdate->city = $request->city;
             $locationToUpdate->state = $state;
@@ -155,7 +155,7 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        $location = Location::find($id);
+        $location = Location::findOrFail($id);
 
         $location->delete();
 
