@@ -49,7 +49,12 @@
           </li>
           @if (Route::has('login'))
             @auth
-              <a href="{{ url('/home') }}" class="btn btn-outline-dark ml-lg-2">Cuenta</a>
+              @if(Auth::user()->hasRole('admin'))
+                <a href="{{ route('admin.index') }}" class="btn btn-outline-dark ml-lg-2">Cuenta</a>
+              @else
+                <a href="{{ url('/home') }}" class="btn btn-outline-dark ml-lg-2">Cuenta</a>
+              @endif
+
             @else
               <li>
                 <a href="{{ route('login') }}" class=" btn btn-SIR ml-lg-4" style="color:white;">Iniciar sesión</a>
