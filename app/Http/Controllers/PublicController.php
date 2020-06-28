@@ -14,7 +14,12 @@ class PublicController extends Controller
 
     public function index()
     {
-    	return view('publicViews.index');
+
+        $posts = Post::orderBy('id', 'desc')->take(9)->get();
+
+        /*dd($posts);*/
+
+    	return view('publicViews.index',compact('posts'));
     }
 
     public function aboutUs()

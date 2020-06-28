@@ -13,12 +13,12 @@ class DatabaseSeeder extends Seeder
     {
     	//calls all the seeders
 
-       /* factory(App\Category::class, 5)->create();
-        factory(App\Tag::class,12)->create();*/
+        factory(App\Category::class, 5)->create();
+        factory(App\Tag::class,12)->create();
 
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-        /*$this->call(TariffsTableSeeder::class);
-        $this->call(PostTableSeeder::class);*/
+        $this->call(TariffsTableSeeder::class);
+        $this->call(PostTableSeeder::class);
     }
 }

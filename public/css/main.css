@@ -1,5 +1,5 @@
 /*-----------VARIABLES-------------*/
-
+@import url("https://fonts.googleapis.com/css2?family=Heebo&display=swap");
 :root {
     --main-color: #374a9d;
     --main-hover-color: #05a4e6;
@@ -40,6 +40,9 @@
 }
 
 /*-----------MAIN-------------*/
+body{
+    font-family: 'Heebo', sans-serif;
+}
 
 main {
     background-position: center;
@@ -77,12 +80,49 @@ main {
 }
 
 /*-----------NEWS-------------*/
+.container-news{
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+}
+
+#carouselExampleIndicators
+{
+    min-height:35rem; 
+}
 
 #cuadro {
     height: 7px;
     width: 168px;
     background-color: var(--gray-page);
     margin: auto;
+}
+
+.card-news{
+    max-width: 25rem;
+    margin: 1rem 0;
+    border: solid 1px;
+    border-color: var(--gray-light);
+    font-size: 12px;
+}
+
+.button-carousel-left{
+    padding: 10px 15px 10px 10px;
+    margin: 10px;
+    border-radius: 30px; 
+}
+
+.button-carousel-rigth{
+    padding: 10px 10px 10px 15px;
+    margin: 10px;
+    border-radius: 30px; 
+}
+
+.button-carousel-left img, .button-carousel-rigth img{
+    height: 20px;
+}
+
+.rotate{
+    transform: rotate(-180deg)
 }
 
 /*-----------FOOTER-------------*/

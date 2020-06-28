@@ -88,21 +88,64 @@
 </main>
 <!-- End Main -->
 <!-- START NEWS -->
-<section id="news">
-  <div class="container">
-    <div class="row text-center">
+<div class="container container-news">
+  <div class="row text-center">
       <div class="col">
-        <h2>Ultimas noticias</h2>
+        <h2>{{__('Últimas noticias')}}</h2>
         <div id="cuadro"> </div>
       </div>
     </div>
-    <div class="row text-center">
-      <div class="col mt-5 mb-5">
-        <h1>No hay noticias</h1>
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row justify-content-center">
+          @for ($i = 0; $i < count($posts); $i++)
+            @if($i > 2)
+              @continue
+            @endif
+            @include('publicViews.cards.post')
+          @endfor 
+        </div>
       </div>
+      @if(count($posts) > 3)
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          @for ($i = 0; $i < count($posts); $i++)
+            @if($i < 3 || $i > 5 )
+              @continue
+            @endif
+            @include('publicViews.cards.post')
+          @endfor 
+        </div>
+      </div>
+      @endif
+      @if(count($posts) > 6)
+      <div class="carousel-item">
+        <div class="row justify-content-center">
+          @for ($i = 0; $i < count($posts); $i++)
+            @if($i < 6)
+              @continue
+            @endif
+            @include('publicViews.cards.post')
+          @endfor 
+        </div>
+      </div>
+      @endif
     </div>
   </div>
-</section>
+  <div class="row align-items-center" >
+      <div class="col text-center">
+        <a class="button-carousel-left btn-SIR" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <img src="{{asset('images/logos/flecha.png')}}">
+        </a>
+      </div>
+      <div class="col text-center">
+        <a class="button-carousel-rigth btn-SIR" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <img src="{{asset('images/logos/flecha.png')}}" class="rotate">
+        </a>
+      </div>
+  </div>
+</div>
 <!-- End NEWS -->
 @endsection
 @section('scripts')
