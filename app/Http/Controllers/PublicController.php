@@ -80,10 +80,14 @@ class PublicController extends Controller
         $originLocation = Location::complete($request->location_origin)->first();
         $destinyLocation = Location::complete($request->location_destiny)->first();
 
-        $tariffs = Tariff::where('type_tariff',$request->type_tariff)
-            ->origin($originLocation->city)
-            ->destiny($destinyLocation->city)
-            ->equipment($request->tpye_equipment)->get();
+        if($destinyLocation != null && $originLocation != null){
+            $tariffs = Tariff::where('type_tariff',$request->type_tariff)
+                ->origin($originLocation->city)
+                ->destiny($destinyLocation->city)
+                ->equipment($request->tpye_equipment)->get();
+        }else{
+            $tariffs = collect(); //empty collection
+        }
 
         $request['tpye_equipment']= $this->translate($request->tpye_equipment);
 

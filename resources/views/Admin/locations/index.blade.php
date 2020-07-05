@@ -55,8 +55,8 @@
             <a href="{{ route('admin.locations.create') }}" class="btn btn-secondary mr-3">{{__('Crear nueva ubucación')}}</a>
           </div>
 					</div>
-					<div class="card-body">
-						<table id="example2" class="table table-hover">
+					<div class="card-body table-responsive">
+						<table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
                 <th>Id</th>
@@ -121,12 +121,12 @@
     });
     $("#example2").DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": false,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
     });
   }); 
 </script>

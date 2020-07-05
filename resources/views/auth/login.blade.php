@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card">
+      <div class="card mt-5">
         <div class="card-body">
           <h3 class="text-center mb-4">{{ __('Iniciar sesión') }}</h3>
           <form method="POST" action="{{ route('login') }}">
@@ -26,14 +26,6 @@
                   <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-md-6 offset-md-2">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/>
-                  <label class="form-check-label" for="remember">{{ __('Recuérdeme') }}</label>
-                </div>
               </div>
             </div>
             <div class="form-group row mb-0">

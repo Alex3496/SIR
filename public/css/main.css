@@ -310,6 +310,9 @@ main {
     max-height: 64px;
 }
 
+#tariff-right-card{
+    min-height: 18rem;
+}
 /*==============Booking VIEW =================*/
 
 /*------------------------------------------*/

@@ -65,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4" style="background-color: #c8c8c8">
       @include('layouts.dashboardAdmin.sideNavBar')
   </aside>
 

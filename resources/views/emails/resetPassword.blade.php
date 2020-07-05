@@ -5,7 +5,7 @@
     <style type="text/css">
       img{
         margin: 1rem;
-        height: 64px;
+        max-height: 64px;
       }
       body{
         font-family: 'Heebo', sans-serif;

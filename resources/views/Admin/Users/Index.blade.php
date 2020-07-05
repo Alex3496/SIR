@@ -44,7 +44,7 @@
             <a href="{{ route('admin.users.create') }}" class="btn btn-secondary mr-3">{{__('Crear Usuario')}}</a>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -112,12 +112,12 @@
     });
     $("#example2").DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false,
+          "responsive": true,
     });
   }); 
 </script>
