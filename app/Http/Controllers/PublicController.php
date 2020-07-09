@@ -100,7 +100,7 @@ class PublicController extends Controller
     {
         $information = $request->all();
 
-        Mail::to('informacion@ibookingsystem.com')->send(new InfoMessage($request));
+        Mail::to('info@ibookingsystem.com')->send(new InfoMessage($request));
 
         return redirect()->route('principal')->with('status','Tu mensaje ha sido enviado, recibiras una repuesta proximamente');
     }
