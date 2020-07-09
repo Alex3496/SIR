@@ -18,8 +18,13 @@
     </div>
     <div class="row align-items-center" id="main-row">
       <div class="col-lg-6" id="main-text">
-        <h1>Realiza tus cotizaciones</h1>
-        <h4>Por mar, tierra y aire con las empresas REGISTRADAS EN NUESTRO SITIO</h4>
+        <h1>
+          <b>S</b>istema <br>
+          <b>I</b>ntermodar de <br>
+          <b>R</b>eservaciones.  
+        </h1>
+        <h3>Realiza tus cotizaciones</h3>
+        <h4>Por mar, tierra y aire con las con las empreasas que tenemos registradas.</h4>
       </div>
       <div class="col-lg-6 ">
         <div id="quote-card">
@@ -87,6 +92,82 @@
   </div>
 </main>
 <!-- End Main -->
+<div class="container" id="information">
+  <div class="row mt-5">
+    <div class="col-md-7 d-flex flex-column justify-content-center ">
+      <h3 class="mb-4">Quienes somos:</h3>
+      <p class="text-justify">Somos una compaña que ofrece servicio online de reservaciones para envíos de mercancía en todo México y Latinoamérica, con un equipo de expertos que te acompañará en todo momento. Recibirás ayuda comercial y operativa especializada a lo largo de todo el proceso de importación o exportación de tu mercancía.</p>
+    </div>
+    <div class="col-md mt-2">
+      <img src="{{asset('images/contenedores.jpg')}}" class="img-fluid image">
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-7 d-flex flex-column justify-content-center order-md-2">
+      <h3>Con tecnología SIR:</h3>
+      <p class="text-justify">SIR es la plataforma web disruptiva con la que los importadores y exportadores comparan tarifas en tiempo real, con SIR hace posible la reserva integral de envíos comerciales en pocos minutos, sin necesidad de esperar días o semanas por una cotización.</p>
+      <p class="text-justify">
+        Gestionar con éxito la compleja cadena de transporte internacional exige no sólo tecnología, sino un gran equipo de profesionales de la logística.
+      </p>
+      <p class="text-justify">Ellos están al otro lado de nuestra plataforma, asesorando y gestionando cada envío para garantizar que sea rentable, seguro y eficiente.</p>
+    </div>
+    <div class="col-md order-md-1 mt-2">
+      <img src="{{asset('images/camion.jpg')}}" class="img-fluid image">
+    </div>
+  </div>
+</div>
+
+<div class="container" id="info-user">
+    <h2 class="text-center mt-5">Escoge tu tipo de usuario.</h2>
+    <div id="cuadro"></div>
+  <div class="row mt-4">
+    <div class="col-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center">Shipper <br><small style="color:gray">Persona o empresa exportador</small></h5>
+        <ul>
+          <li>Realiza cotizaciones en tiempo real</li>
+          <li>Encuentra la mejor tarifa para tu empresa</li>
+          <li>Cotiza transporte terrestre en camión, tren</li>
+          <li>Cotiza transporte aéreo</li>
+          <li>Cotiza transporte marítimo</li>
+          <li>Empresas certificadas (C-TPAT /OEA)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center">Transportista</h5>
+        <ul class="m-top">
+          <li>Encuentra empresas exportadoras seguras</li>
+          <li>Incrementa tu cartera de clientes</li>
+          <li>Ofrece tus tarifas en tiempo real</li>
+          <li>Somos tu agente de ventas</li>
+          <li>Convierte tu empresa en una empresa calificada</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center">Broker</h5>
+        <ul class="m-top">
+          <li>Encuentra empresas certificadas (C-TPAT /OEA)</li>
+          <li>Incrementa tu cartera de clientes</li>
+          <li>Ofrece tus tarifas en tiempo real</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    @auth
+
+    @else
+      <a href="{{ route('register') }}" class="btn btn-SIR col-sm-3" style="width: 70%">Registrate</a>
+    @endauth
+  </div>
+</div>
+
+
 <!-- START NEWS -->
 <div class="container container-news">
   <div class="row text-center">

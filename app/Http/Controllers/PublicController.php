@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\InfoMessage;
 use Illuminate\Support\Facades\Mail;
-use App\{Post,Category,Location,Tariff};
+use App\{Post,Category,Location,Tariff,Faq};
 use App\Http\Requests\{SearchTeariffsRequest,InformationRequest};
 
 class PublicController extends Controller
@@ -16,8 +16,6 @@ class PublicController extends Controller
     {
 
         $posts = Post::orderBy('id', 'desc')->take(9)->get();
-
-        /*dd($posts);*/
 
     	return view('publicViews.index',compact('posts'));
     }
@@ -34,7 +32,9 @@ class PublicController extends Controller
 
     public function Faqs()
     {
-        return view('publicViews.FAQs');
+        $faqs = Faq::orderBy('id', 'desc')->get();
+
+        return view('publicViews.FAQs',compact('faqs'));
     }
 
     public function posts()

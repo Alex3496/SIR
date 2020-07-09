@@ -11,24 +11,23 @@
   </div>
   <div class="row" >
     <div class="col-md-6 offset-md-3">
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-        tempor incididunt ut labore et dolore magna aliqua. </p>
+      <p class="text-center">
+        ¿Tienes alguna duda o pregunta? No dudes en contactarnos o puedes enviarnos un mensaje con tu información de contacto, junto con un mensaje explicando tu situación y nosotros te responderemos en la brevedad posible.
+      </p>
     </div>
   </div>
   <div class="row text-center mt-5" >
     <div class="col-md-4 ">
       <img src="{{asset('images/logos/tel.png')}}" alt="telephone">
-      <p>1-800-6543-765 1-800-3434-876</p>
+      <p>+52-664-440-2028</p>
     </div>
     <div class="col-md-4">
       <img src="{{asset('images/logos/gps.png')}}" alt="telephone">
-      <div>2130 Fulton Street, Chicago, IL
-        94117-1080 USA</div>
+      <div>Baja Malibu 4065 Col. Loma Bonita, CP. 22200 Tijuana B.C. México</div>
     </div>
     <div class="col-md-4">
       <img src="{{asset('images/logos/mail.png')}}" alt="telephone">
-      <p>soporte@ibookingsystem.com</p>
+      <p>info@ibookingsystem.com</p>
     </div>
   </div> 
 </div>

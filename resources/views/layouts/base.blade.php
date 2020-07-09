@@ -33,9 +33,6 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Reservas</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{{route('posts')}}">Blog</a>
           </li>
           <li class="nav-item">
@@ -86,13 +83,13 @@
   <footer id="footer">
     <div class="container ">
       <div class="row">
-        <div class="col-1">
-          <a href=""><img id=logo src="{{ asset('images/logos/logo.png') }}"></a>
+        <div class="col col-md-2 d-flex justify-content-center">
+          <a href="{{route('principal')}}"><img id=logo src="{{ asset('images/logos/logo.png') }}"></a>
         </div>
-        <div class="col-8 text-center">
-          <h4>© 2020 Todos los derechos reservados. IBooking System</h4>
+        <div class="col col-md-6 text-center">
+          <p style="margin-top: 24PX">© 2020 Todos los derechos reservados. IBooking System</p>
         </div>
-        <div class="col">
+        <div class="col-md d-flex justify-content-center mt-4">
           <a href="" class="social"><img src="{{asset('images/logos/facebook.png')}}" alt="facebook"></a>
 
           <a href="" class="social"><img src="{{asset('images/logos/twitter.png')}}" alt="twitter"></a>

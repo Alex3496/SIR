@@ -102,6 +102,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 	Route::resource('categories','CategoryController',['except' =>'show']);
 
 	Route::resource('tags','TagController',['except' =>'show']);
+
+	Route::resource('faqs','FAQsController',['except' =>'show']);
 });
 
 // ONLY FOR ADMIN

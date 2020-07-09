@@ -47,7 +47,7 @@ class VerifyEmailNotification extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::get('Verify Email Address'))
+            ->subject(Lang::get('Verificar correo electrónico'))
             ->view('emails.verifyEmail',compact('verificationUrl'));
             
     }
