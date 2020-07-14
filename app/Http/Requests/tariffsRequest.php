@@ -40,6 +40,7 @@ class tariffsRequest extends FormRequest
             'type_weight'       => ['required','in:kg,lb'],
             'distance'          => ['numeric','nullable','max:9999999','min:0'],
             'rate'              => ['required','numeric','max:999999','min:1'],
+            'currency'          => ['required','in:USD,MXN']
 
         ];
 

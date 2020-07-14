@@ -27,7 +27,7 @@ class InformationRequest extends FormRequest
             'name'      => 'required|string|max:25',
             'lastName'  => 'required|string|max:25',
             'email'     => 'required|email|max:35',
-            'phone'     => 'nullable|numeric|max:12',
+            'phone'     => 'nullable|numeric|digits_between :7,12',
             'message'   => 'required|string|max:300',
         ];
     }
@@ -46,6 +46,7 @@ class InformationRequest extends FormRequest
             'email.max'     => 'Máximo 35 caracteres.',
             'phone.max'     => 'Máximo 12 dígitos.',
             'message.max'   => 'Máximo 300 caracteres.',
+            'digits_between'=> 'El numero telefonico debe de tener entre 7 y 12 digitos',
         ];
     }
 }

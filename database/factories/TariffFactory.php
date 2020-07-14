@@ -17,5 +17,6 @@ $factory->define(App\Tariff::class, function (Faker $faker) {
         'distance' => rand(150,2000),
         'type_equipment' => $faker->randomElement(['Dry Box 48 ft','Dry Box 53 ft','Refrigerated Box 53 ft','Plataform 53 ft']),
         'rate' => rand(100,5000),
+        'currency' => 'MXN'
     ];
 });

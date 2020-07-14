@@ -31,7 +31,7 @@
 			</div>	
 			<div class="col-md-4 d-flex flex-column justify-content-around" id="tariff-right-card">
 			<div  class="d-flex justify-content-center">
-				<h2>${{$tariff->rate}}</h2><span>dlls.</span>
+				<h2>${{$tariff->rate}}</h2><span> {{$tariff->currency}}</span>
 			</div>
 			<div class="text-center">
 				<small>{{__('Tipo de Contenedor')}} :</small><br>

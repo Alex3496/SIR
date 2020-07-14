@@ -24,7 +24,7 @@
           <td>{{ $tariff->destiny }}</td>
           <td>{{ $tariff->get_type_equipment }}</td>
           <td>{{ $tariff->approx_weight }} {{ $tariff->type_weight }}</td>
-          <td>$ {{ $tariff->rate }}</td>
+          <td>$ {{ $tariff->rate }} {{$tariff->currency}}</td>
           <td>
             <div class="d-flex justify-content-center">
               <!-- Edit button -->

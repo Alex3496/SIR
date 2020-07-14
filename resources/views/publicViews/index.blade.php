@@ -92,6 +92,100 @@
   </div>
 </main>
 <!-- End Main -->
+
+<!-- form track-trace -->
+<div class="container-fluid d-flex align-items-center" id="track-trace">
+
+  <div class="container">
+     <div>
+    <h3>
+      Rastrea tu contenedor.
+    </h3>
+    <p>Selecciona la empresa encargada de tu contenedor y el numero de seguimiento.</p>
+  </div>
+    <form action="https://connect.track-trace.com/for/panaderia" method="post" target="_blank">
+      <div class="row">
+        <div class="col-md mt-4">
+          <select name="shipper" class="form-control">
+              <option value="">Select</option>
+              <option value="aircargo">Air Cargo</option>
+              <option value="postems">Post/EMS</option>
+              <option value="container">Container</option>
+              <option value="billoflading">Bill Of Lading</option>
+              <option value="aduiepyle">A. Duie Pyle</option>
+              <option value="aaacooper">AAA Cooper</option>
+              <option value="americanlinehaul">American Linehaul</option>
+              <option value="carlile">Carlile</option>
+              <option value="centralfreightlines">Central Freight Lines</option>
+              <option value="centraltransport">Central Transport</option>
+              <option value="cevalogistics">CEVA Logistics</option>
+              <option value="clarke">Clarke</option>
+              <option value="clearlane">Clear Lane</option>
+              <option value="combinedexpress">Combined Express</option>
+              <option value="csatransportation">CSA Transportation</option>
+              <option value="dayross">Day & Ross</option>
+              <option value="daylighttransport">Daylight Transport</option>
+              <option value="daytonfreight">Dayton Freight</option>
+              <option value="dbschenkerusa">DB Schenker USA</option>
+              <option value="dependable">Dependable</option>
+              <option value="dhl">DHL</option>
+              <option value="dhlgf">DHL G. F. </option>
+              <option value="dohrntransfer">Dohrn Transfer</option>
+              <option value="doubledexpress">Double D Express</option>
+              <option value="dsv">DSV</option>
+              <option value="ediexpress">EDI Express</option>
+              <option value="estes">Estes</option>
+              <option value="fedex">Fedex</option>
+              <option value="forwardair">Forward Air</option>
+              <option value="hercules">Hercules</option>
+              <option value="jpexpress">JP Express</option>
+              <option value="kuehnenagel">Kuehne + Nagel</option>
+              <option value="landairexpress">Land Air Express</option>
+              <option value="lynden">Lynden</option>
+              <option value="maldivesports">Maldives Ports</option>
+              <option value="manitoulintransport">Manitoulin Transport</option>
+              <option value="midwestmotorexpress">Midwest Motor Express</option>
+              <option value="newpenn">New Penn</option>
+              <option value="olddominion">Old Dominion</option>
+              <option value="panther">Panther</option>
+              <option value="parcelforce">Parcelforce</option>
+              <option value="pittohio">PITT OHIO</option>
+              <option value="postnord">Postnord</option>
+              <option value="purolator">Purolator</option>
+              <option value="quikx">Quik X</option>
+              <option value="rlcarriers">R+L Carriers</option>
+              <option value="reddaway">Reddaway</option>
+              <option value="roadrunner">Roadrunner</option>
+              <option value="saia">Saia</option>
+              <option value="southeasternfreightlines">Southeastern Freight Lines</option>
+              <option value="sterling">Sterling</option>
+              <option value="taexpress">TA Express</option>
+              <option value="tcs">TCS</option>
+              <option value="tnt">TNT</option>
+              <option value="total">Total</option>
+              <option value="tstcfexpress">TST-CF Express </option>
+              <option value="ups">UPS</option>
+              <option value="uslogistics">US Logistics</option>
+              <option value="usps">USPS</option>
+              <option value="vitran">Vitran</option>
+              <option value="wardtrucking">Ward Trucking</option>
+              <option value="xpologisticsltl">XPO Logistics LTL </option>
+              <option value="yrc">YRC</option>
+            </select>
+        </div>
+        <div class="col-md mt-4">
+          <input type="text" name="number" class="form-control">
+        </div>
+        <div class="col-md mt-4">
+          <input type="submit" value="Track" class="btn btn-SIR col">
+        </div>
+      </div>
+    </form>
+  </div>
+  
+</div>
+<!-- end form track-trace -->
+
 <div class="container" id="information">
   <div class="row mt-5">
     <div class="col-md-7 d-flex flex-column justify-content-center ">

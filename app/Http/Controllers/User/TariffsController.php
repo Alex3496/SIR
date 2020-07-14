@@ -107,7 +107,7 @@ class TariffsController extends Controller
         if($request->request->get('type_tariff') == 'MARITIME')
         {
             $tariff = Tariff::create($request->only(['user_id','type_tariff','origin','origin_country',
-                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate']));
+                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate','currency']));
 
         } 
         else if($request->request->get('type_tariff') == 'AERIAL')
@@ -223,7 +223,7 @@ class TariffsController extends Controller
         {
 
             $tariffToUpdate->update($request->only(['type_tariff','origin','origin_country',
-                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate']));
+                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate','currency']));
 
         }
         else if($request['type_tariff'] == 'AERIAL')

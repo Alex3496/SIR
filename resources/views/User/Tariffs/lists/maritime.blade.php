@@ -22,7 +22,7 @@
           <td>{{ $tariff->origin }}</td>
           <td>{{ $tariff->destiny }}</td>
           <td>{{ $tariff->get_type_equipment }}</td>
-          <td>$ {{ $tariff->rate }}</td>
+          <td>$ {{ $tariff->rate }} {{$tariff->currency}}</td>
           <td>
             <div class="d-flex justify-content-center">
               <!-- Edit button -->

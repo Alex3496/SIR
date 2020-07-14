@@ -96,6 +96,10 @@ class PublicController extends Controller
         return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch'));
     }
 
+
+    /*
+        some user send a email to ibookingsystem from the contact view
+    */
     public function sendInformation(InformationRequest $request)
     {
         $information = $request->all();

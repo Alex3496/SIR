@@ -84,6 +84,13 @@ main {
     width: 60%;
 }
 
+/*-----------TRACK-TRACE-------------*/ 
+
+#track-trace{
+    min-height: 12rem;
+    padding: 2rem;
+}
+
 /*-----------INFORMATION-------------*/
 
 #information{

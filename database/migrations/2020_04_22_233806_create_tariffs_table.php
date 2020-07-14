@@ -33,6 +33,7 @@ class CreateTariffsTable extends Migration
             $table->integer('width')->nullable();
             $table->integer('length')->nullable();
             $table->decimal('rate',9,2);
+            $table->string('currency');
 
             $table->timestamps();
 

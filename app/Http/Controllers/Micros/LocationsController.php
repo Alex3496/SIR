@@ -34,7 +34,8 @@ class LocationsController extends Controller
 	public function getLocations($code)
 	{
 
-		$locations = Location::where('location_complete','LIKE',"%$code%")->pluck('location_complete','id');
+		$locations = Location::where('location_complete','LIKE',"%$code%")
+						->where('status','ACCEPTED')->pluck('location_complete','id');
 
 		return $locations;
 	}
