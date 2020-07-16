@@ -32,6 +32,24 @@ class UserController extends Controller
     }
 
     /**
+     * Display the tariffs of an specific user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = Auth::user();
+
+        $truckTariffs = Tariff::truckTariffs($id)->get();
+        $trainTariffs = Tariff::trainTariffs($id)->get();
+        $maritimeTariffs = Tariff::maritimeTariffs($id)->get();
+        $aerialTariffs = Tariff::aerialTariffs($id)->get();
+
+        return view ('Admin.Users.showTariffs',compact('user','truckTariffs','trainTariffs','maritimeTariffs','aerialTariffs'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -75,13 +93,14 @@ class UserController extends Controller
         $user = Auth::user();
         $countries = CountryState::getCountries('spa');
         asort($countries);
+        $totalTariffs = Tariff::where('user_id',$userToEdit->id)->count();
         if($userToEdit->country){
             $states = CountryState::getStates($userToEdit->country);
         }else{
             $states = [];
         }
 
-        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user','countries','states'));
+        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user','countries','states','totalTariffs'));
     }
 
     /**
@@ -196,20 +215,17 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Deletes user
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
     {
-        //dd($user);
-
         $user->roles()->detach();
 
         //Detach tariff's user of all the favs of users
         $tariffsUser = Tariff::where('user_id',$user->id)->get();
-
         foreach ($tariffsUser as $tariff) {
             $tariff->userfav()->detach();
         }
@@ -217,6 +233,24 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index');
+    }
+
+    /**
+     * Admin can delete a user's tariff
+     *
+     * @param  Tariff $tariff
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyTariff(Tariff $tariff)
+    {
+        $tariffToDelete = Tariff::findOrFail($tariff->id);
+
+        //detach all tariffs of users fav list 
+        $tariffToDelete->userfav()->detach();
+
+        $tariffToDelete->delete();
+
+        return back()->with('status', 'Eliminado con exito'); 
     }
 
     public function find (Request $request)

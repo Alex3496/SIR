@@ -30,7 +30,23 @@
 
   <!-- row -->
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-6">
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <label class="col-sm-3 col-form-label">{{ __('Total Tarifas') }}</label>
+            <div class="col d-flex justify-content-between">
+              <div class="form-control col-8 no-border">
+                <p>{{ $totalTariffs }}</p>
+              </div>
+              @if($totalTariffs > 0)
+                <a href="{{route('admin.users.show',$userToEdit->id)}}" class="btn btn-outline-dark mr-4">{{ __('Ver') }} </a>
+              @endif
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- card Profile -->
         @include('Admin.Users.cards.profile')
@@ -44,44 +60,9 @@
         @include('Admin.Users.cards.insurance')
       <!-- /card -->
 
-      <!-- card info basica-->
-      <div class="card card-warning">
-        <div class="card-header" data-card-widget="collapse">
-          <h2 class="card-title">{{__('Info basica')}}</h2>  
-        </div>
-        <div class="card-body">
-          <form action="{{ route('admin.users.update',$userToEdit) }}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-              <label for="name">{{__('Nombre')}}</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{ old('name',$userToEdit->name) }}"/>
-            </div>
-
-            <div class="form-group">
-              <label for="email">{{__('Email')}}</label>
-              <input type="text" class="form-control" id="email" name="email" value="{{ old('emial',$userToEdit->email) }}"/>
-            </div>
-            @foreach($roles as $role)
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" name="roles[]" value="{{$role->id}}"
-              @if($userToEdit->roles->pluck('id')->contains($role->id)) checked @endif>
-              <label class="form-check-label" >{{$role->name}}</label>
-            </div>
-            @endforeach
-
-            <div class="form-group row mt-4">
-              <button type="submit" class="btn btn-primary btn-block">{{__('Actualizar')}}</button>
-            </div>
-            
-          </form>
-        </div>
-      </div>
-      <!-- /card -->
-
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-6">
 
       <!-- card info compañia-->
       @include('Admin.Users.cards.dataset')

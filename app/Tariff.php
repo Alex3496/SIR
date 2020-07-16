@@ -50,6 +50,37 @@ class Tariff extends Model
         }
     }
 
+    public function scopetruckTariffs($query, $id)
+    {
+        if($id){
+            return $query->where('user_id',$id)
+            ->where('type_tariff','TRUCK');
+        }
+    }
+
+    public function scopetrainTariffs($query, $id)
+    {
+        if($id){
+            return $query->where('user_id',$id)
+            ->where('type_tariff','TRAIN');
+        }
+    }
+
+    public function scopemaritimeTariffs($query, $id)
+    {
+        if($id){
+            return $query->where('user_id',$id)
+            ->where('type_tariff','MARITIME');
+        }
+    }
+
+    public function scopeaerialTariffs($query, $id)
+    {
+        if($id){
+            return $query->where('user_id',$id)
+            ->where('type_tariff','AERIAL');
+        }
+    }
 
     //--------------ATRIBUTTES------------------
     

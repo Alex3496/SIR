@@ -72,7 +72,7 @@
 
                 <td class="d-flex justify-content-around">
                   <a href="{{ route('admin.users.edit',$userB->id) }}" class="float-left">
-                    <button type="submit" class="btn btn-primary">{{__('Editar')}}</button>
+                    <button type="submit" class="btn btn-success">{{__('Ver')}}</button>
                   </a>
                   <form action="{{ route('admin.users.destroy',$userB) }}" method="POST" class="float-left">
                     @csrf

@@ -109,7 +109,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 // ONLY FOR ADMIN
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-only')->group(function(){
 
-	Route::resource('users','UserController',['except' =>['show']]);
+	Route::resource('users','UserController');
 
 	Route::put('users/{user}/profile','UserController@updateProfiles')->name('updateProfile');
 
@@ -120,6 +120,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 	Route::put('users/{user}/insurance','UserController@updateInsurance')->name('updateInsurance');
 
 	Route::get('users/find','UserController@find')->name('users.find');
+
+	Route::delete('delete-tariff/{tariff}','UserController@destroyTariff')->name('tariffs.destroy');
 
 	Route::resource('locations','LocationController');
 

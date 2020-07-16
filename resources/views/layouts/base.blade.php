@@ -33,13 +33,16 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+            <a class="nav-link" href="{{route('principal')}}">Inicio</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('posts')}}">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('/aboutUs')}}">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('/faqs')}}">FAQs</a>
+            <a class="nav-link" href="{{url('/faqs')}}">Preguntas Frecuntes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('/contact') }}">Contacto</a>

@@ -257,7 +257,7 @@ class TariffsController extends Controller
     public function destroy(Tariff $tariff)
     {
 
-        $tariffToDelete=Tariff::findOrFail($tariff->id);
+        $tariffToDelete = Tariff::findOrFail($tariff->id);
 
         $this->authorize('pass',$tariffToDelete); 
 
@@ -274,29 +274,25 @@ class TariffsController extends Controller
 
     public function getTruckTariffs($user_id)
     {
-        return $truckTariffs=Tariff::where('user_id',$user_id)
-            ->where('type_tariff','TRUCK')
+        return $truckTariffs=Tariff::truckTariffs($user_id)
             ->get();
     }
 
     public function getTrainTariffs($user_id)
     {
-        return $truckTariffs=Tariff::where('user_id',$user_id)
-            ->where('type_tariff','TRAIN')
+        return $truckTariffs=Tariff::trainTariffs($user_id)
             ->get();
     }
 
     public function getMaritimeTariffs($user_id)
     {
-        return $truckTariffs=Tariff::where('user_id',$user_id)
-            ->where('type_tariff','MARITIME')
+        return $truckTariffs=Tariff::maritimeTariffs($user_id)            
             ->get();
     }
 
     public function getAerialTariffs($user_id)
     {
-        return $truckTariffs=Tariff::where('user_id',$user_id)
-            ->where('type_tariff','AERIAL')
+        return $truckTariffs=Tariff::aerialTariffs($user_id)
             ->get();
     }
 
