@@ -189,11 +189,31 @@
 <div class="container" id="information">
   <div class="row mt-5">
     <div class="col-md-7 d-flex flex-column justify-content-center ">
-      <h3 class="mb-4">Quienes somos:</h3>
-      <p class="text-justify">Somos una compaña que ofrece servicio online de reservaciones para envíos de mercancía en todo México y Latinoamérica, con un equipo de expertos que te acompañará en todo momento. Recibirás ayuda comercial y operativa especializada a lo largo de todo el proceso de importación o exportación de tu mercancía.</p>
+      <h2 class="mb-4">Busca:</h2>
+      <p class="text-justify">Encuentre al instante las mejores tarifas de flete marítimo, aéreo y terrestre.</p>
     </div>
-    <div class="col-md mt-2">
-      <img src="{{asset('images/contenedores.jpg')}}" class="img-fluid image">
+    <div class="col-md mt-2 center">
+      <img src="{{asset('images/logos/buscar.svg')}}" class="image-info">
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-7 d-flex flex-column justify-content-center ">
+      <h2 class="mb-4">Cotiza:</h2>
+      <p class="text-justify">No esperes días por una cotización, compáralas y escoge la que mejor se adapte a tus necesidades.</p>
+    </div>
+    <div class="col-md mt-2 center">
+      <img src="{{asset('images/logos/reporte.svg')}}" class="image-info">
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-7 d-flex flex-column justify-content-center ">
+      <h2 class="mb-4">Rastrea tu contenedor:</h2>
+      <p class="text-justify">Track & Trace: Seguimiento de contenedores en tiempo real
+      Rastrear contenedores con nuestro Track & Trace es fácil y rápido gracias a un diseño innovador que te dice paso a paso el estatus de tu contenedor
+      Localiza tu contenedor inmediatamente e identifica en qué punto de la cadena se encuentra: recogida, despacho de aduanas o fecha estimada de llegada.</p>
+    </div>
+    <div class="col-md mt-2 center">
+      <img src="{{asset('images/logos/entrega.svg')}}" class="image-info">
     </div>
   </div>
 
@@ -218,7 +238,7 @@
   <div class="row mt-4">
     <div class="col-sm">
       <div class="card-body">
-        <h5 class="card-title text-center">Shipper <br><small style="color:gray">Persona o empresa exportador</small></h5>
+        <h5 class="card-title text-center">Shipper <br></h5>
         <ul>
           <li>Realiza cotizaciones en tiempo real</li>
           <li>Encuentra la mejor tarifa para tu empresa</li>

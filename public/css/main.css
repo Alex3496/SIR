@@ -108,6 +108,10 @@ main {
     margin-top: 36px;
 }
 
+.image-info{
+    height: 100px;
+}
+
 /*-----------NEWS-------------*/
 .container-news{
     margin-bottom: 5rem;
@@ -199,6 +203,10 @@ main {
 #Us_content h2,
 #Us_content ul {
     margin-top: 2rem;
+}
+
+#values-list li{
+    margin-bottom: 12px; 
 }
 
 /*==============CONTACT VIEW =================*/
