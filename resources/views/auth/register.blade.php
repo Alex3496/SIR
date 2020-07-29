@@ -20,7 +20,7 @@
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="type_company_user" id="Carriers" value="Carriers" {{ (old('type_company_user') == 'Carriers') ? 'checked' : '' }}/>
-                  <label class="form-check-label" for="Carriers">Trasnportista</label>
+                  <label class="form-check-label" for="Carriers">Transportista</label>
                 </div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="type_company_user" id="Broker" value="Broker" {{ (old('type_company_user') == 'Broker') ? 'checked' : '' }}/>
