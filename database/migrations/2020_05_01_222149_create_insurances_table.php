@@ -20,11 +20,14 @@ class CreateInsurancesTable extends Migration
 
             $table->string('name_insurance')->nullable();
             $table->string('contact_name')->nullable();
+
             $table->boolean('general_liability_ins')->nullable();
             $table->boolean('commercial_general_liability')->nullable();
             $table->boolean('auto_liability')->nullable();
             $table->boolean('motor_truck_cargo')->nullable();
             $table->boolean('trailer_interchange')->nullable();
+            
+            $table->string('another_insurance')->nullable();
 
             $table->timestamps();
 

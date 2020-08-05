@@ -10,7 +10,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <h2 class="mb-4">{{ __('Mis tarifas') }}</h2>
+      <h2 class="mb-4">{{ __('Mis Tarifas') }}</h2>
     </div>
   </div>
 

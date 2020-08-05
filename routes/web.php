@@ -56,7 +56,7 @@ Route::namespace('User')->group(function(){
 
 	Route::post('profile/dataset','ProfileUserController@storeDataset')->name('profile.datasetStore');
 
-	Route::post('profile/insurance','ProfileUserController@storeInsurance')->name('profile.insuranceStore');
+	Route::post('profile/insurance','ProfileUserController@updateInsurance')->name('profile.insuranceStore');
 
 	Route::post('profile/avatar','ProfileUserController@updateAvatar')->name('profile.avatar');
 		
@@ -66,11 +66,11 @@ Route::namespace('User')->group(function(){
 
 	Route::get('tariffs/create/truck','TariffsController@addTruckTariff')->name('tariff.turckAdd');
 
-	Route::get('tariffs/create/train','TariffsController@addTrainTariff')->name('tariff.trainAdd');
+	Route::get('tariffs/create/rail','TariffsController@addTrainTariff')->name('tariff.trainAdd');
 
-	Route::get('tariffs/create/maritime','TariffsController@addMaritimeTariff')->name('tariff.maritimeAdd');
+	Route::get('tariffs/create/searate','TariffsController@addMaritimeTariff')->name('tariff.maritimeAdd');
 
-	Route::get('tariffs/create/aerial','TariffsController@addAerialTariff')->name('tariff.aerialAdd');
+	Route::get('tariffs/create/air','TariffsController@addAerialTariff')->name('tariff.aerialAdd');
 
 		//Booking routes
 

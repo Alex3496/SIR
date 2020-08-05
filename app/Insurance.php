@@ -20,7 +20,8 @@ class Insurance extends Model
         'commercial_general_liability',
         'auto_liability',
         'motor_truck_cargo',
-        'trailer_interchange'
+        'trailer_interchange',
+        'another_insurance',
     ];
 
      /**

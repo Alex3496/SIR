@@ -3,7 +3,7 @@
 <div class="container-fluid">
 
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-11">
     @if (session('status'))
       <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -36,7 +36,7 @@
 
 
   <div class="row">
-    <div class="col-lg-7">
+    <div class="col-xl-8">
 
       <!-- profile card -->
         @include('layouts.cards.personalInfo')

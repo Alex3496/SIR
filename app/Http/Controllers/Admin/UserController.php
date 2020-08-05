@@ -188,9 +188,11 @@ class UserController extends Controller
     }
 
      /**
-     * create or update the user insurance data.
+     * Funcion que permite al admin crear o actualizar la informacion de las certificaciones de seguro, con las que
+     * cuenta el usaurio
      *
-     * @param  \App\Http\Requests\Request;  $request
+     * @param  \App\Http\Requests\insuranceRequest  $request
+     * @param  \App\User  $user 
      */
     public function updateInsurance(insuranceRequest $request, User $user)
     {
@@ -201,13 +203,14 @@ class UserController extends Controller
             ]
             ,
             [
-                'name_insurance' => $request->name_insurance, 
-                'contact_name' => $request->contact_name, 
-                'general_liability_ins' => $request->has('general_liability_ins'),
-                'commercial_general_liability' => $request->has('commercial_general_liability'),
-                'auto_liability' => $request->has('auto_liability'),
-                'motor_truck_cargo' => $request->has('motor_truck_cargo'),
-                'trailer_interchange' => $request->has('trailer_interchange'),
+                'name_insurance'                => $request->name_insurance, 
+                'contact_name'                  => $request->contact_name, 
+                'general_liability_ins'         => $request->has('general_liability_ins'),
+                'commercial_general_liability'  => $request->has('commercial_general_liability'),
+                'auto_liability'                => $request->has('auto_liability'),
+                'motor_truck_cargo'             => $request->has('motor_truck_cargo'),
+                'trailer_interchange'           => $request->has('trailer_interchange'),
+                'another_insurance'             => $request->another_insurance,
             ]
         );
 

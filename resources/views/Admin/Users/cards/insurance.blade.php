@@ -71,6 +71,16 @@
     		</b>
     	</div>
 
+      <div class="row mt-5">
+        <div class=" form-group col-md-6">
+          {!! Form::label('another_insurance','Otra certificación') !!}
+          {!! Form::text('another_insurance', $insurance->another_insurance ?? '', ['class' => 'form-control']) !!}
+          @error('another_insurance')
+            <small class="mt-0" style="color:red">{{ $message }}</small>
+          @enderror
+        </div>
+      </div>
+
     	<div class="row">
         <div class="col">
           <div class="form-group mt-4">

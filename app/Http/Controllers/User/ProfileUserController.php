@@ -113,7 +113,7 @@ class ProfileUserController extends Controller
     }
 
     /**
-     * create or update the user dataset.
+     * Funcion que guarga o actualiza la informacion de la compañia del usuario
      *
      * @param  \App\Http\Requests\userRequest;  $request
      * @return \Illuminate\Http\Response
@@ -148,47 +148,60 @@ class ProfileUserController extends Controller
 
 
     /**
-     * create or update the user insurance data.
+     * Funcion que guarga o actualiza la informacion de los certificados de seguro
+     * con los que cuenta el usuario
      *
-     * @param  \App\Http\Requests\Request;  $request
+     * @param  \App\Http\Requests\insuranceRequest;  $request
      */
     public function updateInsurance(insuranceRequest $request)
     {
-        //dd($request->all());
         $user=Auth::user()->id;
 
         $dataset = Insurance::updateOrCreate(
             [
                 'user_id' => $user
-            ]
-            ,
-            [
-                'name_insurance' => $request->name_insurance, 
-                'contact_name' => $request->contact_name, 
-                'general_liability_ins' => $request->has('general_liability_ins'),
-                'commercial_general_liability' => $request->has('commercial_general_liability'),
-                'auto_liability' => $request->has('auto_liability'),
-                'motor_truck_cargo' => $request->has('motor_truck_cargo'),
-                'trailer_interchange' => $request->has('trailer_interchange'),
+            ],[
+                'name_insurance'                => $request->name_insurance, 
+                'contact_name'                  => $request->contact_name, 
+                'general_liability_ins'         => $request->has('general_liability_ins'),
+                'commercial_general_liability'  => $request->has('commercial_general_liability'),
+                'auto_liability'                => $request->has('auto_liability'),
+                'motor_truck_cargo'             => $request->has('motor_truck_cargo'),
+                'trailer_interchange'           => $request->has('trailer_interchange'),
+                'another_insurance'             => $request->another_insurance,
             ]
         );
 
         return back()->with('status', 'Actualizado con exito');
     }
 
+
+    /**
+     * Funcion que permite cambiar la imagen de perfil del usuario
+     *
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function updateAvatar(Request $request)
     {
         $request->validate([
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ],[
+            'avatar.required'   => 'La imagen de perfil es requerida',
+            'avatar.mimes'      => 'La imagen de perfil debe de ser de tipo: jpeg, png, jpg, gif, svg',
+            'avatar.image'      => 'Debe de ser una imagen',
+            'avatar.max'        => 'La imagen no debe de pesar más de 2048 Kb'
+
         ]);
 
         $user = Auth::user();
 
+        //Si el usuario no ha cambiado la imagen de perfil por defecto
         if($user->avatar == 'avatars/avatar.jpg'){
             $user->avatar =  $request->file('avatar')->store('avatars', 'public');
             $user->save();
         }else{
-
+            //Si ya tenia una, cambiarla
             Storage::disk('public')->delete($user->avatar);
             $user->avatar = $request->file('avatar')->store('avatars', 'public');
             $user->save();

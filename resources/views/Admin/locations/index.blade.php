@@ -23,7 +23,7 @@
                 <div class="col-md mb-2">
                   {!! Form::text('country',request('country'),['class' => 'form-control', 'placeholder' => 'País']) !!}
                 </div>
-                <div class="col-xl-3 mb-2 d-flex justify-content-center align-items-center">
+                <div class="col-xl-4 mb-2 d-flex justify-content-center align-items-center">
                 	<div class="form-check form-check-inline">
                 		{!! Form::checkbox('status[]', 'ACCEPTED','',['class' => 'form-check-input','id' => 'status-0']); !!}
   									<label class="form-check-label" for="status-0">Acepado</label>

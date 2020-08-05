@@ -43,7 +43,7 @@
 
       <div class="row">
         <div class="form-group col-md-7">
-          {!! Form::label('mc_number','Número MC') !!}
+          {!! Form::label('mc_number','Número MC / MX') !!}
           {!! Form::text('mc_number',$dataset->mc_number ?? '',['class' => 'form-control']) !!}
           @error('mc_number')
             <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -63,7 +63,7 @@
 <!-- certificate_ctpat -->
       <div class="row">
         <div class="col-md-8">
-          {!! Form::label('certificate_ctpat','Certificación OEA') !!}
+          {!! Form::label('certificate_ctpat','Certificación C TPAT') !!}
           <div class="form-group row d-flex align-items-center">
             <div class="col-xl-3 row ml-2">
               <div class="form-check mr-2">
@@ -157,7 +157,7 @@
 
       <div class="row">
         <div class="col-md-8">
-          {!! Form::label('warehouse','Fast') !!}
+          {!! Form::label('warehouse','Almacen') !!}
           <div class="form-group row d-flex align-items-center">
             <div class="col-xl-3 row ml-2">
               <div class="form-check mr-2">
@@ -187,7 +187,7 @@
 
       <div class="row">
         <div class="col-md-8">
-          {!! Form::label('fiscal_warehouse','Fast') !!}
+          {!! Form::label('fiscal_warehouse','Almacen Fiscal') !!}
           <div class="form-group row d-flex align-items-center">
             <div class="col-xl-3 row ml-2">
               <div class="form-check mr-2">

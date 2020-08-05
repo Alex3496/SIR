@@ -352,7 +352,6 @@ main {
 }
 
 #tariff-right-card{
-    min-height: 18rem;
 }
 /*==============Booking VIEW =================*/
 
@@ -390,3 +389,20 @@ main {
 }
 
 
+/*==============CLASES GENERALES=================*/
+
+@media(max-width: 768px){
+    .tariff-result-orgin,
+    .tariff-result-destiny{
+        margin-bottom: 2rem;
+    }
+
+    #tariff-right-card{
+        height: 9rem;
+    }
+}
+
+
+.rad{
+margin-right: 20px;
+}

@@ -24,14 +24,14 @@ class insuranceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_insurance'        => ['string','max:60','nullable'],
-            'contact_name'          => ['string','max:50','nullable'],
-            
-            'general_liability_ins' => ['boolean'],
-            'auto_liability'        => ['boolean'],
-            'motor_truck_cargo'     => ['boolean'],
-            'trailer_interchange'   => ['boolean'],
-            'commercial_general_liability' => ['boolean'],
+            'name_insurance'                => ['string','max:60','nullable'],
+            'contact_name'                  => ['string','max:50','nullable'],
+            'another_insurance'             => ['string','max:100','nullable'],
+            'general_liability_ins'         => ['boolean'],
+            'auto_liability'                => ['boolean'],
+            'motor_truck_cargo'             => ['boolean'],
+            'trailer_interchange'           => ['boolean'],
+            'commercial_general_liability'  => ['boolean'],
 
         ];
     }
@@ -45,8 +45,9 @@ class insuranceRequest extends FormRequest
     public function messages()
     {
         return [
-            'name_insurance.max' => 'Máximo 60 caracteres.',
-            'contact_name.max'   => 'Máximo 50 caracteres.',
+            'name_insurance.max'    => 'Máximo 60 caracteres.',
+            'contact_name.max'      => 'Máximo 50 caracteres.',
+            'another_insurance.max' => 'Máximo 100 caracteres.' 
         ];
     }
 }

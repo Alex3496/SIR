@@ -6,7 +6,7 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col">	
-						<h5>{{__('Añadir nueva tarifa:')}}</h5>
+						<h5>{{__('Añadir nueva Tarifa:')}}</h5>
 					</div>
 				</div>
 				<div class="row mt-3 ml-3 mb-4">

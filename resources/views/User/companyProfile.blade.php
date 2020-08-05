@@ -99,7 +99,7 @@
             <div class="row">
               <div class="col-md-7">
                 <div class="form-group">
-                  <label for="mc_number">{{ __('Número MC') }}</label>
+                  <label for="mc_number">{{ __('Número MC/MX') }}</label>
                   <input class="form-control" type="text" id="mc_number" name="mc_number" value="{{ old('mc_number', $dataset->mc_number ?? '') }}"/>
                   @error('mc_number')
                     <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -416,6 +416,20 @@
                 <b>{{__('Trailer Interchange')}}</b>
               </label>
             </div>
+
+            <!-- another -->
+            <div class="row">   
+              <div class="col-md-6 ">
+                <div class="form-group">
+                  <label for="another_insurance">{{ __('Otra certificación') }}</label>
+                  <input class="form-control" type="text" id="another_insurance" name="another_insurance" value="{{ old('another_insurance', $insurance->another_insurance ?? '') }}"/>
+                  @error('another_insurance')
+                    <small class="mt-0" style="color:red">{{ $message }}</small>
+                  @enderror
+                </div>
+              </div>
+            </div>
+
             <!--button save -->
             <div class="row">
               <div class="col">

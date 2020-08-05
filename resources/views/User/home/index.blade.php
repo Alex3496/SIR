@@ -18,7 +18,7 @@
 					@include('User.home.cards.tariff')
 				@endforeach
 			@else
-			<h2 class="text-center">{{__('No tienes ninguna tarifa gaurdada')}}</h2>
+			<h2 class="text-center">{{__('No tienes ninguna Tarifa guardada')}}</h2>
 			@endif
 
 

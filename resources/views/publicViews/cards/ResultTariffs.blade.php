@@ -9,16 +9,22 @@
 		<hr>
 		<div class="row">
 			<div class="col-md-8">
-				<div>
-					<small>{{__('Origen')}}:</small>
-					<h2>{{$tariff->origin}}</h2>
-					<h5>{{$tariff->get_state_origin}}, {{$tariff->get_country_origin}}</h5>
-				</div>
-				<hr>
-				<div>
-					<small>{{__('Destino')}}:</small>
-					<h2>{{$tariff->destiny}}</h2>
-					<h5>{{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</h5>
+				<div class="row">
+					<div class="col-md tariff-result-orgin">
+						<small>{{__('Origen')}}:</small>
+						<h5>{{$tariff->origin}},</h5>
+						<h5>{{$tariff->get_state_origin}}, {{$tariff->get_country_origin}}</h5>
+					</div>
+					<hr>
+					<div class="col-md tariff-result-destiny">
+						<small>{{__('Destino')}}:</small>
+						<h5>{{$tariff->destiny}},</h5>
+						<h5>{{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</h5>
+					</div>
+					<div class="col-md">
+						<small>{{__('Tipo de Contenedor')}} :</small><br>
+						<label class="mt-3">{{$tariff->get_type_equipment}}</label>
+					</div>
 				</div>
 				<hr>
 				<div class="d-flex align-items-center">
@@ -32,10 +38,6 @@
 			<div class="col-md-4 d-flex flex-column justify-content-around" id="tariff-right-card">
 			<div  class="d-flex justify-content-center">
 				<h2>${{$tariff->rate}}</h2><span> {{$tariff->currency}}</span>
-			</div>
-			<div class="text-center">
-				<small>{{__('Tipo de Contenedor')}} :</small><br>
-				<label>{{$tariff->get_type_equipment}}</label>
 			</div>
 			<div class="d-flex justify-content-center">
 				<a href="{{route('booking.show',$tariff->id)}}" class="btn btn-SIR btn-block">{{__('Booking')}}</a>

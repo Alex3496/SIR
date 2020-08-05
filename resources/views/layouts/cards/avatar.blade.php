@@ -14,14 +14,11 @@
       <div class="row">
         <div class="col mt-4">
           <div class="input-group mb-3">
-            <div class="custom-file">
+            <label class="custom-file" style="overflow: hidden;">
               <input type="file" class="custom-file-input" id="avatar" name="avatar"/>
-              <label class="custom-file-label" for="avatar">{{ __('Seleccionar imagen') }}</label>
-            </div>
+              <label class="custom-file-label" for="avatar" style="white-space: nowrap;">{{ __('Seleccionar imagen') }}</label>
+            </label>
           </div>
-          @error('avatar')
-          	<small class="mt-0" style="color:red">{{ $message }}</small>
-          @enderror
         </div>
       </div>
       <div class="row">
