@@ -7,22 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class InfoMessage extends Mailable
+class NewLocationMessage extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Solicitud de información";
+    public $subject = "Nueva Ubicación";
 
-    public $information;
+    public $location_complete;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($information)
+    public function __construct($location_complete)
     {
-        $this->information = $information;
+        $this->location_complete = $location_complete;
     }
 
     /**
@@ -32,8 +32,8 @@ class InfoMessage extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.information',[
-            'information' => $this->information,
+        return $this->view('emails.newLocation',[
+            'location_complete' => $this->location_complete,
         ]);
     }
 }

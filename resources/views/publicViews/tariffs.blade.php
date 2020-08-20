@@ -27,7 +27,7 @@
               </div>
             </div>
             <div class="col-md-1 d-flex align-items-center justify-content-center mb-2">
-              <a style="color:gray;" data-toggle="modal" data-target="#serchTariff">
+              <a data-toggle="modal" data-target="#serchTariff" class="edit-link">
                 <u>Editar</u>
               </a>
             </div>

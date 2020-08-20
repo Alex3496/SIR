@@ -74,9 +74,15 @@ class PublicController extends Controller
 
     }
 
+    /**
+    *   @function tariffsResults
+    *   Metodo que se ejecuta cuando el usuario realiza una busqueda de tarifas, introduciendo el origen,
+    *   destino y tipo de contenedor, lo redirige a otra vista con los resultados
+    * 
+    */
     public function tariffsResults(SearchTeariffsRequest $request)
     {
-
+        //Se supone que el usuario ingresa el ubicacion completa con la ayuda del autollenado
         $originLocation = Location::complete($request->location_origin)->first();
         $destinyLocation = Location::complete($request->location_destiny)->first();
 
@@ -89,16 +95,21 @@ class PublicController extends Controller
             $tariffs = collect(); //empty collection
         }
 
+        //Sirve para mostar el valor escogido en los <select>
+        $request['type_equip']= $request->tpye_equipment;
+        //Muestra el equipo seleccionado traducido
         $request['tpye_equipment']= $this->translate($request->tpye_equipment);
-
-        $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment']);
+        //Array que alamcena los valores de busqueda de tafifas
+        $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment','type_equip']);
 
         return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch'));
     }
 
 
     /*
-        some user send a email to ibookingsystem from the contact view
+    *
+    *   Un usuario manda un mensaje a el personal encargado para resolver alguna duda
+    *
     */
     public function sendInformation(InformationRequest $request)
     {

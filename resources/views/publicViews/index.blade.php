@@ -31,9 +31,9 @@
           <form action="{{ route('tariffsResults') }}" method="GET">
             @csrf
             <div class="col d-flex justify-content-center mb-2 mt-0">
-              <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons">
+              <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons" class="radios">
                 <label class="btn btn-secondary active">
-                  <input type="radio" name="type_tariff" checked="" value="TRUCK" class="rad" />
+                  <input type="radio" name="type_tariff" checked="" value="TRUCK" />
                   {{ __('Camión') }}
                 </label>
                 <label class="btn btn-secondary">

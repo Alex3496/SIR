@@ -91,7 +91,7 @@
 
   }); 
 </script>
-<script>
+<script defer>
 
 $(function(){
   $('#origin_country').on('click',onSelectCountry);
@@ -106,7 +106,11 @@ function onSelectCountry() {
     console.log(data);
     var html_select = '';
     Object.keys(data).forEach(function(key) {
-        html_select += '<option value = "'+key+'">'+data[key]+'</option>'; 
+      var OldValue = '{{ old('origin_state') }}';
+      if(key === OldValue){
+        html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
+      }
+      else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
     })
     $('#origin_state').html(html_select);
   });
@@ -116,21 +120,38 @@ $(function(){
   $('#destiny_country').on('click',onSelectCountry2);
 });
 
+
+
 function onSelectCountry2() {
   var country_code = $(this).val();
-
   var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
 
   $.get(url,function(data) {
     console.log(data);
     var html_select = '';
     Object.keys(data).forEach(function(key) {
-        html_select += '<option value = "'+key+'">'+data[key]+'</option>'; 
+      var OldValue = '{{ old('destiny_state') }}';
+      if(key === OldValue){
+        html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
+      }
+      else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
     })
     $('#destiny_state').html(html_select);
+
   });
 }
 
 
 </script>
+
+<!-- Si se va a editar una tarifa que no se actualizce los valores de los selects -->
+@if(!isset($tariffToUpdate) || $errors->any())
+<script>
+  $( document ).ready(function() {
+    $( "#origin_country" ).trigger( "click" );
+    $( "#destiny_country" ).trigger( "click" );
+});
+</script>          
+@endif
+
 @endsection

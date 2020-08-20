@@ -48,7 +48,7 @@
     color: var(--main-hover-color);
 }
 
-/*-----------MAIN-------------*/
+/*-----------MAIN index-------------*/
 body{
     font-family: 'Heebo', sans-serif;
 }
@@ -87,6 +87,12 @@ main {
     margin-right: auto;
     width: 60%;
 }
+
+.radios {
+    background-color: green !important;
+    color: red;
+}
+
 
 /*-----------TRACK-TRACE-------------*/ 
 
@@ -336,7 +342,7 @@ main {
 }
 
 /*==============Tariffs VIEW =================*/
-
+/*seccion de Resultados de las cotizaciones*/
 /*------------------------------------------*/
 
 .logo-company-tariff-card{
@@ -353,6 +359,17 @@ main {
 
 #tariff-right-card{
 }
+
+.edit-link{
+    cursor: pointer;
+    color: gray !important;
+}
+
+.edit-link:hover{
+    color: inherit;
+    color: var(--main-hover-color) !important;
+}
+
 /*==============Booking VIEW =================*/
 
 /*------------------------------------------*/
@@ -402,7 +419,14 @@ main {
     }
 }
 
+.text-12{
+    font-size: 12px;
+}
 
-.rad{
-margin-right: 20px;
+.text-14{
+    font-size: 14px;
+}
+
+.text-16{
+    font-size: 16px;
 }

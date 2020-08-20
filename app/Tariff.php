@@ -29,17 +29,31 @@ class Tariff extends Model
 
     //--------------SCOPES----------------//
 
+    /*
+    *
+    * Metodo que busca las tarifas en el que el destino y origen sean el mismo que el origen que el usuario
+    * introdujo para que aparezca el vieje de "regreso"
+    *
+    */
     public function scopeorigin($query, $origin)
     {
         if($origin){
-            return $query->where('origin','LIKE',"$origin%");
+            return $query->where('origin','LIKE',"$origin%")
+                        ->orWhere('destiny','LIKE',"$origin%");
         }
     }
-
+     /*
+    *
+    * Metodo que busca las tarifas en el que el destino y origen sean el mismo que el destino que el usuario
+    * introdujo para que aparezca el vieje de "regreso"
+    *
+    */
     public function scopedestiny($query, $destiny)
     {
         if($destiny){
-            return $query->where('destiny','LIKE',"$destiny%");
+            return $query->where('destiny','LIKE',"$destiny%")
+                        ->orWhere('origin','LIKE',"$destiny%");
+
         }
     }
 

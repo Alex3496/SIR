@@ -9,24 +9,28 @@
         </button>
       </div>
       <div class="modal-body">
-       <form action="{{ route('tariffsResults') }}" method="GET">
-            @csrf
+        {!! Form::open(['route' => 'tariffsResults', 'method' => 'GET']) !!}
             <div class="col d-flex justify-content-center mb-2 mt-0">
               <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons">
                 <label class="btn btn-secondary active">
-                  <input type="radio" name="type_tariff" checked="" value="TRUCK" />
+                  <input type="radio" name="type_tariff" value="TRUCK" 
+                    @if($dataSearch['type_tariff'] == 'TRUCK') checked @endif
+                   />
                   {{ __('Camión') }}
                 </label>
                 <label class="btn btn-secondary active">
-                  <input type="radio" name="type_tariff" value="TRAIN" />
+                  <input type="radio" name="type_tariff" value="TRAIN" 
+                    @if($dataSearch['type_tariff'] == 'TRAIN') checked @endif/>
                   {{ __('Tren') }}
                 </label>
                 <label class="btn btn-secondary">
-                  <input type="radio" name="type_tariff" value="MARITIME" />
+                  <input type="radio" name="type_tariff" value="MARITIME"
+                     @if($dataSearch['type_tariff'] == 'MARITIME') checked @endif/>
                   {{ __('Marítimo') }}
                 </label>
                 <label class="btn btn-secondary">
-                  <input type="radio" name="type_tariff" value="AERIAL" />
+                  <input type="radio" name="type_tariff" value="AERIAL" 
+                    @if($dataSearch['type_tariff'] == 'AERIAL') checked @endif/>
                   {{ __('Aéreo') }}
                 </label>
               </div>
@@ -36,6 +40,7 @@
               <input list="locations-origin" type="text" class="form-control" 
               id="origin-user" name="location_origin" placeholder="Pais, Estado, Ciudad" autocomplete="off" 
               value="{{$dataSearch['location_origin']}}" />
+
               <datalist id="locations-origin"> </datalist>
             </div>
             <div class="form-group">
@@ -47,22 +52,24 @@
             </div>
             <div class="form-group">
               <label for="type-Load">Tipo de carga</label>
-              <select class="custom-select" id="type-Load" name="tpye_equipment">
-                <option value="Dry Box" selected>{{__('Caja Seca')}}</option>
-                <option value="Refrigerated">{{__('Caja Refrigerada')}}</option>
-                <option value="Plataform">{{__('Plataforma')}}</option>
-                <option value="Container">{{__('Contenedor')}}</option>
-                <option value="Box">{{__('Caja')}}</option>
-                <option value="Package">{{__('Bulto')}}</option>
-                <option value="Pallet">{{__('Pallet')}}</option>
-              </select>
+              {!!  Form::select('tpye_equipment', [
+                'Dry Box'       => 'Caja Seca', 
+                'Refrigerated'  => 'Caja Refrigerada',
+                'Plataform'     => 'Plataforma',
+                'Container'     => 'Contenedor',
+                'Box'           => 'Caja',
+                'Package'       => 'Bulto',
+                'Pallet'        => 'Pallet'], 
+                  $dataSearch['type_equip'] , ['id' => 'type-Load', 'class' => 'custom-select']); !!}
+            
             </div>
             <div class="row">
               <div class="col mt-2">
                 <button type="submit" class="btn btn-SIR btn-block">{{ __('Buscar') }}</button>
               </div>
             </div>
-          </form>
+          {!!Form::close()!!}
+        
       </div>
     </div>
   </div>

@@ -42,7 +42,13 @@ class Location extends Model
             return $query->whereIn('status',$status);
         }
     }
-
+    /*
+     *  @function scopecomplete
+     *  @param $location_complete type string : Tijuana, Baja California, Mexico
+     *  
+     *  Esta funcion recibe la ubicacion completa para traer todos los datos que se requiere de esta,
+     *  
+     */
     public function scopecomplete($query, $location_complete)
     {
         if($location_complete){

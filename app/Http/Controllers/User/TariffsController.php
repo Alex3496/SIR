@@ -6,6 +6,8 @@ use App\{Tariff,Location};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\tariffsRequest;
+use App\Mail\NewLocationMessage;
+use Illuminate\Support\Facades\Mail;
 
 use CountryState;
 
@@ -309,8 +311,8 @@ class TariffsController extends Controller
     }
 
     /**
-    *   Store the locations (origin, destiny) of the tariff
-    *   in the Locations table, create if don't exist.
+    *   Guarda en la BD las ubicaciones nuevas, verfica que no exitan y las guarda, si se agrega una
+    *   manda un correo de notif
     *
     *   @param string $city
     *   @param string $state (code)
@@ -324,7 +326,7 @@ class TariffsController extends Controller
 
 
         $locationComplete = $city.', '.$state.', '.$country;
-        Location::firstOrCreate([
+        $newLocation = Location::firstOrCreate([
                 'city' => $city,'state' => $state,'country' => $country,]
             ,[
                 'state_code' => $state_code,
@@ -332,6 +334,13 @@ class TariffsController extends Controller
                 'status' => 'PENDING',
                 'location_complete' => $locationComplete, 
         ]);
+
+        //Si la ubicacion no estaba registrada en la BD, manda un mensaje de notificaion
+        if($newLocation->wasRecentlyCreated){
+            Mail::to('info@ibookingsystem.com')
+                ->queue(new NewLocationMessage($newLocation->location_complete));
+        }
+
 
     }
 }

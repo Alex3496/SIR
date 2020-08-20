@@ -93,7 +93,7 @@
           </div>
           <div class="card-body">
             <h4>Solicitud de información</h4>
-            <p>Un usuario ha solicitado información tiene alguna duda o pregunta</p>
+            <p>Un usuario ha solicitado información, tiene alguna duda o pregunta.</p>
             <h3>Datos del usuario:</h3>
               <div>
                 <small>{{ __('Nombre') }}:</small>

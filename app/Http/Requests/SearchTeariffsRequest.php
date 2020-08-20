@@ -26,7 +26,7 @@ class SearchTeariffsRequest extends FormRequest
         return [
             'type_tariff'       => 'required|in:TRUCK,TRAIN,MARITIME,AERIAL',
             'location_origin'   => 'required|string|max:100',
-            'location_destiny'  => 'required|string|max:100',
+            'location_destiny'  => 'required|string|max:100|different:location_origin',
         ];
     }
 
@@ -41,6 +41,7 @@ class SearchTeariffsRequest extends FormRequest
             'required'      => 'Este campo es requerido.',
             'in'            => 'Valor inválido.',
             'max'           => 'Máximo 100 caracteres',
+            'different'     => 'No pueden ser iguales'
 
         ];
     }

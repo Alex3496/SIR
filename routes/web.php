@@ -31,7 +31,7 @@ Route::get('/blog/{slug}', 'PublicController@post')->name('post');
 
 Route::get('categoria/{name}', 'PublicController@postsCategories')->name('posts.categories');
 
-Route::get('/tariffs-results/', 'PublicController@tariffsResults')->name('tariffsResults');
+Route::get('/rates-results/', 'PublicController@tariffsResults')->name('tariffsResults');
 
 Route::get('/infomation/send', 'PublicController@sendInformation')->name('infomation.send');
 
