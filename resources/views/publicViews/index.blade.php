@@ -31,9 +31,9 @@
           <form action="{{ route('tariffsResults') }}" method="GET">
             @csrf
             <div class="col d-flex justify-content-center mb-2 mt-0">
-              <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons" class="radios">
+              <div class="route-item btn-group btn-group-toggle radios-row"  data-toggle="buttons">
                 <label id="radio-truck"  class="btn btn-radio-type-tariff">
-                  <input type="radio" name="type_tariff" value="TRUCK" />
+                  <input type="radio" name="type_tariff" checked value="TRUCK" />
                   {{ __('Camión') }}
                 </label>
                 <label id="radio-train" class="btn btn-radio-type-tariff">
@@ -50,6 +50,9 @@
                 </label>
               </div>
             </div>
+              @error('type_tariff')
+                <small class="mt-0" style="color:red">{{ $message }}</small>
+              @enderror
             <div class="form-group">
               <label for="origin">{{ __('Origen') }}</label>
               <input list="locations-origin" type="text" class="form-control" 
@@ -71,6 +74,7 @@
             <div class="form-group">
               <label for="type-Load">Tipo de carga</label>
               <select class="custom-select" id="type-Load" name="tpye_equipment">
+                <option value="Any">{{__('Cualquiera')}}</option>
                 <option value="Dry Box" selected>{{__('Caja Seca')}}</option>
                 <option value="Refrigerated">{{__('Caja Refrigerada')}}</option>
                 <option value="Plataform">{{__('Plataforma')}}</option>
@@ -80,6 +84,9 @@
                 <option value="Pallet">{{__('Pallet')}}</option>
               </select>
             </div>
+            @error('tpye_equipment')
+                <small class="mt-0" style="color:red">{{ $message }}</small>
+              @enderror
             <div class="row">
               <div class="col mt-2">
                 <button type="submit" class="btn btn-SIR btn-block">{{ __('Cotizar') }}</button>

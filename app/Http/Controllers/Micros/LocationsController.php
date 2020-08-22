@@ -35,7 +35,7 @@ class LocationsController extends Controller
 	{
 
 		$locations = Location::where('location_complete','LIKE',"%$code%")
-						->where('status','ACCEPTED')->pluck('location_complete','id');
+						->where('status','ACCEPTED')->pluck('location_complete','id')->take(6);
 
 		return $locations;
 	}

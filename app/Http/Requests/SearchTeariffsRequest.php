@@ -27,6 +27,7 @@ class SearchTeariffsRequest extends FormRequest
             'type_tariff'       => 'required|in:TRUCK,TRAIN,MARITIME,AERIAL',
             'location_origin'   => 'required|string|max:100',
             'location_destiny'  => 'required|string|max:100|different:location_origin',
+            'tpye_equipment'    => 'required|in:Any,Dry Box,Refrigerated,Plataform,Container,Box,Package,Pallet'
         ];
     }
 

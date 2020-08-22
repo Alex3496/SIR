@@ -60,7 +60,11 @@ class Tariff extends Model
     public function scopeequipment($query, $type_equipment)
     {
         if($type_equipment){
-            return $query->where('type_equipment','LIKE',"$type_equipment%");
+            if($type_equipment == 'Any'){
+                return $query;
+            }else{
+                return $query->where('type_equipment','LIKE',"$type_equipment%");
+            }
         }
     }
 

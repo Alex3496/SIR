@@ -4,7 +4,6 @@
 		<div class="row">
 			<div class="col text-center">
 				<b>{{$tariff->get_type_tariff}}</b>
-				<b>{{$tariff->type_tariff}}</b>
 			</div>
 		</div>
 		<hr>

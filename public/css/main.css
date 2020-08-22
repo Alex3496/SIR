@@ -112,6 +112,10 @@ main {
         margin: 0;
         border: 1px;
     }
+    .radios-row{
+        background-color: white;
+        border-radius: 4px;
+    }
 }
 
 /*-----------TRACK-TRACE-------------*/ 

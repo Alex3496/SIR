@@ -53,6 +53,7 @@
             <div class="form-group">
               <label for="type-Load">Tipo de carga</label>
               {!!  Form::select('tpye_equipment', [
+                'Any'           => 'Cualquiera',
                 'Dry Box'       => 'Caja Seca', 
                 'Refrigerated'  => 'Caja Refrigerada',
                 'Plataform'     => 'Plataforma',

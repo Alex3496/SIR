@@ -128,7 +128,8 @@ class PublicController extends Controller
     }
 
     public function translate($tpye_equipment)
-    {
+    {   
+        if($tpye_equipment == 'Any') return 'Cualquiera';
         if($tpye_equipment == 'Dry Box') return 'Caja Seca';
         if($tpye_equipment == 'Refrigerated') return 'Caja Refrigerada';
         if($tpye_equipment == 'Plataform') return 'Plataforma';
