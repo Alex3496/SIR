@@ -12,23 +12,23 @@
         {!! Form::open(['route' => 'tariffsResults', 'method' => 'GET']) !!}
             <div class="col d-flex justify-content-center mb-2 mt-0">
               <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons">
-                <label class="btn btn-secondary active">
+                <label class="btn btn-radio-type-tariff ">
                   <input type="radio" name="type_tariff" value="TRUCK" 
                     @if($dataSearch['type_tariff'] == 'TRUCK') checked @endif
                    />
                   {{ __('Camión') }}
                 </label>
-                <label class="btn btn-secondary active">
+                <label class="btn btn-radio-type-tariff ">
                   <input type="radio" name="type_tariff" value="TRAIN" 
                     @if($dataSearch['type_tariff'] == 'TRAIN') checked @endif/>
                   {{ __('Tren') }}
                 </label>
-                <label class="btn btn-secondary">
+                <label class="btn btn-radio-type-tariff">
                   <input type="radio" name="type_tariff" value="MARITIME"
                      @if($dataSearch['type_tariff'] == 'MARITIME') checked @endif/>
                   {{ __('Marítimo') }}
                 </label>
-                <label class="btn btn-secondary">
+                <label class="btn btn-radio-type-tariff">
                   <input type="radio" name="type_tariff" value="AERIAL" 
                     @if($dataSearch['type_tariff'] == 'AERIAL') checked @endif/>
                   {{ __('Aéreo') }}

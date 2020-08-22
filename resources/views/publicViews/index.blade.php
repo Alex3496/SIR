@@ -32,19 +32,19 @@
             @csrf
             <div class="col d-flex justify-content-center mb-2 mt-0">
               <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons" class="radios">
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="type_tariff" checked="" value="TRUCK" />
+                <label id="radio-truck"  class="btn btn-radio-type-tariff">
+                  <input type="radio" name="type_tariff" value="TRUCK" />
                   {{ __('Camión') }}
                 </label>
-                <label class="btn btn-secondary">
+                <label id="radio-train" class="btn btn-radio-type-tariff">
                   <input type="radio" name="type_tariff" value="TRAIN" />
                   {{ __('Tren') }}
                 </label>
-                <label class="btn btn-secondary">
+                <label id="radio-maritime"  class="btn  btn-radio-type-tariff">
                   <input type="radio" name="type_tariff" value="MARITIME" />
                   {{ __('Marítimo') }}
                 </label>
-                <label class="btn btn-secondary">
+                <label id="radio-aerial" class="btn btn-radio-type-tariff">
                   <input type="radio" name="type_tariff" value="AERIAL" />
                   {{ __('Aéreo') }}
                 </label>

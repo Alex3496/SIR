@@ -88,11 +88,31 @@ main {
     width: 60%;
 }
 
-.radios {
-    background-color: green !important;
-    color: red;
+.btn-radio-type-tariff {
+    background-color: white;
+    border: solid 1px gray;
+    color: black;
+    
+    margin: 0px 10px;
+    border-radius: 4px !important;
 }
 
+.btn-radio-type-tariff:not(:disabled):not(.disabled).active {
+    background-color: #9CA4A6 !important;
+    color: #fff;
+    border-color: #8B9294;
+}
+
+.btn-radio-type-tariff.focus{
+    box-shadow: 0 0 0 .2rem  #9EA6A8;
+}
+
+@media(max-width: 445px){
+    .btn-radio-type-tariff{
+        margin: 0;
+        border: 1px;
+    }
+}
 
 /*-----------TRACK-TRACE-------------*/ 
 
