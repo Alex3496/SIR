@@ -94,6 +94,10 @@
 <script defer>
 
 $(function(){
+  $('#origin_country').on('change',onSelectCountry);
+});
+
+$(function(){
   $('#origin_country').on('click',onSelectCountry);
 });
 
