@@ -120,6 +120,7 @@ class ProfileUserController extends Controller
      */
     public function storeDataset(datasetRequest $request)
     {
+        //dd($request->all());
         $user=Auth::user()->id;
 
         $dataset = company_dataset::updateOrCreate(
