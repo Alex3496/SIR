@@ -8,59 +8,59 @@
 @endsection
 @section('content')
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <h2 class="mb-4">{{ __('Mis Tarifas') }}</h2>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col">
+			<h2 class="mb-4">{{ __('Mis Tarifas') }}</h2>
+		</div>
+	</div>
 
-  <!--Alert-->
-  <div class="row">
-    <div class="col-md-11">
-      @if (session('status'))
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5><i class="icon fas fa-check"></i>{{ __('Exito') }}</h5>
-        <p>{{ session('status') }}</p>
-      </div>
-      @endif
-    </div>
-  </div>
+	<!--Alert-->
+	<div class="row">
+		<div class="col-md-11">
+			@if (session('status'))
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h5><i class="icon fas fa-check"></i>{{ __('Exito') }}</h5>
+				<p>{{ session('status') }}</p>
+			</div>
+			@endif
+		</div>
+	</div>
 
-  <!-- card -->
-    @yield('tariffCard')
-  <!-- /card -->
+	<!-- card -->
+		@yield('tariffCard')
+	<!-- /card -->
 
 
-  <!--Start row Tariff List-->
-  <div class="row">
-    <div class="col-12">
-      <!--start truck card-->
-      @if(isset($truckTariffs) && !count($truckTariffs) == 0)
-        @include('User.Tariffs.lists.truck')
-      @endif
-      <!--/end card-->
+	<!--Start row Tariff List-->
+	<div class="row">
+		<div class="col-12">
+			<!--start truck card-->
+			@if(isset($truckTariffs) && !count($truckTariffs) == 0)
+				@include('User.Tariffs.lists.truck')
+			@endif
+			<!--/end card-->
 
-      <!--start train card-->
-      @if(isset($trainTariffs) && !count($trainTariffs) == 0)
-        @include('User.Tariffs.lists.train')
-      @endif
-      <!--/end card-->
+			<!--start train card-->
+			@if(isset($trainTariffs) && !count($trainTariffs) == 0)
+				@include('User.Tariffs.lists.train')
+			@endif
+			<!--/end card-->
 
-      <!--start train card-->
-      @if(isset($maritimeTariffs) && !count($maritimeTariffs) == 0)
-        @include('User.Tariffs.lists.maritime')
-      @endif
-      <!--/end card-->
+			<!--start train card-->
+			@if(isset($maritimeTariffs) && !count($maritimeTariffs) == 0)
+				@include('User.Tariffs.lists.maritime')
+			@endif
+			<!--/end card-->
 
-      <!--start train card-->
-      @if(isset($aerialTariffs) && !count($aerialTariffs) == 0)
-        @include('User.Tariffs.lists.aerial')
-      @endif
-      <!--/end card-->
-    </div>
-  </div>
-  <!--/End row Tariff List-->
+			<!--start train card-->
+			@if(isset($aerialTariffs) && !count($aerialTariffs) == 0)
+				@include('User.Tariffs.lists.aerial')
+			@endif
+			<!--/end card-->
+		</div>
+	</div>
+	<!--/End row Tariff List-->
 </div>
 @endsection
 
@@ -74,75 +74,72 @@
 <script src="{{asset('adminLTE/js/demo.js')}}"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $(".example2").DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+	$(function () {
+		$("#example1").DataTable({
+			"responsive": true,
+			"autoWidth": false,
+		});
+		$(".example2").DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false,
+			"responsive": true,
+		});
 
-  }); 
+	}); 
 </script>
 <script defer>
 
 $(function(){
-  $('#origin_country').on('change',onSelectCountry);
+	$('#origin_country').on('change',onSelectCountry);
 });
 
-$(function(){
-  $('#origin_country').on('click',onSelectCountry);
-});
 
 function onSelectCountry() {
-  var country_code = $(this).val();
+	var country_code = document.getElementById("origin_country").value;
 
-  var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+	var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
 
-  $.get(url,function(data) {
-    console.log(data);
-    var html_select = '';
-    Object.keys(data).forEach(function(key) {
-      var OldValue = '{{ old('origin_state') }}';
-      if(key === OldValue){
-        html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
-      }
-      else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
-    })
-    $('#origin_state').html(html_select);
-  });
+	$.get(url,function(data) {
+		console.log(data);
+		var html_select = '';
+		Object.keys(data).forEach(function(key) {
+			var OldValue = '{{ old('origin_state') }}';
+			if(key === OldValue){
+				html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
+			}
+			else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
+		})
+		$('#origin_state').html(html_select);
+	});
 }
 
+
 $(function(){
-  $('#destiny_country').on('click',onSelectCountry2);
+	$('#destiny_country').on('change',onSelectCountry2);
 });
 
-
-
 function onSelectCountry2() {
-  var country_code = $(this).val();
-  var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+	var country_code = document.getElementById("destiny_country").value
 
-  $.get(url,function(data) {
-    console.log(data);
-    var html_select = '';
-    Object.keys(data).forEach(function(key) {
-      var OldValue = '{{ old('destiny_state') }}';
-      if(key === OldValue){
-        html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
-      }
-      else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
-    })
-    $('#destiny_state').html(html_select);
+	var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
 
-  });
+	$.get(url,function(data) {
+		console.log(data);
+		var html_select = '';
+		Object.keys(data).forEach(function(key) {
+			var OldValue = '{{ old('destiny_state') }}';
+			if(key === OldValue){
+				html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
+			}
+			else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
+		})
+		$('#destiny_state').html(html_select);
+
+	});
 }
 
 
@@ -151,9 +148,9 @@ function onSelectCountry2() {
 <!-- Si se va a editar una tarifa que no se actualizce los valores de los selects -->
 @if(!isset($tariffToUpdate) || $errors->any())
 <script>
-  $( document ).ready(function() {
-    $( "#origin_country" ).trigger( "click" );
-    $( "#destiny_country" ).trigger( "click" );
+	$( document ).ready(function() {
+		onSelectCountry();
+		onSelectCountry2();
 });
 </script>          
 @endif
