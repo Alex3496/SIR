@@ -83,8 +83,8 @@ class PublicController extends Controller
     public function tariffsResults(SearchTeariffsRequest $request)
     {
         //Se supone que el usuario ingresa el ubicacion completa con la ayuda del autollenado
-        $originLocation = Location::complete($request->location_origin)->first();
-        $destinyLocation = Location::complete($request->location_destiny)->first();
+        $originLocation = Location::complete($request->location_origin)->where('status','ACCEPTED')->first();
+        $destinyLocation = Location::complete($request->location_destiny)->where('status','ACCEPTED')->first();
 
         if($destinyLocation != null && $originLocation != null){
             $tariffs = Tariff::where('type_tariff',$request->type_tariff)
