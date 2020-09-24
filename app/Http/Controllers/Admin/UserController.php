@@ -91,7 +91,7 @@ class UserController extends Controller
         $insurance = $userToEdit->insurance;
         $roles = Role::all();
         $user = Auth::user();
-        $countries = CountryState::getCountries('spa');
+        $countries = $this->getCountries();
         asort($countries);
         $totalTariffs = Tariff::where('user_id',$userToEdit->id)->count();
         if($userToEdit->country){
@@ -268,5 +268,29 @@ class UserController extends Controller
         $user = Auth::user();
 
         return view('Admin.Users.Index',compact('users','user'));
+    }
+
+    /*
+    * Retorna el array de paises que si tienen registrados sus estados, o alguno errores
+    *
+    */
+    public function getCountries()
+    {
+        //trae todos los paises
+        $allCountries = CountryState::getCountries('spa');
+        $countries = [];
+        foreach ($allCountries as $key => $country) {
+            if(CountryState::getStates($key) == []){
+                continue;
+            }else if(in_array($key, ['PH','SY','TM'])){
+                continue;
+            }
+            else{
+                $countries[$key] = $country;
+            }
+        }
+
+        asort($countries);
+        return $countries;
     }
 }

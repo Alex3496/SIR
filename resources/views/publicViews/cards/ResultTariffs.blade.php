@@ -48,3 +48,8 @@
 </div>	
 @endforeach
 
+<!-- <div>
+	
+{{ $tariffs->links() }}
+</div> -->
+

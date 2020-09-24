@@ -298,12 +298,31 @@ class TariffsController extends Controller
             ->get();
     }
 
+
+    /*
+    * Retorna el array de paises que si tienen registrados sus estados, o alguno errores
+    *
+    */
     public function getCountries()
     {
-        $countries = CountryState::getCountries('spa');
+        //trae todos los paises
+        $allCountries = CountryState::getCountries('spa');
+        $countries = [];
+        foreach ($allCountries as $key => $country) {
+            if(CountryState::getStates($key) == []){
+                continue;
+            }else if(in_array($key, ['PH','SY','TM'])){
+                continue;
+            }
+            else{
+                $countries[$key] = $country;
+            }
+        }
+
         asort($countries);
         return $countries;
     }
+
 
     public function getStates($country)
     {

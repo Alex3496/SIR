@@ -90,10 +90,12 @@ class PublicController extends Controller
             $tariffs = Tariff::where('type_tariff',$request->type_tariff)
                 ->origin($originLocation->city)
                 ->destiny($destinyLocation->city)
-                ->equipment($request->tpye_equipment)->get();
+                ->equipment($request->tpye_equipment)->paginate(2);
         }else{
             $tariffs = collect(); //empty collection
         }
+
+        //dd($tariffs->all());
 
         //Sirve para mostar el valor escogido en los <select>
         $request['type_equip']= $request->tpye_equipment;
