@@ -40,7 +40,7 @@
 				<h2>${{$tariff->rate}}</h2><span> {{$tariff->currency}}</span>
 			</div>
 			<div class="d-flex justify-content-center">
-				<a href="{{route('booking.show',$tariff->id)}}" class="btn btn-SIR btn-block">{{__('Booking')}}</a>
+				<a href="{{route('booking.show',$tariff->id)}}" class="btn btn-SIR btn-block">{{__('Reservar')}}</a>
 			</div>
 			</div>
 		</div>
@@ -48,8 +48,8 @@
 </div>	
 @endforeach
 
-<!-- <div>
+<div>
 	
-{{ $tariffs->links() }}
-</div> -->
+{{ $tariffs->withQueryString()->links() }}
+</div>
 

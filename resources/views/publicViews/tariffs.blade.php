@@ -40,7 +40,7 @@
     <div class="col">
       <div class="card-body">
         <div class="row">
-          <div class="col">{{$tariffs->count()}} Resultado(s)</div>
+          <div class="col">{{$total}} Resultado(s)</div>
         </div>
         <div class="row">
         	@if($tariffs->count() == 0)

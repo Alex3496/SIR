@@ -90,13 +90,12 @@ class PublicController extends Controller
             $tariffs = Tariff::where('type_tariff',$request->type_tariff)
                 ->origin($originLocation->city)
                 ->destiny($destinyLocation->city)
-                ->equipment($request->tpye_equipment)->paginate(2);
+                ->equipment($request->tpye_equipment)->paginate(5);
         }else{
             $tariffs = collect(); //empty collection
         }
-
-        //dd($tariffs->all());
-
+        //total de registros sin paginacion
+        $total = $tariffs->total();
         //Sirve para mostar el valor escogido en los <select>
         $request['type_equip']= $request->tpye_equipment;
         //Muestra el equipo seleccionado traducido
@@ -104,7 +103,7 @@ class PublicController extends Controller
         //Array que alamcena los valores de busqueda de tafifas
         $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment','type_equip']);
 
-        return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch'));
+        return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch','total'));
     }
 
 
