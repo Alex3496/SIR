@@ -53,6 +53,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Tariff::class);
     }
 
+     //user can create/owns many tariffs
+    public function petitions()
+    {
+        return $this->hasMany(Petition::class);
+    }
+
     //user can save many tariffs in his "favorite list"
     public function tariffsFav()
     {

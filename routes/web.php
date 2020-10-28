@@ -72,6 +72,10 @@ Route::namespace('User')->group(function(){
 
 	Route::get('tariffs/create/air','TariffsController@addAerialTariff')->name('tariff.aerialAdd');
 
+		//Petitions routes
+	
+	Route::resource('petitions','PetitionController',['except' => ['show']]);	
+
 		//Booking routes
 
 	Route::get('booking/{id}','BookingController@show')->name('booking.show')->middleware('auth');

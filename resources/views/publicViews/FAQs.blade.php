@@ -5,7 +5,7 @@
 		<div id="questions-card" class="card-body">
 			<div class="row">
 				<div class="col text-center" style="margin-bottom: 30px;">
-					<h2 style="margin-bottom: 30px;">Preguntas frecuentes, que se tiene que modificar</h2>
+					<h2 style="margin-bottom: 30px;">Preguntas frecuentes</h2>
 					<div id="cuadro">
       				</div>
 				</div>

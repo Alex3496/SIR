@@ -102,9 +102,8 @@ class TariffsController extends Controller
     {        
 
         $request['user_id'] = Auth::user()->id;
-
         $request['origin'] = ucwords(strtolower($request->origin));
-        $request['destiny'] = ucwords(strtolower($request->destiny)); 
+        $request['destiny'] = ucwords(strtolower($request->destiny));
         
         if($request->request->get('type_tariff') == 'MARITIME')
         {
@@ -148,6 +147,7 @@ class TariffsController extends Controller
         $user=Auth::user();
         $tariffToUpdate=Tariff::findOrFail($id);
         
+        //asegura se la tarifa pertenece al usuario
         $this->authorize('pass',$tariffToUpdate);
 
         $countries = $this->getCountries();
@@ -217,8 +217,10 @@ class TariffsController extends Controller
     {
         $tariffToUpdate=Tariff::findOrFail($id);
 
+        //asegura se la tarifa pertenece al usuario
         $this->authorize('pass',$tariffToUpdate);
-         $request['origin'] = ucwords(strtolower($request->origin));
+        
+        $request['origin'] = ucwords(strtolower($request->origin));
         $request['destiny'] = ucwords(strtolower($request->destiny));               
 
         if($request['type_tariff'] == 'MARITIME')
@@ -259,6 +261,7 @@ class TariffsController extends Controller
     public function destroy(Tariff $tariff)
     {
 
+        dd($tariff);
         $tariffToDelete = Tariff::findOrFail($tariff->id);
 
         $this->authorize('pass',$tariffToDelete); 
