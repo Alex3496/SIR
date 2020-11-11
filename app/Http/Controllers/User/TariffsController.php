@@ -93,7 +93,7 @@ class TariffsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guarda la tarifa en la BD
      *
      * @param  \Illuminate\Http\tariffsRequest  $request
      * @return \Illuminate\Http\Response
@@ -102,13 +102,25 @@ class TariffsController extends Controller
     {        
 
         $request['user_id'] = Auth::user()->id;
+        //Guarda las ciudades con la letra inicial en Mayuscula
         $request['origin'] = ucwords(strtolower($request->origin));
         $request['destiny'] = ucwords(strtolower($request->destiny));
+
+        //Obtener la ubicacion completa del origen
+        $countries = CountryState::getCountries('spa');
+        $country = $countries[$request->origin_country];
+        $state =  CountryState::getStateName($request->origin_state,$request->origin_country);
+        $request['complete_origin'] = $request->origin.', '.$state.', '.$country;
+
+        //Obtener la ubicacion completa del destino
+        $country = $countries[$request->destiny_country];
+        $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
+        $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;
         
         if($request->request->get('type_tariff') == 'MARITIME')
         {
             $tariff = Tariff::create($request->only(['user_id','type_tariff','origin','origin_country',
-                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate','currency']));
+                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate','currency', 'complete_origin', 'complete_destiny']));
 
         } 
         else if($request->request->get('type_tariff') == 'AERIAL')
@@ -303,8 +315,7 @@ class TariffsController extends Controller
 
 
     /*
-    * Retorna el array de paises que si tienen registrados sus estados, o alguno errores
-    *
+    * Retorna el array de paises que si tienen registrados sus estados,y excluye algunos con errores
     */
     public function getCountries()
     {

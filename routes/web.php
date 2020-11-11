@@ -85,6 +85,10 @@ Route::namespace('User')->group(function(){
 	Route::get('booking/{id}/save', 'BookingController@saveBooking')->name('booking.save')->middleware('auth');
 
 	Route::get('booking/{id}/remove', 'BookingController@removeBooking')->name('booking.remove')->middleware('auth');
+
+	Route::get('booking/petition/{id}', 'BookingController@showPetition')->name('booking.showPetition')->middleware('auth');
+
+	Route::get('booking/send/message/petition','BookingController@sendMessagePetition')->name('booking.sendPetition')->middleware('auth');
 });
 
 

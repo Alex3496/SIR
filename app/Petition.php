@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use CountryState;
+
 class Petition extends Model
 {
     protected $fillable = [
@@ -18,10 +20,70 @@ class Petition extends Model
     	return $this->belongsTo(User::class);
     }
 
+    //--------------SCOPES----------------//
+
+    /*
+    *
+    * Metodo que busca las tarifas en el que el destino y origen sean el mismo que el origen que el usuario
+    * introdujo para que aparezca el vieje de "regreso"
+    *
+    */
+    public function scopeorigin($query, $origin)
+    {
+        if($origin){
+            return $query->where('origin','LIKE',"$origin%")
+                        ->orWhere('destiny','LIKE',"$origin%");
+        }
+    }
+     /*
+    *
+    * Metodo que busca las tarifas en el que el destino y origen sean el mismo que el destino que el usuario
+    * introdujo para que aparezca el vieje de "regreso"
+    *
+    */
+    public function scopedestiny($query, $destiny)
+    {
+        if($destiny){
+            return $query->where('destiny','LIKE',"$destiny%")
+                        ->orWhere('origin','LIKE',"$destiny%");
+
+        }
+    }
+
+    public function scopeequipment($query, $type_equipment)
+    {
+        if($type_equipment){
+            if($type_equipment == 'Any'){
+                return $query;
+            }else{
+                return $query->where('type_equipment','LIKE',"$type_equipment%");
+            }
+        }
+    }
+
 
     //--------------ATRIBUTTES------------------
+    
+    public function getGetTypeTariffAttribute()
+    {
+        if ($this->type_tariff == 'TRUCK') {
+            return 'Camión';
+        }
 
-    public function getGetTypeEquipmentAttribute()
+        if ($this->type_tariff == 'TRAIN') {
+            return 'Tren';
+        }
+
+        if ($this->type_tariff == 'MARITIME') {
+            return 'Maritimo';
+        }
+
+        if ($this->type_tariff == 'AERIAL') {
+            return 'Aéreo';
+        }
+    }
+
+     public function getGetTypeEquipmentAttribute()
     {
         if ($this->type_equipment == 'Dry Box 48 ft') {
             return 'Caja seca 48 pies';
@@ -68,4 +130,23 @@ class Petition extends Model
         }
     }
 
+    public function getGetStateOriginAttribute()
+    {
+        return CountryState::getStateName($this->origin_state,$this->origin_country);
+    }
+
+    public function getGetCountryOriginAttribute()
+    {
+        return CountryState::getCountryName($this->origin_country);
+    }
+
+    public function getGetStateDestinyAttribute()
+    {
+        return CountryState::getStateName($this->destiny_state,$this->destiny_country);
+    }
+
+    public function getGetCountryDestinyAttribute()
+    {
+        return CountryState::getCountryName($this->destiny_country);
+    }
 }

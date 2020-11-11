@@ -66,7 +66,11 @@
             </div>
             <div class="row">
               <div class="col mt-2">
-                <button type="submit" class="btn btn-SIR btn-block">{{ __('Buscar') }}</button>
+                @if(isset($petitions))
+                  <button type="submit" class="btn btn-SIR btn-block" name="Peticion" value="peticion">{{ __('Peticion') }}</button>
+                @else
+                  <button type="submit" class="btn btn-SIR btn-block">{{ __('Buscar') }}</button>
+                @endif
               </div>
             </div>
           {!!Form::close()!!}

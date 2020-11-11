@@ -1,7 +1,7 @@
 <div class="row">
   <div class="form-group col-md-6">
     {!! Form::label('country','País') !!}
-    {!! Form::select('country',$countries, $location->country_code ?? '',['class' =>'form-control','autocomplete' =>'off']) !!}
+    {!! Form::select('country',$countries, $location->country_code ?? 'MX',['class' =>'form-control','autocomplete' =>'off']) !!}
     @error('country')
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror

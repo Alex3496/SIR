@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\InfoMessage;
 use Illuminate\Support\Facades\Mail;
-use App\{Post,Category,Location,Tariff,Faq};
+use App\{Post,Category,Location,Tariff,Faq,Petition};
 use App\Http\Requests\{SearchTeariffsRequest,InformationRequest};
 
 class PublicController extends Controller
@@ -82,28 +82,49 @@ class PublicController extends Controller
     */
     public function tariffsResults(SearchTeariffsRequest $request)
     {
+        //dd($request->all());
         //Se supone que el usuario ingresa el ubicacion completa con la ayuda del autollenado
         $originLocation = Location::complete($request->location_origin)->where('status','ACCEPTED')->first();
         $destinyLocation = Location::complete($request->location_destiny)->where('status','ACCEPTED')->first();
 
-        if($destinyLocation != null && $originLocation != null){
+        if($request['Peticion'] && $destinyLocation != null && $originLocation != null){
+            $petitions = Petition::origin($originLocation->city)
+                ->destiny($destinyLocation->city)
+                ->equipment($request->tpye_equipment)->paginate(10);
+            $total = $petitions->total();
+        } else if($destinyLocation != null && $originLocation != null){
             $tariffs = Tariff::where('type_tariff',$request->type_tariff)
                 ->origin($originLocation->city)
                 ->destiny($destinyLocation->city)
-                ->equipment($request->tpye_equipment)->paginate(5);
+                ->equipment($request->tpye_equipment)->paginate(10);
+            //total de registros sin paginacion
+            $total = $tariffs->total();
         }else{
             $tariffs = collect(); //empty collection
+            $petitions = collect(); //empty collection
+            $total = 0;
         }
-        //total de registros sin paginacion
-        $total = $tariffs->total();
-        //Sirve para mostar el valor escogido en los <select>
-        $request['type_equip']= $request->tpye_equipment;
-        //Muestra el equipo seleccionado traducido
-        $request['tpye_equipment']= $this->translate($request->tpye_equipment);
-        //Array que alamcena los valores de busqueda de tafifas
-        $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment','type_equip']);
 
-        return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch','total'));
+        if(isset($petitions) || $request['Peticion']){
+            
+            $request['type_equip']= $request->tpye_equipment;
+            $request['tpye_equipment']= $this->translate($request->tpye_equipment);
+            $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment','type_equip']);
+
+            return view('publicViews.petitions',compact('originLocation','destinyLocation','petitions','dataSearch','total'));
+
+        }else{
+
+            //Sirve para mostar el valor escogido en los <select>
+            $request['type_equip']= $request->tpye_equipment;
+            //Muestra el equipo seleccionado traducido
+            $request['tpye_equipment']= $this->translate($request->tpye_equipment);
+            //Array que alamcena los valores de busqueda de tafifas
+            $dataSearch = $request->only(['type_tariff','location_origin','location_destiny','tpye_equipment','type_equip']);
+
+            return view('publicViews.tariffs',compact('originLocation','destinyLocation','tariffs','dataSearch','total'));
+        }
+
     }
 
 

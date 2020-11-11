@@ -47,6 +47,14 @@
         display: flex;
         justify-content: space-around;
 
+      }
+      .card-footer{
+        height: 6rem;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #c8c8c8; ;
       } 
     </style>
   </head>
@@ -59,25 +67,24 @@
             <h1>{{__('IBooking System')}}</h1>
           </div>
           <div class="card-body">
-            <h4>Solicitud de transporte</h4>
-            <p>El usuario: {{$user['name']}}, esta interesado en una de tus tarifas registradas:</p>
+            <h4>Interesado en tu petición</h4>
+            <p>El usuario: {{$user['name']}}, esta interesado en una de las peticiones publicadas</p>
               <div>
                 <small>{{ __('Origen') }}:</small>
-                <h4>{{$tariff->origin}}</h4>
-                <p>{{$tariff->get_state_origin}}, {{$tariff->get_country_origin}}</p>
+                <h4>{{$petition->origin}}</h4>
+                <p>{{$petition->get_state_origin}}, {{$petition->get_country_origin}}</p>
               </div>   
               <div>
                 <small>{{ __('Destino') }}:</small>
-                <h4>{{$tariff->destiny}}</h4>
-                <p>{{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</p>
+                <h4>{{$petition->destiny}}</h4>
+                <p>{{$petition->get_state_destiny}}, {{$petition->get_country_destiny}}</p>
               </div>
               <ul>
-                <li><b>{{__('Precio')}}:</b> {{$tariff->rate}} <small>dlls</small> </li>
-                <li><b>{{__('Transporte')}}:</b>  {{$tariff->get_type_tariff}} </li>
-                <li><b>{{__('Contenedor')}}:</b> {{$tariff->get_type_equipment}} </li>
+                <li><b>{{__('Precio')}}:</b> {{$petition->rate}} <small>dlls</small> </li>
+                <li><b>{{__('Contenedor')}}:</b> {{$petition->get_type_equipment}} </li>
               </ul>
             <hr/>
-            <label>Datos del usuario</label>
+            <label>Datos del Usuario y/o Empresa</label>
             <ul>
               <li><b>{{__('Nombre')}}:</b> {{$user['name']}}</li>
               <li><b>{{__('Empresa')}}:</b> {{$user['company_name']}}</li>
@@ -94,6 +101,9 @@
             </ul>
             <hr>
             <label>Ponte en contacto con el usuario para realizar la negación.</label>
+          </div>
+          <div class="card-footer">
+            <p>Todos los derechos reservados 2020 SIR</p>
           </div>
         </div>
       </div>

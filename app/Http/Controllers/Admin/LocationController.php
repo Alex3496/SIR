@@ -50,9 +50,10 @@ class LocationController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $countries = CountryState::getCountries('spa');
+        $countries = $this->getCountries();
+        $states = CountryState::getStates('MX');
         asort($countries);
-        return view('Admin.locations.create',compact('user','countries'));
+        return view('Admin.locations.create',compact('user','countries','states'));
     }
 
     /**
@@ -160,5 +161,30 @@ class LocationController extends Controller
         $location->delete();
 
         return redirect()->route('admin.locations.index')->with('status','Eliminado con exito');
+    }
+
+
+     /*
+    * Retorna el array de paises que si tienen registrados sus estados,y excluye algunos con errores
+    *
+    */
+    public function getCountries()
+    {
+        //trae todos los paises
+        $allCountries = CountryState::getCountries('spa');
+        $countries = [];
+        foreach ($allCountries as $key => $country) {
+            if(CountryState::getStates($key) == []){
+                continue;
+            }else if(in_array($key, ['PH','SY','TM'])){
+                continue;
+            }
+            else{
+                $countries[$key] = $country;
+            }
+        }
+
+        asort($countries);
+        return $countries;
     }
 }

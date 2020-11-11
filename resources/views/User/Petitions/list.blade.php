@@ -7,7 +7,7 @@
     <table id="example2" class="table table-bordered table-hover example2">
       <thead>
         <tr>
-          <th>{{ __('Fecha') }}</th>
+          <th>{{ __('Fecha de creación') }}</th>
           <th>{{ __('Origen') }}</th>
           <th>{{ __('Destino') }}</th>
           <th>{{ __('Tipo de equipo') }}</th>

@@ -11,7 +11,7 @@ class Tariff extends Model
 
     protected $fillable = [
         'user_id', 'type_tariff','origin', 'origin_country','origin_state','destiny','destiny_country','destiny_state', 
-        'approx_weight','type_weight','distance', 'type_equipment','rate','currency',
+        'approx_weight','type_weight','distance', 'type_equipment','rate','currency','complete_origin','complete_destiny',
     ];
     
 

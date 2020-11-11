@@ -89,7 +89,7 @@ class UserController extends Controller
         $userToEdit = $user;
         $dataset = $userToEdit->dataset;
         $insurance = $userToEdit->insurance;
-        $roles = Role::all();
+       /* $roles = Role::all();*/
         $user = Auth::user();
         $countries = $this->getCountries();
         asort($countries);
@@ -97,10 +97,10 @@ class UserController extends Controller
         if($userToEdit->country){
             $states = CountryState::getStates($userToEdit->country);
         }else{
-            $states = [];
+            $states = CountryState::getStates('MX');
         }
 
-        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','roles','user','countries','states','totalTariffs'));
+        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','user','countries','states','totalTariffs'));
     }
 
     /**

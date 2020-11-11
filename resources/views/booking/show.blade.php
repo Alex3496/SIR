@@ -6,7 +6,10 @@
       <div class="card mt-4 mb-4">
         <div class="card-body">
           <div class="row">
-           
+           <div class="col-md-8 offset-md-2 text-center">
+             <h2>Enviale un mensaje a la empresa transportista.</h2>
+             <p>A continuación se muestra la información básica sobre la tarifa seleccionada , envíele un mensaje a la empresa transportista para que esta se ponga en contacto con usted los mas pronto posible, o bien  puede guardar la tarifa para mas tarde.</p>
+           </div>
           </div>
           <hr/>
           <div class="row">

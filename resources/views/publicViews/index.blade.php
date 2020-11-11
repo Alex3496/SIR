@@ -87,10 +87,9 @@
             @error('tpye_equipment')
                 <small class="mt-0" style="color:red">{{ $message }}</small>
               @enderror
-            <div class="row">
-              <div class="col mt-2">
-                <button type="submit" class="btn btn-SIR btn-block">{{ __('Cotizar') }}</button>
-              </div>
+            <div class="row mt-2 justify-content-around">
+              <button type="submit" class="btn btn-SIR col-5">{{ __('Cotizar') }}</button>
+              <button type="submit" class="btn btn-SIR col-5" name="Peticion" value="peticion">{{ __('Peticion') }}</button>
             </div>
           </form>
         </div>

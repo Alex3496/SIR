@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
-        {!! Form::label('company_name', 'Nombre') !!}
+        {!! Form::label('company_name', 'Nombre') !!}*
         {!! Form::text('company_name',$userToEdit->company_name,['class' =>'form-control']) !!}
         @error('company_name')
           <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -26,7 +26,7 @@
     </div>
     <div class="row">
       <div class="form-group col">
-        {!! Form::label('company_address', 'Dirección') !!}
+        {!! Form::label('company_address', 'Dirección') !!}*
         {!! Form::text('company_address',$userToEdit->company_address,['class' =>'form-control']) !!}
         @error('company_address')
           <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -35,9 +35,9 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
-        {!! Form::label('country', 'País') !!}
+        {!! Form::label('country', 'País') !!}*
 
-        {!! Form::select('country',$countries,$userToEdit->country,['class' =>'form-control']) !!}
+        {!! Form::select('country',$countries,$userToEdit->country ?? 'MX',['class' =>'form-control']) !!}
         @error('country')
           <small class="mt-0" style="color:red">{{ $message }}</small>
         @enderror
@@ -45,7 +45,7 @@
     </div>
     <div class="row">
       <div class="form-group col-lg-6">
-        {!! Form::label('state', 'Estado') !!}
+        {!! Form::label('state', 'Estado') !!}*
         {!! Form::select('state', $states , $userToEdit->state , ['class' =>'form-control']) !!}
         @error('state')
           <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -54,7 +54,7 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
-        {!! Form::label('city', 'Ciudad') !!}
+        {!! Form::label('city', 'Ciudad') !!}*
         {!! Form::text('city',$userToEdit->city,['class' =>'form-control']) !!}
         @error('city')
           <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -63,7 +63,7 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
-        {!! Form::label('zip_code', 'Código postal') !!}
+        {!! Form::label('zip_code', 'Código postal') !!}*
         {!! Form::text('zip_code',$userToEdit->zip_code,['class' =>'form-control']) !!}
         @error('zip_code')
           <small class="mt-0" style="color:red">{{ $message }}</small>

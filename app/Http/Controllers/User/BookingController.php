@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use App\Mail\BookingMessage;
+use App\Mail\{BookingMessage,PetitionMessage};
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-use App\{Tariff,Favorite};
+use App\{Tariff,Favorite,Petition};
 
 class BookingController extends Controller
 {
@@ -73,4 +73,49 @@ class BookingController extends Controller
 
         return redirect()->route('home')->with('status','La tariffa se ha removido');
     }
+
+
+    /*Este mismo controlador funciona para las peticiones (no quise hacer otro lol)*/
+
+
+     /**
+     * Despliega informacion mas datallada sobre la peticion seleccionada
+     *
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function showPetition($id)
+    {
+
+       $petition = Petition::findOrFail($id);
+
+        return view('booking.showPetition',compact('petition'));
+    }
+
+
+
+     /**
+     * Envia un correo al usuario que tiene una peticion de parte de la empresa de trasnporte interesada
+     *
+     * @param  \App\Http\Requests\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sendMessagePetition(Request $request)
+    {
+
+        //validar que si exista la peticion por id
+
+        $petition = Petition::findOrFail($request->id);
+
+        $user = $request->all();
+
+        Mail::to($petition->user->email)->send(new PetitionMessage($petition,$user));
+
+        //guardar tarifa relacionado al usuario
+
+        return redirect()->route('home')
+            ->with('status','Se ha enviado un mensaje a la empresa, recibiras una respuesta pronto');
+
+    }
+
 }

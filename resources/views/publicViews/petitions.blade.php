@@ -39,22 +39,22 @@
   <div class="row">
     <div class="col">
       <div class="card-body">
-        <div class="row">
+         <div class="row">
           <div class="col d-flex justify-content-center align-items-center">
             <span>{{$total}} Resultado(s)</span>
           </div>
           <div class="col-10 d-flex justify-content-center align-items-center">
-            <h3 class="margin-0">Tarifas</h3>
+            <h3 class="margin-0">Peticiones</h3>
           </div>
         </div>
         <div class="row">
-        	@if($tariffs->count() == 0)
-        	<div class="col text-center" style="margin-top: 8rem; margin-bottom: 4rem">
-        		<h2>Lo sentimos, no se encontró ningún resultado.</h2>
-        		<h4>Prueba introduciendo otros datos.</h4>
-        	</div>
-        	@else
-          <div class="col">@include('publicViews.cards.ResultTariffs')</div>
+          @if($petitions->count() == 0)
+          <div class="col text-center" style="margin-top: 8rem; margin-bottom: 4rem">
+            <h2>Lo sentimos, no se encontró ningún resultado.</h2>
+            <h4>Prueba introduciendo otros datos.</h4>
+          </div>
+          @else
+          <div class="col">@include('publicViews.cards.ResultPetitions')</div>
           @endif
         </div>
       </div>
