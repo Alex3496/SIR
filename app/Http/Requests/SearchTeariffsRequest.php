@@ -23,12 +23,17 @@ class SearchTeariffsRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'type_tariff'       => 'required|in:TRUCK,TRAIN,MARITIME,AERIAL',
+        $rules = [
             'location_origin'   => 'required|string|max:100',
             'location_destiny'  => 'required|string|max:100|different:location_origin',
             'tpye_equipment'    => 'required|in:Any,Dry Box,Refrigerated,Plataform,Container,Box,Package,Pallet'
         ];
+
+        if(!$this->request->get('Peticion')){
+            $rules['type_tariff'] = 'required|in:TRUCK,TRAIN,MARITIME,AERIAL';
+        }
+
+        return $rules;
     }
 
     /**

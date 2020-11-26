@@ -10,6 +10,7 @@
       </div>
       <div class="modal-body">
         {!! Form::open(['route' => 'tariffsResults', 'method' => 'GET']) !!}
+          @if(!isset($petitions))
             <div class="col d-flex justify-content-center mb-2 mt-0">
               <div class="route-item btn-group btn-group-toggle"  data-toggle="buttons">
                 <label class="btn btn-radio-type-tariff ">
@@ -35,6 +36,7 @@
                 </label>
               </div>
             </div>
+          @endif
             <div class="form-group">
               <label for="origin">{{ __('Origen') }}</label>
               <input list="locations-origin" type="text" class="form-control" 

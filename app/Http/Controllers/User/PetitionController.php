@@ -47,17 +47,6 @@ class PetitionController extends Controller
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		dd('create petitions');
-
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -91,8 +80,8 @@ class PetitionController extends Controller
 		$user=Auth::user();
         $petitionToUpdate=Petition::findOrFail($id);
         
-        //asegura se la tarifa pertenece al usuario
-        //$this->authorize('pass',$petitionToUpdate);
+        //asegura se la peticion pertenece al usuario
+        $this->authorize('pass',$petitionToUpdate);
 
         //carga informacion de los paises y los estados del pais de la peticion
         $countries = $this->getCountries();
@@ -120,7 +109,7 @@ class PetitionController extends Controller
 		$petitionToUpdate=Petition::findOrFail($id);
 
 		//asegura se la tarifa pertenece al usuario
-        //$this->authorize('pass',$petitionToUpdate);
+        $this->authorize('pass',$petitionToUpdate);
 
         $request['origin'] = ucwords(strtolower($request->origin));
         $request['destiny'] = ucwords(strtolower($request->destiny));  
@@ -144,7 +133,7 @@ class PetitionController extends Controller
 	{
 		$PetitionToDelete = Petition::findOrFail($id);
 
-        //$this->authorize('pass',$PetitionToDelete); 
+        $this->authorize('pass',$PetitionToDelete); 
 
         $PetitionToDelete->delete();
 

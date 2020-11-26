@@ -22,11 +22,9 @@ class CreateTariffsTable extends Migration
             $table->string('origin');
             $table->string('origin_state')->nullable();
             $table->string('origin_country')->nullable();
-            $table->string('complete_origin')->nullable();
             $table->string('destiny');
             $table->string('destiny_state')->nullable();
             $table->string('destiny_country')->nullable();
-            $table->string('complete_destiny')->nullable();
             $table->integer('approx_weight')->nullable();
             $table->string('type_weight',7)->nullable();
             $table->integer('distance')->nullable();

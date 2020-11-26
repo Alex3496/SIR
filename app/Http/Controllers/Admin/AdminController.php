@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use App\{User,Role};
+use App\{User,Role,Tariff,Petition};
+use DB;
 
 class AdminController extends Controller
 {
@@ -31,11 +32,18 @@ class AdminController extends Controller
             ->whereHas('roles', function($q){$q->where('name', 'user');})->count(); //Do scope
 
         $user = Auth::user();
+        $tariffsCount = Tariff::all()->count();
+        $petitionCount = Petition::get()->count();
+        //tarifa mas registrada
+        $tariffMostUsed = DB::select("SELECT COUNT(`origin`) AS 'count',`origin`,`origin_state`,`origin_country`,`destiny`,`destiny_state`,`destiny_country`  FROM `tariffs` GROUP BY `origin`,`origin_state`,`origin_country`,`destiny_state`,`destiny_country`,`destiny`ORDER BY COUNT(`origin`) DESC");
 
     	return view('Admin.home',[
             'usersCount' => $usersCount,
             'user' => $user,
             'usersMonth' => $usersMonth,
+            'tariffsCount' => $tariffsCount,
+            'petitionCount' => $petitionCount,
+            'tariffMostUsed' => $tariffMostUsed[0],
 
         ]);
     }

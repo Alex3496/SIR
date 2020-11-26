@@ -74,7 +74,7 @@ Route::namespace('User')->group(function(){
 
 		//Petitions routes
 	
-	Route::resource('petitions','PetitionController',['except' => ['show']]);	
+	Route::resource('petitions','PetitionController',['except' => ['show','create']]);	
 
 		//Booking routes
 

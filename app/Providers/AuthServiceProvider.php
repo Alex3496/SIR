@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Policies\{TariffPolicy,PostPolicy};
-use App\{Tariff,Post};
+use App\Policies\{TariffPolicy,PostPolicy, petitionsPolicy};
+use App\{Tariff,Post,Petition};
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -18,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Tariff::class => TariffPolicy::class,
         Post::class => PostPolicy::class,
+        Petition::class => petitionsPolicy::class,
     ];
 
     /**

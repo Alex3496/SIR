@@ -34,9 +34,53 @@
           <i class="fas  fa-calendar"></i>
         </div>
       </div>
-    </div>    
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{$tariffsCount}}</h3>
+
+          <p>Tarifas Registradas</p>
+        </div>
+        <div class="icon">
+          <i class="fas  fa-truck"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{$petitionCount}}</h3>
+
+          <p>Peticiones Registradas</p>
+        </div>
+        <div class="icon">
+          <i class="fas fa-map-pin"></i>
+        </div>
+      </div>
+    </div>        
   </div>
   <!--/End row Tariff List-->
+  <div class="row">
+    <div class="col-md-1 center">
+      <img src="{{ asset('images/logos/ubicacion.png') }}" class="serch-img"/>
+    </div>
+    <div class="col-md-3 center">
+      <h3>Ruta mas transitada</h3>
+    </div>
+    <div class="col-md-6 mb-4 d-flex align-items-center">
+        <div class=" text-center-md ml-2 mt-2" style="width: 85%; ">
+          <div style="height: 50%">
+            <b>Origen:</b>
+              {{$tariffMostUsed->origin}}, {{$tariffMostUsed->origin_state}}, {{$tariffMostUsed->origin_country}}
+          </div>
+          <div class="mt-2">
+            <b>Destino:</b>
+              {{$tariffMostUsed->destiny}}, {{$tariffMostUsed->destiny_state}}, {{$tariffMostUsed->destiny_country}}
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
 
 
