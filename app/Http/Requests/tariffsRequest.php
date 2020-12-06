@@ -36,7 +36,7 @@ class tariffsRequest extends FormRequest
             'destiny'           => 'required|regex:/^[\pL\s\-]+$/u|max:50',
             'destiny_country'   => ['required',Rule::in($countries)],
             'destiny_state'     => 'required|string|max:3',
-            'approx_weight'     => ['required','numeric','min:1','max:80000'],
+            'approx_weight'     => ['required','numeric','min:1','max:500000'],
             'type_weight'       => ['required','in:kg,lb'],
             'distance'          => ['numeric','nullable','max:10000000','min:0'],
             'rate'              => ['required','numeric','max:10000000','min:1'],
@@ -91,7 +91,7 @@ class tariffsRequest extends FormRequest
             'destiny.max'           => 'Máximo 50 caracteres',
             'distance.max'          => 'Máximo 10,000,000 (campo opcional)',
             'rate.max'              => 'Excede limite permitido',
-            'approx_weight.max'     => 'El peso máximo es de 80,000'
+            'approx_weight.max'     => 'El peso máximo es de 500,000'
         ];
     }
 }

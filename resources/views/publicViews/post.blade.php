@@ -18,12 +18,7 @@
     <div class="col-md-8">
       <div class="card ">
         <div class="card-body">
-          <img class="img-fluid mt-2 mb-4"
-          	@if($post-> id <= 30) 
-          		src="{{ $post->image }}">
-            @else
-            	src="{{ $post->get_image }}">
-            @endif
+          <img class="img-fluid mt-2 mb-4" src="{{ $post->get_image }}">
           <p>{!! $post->body !!}</p>
 
           <hr>

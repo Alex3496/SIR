@@ -29,13 +29,7 @@
           </div>
           <div class="col-md-6 order-first order-md-1">
             <div id="posts-right-side">
-              <!-- quitar esto solo eroa prueba -->
-              <img  
-              @if($post->id<= 30) 
-              	src="{{ $post->image }}" class="img-fluid">
-              @else
-                src="{{ $post->get_image }}" class="img-fluid">
-              @endif
+              <img  src="{{ $post->get_image }}" class="img-fluid">
                 <p>
                   @foreach($post->tags as $tag)
                   	<span class="badge badge-secondary">{{ $tag->name }}</span>

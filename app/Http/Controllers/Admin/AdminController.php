@@ -37,13 +37,14 @@ class AdminController extends Controller
         //tarifa mas registrada
         $tariffMostUsed = DB::select("SELECT COUNT(`origin`) AS 'count',`origin`,`origin_state`,`origin_country`,`destiny`,`destiny_state`,`destiny_country`  FROM `tariffs` GROUP BY `origin`,`origin_state`,`origin_country`,`destiny_state`,`destiny_country`,`destiny`ORDER BY COUNT(`origin`) DESC");
 
+
     	return view('Admin.home',[
             'usersCount' => $usersCount,
             'user' => $user,
             'usersMonth' => $usersMonth,
             'tariffsCount' => $tariffsCount,
             'petitionCount' => $petitionCount,
-            'tariffMostUsed' => $tariffMostUsed[0],
+            'tariffMostUsed' => $tariffMostUsed[0] ?? new \stdClass(),
 
         ]);
     }

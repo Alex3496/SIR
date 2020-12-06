@@ -66,17 +66,17 @@
       <img src="{{ asset('images/logos/ubicacion.png') }}" class="serch-img"/>
     </div>
     <div class="col-md-3 center">
-      <h3>Ruta mas transitada</h3>
+      <h3>Ruta más transitada</h3>
     </div>
     <div class="col-md-6 mb-4 d-flex align-items-center">
         <div class=" text-center-md ml-2 mt-2" style="width: 85%; ">
           <div style="height: 50%">
             <b>Origen:</b>
-              {{$tariffMostUsed->origin}}, {{$tariffMostUsed->origin_state}}, {{$tariffMostUsed->origin_country}}
+              {{$tariffMostUsed->origin ?? '-'}}, {{$tariffMostUsed->origin_state ?? '-'}}, {{$tariffMostUsed->origin_country ?? '-'}}
           </div>
           <div class="mt-2">
             <b>Destino:</b>
-              {{$tariffMostUsed->destiny}}, {{$tariffMostUsed->destiny_state}}, {{$tariffMostUsed->destiny_country}}
+              {{$tariffMostUsed->destiny ?? '-' }}, {{$tariffMostUsed->destiny_state ?? '-' }}, {{$tariffMostUsed->destiny_country ?? '-'}}
           </div>
         </div>
     </div>
