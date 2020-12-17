@@ -63,13 +63,13 @@
       <li class="nav-item">
         <a href="{{ route('tariffs.index') }}" class="nav-link">
           <i class="nav-icon fas fa-truck"> </i>
-          <p>{{ __('Tarifas') }}</p>
+          <p>{{ __('Mis Tarifas') }}</p>
         </a>
       </li>
       <li class="nav-item">
         <a href="{{ route('petitions.index') }}" class="nav-link">
           <i class="nav-icon fas fa-map-pin"> </i>
-          <p>{{ __('Peticiones') }}</p>
+          <p>{{ __('Mis Solicitudes') }}</p>
         </a>
       </li>
     </ul>

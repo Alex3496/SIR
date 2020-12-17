@@ -88,8 +88,8 @@
                 <small class="mt-0" style="color:red">{{ $message }}</small>
               @enderror
             <div class="row mt-2 justify-content-around">
-              <button type="submit" class="btn btn-SIR col-5">{{ __('Cotizar') }}</button>
-              <button type="submit" class="btn btn-SIR col-5" name="Peticion" value="peticion">{{ __('Peticion') }}</button>
+              <button type="submit" class="btn btn-SIR col-4">{{ __('Cotizar') }}</button>
+              <button type="submit" class="btn btn-SIR col-6" name="Peticion" value="peticion">{{ __('Solicitar Transporte') }}</button>
             </div>
           </form>
         </div>
