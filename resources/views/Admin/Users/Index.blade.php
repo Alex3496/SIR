@@ -35,7 +35,7 @@
     </div>
 
     <div class="row justify-content-center">
-    <div class="col-md-11">
+    <div class="col-md-12">
       <!--start card User List-->
       <div class="card">
         <div class="card-header">
@@ -85,6 +85,11 @@
             </tbody>
           </table>
         </div>
+        <div class="row">
+          <div class="col-12 center">
+           
+          </div>
+        </div>
       </div>
       <!--/end card-->
     </div>
@@ -111,11 +116,11 @@
       "autoWidth": false,
     });
     $("#example2").DataTable({
-      "paging": true,
+      "paging": false,
           "lengthChange": false,
           "searching": false,
           "ordering": true,
-          "info": true,
+          "info": false,
           "autoWidth": false,
           "responsive": true,
     });

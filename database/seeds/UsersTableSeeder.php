@@ -73,8 +73,8 @@ class UsersTableSeeder extends Seeder
         $user->roles()->attach(3);
         $vicente->roles()->attach(1);
 
-        /*
-        factory(User::class, 30)->create()->each(function($user){
+        
+       /* factory(User::class, 5000)->create()->each(function($user){
 
             $user->roles()->attach(3);
 
