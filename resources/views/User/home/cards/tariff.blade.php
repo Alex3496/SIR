@@ -25,7 +25,7 @@
 				<h5>{{ $tariff->user->company_name }}</h5>
 			</div>
 			<div class="col">
-				<small>{{__('Tipo de Contenedor')}} :</small><br>
+				<small>{{__('Tipo de Equipo')}} :</small><br>
 				<label>{{$tariff->get_type_equipment}}</label>
 			</div>
 			<div class="col pt-2">

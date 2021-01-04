@@ -22,7 +22,7 @@
 						<h5 class="text-16">{{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</h5>
 					</div>
 					<div class="col-md">
-						<small>{{__('Tipo de Contenedor')}} :</small><br>
+						<small>{{__('Tipo de Equipo')}} :</small><br>
 						<label class="mt-3">{{$tariff->get_type_equipment}}</label>
 					</div>
 				</div>

@@ -87,7 +87,7 @@
         </div>
         <div class="row">
           <div class="col-12 center">
-           
+           {{ $users->links() }}
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
       "paging": false,
           "lengthChange": false,
           "searching": false,
-          "ordering": true,
+          "ordering": false,
           "info": false,
           "autoWidth": false,
           "responsive": true,

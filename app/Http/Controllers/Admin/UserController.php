@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $users = User::all()->except(Auth::id());
+        $users = User::orderby('created_at','DESC')->where('id','!=',Auth::id())->paginate(10);
 
         return view('Admin.Users.Index',compact('users','user'));
     }
@@ -263,7 +263,7 @@ class UserController extends Controller
             ->name($request->name)
             ->company($request->company_name)
             ->email($request->email)
-            ->get();
+            ->paginate(10);
 
         $user = Auth::user();
 

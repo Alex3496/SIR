@@ -72,7 +72,7 @@
                 <p>{{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</p>
               </div>
               <ul>
-                <li><b>{{__('Precio')}}:</b> {{$tariff->rate}} <small>dlls</small> </li>
+                <li><b>{{__('Precio')}}:</b> {{$tariff->rate}} <small>{{$tariff->currency}}</small> </li>
                 <li><b>{{__('Transporte')}}:</b>  {{$tariff->get_type_tariff}} </li>
                 <li><b>{{__('Contenedor')}}:</b> {{$tariff->get_type_equipment}} </li>
               </ul>
@@ -88,12 +88,18 @@
               @if($user['date'])
                 <li><b>{{__('Fecha de envio')}}:</b> {{$user['date']}}</li>
               @endif
+              @if($user['collection_address'])
+                <li><b>{{__('Dirección de Recolección')}}:</b> {{$user['collection_address']}}</li>
+              @endif
+              @if($user['delivery_address'])
+                <li><b>{{__('Dirección de Entrega')}}:</b> {{$user['delivery_address']}}</li>
+              @endif
               @if($user['message'])
                 <li><b>{{__('Mesanje')}}</b><br><p>{{$user['message']}}</p></li>
               @endif
             </ul>
             <hr>
-            <label>Ponte en contacto con el usuario para realizar la negación.</label>
+            <label>Ponte en contacto con el usuario para realizar la negociación.</label>
           </div>
         </div>
       </div>

@@ -116,6 +116,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 // ONLY FOR ADMIN
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-only')->group(function(){
+	
+	Route::get('users/find','UserController@find')->name('users.find');
 
 	Route::resource('users','UserController');
 
@@ -127,7 +129,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admi
 
 	Route::put('users/{user}/insurance','UserController@updateInsurance')->name('updateInsurance');
 
-	Route::get('users/find','UserController@find')->name('users.find');
 
 	Route::delete('delete-tariff/{tariff}','UserController@destroyTariff')->name('tariffs.destroy');
 

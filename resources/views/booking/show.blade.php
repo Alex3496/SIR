@@ -37,7 +37,7 @@
               <div>
               	{!! Form::open(['route' => 'booking.send','method' => 'GET']) !!}
                 {!! Form::hidden('id',$tariff->id) !!}
-              	<label>{{__('Tus datos de contacto')}}</label>
+              	<label>{{__('Ingrese sus datos de contacto e información de envío')}}</label>
               	<div class="form-group row">
     							<label for="name" class="col-md-4 col-form-label">{{__('Nombre')}}*</label>
     							<div class="col-md-5">
@@ -62,6 +62,18 @@
       							{!! Form::text('phone', Auth::user()->phone ?? '', ['class' => 'form-control']) !!}
     							</div>
  	 							</div>
+                <div class="form-group row">
+                  <label for="collection_address" class="col-md-4 col-form-label">{{__('Dirección de Recolección')}}</label>
+                  <div class="col-md-5">
+                    {!! Form::text('collection_address','', ['class' => 'form-control']) !!}
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="delivery_address" class="col-md-4 col-form-label">{{__('Dirección de Entrega')}}</label>
+                  <div class="col-md-5">
+                    {!! Form::text('delivery_address','', ['class' => 'form-control']) !!}
+                  </div>
+                </div>
               	<div class="form-group row">
     							<label for="date" class="col-md-4 col-form-label">{{__('Fecha de envío')}}</label>
     							<div class="col-md-5">
@@ -81,10 +93,10 @@
             <div class="col-md-4 d-flex flex-column justify-content-between pr-2" id="info-column">
               <div id="info-inner" class="d-flex flex-column justify-content-around">
                 <div  class="d-flex justify-content-center">
-                  <h2>${{$tariff->rate}}</h2><span class="pl-1 pt-2">dlls.</span>
+                  <h2>${{$tariff->rate}}</h2><span class="pl-1 pt-2">{{$tariff->currency}}.</span>
                 </div>
                 <div class="text-center">
-                  <small>{{ __('Tipo de Contenedor') }} :</small>
+                  <small>{{ __('Tipo de Equipo') }} :</small>
                   <br/>
                   <label>{{$tariff->get_type_equipment}}</label>
                 </div>
