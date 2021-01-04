@@ -273,7 +273,7 @@ class TariffsController extends Controller
     public function destroy(Tariff $tariff)
     {
 
-        dd($tariff);
+        //dd($tariff);
         $tariffToDelete = Tariff::findOrFail($tariff->id);
 
         $this->authorize('pass',$tariffToDelete); 
