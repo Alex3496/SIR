@@ -16,7 +16,7 @@
 				<h5>{{$tariff->destiny}} {{$tariff->get_state_destiny}}, {{$tariff->get_country_destiny}}</h5>
 			</div>
 			<div class="col d-flex justify-content-center">
-				<h2>${{$tariff->rate}}</h2><span>dlls.</span>
+				<h2>${{$tariff->rate}}</h2><span>{{$tariff->currency}}</span>
 			</div>
 		</div>
 		<div class="row">
