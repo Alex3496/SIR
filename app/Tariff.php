@@ -101,7 +101,10 @@ class Tariff extends Model
     }
 
     //--------------ATRIBUTTES------------------
-    
+
+    /*
+    * Traduce el tipo de equipo qeu tiene la tarifa
+    */
     public function getGetTypeTariffAttribute()
     {
         if ($this->type_tariff == 'TRUCK') {
@@ -121,7 +124,7 @@ class Tariff extends Model
         }
     }
 
-     public function getGetTypeEquipmentAttribute()
+    public function getGetTypeEquipmentAttribute()
     {
         if ($this->type_equipment == 'Dry Box 48 ft') {
             return 'Caja seca 48 pies';
@@ -186,5 +189,29 @@ class Tariff extends Model
     public function getGetCountryDestinyAttribute()
     {
         return CountryState::getCountryName($this->destiny_country);
+    }
+
+    /*
+    * Retorna la ciadad de origen completa
+    */
+    public function getGetOriginAttribute()
+    {
+        $city = $this->origin;
+        $state = CountryState::getStateName($this->origin_state,$this->origin_country);
+        $country = CountryState::getCountryName($this->origin_country);
+
+        return "$city, $state, $country";
+    }
+
+    /*
+    * Retorna la ciadad de destino completa
+    */
+    public function getGetDestinyAttribute()
+    {
+        $city = $this->origin;
+        $state = CountryState::getStateName($this->destiny_state,$this->destiny_country);
+        $country = CountryState::getCountryName($this->destiny_country);
+
+        return "$city, $state, $country";
     }
 }

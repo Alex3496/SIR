@@ -116,6 +116,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:mana
 
 // ONLY FOR ADMIN
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:admin-only')->group(function(){
+
+	Route::get('tariffs/list','TariffsController@list')->name('tariffs.list');
+
+	Route::get('petitions/list','PetitionsController@list')->name('petitions.list');
 	
 	Route::get('users/find','UserController@find')->name('users.find');
 

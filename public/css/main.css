@@ -429,6 +429,17 @@ main {
     height: 250px;
 }
 
+/*============== DASHBOARD (ADMIN)=================*/
+
+.hover-red:hover{
+    cursor: pointer;
+    background-color: #e3707b !important; 
+}
+
+.hover-green:hover{
+    cursor: pointer;
+    background-color: #7cbd8b !important; 
+}
 
 /*==============CLASES GENERALES=================*/
 

@@ -6,6 +6,7 @@ use App\{Tariff,Location};
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\tariffsRequest;
+use Illuminate\Http\Request;
 use App\Mail\NewLocationMessage;
 use Illuminate\Support\Facades\Mail;
 

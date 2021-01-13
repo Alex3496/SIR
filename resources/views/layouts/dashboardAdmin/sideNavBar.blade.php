@@ -35,6 +35,19 @@
           <p>{{ __('Usuarios') }}</p>
         </a>
       </li>
+      <li class="nav-item">
+        <a href="{{ route('admin.tariffs.list') }}" class="nav-link">
+          <i class="nav-icon fas fa-truck"> </i>
+          <p>{{ __('Tarifas') }}</p>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="{{ route('admin.petitions.list') }}" class="nav-link">
+          <i class="nav-icon fas fa-map-pin"> </i>
+          <p>{{ __('Peticiones') }}</p>
+        </a>
+      </li>
 
       <li class="nav-item has-treeview ">
         <a href="#" class="nav-link">
