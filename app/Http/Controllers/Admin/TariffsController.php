@@ -26,12 +26,22 @@ class TariffsController extends Controller
     public function list(Request $request)
     {
         $user = Auth::user();
-        $tariffs = Tariff::paginate(15);
+
+        $origin = $request->get('origin');
+        $destiny = $request->get('destiny');
+
+        $tariffs = Tariff::orderby('id','DESC')
+                    ->completeOrigin($origin)
+                    ->completeDestiny($destiny)
+                    ->paginate(15);
+
 
 
         return view('Admin.Tariffs.index',[
             'user'=>$user,
             'tariffs' => $tariffs,
+            'origin' => $origin,
+            'destiny' => $destiny,
         ]);
     }
 }

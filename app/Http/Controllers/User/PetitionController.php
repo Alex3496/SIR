@@ -59,6 +59,17 @@ class PetitionController extends Controller
         $request['origin'] = ucwords(strtolower($request->origin));
         $request['destiny'] = ucwords(strtolower($request->destiny));
 
+         //Obtener la ubicacion completa del origen
+        $countries = CountryState::getCountries('spa');
+        $country = $countries[$request->origin_country];
+        $state =  CountryState::getStateName($request->origin_state,$request->origin_country);
+        $request['complete_origin'] = $request->origin.', '.$state.', '.$country;
+
+        //Obtener la ubicacion completa del destino
+        $country = $countries[$request->destiny_country];
+        $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
+        $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;
+
         $petition = Petition::create($request->all());
 
         $this->storeLocation($request['origin'],$request['origin_state'],$request['origin_country']);
@@ -112,7 +123,18 @@ class PetitionController extends Controller
         $this->authorize('pass',$petitionToUpdate);
 
         $request['origin'] = ucwords(strtolower($request->origin));
-        $request['destiny'] = ucwords(strtolower($request->destiny));  
+        $request['destiny'] = ucwords(strtolower($request->destiny));
+
+        //Obtener la ubicacion completa del origen
+        $countries = CountryState::getCountries('spa');
+        $country = $countries[$request->origin_country];
+        $state =  CountryState::getStateName($request->origin_state,$request->origin_country);
+        $request['complete_origin'] = $request->origin.', '.$state.', '.$country;
+
+        //Obtener la ubicacion completa del destino
+        $country = $countries[$request->destiny_country];
+        $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
+        $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;       
 
         $petitionToUpdate->update($request->all());
 

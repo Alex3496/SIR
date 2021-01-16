@@ -13,16 +13,16 @@
       <div class="col-md-11">
         <div class="card">
           <div class="card-body">
-            {!! Form::open(['route' => 'admin.users.find', 'method' => 'GET']) !!}
+            {!! Form::open(['route' => 'admin.petitions.list', 'method' => 'GET']) !!}
               <div class="row">
                 <div class="col-md mb-2">
-                  {!! Form::text('origin',null,['class' => 'form-control', 'placeholder' => 'Ciudad Origen']) !!}
+                  {!! Form::text('origin',$origin,['class' => 'form-control', 'placeholder' => 'Ciudad Origen']) !!}
                 </div>
                 <div class="col-md mb-2">
-                  {!! Form::text('destiny',null,['class' => 'form-control', 'placeholder' => 'Ciudad Destino']) !!}
+                  {!! Form::text('destiny',$destiny,['class' => 'form-control', 'placeholder' => 'Ciudad Destino']) !!}
                 </div>
                 <div class="col-md-2">
-                  <!-- {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!} -->
+                  {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!}
                 </div>
               </div>
             {!! Form::close() !!}
@@ -54,8 +54,8 @@
               @foreach($petitions as $petition)
               <tr>
                 <td>{{ $petition->id }}</td>
-                <td>{{ $petition->get_origin }}</td>
-                <td>{{ $petition->get_destiny }}</td>
+                <td>{{ $petition->complete_origin }}</td>
+                <td>{{ $petition->complete_destiny }}</td>
                 <td>{{ $petition->user->company_name }}</td>
                 <td>{{ $petition->rate }} <small>{{$petition->currency}}</small> </td>
               </tr>
@@ -65,7 +65,7 @@
         </div>
         <div class="row">
           <div class="col-12 center">
-           {{ $petitions->links() }}
+           {{ $petitions->withQueryString()->links() }}
           </div>
         </div>
       </div>

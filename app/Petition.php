@@ -10,7 +10,7 @@ class Petition extends Model
 {
     protected $fillable = [
         'user_id','origin', 'origin_country','origin_state','destiny','destiny_country','destiny_state', 
-        'approx_weight','type_weight', 'type_equipment','rate','currency',
+        'approx_weight','type_weight', 'type_equipment','rate','currency','complete_origin','complete_destiny'
     ];
 
      //--------------Relations----------------//
@@ -58,6 +58,30 @@ class Petition extends Model
             }else{
                 return $query->where('type_equipment','LIKE',"$type_equipment%");
             }
+        }
+    }
+
+    /*
+    *
+    * Metodo que busca las tarifas con el Origen que tenga alguna coincidencia con los buscado por el Admin
+    * Sirve para buscar por medio del campo 'complete_origin'
+    */
+    public function scopecompleteOrigin($query, $complete_origin)
+    {
+        if($complete_origin){
+            return $query->where('complete_origin','LIKE',"%$complete_origin%");
+        }
+    }
+
+    /*
+    *
+    * Metodo que busca las tarifas con el Destino que tenga alguna coincidencia con los buscado por el Admin
+    * Sirve para buscar por medio del campo 'complete_destiny'
+    */
+    public function scopecompleteDestiny($query, $complete_destiny)
+    {
+        if($complete_destiny){
+            return $query->where('complete_destiny','LIKE',"%$complete_destiny%");
         }
     }
 

@@ -118,29 +118,11 @@ class TariffsController extends Controller
         $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
         $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;
         
-        if($request->request->get('type_tariff') == 'MARITIME')
-        {
-            $tariff = Tariff::create($request->only(['user_id','type_tariff','origin','origin_country',
-                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate','currency', 'complete_origin', 'complete_destiny']));
+        //Guarda la tarifa
+        $tariff = Tariff::create($request->all());
 
-        } 
-        else if($request->request->get('type_tariff') == 'AERIAL')
-        {
-            $tariff = Tariff::create($request->all());
-          
-            //This are not in the fillable array for security reasons
-            $tariff->height = $request['height'];
-            $tariff->width = $request['width'];
-            $tariff->length = $request['length'];
 
-            $tariff->save();
-
-        }
-        else
-        {
-            $tariff = Tariff::create($request->all());
-        }
-
+        //Guarda las locaciones de la tarifa aparte en la tabla de Locations
         $this->storeLocation($request['origin'],$request['origin_state'],$request['origin_country']);
         $this->storeLocation($request['destiny'],$request['destiny_state'],$request['destiny_country']);
 
@@ -233,32 +215,25 @@ class TariffsController extends Controller
         //asegura se la tarifa pertenece al usuario
         $this->authorize('pass',$tariffToUpdate);
         
+        //Guarda las ciudades con la letra inicial en Mayuscula
         $request['origin'] = ucwords(strtolower($request->origin));
-        $request['destiny'] = ucwords(strtolower($request->destiny));               
+        $request['destiny'] = ucwords(strtolower($request->destiny));
 
-        if($request['type_tariff'] == 'MARITIME')
-        {
+        //Obtener la ubicacion completa del origen
+        $countries = CountryState::getCountries('spa');
+        $country = $countries[$request->origin_country];
+        $state =  CountryState::getStateName($request->origin_state,$request->origin_country);
+        $request['complete_origin'] = $request->origin.', '.$state.', '.$country;
 
-            $tariffToUpdate->update($request->only(['type_tariff','origin','origin_country',
-                'origin_state','destiny','destiny_country','destiny_state','type_equipment','rate','currency']));
+        //Obtener la ubicacion completa del destino
+        $country = $countries[$request->destiny_country];
+        $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
+        $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;         
 
-        }
-        else if($request['type_tariff'] == 'AERIAL')
-        {
-            $tariffToUpdate->update($request->all());
-
-            $tariffToUpdate->distance=null;
-            $tariffToUpdate->height=$request['height'];
-            $tariffToUpdate->width=$request['width'];
-            $tariffToUpdate->length=$request['length'];
-
-            $tariffToUpdate->save();
-
-        }
-        else
-        {
-            $tariffToUpdate->update($request->all());
-        }
+        //Actualiza la Tarifa
+        $tariffToUpdate->update($request->all());
+        
+        //Guarda las locaciones de la tarifa aparte en la tabla de Locations
         $this->storeLocation($request['origin'],$request['origin_state'],$request['origin_country']);
         $this->storeLocation($request['destiny'],$request['destiny_state'],$request['destiny_country']);
 

@@ -13,16 +13,16 @@
       <div class="col-md-11">
         <div class="card">
           <div class="card-body">
-            {!! Form::open(['route' => 'admin.users.find', 'method' => 'GET']) !!}
+            {!! Form::open(['route' => 'admin.tariffs.list', 'method' => 'GET']) !!}
               <div class="row">
                 <div class="col-md mb-2">
-                  {!! Form::text('origin',null,['class' => 'form-control', 'placeholder' => 'Ciudad Origen']) !!}
+                  {!! Form::text('origin',$origin,['class' => 'form-control', 'placeholder' => 'Ciudad Origen']) !!}
                 </div>
                 <div class="col-md mb-2">
-                  {!! Form::text('destiny',null,['class' => 'form-control', 'placeholder' => 'Ciudad Destino']) !!}
+                  {!! Form::text('destiny',$destiny,['class' => 'form-control', 'placeholder' => 'Ciudad Destino']) !!}
                 </div>
                 <div class="col-md-2">
-                  <!-- {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!} -->
+                  {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!}
                 </div>
               </div>
             {!! Form::close() !!}
@@ -54,7 +54,7 @@
               @foreach($tariffs as $tariff)
               <tr>
                 <td>{{ $tariff->id }}</td>
-                <td>{{ $tariff->get_origin }}</td>
+                <td>{{ $tariff->complete_origin }}</td>
                 <td>{{ $tariff->get_destiny }}</td>
                 <td>{{ $tariff->user->company_name }}</td>
                 <td>{{ $tariff->rate }} <small>{{$tariff->currency}}</small> </td>
@@ -65,7 +65,7 @@
         </div>
         <div class="row">
           <div class="col-12 center">
-           {{ $tariffs->links() }}
+           {{ $tariffs->withQueryString()->links() }}
           </div>
         </div>
       </div>

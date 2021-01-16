@@ -11,7 +11,7 @@ class Tariff extends Model
 
     protected $fillable = [
         'user_id', 'type_tariff','origin', 'origin_country','origin_state','destiny','destiny_country','destiny_state', 
-        'approx_weight','type_weight','distance', 'type_equipment','rate','currency'
+        'approx_weight','type_weight','distance', 'type_equipment','rate','currency','height','width','length' ,'complete_origin', 'complete_destiny'
     ];
     
 
@@ -45,7 +45,7 @@ class Tariff extends Model
      /*
     *
     * Metodo que busca las tarifas en el que el destino y origen sean el mismo que el destino que el usuario
-    * introdujo para que aparezca el vieje de "regreso"
+    * introdujo para que aparezca el viaje de "regreso"
     *
     */
     public function scopedestiny($query, $destiny)
@@ -97,6 +97,30 @@ class Tariff extends Model
         if($id){
             return $query->where('user_id',$id)
             ->where('type_tariff','AERIAL');
+        }
+    }
+
+    /*
+    *
+    * Metodo que busca las tarifas con el Origen que tenga alguna coincidencia con los buscado por el Admin
+    * Sirve para buscar por medio del campo 'complete_origin'
+    */
+    public function scopecompleteOrigin($query, $complete_origin)
+    {
+        if($complete_origin){
+            return $query->where('complete_origin','LIKE',"%$complete_origin%");
+        }
+    }
+
+    /*
+    *
+    * Metodo que busca las tarifas con el Destino que tenga alguna coincidencia con los buscado por el Admin
+    * Sirve para buscar por medio del campo 'complete_destiny'
+    */
+    public function scopecompleteDestiny($query, $complete_destiny)
+    {
+        if($complete_destiny){
+            return $query->where('complete_destiny','LIKE',"%$complete_destiny%");
         }
     }
 
@@ -192,7 +216,7 @@ class Tariff extends Model
     }
 
     /*
-    * Retorna la ciadad de origen completa
+    * Retorna la ciadad de origen completa (desuso)
     */
     public function getGetOriginAttribute()
     {
@@ -204,11 +228,11 @@ class Tariff extends Model
     }
 
     /*
-    * Retorna la ciadad de destino completa
+    * Retorna la ciadad de destino completa (desuso)
     */
     public function getGetDestinyAttribute()
     {
-        $city = $this->origin;
+        $city = $this->destiny;
         $state = CountryState::getStateName($this->destiny_state,$this->destiny_country);
         $country = CountryState::getCountryName($this->destiny_country);
 

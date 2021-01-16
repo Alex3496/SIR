@@ -25,12 +25,21 @@ class PetitionsController extends Controller
     public function list(Request $request)
     {
         $user = Auth::user();
-        $petitions = Petition::paginate(15);
+
+        $origin = $request->get('origin');
+        $destiny = $request->get('destiny');
+
+        $petitions = Petition::orderby('id','DESC')
+                    ->completeOrigin($origin)
+                    ->completeDestiny($destiny)
+                    ->paginate(15);
 
 
         return view('Admin.Petitions.index',[
             'user'=>$user,
             'petitions' => $petitions,
+            'origin' => $origin,
+            'destiny' => $destiny,
         ]);
     }
 }
