@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class VehicleRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'economic'  => 'required|string|max:25',
+            'plates_us' => 'required|string|max:10',
+            'plates_mx' => 'required|string|max:10',
+            'state_us'  => 'required|string|max:3',
+            'state_mx'  => 'required|string|max:3',
+            'vin'       => 'required|string|max:15',
+
+        ];
+    }
+
+     /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'required'      => 'Este campo es requerido.',
+            'economic.max'  => 'Máximo 25 caracteres.',
+            'plates_us.max' => 'Máximo 10 caracteres.',
+            'plates_mx.max' => 'Máximo 10 caracteres.',
+            'state_us.max'  => 'Máximo 3 caracteres.',
+            'state_mx.max'  => 'Máximo 3 caracteres.',
+            'vin.max'       => 'Máximo 15 caracteres.',
+        ];
+    }
+}

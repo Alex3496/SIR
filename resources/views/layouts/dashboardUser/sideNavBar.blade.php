@@ -72,6 +72,37 @@
           <p>{{ __('Mis Solicitudes') }}</p>
         </a>
       </li>
+      <!-- Activos -->
+      <li class="nav-item has-treeview ">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-check-circle"> </i>
+          <p>
+            {{ __('Activos') }}
+            <i class="right fas fa-angle-left"> </i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{{ route('equipment.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-bus"> </i>
+              <p>{{ __('Equipo') }}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('operator.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-male"> </i>
+              <p>{{ __('Operadores') }}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('vehicle.index') }}" class="nav-link">
+              <i class="nav-icon fas  fa-taxi"> </i>
+              <p>{{ __('Vehículos') }}</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- /Activos -->
     </ul>
   </nav>
   <!-- /.sidebar-menu -->

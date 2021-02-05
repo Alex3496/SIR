@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Policies\{TariffPolicy,PostPolicy, petitionsPolicy};
-use App\{Tariff,Post,Petition};
+use App\Policies\{TariffPolicy,PostPolicy, petitionsPolicy, EquipmentPolicy, OperatorPolicy, VehiclePolicy };
+use App\{Tariff,Post,Petition, Equipment, Operator, Vehicle};
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -16,9 +16,12 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Tariff::class => TariffPolicy::class,
-        Post::class => PostPolicy::class,
-        Petition::class => petitionsPolicy::class,
+        Tariff::class       => TariffPolicy::class,
+        Post::class         => PostPolicy::class,
+        Petition::class     => petitionsPolicy::class,
+        Equipment::class    => EquipmentPolicy::class,
+        Operator::class     => OperatorPolicy::class,
+        Vehicle::class      => VehiclePolicy::class
     ];
 
     /**
@@ -30,7 +33,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //DEFIENE GATES IN HERE
+        //DEFIENE GATES IN HERE (se utilizan en las rutas web)
         // Protect routes if the user isnt an admin
         Gate::define('manager-area',function($user){
             return $user->hasAnyRoles(['admin','Editor']);

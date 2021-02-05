@@ -72,6 +72,18 @@ Route::namespace('User')->group(function(){
 
 	Route::get('tariffs/create/air','TariffsController@addAerialTariff')->name('tariff.aerialAdd');
 
+		//Rutas para Equipos
+
+	Route::resource('equipment','EquipmentController',['except' => ['show','create']]);
+
+		//Rutas para Operadores
+
+	Route::resource('operator','OperatorController',['except' => ['show','create']]);
+
+		//Rutas para Vehiculos
+
+	Route::resource('vehicle','VehicleController',['except' => ['show','create']]);
+
 		//Petitions routes
 	
 	Route::resource('petitions','PetitionController',['except' => ['show','create']]);	
