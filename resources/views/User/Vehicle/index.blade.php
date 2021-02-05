@@ -14,7 +14,11 @@
         <div class="col">
           <div class="card card-info">
             <div class="card-header">
-              {{__('Añadir Vehículos ')}}
+              @if(isset($equipmentToUpdate))
+              {{__('Editar Vehículo')}}
+              @else
+              {{__('Añadir Vehículo')}}
+              @endif
             </div>
             <div class="card-body">
               @if(isset($vehicleToUpdate))

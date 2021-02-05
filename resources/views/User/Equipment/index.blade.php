@@ -14,7 +14,11 @@
         <div class="col">
           <div class="card card-info">
             <div class="card-header">
+              @if(isset($equipmentToUpdate))
+              {{__('Editar Equipo')}}
+              @else
               {{__('Añadir Equipo')}}
+              @endif
             </div>
             <div class="card-body">
               @if(isset($equipmentToUpdate))
@@ -38,7 +42,7 @@
          <!--start card User List-->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">{{ __('Peticiones Regsitradas') }}: {{$equipments->total()}}</h3>
+            <h3 class="card-title">{{ __('Equipos Regsitrados') }}: {{$equipments->total()}}</h3>
           </div>
           <div class="card-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">

@@ -14,7 +14,11 @@
         <div class="col">
           <div class="card card-info">
             <div class="card-header">
+              @if(isset($equipmentToUpdate))
+              {{__('Editar Operador')}}
+              @else
               {{__('Añadir Operador')}}
+              @endif
             </div>
             <div class="card-body">
               @if(isset($OperatorToUpdate))
