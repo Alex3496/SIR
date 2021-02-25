@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\{User,Role,company_dataset,Insurance,Tariff,Operator,Equipment,Vehicle };
 use Illuminate\Http\Request;
 use App\Http\Requests\{ProfileRequest,CompanyRequest,datasetRequest,insuranceRequest,UserRegRequest};
+use Illuminate\Support\Facades\Hash;
 use CountryState;
 
 class UserController extends Controller
