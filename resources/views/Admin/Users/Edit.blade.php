@@ -64,6 +64,10 @@
 
     <div class="col-lg-6">
 
+      <!-- card Activos -->
+      @include('Admin.Users.cards.actives')
+      <!-- /card -->
+
       <!-- card info compañia-->
       @include('Admin.Users.cards.dataset')
       <!-- /card -->

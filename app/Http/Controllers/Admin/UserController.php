@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\{User,Role,company_dataset,Insurance,Tariff};
+use App\{User,Role,company_dataset,Insurance,Tariff,Operator,Equipment,Vehicle };
 use Illuminate\Http\Request;
 use App\Http\Requests\{ProfileRequest,CompanyRequest,datasetRequest,insuranceRequest,UserRegRequest};
 use CountryState;
@@ -32,7 +32,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the tariffs of an specific user.
+     * Muestra todas las tarifas que el usuario tiene(paginar)
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -71,6 +71,8 @@ class UserController extends Controller
     {
         if($request['role'] == '2' || $request['role'] == '1') $request['type_company_user'] = 'Administrador';
 
+        $request['password'] = Hash::make($request['password']);
+
         $user = User::create($request->all());
 
         $user->roles()->attach($request['role']);
@@ -79,7 +81,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show all the information of a specific user 
+     * Muestra toda la informacion del usuario en cuestion
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
@@ -87,6 +89,9 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $userToEdit = $user;
+        $operators = $userToEdit->operators->count();
+        $equipments = $userToEdit->equipments->count();
+        $vehicles = $userToEdit->vehicles->count();
         $dataset = $userToEdit->dataset;
         $insurance = $userToEdit->insurance;
        /* $roles = Role::all();*/
@@ -100,7 +105,7 @@ class UserController extends Controller
             $states = CountryState::getStates('MX');
         }
 
-        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','user','countries','states','totalTariffs'));
+        return view('Admin.Users.Edit',compact('userToEdit','dataset','insurance','user','countries','states','totalTariffs','operators','equipments','vehicles'));
     }
 
     /**
@@ -270,8 +275,25 @@ class UserController extends Controller
         return view('Admin.Users.Index',compact('users','user'));
     }
 
+    /**
+     * Retona los activos con los que cuenta el usuario
+     *
+     * @param  num $user_id
+     * @return \Illuminate\Http\Response
+     */
+    public function actives($user_id)
+    {
+        $user = Auth::user();
+        $userToEdit = User::findOrFail($user_id);
+        $operators = Operator::where('user_id',$user_id)->paginate(10);
+        $equipments = Equipment::where('user_id',$user_id)->paginate(10);
+        $vehicles = Vehicle::where('user_id',$user_id)->paginate(10);
+        //dd($equipments);
+        return view('Admin.Users.actives',compact('userToEdit','user','equipments','operators','vehicles'));
+    }
+
     /*
-    * Retorna el array de paises que si tienen registrados sus estados, o alguno errores
+    * Retorna el array de paises que si tienen registrados sus estados
     *
     */
     public function getCountries()

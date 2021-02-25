@@ -79,6 +79,24 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne('App\Insurance');
     }
 
+     //un Usuario puede estar a cargo de muchos operadores
+    public function operators()
+    {
+        return $this->hasMany(Operator::class);
+    }
+
+    //un Usuario puede tener muchos equipos (cajas, etc)
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
+    }
+
+     //un Usuario puede tener muchos vehiculos (cajas, etc)
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+
     //----------------GATES--------------
     
     //Check if user have any of the roles that we pass by parameter (array)

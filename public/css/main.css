@@ -32,6 +32,27 @@
     background-color: white !important;
 }
 
+.bttn{
+    padding: 5px 12px;
+    border-radius: 4px;
+    color: white;
+}
+
+.bttn:hover{
+    cursor: pointer;
+}
+
+.btn-blue{
+    background: #349cd4;
+}
+.btn-blue.active {
+    background: #24698e;
+}
+
+.btn-blue:hover{
+    background: #61a9d0;
+}
+
 /*-----------HEADER-------------*/
 #header {
     background-color: var(--gray-light);
@@ -468,4 +489,8 @@ main {
 
 .text-16{
     font-size: 16px;
+}
+
+.ml-05{
+    margin-left: 0.5rem;
 }

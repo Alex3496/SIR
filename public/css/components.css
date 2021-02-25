@@ -69,3 +69,30 @@ input:checked + .slider:before {
 .switch-container{
   padding-top: 5px;
 }
+
+/*------------TABS---------*/
+
+[data-tab-content]{
+  display: none;
+}
+
+.active[data-tab-content]{
+  display: block;
+}
+
+.tab-header-col{
+  margin: 1rem 0;
+  height: 4rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow:  2px 2px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tabs{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
