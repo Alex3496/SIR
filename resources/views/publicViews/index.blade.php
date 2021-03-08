@@ -89,7 +89,7 @@
               @enderror
             <div class="row mt-2 justify-content-around">
               <button type="submit" class="btn btn-SIR col-4">{{ __('Cotizar') }}</button>
-              <button type="submit" class="btn btn-SIR col-6" name="Peticion" value="peticion">{{ __('Solicitar Transporte') }}</button>
+              <button type="submit" class="btn btn-SIR col-6" name="Peticion" value="peticion">{{ __('Buscar Cargas') }}</button>
             </div>
           </form>
         </div>

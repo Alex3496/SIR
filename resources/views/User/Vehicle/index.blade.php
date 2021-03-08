@@ -14,7 +14,7 @@
         <div class="col">
           <div class="card card-info">
             <div class="card-header">
-              @if(isset($equipmentToUpdate))
+              @if(isset($vehicleToUpdate))
               {{__('Editar Vehículo')}}
               @else
               {{__('Añadir Vehículo')}}
@@ -61,9 +61,9 @@
                 @foreach($vehicles as $vehicle)
                 <tr>
                   <td>{{ $vehicle->economic }}</td>
-                  <td>{{ $vehicle->plates_us }}</td>
+                  <td>{{ $vehicle->get_plates_us }}</td>
                   <td>{{ $vehicle->get_state_us }}</td>
-                  <td>{{ $vehicle->plates_mx }}</td>
+                  <td>{{ $vehicle->get_plates_mx }}</td>
                   <td>{{ $vehicle->get_state_mx }}</td>
                   <td>{{ $vehicle->vin }}</td>
                   <td>
@@ -125,4 +125,6 @@
 
   }); 
 </script>
+<script src="{{asset('adminLTE/js/demo.js')}}"></script>
+<script src="{{asset('js/checkboxes.js')}}"></script>
 @endsection

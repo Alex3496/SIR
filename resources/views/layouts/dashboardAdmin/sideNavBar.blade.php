@@ -45,7 +45,7 @@
       <li class="nav-item">
         <a href="{{ route('admin.petitions.list') }}" class="nav-link">
           <i class="nav-icon fas fa-map-pin"> </i>
-          <p>{{ __('Peticiones') }}</p>
+          <p>{{ __('Cargas') }}</p>
         </a>
       </li>
 

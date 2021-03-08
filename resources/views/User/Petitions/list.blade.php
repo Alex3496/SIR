@@ -1,7 +1,7 @@
 
 <div class="card card-info" id="card-tariffs-list">
   <div class="card-header">
-    <h3 class="card-title">{{ __('Lista de Peticiones') }}</h3>
+    <h3 class="card-title">{{ __('Lista de Cargas Creadas') }}</h3>
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-hover example2">

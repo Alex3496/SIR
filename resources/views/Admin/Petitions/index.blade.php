@@ -36,7 +36,7 @@
       <!--start card User List-->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">{{ __('Peticiones Regsitradas') }}: {{$petitions->total()}}</h3>
+          <h3 class="card-title">{{ __('Cargas Regsitradas') }}: {{$petitions->total()}}</h3>
         </div>
         <div class="card-body table-responsive">
           <table id="example2" class="table table-bordered table-hover">

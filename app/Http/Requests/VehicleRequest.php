@@ -23,15 +23,30 @@ class VehicleRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'economic'  => 'required|string|max:25',
-            'plates_us' => 'required|string|max:10',
-            'plates_mx' => 'required|string|max:10',
-            'state_us'  => 'required|string|max:3',
-            'state_mx'  => 'required|string|max:3',
             'vin'       => 'required|string|max:15',
-
         ];
+
+
+        if($this->request->get('plates') == 'P_US'){
+            $rules['plates_us'] = ['required','string','max:10'];
+            $rules['state_us'] = ['required','string','max:3'];    
+        }
+
+        if ($this->request->get('plates') == 'P_MX'){
+            $rules['plates_mx'] = ['required','string','max:10'];
+            $rules['state_mx'] = ['required','string','max:3'];                          
+        }
+
+        if ($this->request->get('plates') == 'P_both'){
+            $rules['plates_us'] = ['required','string','max:10'];
+            $rules['state_us'] = ['required','string','max:3'];    
+            $rules['plates_mx'] = ['required','string','max:10'];
+            $rules['state_mx'] = ['required','string','max:3'];                          
+        }
+
+        return $rules;
     }
 
      /**

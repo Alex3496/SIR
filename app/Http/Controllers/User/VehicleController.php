@@ -53,6 +53,16 @@ class VehicleController extends Controller
     {
         $request['user_id'] = Auth::user()->id;
 
+        if($request['plates'] == 'P_US'){
+            $request['state_mx'] = null;
+            $request['plates_mx'] = null;
+        }
+
+        if($request['plates'] == 'P_MX'){
+            $request['state_us'] = null;
+            $request['plates_us'] = null;
+        }
+
         //poner datos en Mayusculas
         $request['economic'] = strtoupper($request['economic']);
         $request['plates_us'] = strtoupper($request['plates_us']);
@@ -76,6 +86,14 @@ class VehicleController extends Controller
         $user=Auth::user();
         $vehicleToUpdate=Vehicle::findOrFail($id);
         $this->authorize('pass',$vehicleToUpdate);
+
+        if($vehicleToUpdate->state_mx && $vehicleToUpdate->state_us){
+            $vehicleToUpdate->plates = 'P_both';
+        }else if($vehicleToUpdate->state_mx){
+            $vehicleToUpdate->plates = 'P_MX';
+        }else if($vehicleToUpdate->state_us){
+            $vehicleToUpdate->plates = 'P_US';
+        }
         $states_mx = CountryState::getStates('MX');
         $states_us = CountryState::getStates('US');
 
@@ -98,6 +116,17 @@ class VehicleController extends Controller
     {
         $vehicleToUpdate=Vehicle::findOrFail($id);
         $this->authorize('pass',$vehicleToUpdate);
+
+        if($request['plates'] == 'P_US'){
+            $request['state_mx'] = null;
+            $request['plates_mx'] = null;
+        }
+
+        if($request['plates'] == 'P_MX'){
+            $request['state_us'] = null;
+            $request['plates_us'] = null;
+        }
+
         //poner datos en Mayusculas
         $request['economic'] = strtoupper($request['economic']);
         $request['plates_us'] = strtoupper($request['plates_us']);

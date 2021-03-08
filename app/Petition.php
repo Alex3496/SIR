@@ -109,6 +109,7 @@ class Petition extends Model
 
      public function getGetTypeEquipmentAttribute()
     {
+
         if ($this->type_equipment == 'Dry Box 48 ft') {
             return 'Caja seca 48 pies';
         }
@@ -152,6 +153,8 @@ class Petition extends Model
         if ($this->type_equipment == 'Pallet') {
             return 'Pallet';
         }
+
+        return $this->type_equipment;
     }
 
     public function getGetStateOriginAttribute()

@@ -69,7 +69,7 @@
       <li class="nav-item">
         <a href="{{ route('petitions.index') }}" class="nav-link">
           <i class="nav-icon fas fa-map-pin"> </i>
-          <p>{{ __('Mis Solicitudes') }}</p>
+          <p>{{ __('Públicar carga') }}</p>
         </a>
       </li>
       <!-- Activos -->

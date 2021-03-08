@@ -54,6 +54,15 @@ class EquipmentController extends Controller
         $request['user_id'] = Auth::user()->id;
 
         //poner datos en Mayusculas
+        if($request['plates'] == 'P_US'){
+            $request['state_mx'] = null;
+            $request['plates_mx'] = null;
+        }
+
+        if($request['plates'] == 'P_MX'){
+            $request['state_us'] = null;
+            $request['plates_us'] = null;
+        }
         $request['economic'] = strtoupper($request['economic']);
         $request['plates_us'] = strtoupper($request['plates_us']);
         $request['plates_mx'] = strtoupper($request['plates_mx']);
@@ -77,6 +86,14 @@ class EquipmentController extends Controller
         $equipmentToUpdate=Equipment::findOrFail($id);
         $this->authorize('pass',$equipmentToUpdate);
 
+        if($equipmentToUpdate->state_mx && $equipmentToUpdate->state_us){
+            $equipmentToUpdate->plates = 'P_both';
+        }else if($equipmentToUpdate->state_mx){
+            $equipmentToUpdate->plates = 'P_MX';
+        }else if($equipmentToUpdate->state_us){
+            $equipmentToUpdate->plates = 'P_US';
+        }
+
         $states_mx = CountryState::getStates('MX');
         $states_us = CountryState::getStates('US');
 
@@ -99,6 +116,16 @@ class EquipmentController extends Controller
     {
         $equipmentToUpdate=Equipment::findOrFail($id);
         $this->authorize('pass',$equipmentToUpdate);
+
+        if($request['plates'] == 'P_US'){
+            $request['state_mx'] = null;
+            $request['plates_mx'] = null;
+        }
+
+        if($request['plates'] == 'P_MX'){
+            $request['state_us'] = null;
+            $request['plates_us'] = null;
+        }
 
         //poner datos en Mayusculas
         $request['economic'] = strtoupper($request['economic']);

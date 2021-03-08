@@ -63,9 +63,9 @@
                 <tr>
                   <td>{{ $equipment->get_type_equipment }}</td>
                   <td>{{ $equipment->economic }}</td>
-                  <td>{{ $equipment->plates_us }}</td>
+                  <td>{{ $equipment->get_plates_us }}</td>
                   <td>{{ $equipment->get_state_us }}</td>
-                  <td>{{ $equipment->plates_mx }}</td>
+                  <td>{{ $equipment->get_plates_mx }}</td>
                   <td>{{ $equipment->get_state_mx }}</td>
                   <td>{{ $equipment->vin }}</td>
                   <td>
@@ -127,4 +127,5 @@
 
   }); 
 </script>
+<script src="{{asset('js/checkboxes.js')}}"></script>
 @endsection

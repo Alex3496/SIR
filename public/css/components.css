@@ -96,3 +96,26 @@ input:checked + .slider:before {
   justify-content: space-around;
   list-style-type: none;
 }
+/*-------------------checkboxes (vehiculos,equipo)--------------------*/
+.col-radio{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.col-radio label{
+  margin: 5px;
+}
+
+.col-radio input[type="radio"] {
+  vertical-align: middle;
+}
+
+
+@media (max-width: 600px) {
+  .col-radio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
