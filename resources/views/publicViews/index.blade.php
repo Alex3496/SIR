@@ -20,11 +20,11 @@
       <div class="col-lg-6" id="main-text">
         <h1>
           <b>S</b>istema <br>
-          <b>I</b>ntermodar de <br>
+          <b>I</b>ntermodal de <br>
           <b>R</b>eservaciones.  
         </h1>
         <h3>Realiza tus cotizaciones</h3>
-        <h4>Por mar, tierra y aire con las con las empresas que tenemos registradas.</h4>
+        <h4>Por mar, tierra y aire con las empresas que tenemos registradas.</h4>
       </div>
       <div class="col-lg-6 ">
         <div id="quote-card">
