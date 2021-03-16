@@ -45,7 +45,7 @@ class tariffsRequest extends FormRequest
         ];
 
         if ($this->request->get('type_tariff') == 'TRUCK') {
-            $rules['type_equipment'] = ['required','in:Dry Box 48 ft,Dry Box 53 ft,Refrigerated Box 53 ft,Plataform 48 ft,Plataform 53 ft'];                            
+            $rules['type_equipment'] = ['required','in:Dry Box 48 ft,Dry Box 53 ft,Refrigerated Box 53 ft,Plataform 48 ft,Plataform 53 ft,Container 20 ft,Container 40 ft,Container 40 ft High cube'];                            
         }
 
         if ($this->request->get('type_tariff') == 'TRAIN') {

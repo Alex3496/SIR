@@ -52,7 +52,7 @@
         <div class="inner">
           <h3>{{$petitionCount}}</h3>
 
-          <p>Peticiones Registradas</p>
+          <p>Cargas Registradas</p>
         </div>
         <div class="icon">
           <i class="fas fa-map-pin"></i>

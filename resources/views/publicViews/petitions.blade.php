@@ -44,7 +44,7 @@
             <span>{{$total}} Resultado(s)</span>
           </div>
           <div class="col-10 d-flex justify-content-center align-items-center">
-            <h3 class="margin-0">Peticiones</h3>
+            <h3 class="margin-0">Cargas registradas</h3>
           </div>
         </div>
         <div class="row">

@@ -127,11 +127,14 @@
           <div class="form-group col-md">
             {!! Form::label('type_equipment','Tipo de equipo *') !!}
             <div class="input-group-sm">{{ Form::select('type_equipment',[
-              'Dry Box 48 ft' =>'Caja seca 48 pies',
-              'Dry Box 53 ft' =>'Caja seca 53 pies',
-              'Refrigerated Box 53 ft' =>'Caja Refigerada 53 pies',
-              'Plataform 48 ft' =>'Plataforma 48 pies',
-              'Plataform 53 ft' =>'Plataforma 53 pies',], 
+              'Dry Box 48 ft'    => 'Caja seca 48 pies', 
+              'Dry Box 53 ft'    => 'Caja seca 53 pies',
+              'Refrigerated Box 53 ft'   => 'Caja Refigerada 53 pies',
+              'Plataform 48 ft'  => 'Plataforma 48 pies',
+              'Plataform 53 ft'  => 'Plataforma 53 pies',
+              'Container 20 ft'  => 'Contenedor 20 pies',
+              'Container 40 ft'  => 'Contenedor 40 pies',
+              'Container 40 ft High cube' => 'Contenedor 40 pies High cube',], 
               $tariffToUpdate->type_equipment ?? '',['class' =>'form-control']) }}
             </div>
             @error('type_equipment')
