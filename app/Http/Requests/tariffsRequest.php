@@ -27,7 +27,6 @@ class tariffsRequest extends FormRequest
     {
         $countries = CountryState::getCountries();
         $countries = array_keys($countries);
-
         $rules = [
             'type_tariff'       => ['required','in:TRUCK,TRAIN,MARITIME,AERIAL'],
             'origin'            => 'required|regex:/^[\pL\s\-]+$/u|max:50',
@@ -40,7 +39,9 @@ class tariffsRequest extends FormRequest
             'type_weight'       => ['required','in:kg,lb'],
             'distance'          => ['numeric','nullable','max:10000000','min:0'],
             'rate'              => ['required','numeric','max:10000000','min:1'],
-            'currency'          => ['required','in:USD,MXN']
+            'currency'          => ['required','in:USD,MXN'],
+            'extra'             => ['required','string','max:25'],
+            'start_date'        => 'required|date|after:yesterday'
 
         ];
 

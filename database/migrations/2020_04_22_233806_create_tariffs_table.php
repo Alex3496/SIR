@@ -32,6 +32,9 @@ class CreateTariffsTable extends Migration
             $table->integer('height')->nullable();
             $table->integer('width')->nullable();
             $table->integer('length')->nullable();
+            $table->string('extra')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->decimal('rate',9,2);
             $table->string('currency');
 

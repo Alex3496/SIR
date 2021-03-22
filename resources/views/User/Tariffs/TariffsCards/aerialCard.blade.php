@@ -188,8 +188,29 @@
               <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>
-          
         </div>
+        <hr>
+          <div class="row">
+            <div class="form-group col-md-4">
+              {!! Form::label('extra','Mercancia') !!} *
+              <div class="input-group-sm">
+                {!! Form::text('extra',$tariffToUpdate->extra ?? '',['class' =>'form-control','autocomplete' => 'off', 'maxlength' => '25', 'placeholder' => 'max. 25 caracteres']) !!}
+              </div>
+              @error('extra')
+                <small class="mt-0" style="color:red">{{ $message }}</small>
+              @enderror
+            </div>
+            
+            <div class="form-group col-md-4">
+              {!! Form::label('start_date','Disponibilidad hasta:') !!} 
+              <div class="input-group-sm">
+                {!! Form::date('start_date',$tariffToUpdate->start_date ?? \Carbon\Carbon::now(),['class' => 'form-control']) !!}
+              </div>
+              @error('start_date')
+                <small class="mt-0" style="color:red">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
         <div class="row mt-4">
           <div class="col">
             <a class="btn btn-danger btn-block" href="{{ route('tariffs.index') }}">{{__('Cancelar')}}</a>

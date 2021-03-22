@@ -27,13 +27,17 @@
             <div class="d-flex justify-content-center">
               <!-- Edit button -->
               <a href="{{ route('tariffs.edit',$tariff->id) }}">
-                <button type="submit" class="btn btn-primary">{{__('Editar')}}</button>
+                <button type="submit" class="btn btn-primary btn-edit">
+                  <img src="{{ asset('images/icons/edit.svg') }}" alt="edit">
+                </button>
               </a>
               <!-- Delete button -->
               <form action="{{ route('tariffs.destroy',$tariff->id) }}" method="POST" class="ml-2">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Desea Eliminar?") }}')">{{__('Eliminar')}}</button>
+                <button type="submit" class="btn btn-danger btn-delete" onclick="return confirm('{{ __("Desea Eliminar?") }}')">
+                  <img src="{{ asset('images/icons/delete.svg') }}" alt="delete">
+                </button>
               </form>
             </div>
           </td>
