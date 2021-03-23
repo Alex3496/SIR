@@ -124,6 +124,17 @@ class Tariff extends Model
         }
     }
 
+     /*
+    *
+    * Metodo que sirve para filtrar si las tarifas estan disponibles por medio de la fecha
+    */
+    public function scopeavailable($query, $date)
+    {
+        if($date){
+            return $query->where('end_date','>=',"$date");
+        }
+    }
+
     //--------------ATRIBUTTES------------------
 
     /*
@@ -237,5 +248,20 @@ class Tariff extends Model
         $country = CountryState::getCountryName($this->destiny_country);
 
         return "$city, $state, $country";
+    }
+
+    /*
+    * muestra si la tarifa esta diponible o no
+    */
+    public function getGetAvailableAttribute()
+    {
+        $final = $this->end_date;
+        $now = date('Y-m-d');
+        if( $final >= $now ){
+            return 'Disponible';
+        }else{
+            return 'Vencido';
+        }
+
     }
 }

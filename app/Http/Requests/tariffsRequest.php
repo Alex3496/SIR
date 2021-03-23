@@ -41,7 +41,7 @@ class tariffsRequest extends FormRequest
             'rate'              => ['required','numeric','max:10000000','min:1'],
             'currency'          => ['required','in:USD,MXN'],
             'extra'             => ['required','string','max:25'],
-            'start_date'        => 'required|date|after:yesterday'
+            'end_date'        => 'required|date|after:yesterday'
 
         ];
 

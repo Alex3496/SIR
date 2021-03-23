@@ -32,6 +32,7 @@
 					<div class="ml-4">
 						<small>{{__('Empresa')}}:</small>
 						<h5>{{ $tariff->user->company_name }}</h5>
+						<small>Disponible hasta: {{$tariff->end_date}}</small>
 					</div>
 				</div>
 			</div>	

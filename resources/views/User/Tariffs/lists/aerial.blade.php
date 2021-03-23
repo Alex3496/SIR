@@ -13,6 +13,7 @@
           <th>{{ __('Tipo de equipo') }}</th>
           <th>{{ __('Peso') }}<small style="color: gray"> Aprox.</small></th>
           <th>{{ __('Tarifas') }}</th>
+          <th>{{ __('Disponibilidad') }}</th>
           <th>{{ __('Acciones') }}</th>
         </tr>
       </thead>
@@ -25,6 +26,7 @@
           <td>{{ $tariff->get_type_equipment }}</td>
           <td>{{ $tariff->approx_weight }} {{ $tariff->type_weight }}</td>
           <td>$ {{ $tariff->rate }} {{$tariff->currency}}</td>
+          <td class="center"><span class="{{ $tariff->get_available }}">{{ $tariff->get_available }}</span></td>
           <td>
             <div class="d-flex justify-content-center">
               <!-- Edit button -->

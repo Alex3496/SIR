@@ -189,11 +189,11 @@
 
         <div class="row">
           <div class="form-group col-md-4">
-            {!! Form::label('start_date','Disponibilidad hasta:') !!} 
+            {!! Form::label('end_date','Disponibilidad hasta:') !!} 
             <div class="input-group-sm">
-              {!! Form::date('start_date',$tariffToUpdate->start_date ?? \Carbon\Carbon::now(),['class' => 'form-control']) !!}
+              {!! Form::date('end_date',$tariffToUpdate->end_date ?? \Carbon\Carbon::now(),['class' => 'form-control']) !!}
             </div>
-            @error('start_date')
+            @error('end_date')
               <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>

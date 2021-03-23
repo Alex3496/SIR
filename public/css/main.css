@@ -477,6 +477,24 @@ main {
 
 /*==============CLASES GENERALES=================*/
 
+.Disponible {
+    background: #1a8c1a;
+    padding: 2px 4px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 14px;
+}
+
+.Vencido {
+    background: #db4e2d;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    font-size: 14px;
+}
+
 @media(max-width: 768px){
     .tariff-result-orgin,
     .tariff-result-destiny{
