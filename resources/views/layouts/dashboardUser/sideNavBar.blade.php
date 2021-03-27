@@ -103,6 +103,12 @@
         </ul>
       </li>
       <!-- /Activos -->
+      <li class="nav-item">
+        <a href="{{ route('stays.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-map-pin"> </i>
+          <p>{{ __('Estancias') }}</p>
+        </a>
+      </li>
     </ul>
   </nav>
   <!-- /.sidebar-menu -->

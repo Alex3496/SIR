@@ -88,6 +88,10 @@ Route::namespace('User')->group(function(){
 	
 	Route::resource('petitions','PetitionController',['except' => ['show','create']]);	
 
+		//Rutas para Estancias
+
+	Route::resource('stays','StayController',['except' => ['show']]);
+
 		//Booking routes
 
 	Route::get('booking/{id}','BookingController@show')->name('booking.show')->middleware('auth');

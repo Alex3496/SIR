@@ -97,6 +97,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Vehicle::class);
     }
 
+    //user can create/owns many stays
+    public function stays()
+    {
+        return $this->hasMany(Stay::class);
+    }
+
     //----------------GATES--------------
     
     //Check if user have any of the roles that we pass by parameter (array)

@@ -40,4 +40,47 @@ function onloadHidePlates() {
         } 
 } 
 
-  window.onload = onloadHidePlates;
+function hidepays(id) {
+	var row = document.getElementById('col-paid');
+	var row2 = document.getElementById('col-charge');
+	if(id == 'payment_operator'){
+		row.style.display = 'block';
+		row2.style.display = 'none';
+	}else if ( id == 'customer_charge' ){
+		row2.style.display = 'block';
+		row.style.display = 'none';
+	}else if (id == 'both'){
+		row2.style.display = 'block';
+		row.style.display = 'block';
+	}
+
+}
+
+function onloadHidePayments() {
+	var row = document.getElementById('col-paid');
+	var row2 = document.getElementById('col-charge'); 
+    var radios = document.getElementsByName('pays');       
+        for(i = 0; i < radios.length; i++) { 
+            if(radios[i].checked){
+            	if(radios[i].value == 'payment_operator'){
+					row.style.display = 'block';
+					row2.style.display = 'none';
+				}else if ( radios[i].value == 'customer_charge' ){
+					row2.style.display = 'block';
+					row.style.display = 'none';
+				}else if (radios[i].value == 'both'){
+					row2.style.display = 'block';
+					row.style.display = 'block';
+				}
+            }
+            
+        } 
+} 
+
+function load(){
+	onloadHidePlates();
+	onloadHidePayments();
+
+}
+
+window.onload = load;
