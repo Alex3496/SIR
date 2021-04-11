@@ -29,6 +29,7 @@ class CreatePetitionsTable extends Migration
             $table->integer('approx_weight')->nullable();
             $table->string('type_weight',7)->nullable();
             $table->string('type_equipment');
+            $table->string('extra')->nullable();
             $table->decimal('rate',9,2);
             $table->string('currency');
 

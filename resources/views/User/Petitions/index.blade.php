@@ -181,6 +181,16 @@
 							<small class="mt-0" style="color:red">{{ $message }}</small>
 						@enderror
 					</div>
+
+					<div class="form-group col-md-3">
+						{!! Form::label('extra','Mercancia') !!} *
+						<div class="input-group-sm">
+							{!! Form::text('extra',$petitionToUpdate-> extra ?? '',['class' =>'form-control','autocomplete' => 'off', 'maxlength' => '25', 'placeholder' => 'max. 25 caracteres']) !!}
+						</div>
+						@error('extra')
+							<small class="mt-0" style="color:red">{{ $message }}</small>
+						@enderror
+					</div>
 	
 				</div>
 
@@ -234,11 +244,11 @@
 			"autoWidth": false,
 		});
 		$(".example2").DataTable({
-			"paging": true,
+			"paging": false,
 			"lengthChange": false,
 			"searching": false,
 			"ordering": true,
-			"info": true,
+			"info": false,
 			"autoWidth": false,
 			"responsive": true,
 		});

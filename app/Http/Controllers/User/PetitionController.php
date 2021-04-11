@@ -35,7 +35,7 @@ class PetitionController extends Controller
 	{
 		$user=Auth::user();
 
-		$petitions = Petition::where('user_id',$user->id)->get();
+		$petitions = Petition::where('user_id',$user->id)->paginate(15);
 
 		return view('User.Petitions.index',[
 			'user'=>$user,

@@ -53,8 +53,8 @@
 			            <tbody>
 			              @foreach($stays as $stay)
 			              <tr>
-			                <td>{{ $stay->check_in }} {{ $stay->check_in_hours }}:{{ $stay->check_in_minutes }} </td>
-			                <td>{{ $stay->check_out }} {{ $stay->check_out_hours }}:{{ $stay->check_out_minutes }} </td>
+			                <td>{{ $stay->check_in }} - {{ $stay->check_in_hours }} </td>
+			                <td>{{ $stay->check_out }} - {{ $stay->check_out_hours }} </td>
 			                <td>{{ $stay->free_hours }}</td>
 			                <td>{{ $stay->get_type }}</td>
 			                <td>$ {{ $stay->cost_hour }}</td>

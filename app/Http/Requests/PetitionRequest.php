@@ -39,7 +39,8 @@ class PetitionRequest extends FormRequest
             'type_weight'       => ['required','in:kg,lb'],
             'rate'              => ['required','numeric','max:10000000','min:1'],
             'currency'          => ['required','in:USD,MXN'],
-            'type_equipment'    => ['required','in:Dry Box 48 ft,Dry Box 53 ft,Refrigerated Box 53 ft,Plataform 48 ft,Plataform 53 ft,Container 20 ft,Container 40 ft,Container 40 ft High cube,Box,Package,Pallet']
+            'type_equipment'    => ['required','in:Dry Box 48 ft,Dry Box 53 ft,Refrigerated Box 53 ft,Plataform 48 ft,Plataform 53 ft,Container 20 ft,Container 40 ft,Container 40 ft High cube,Box,Package,Pallet'],
+            'extra'             => ['required','string','max:25'],
 
         ];
                            
@@ -63,7 +64,8 @@ class PetitionRequest extends FormRequest
             'destiny.max'           => 'Máximo 50 caracteres',
             'distance.max'          => 'Máximo 10,000,000 (campo opcional)',
             'rate.max'              => 'Excede limite permitido',
-            'approx_weight.max'     => 'El peso máximo es de 80,000'
+            'approx_weight.max'     => 'El peso máximo es de 80,000',
+            'extra.max'             => 'Máximo 25 caracteres'
         ];
     }
 }

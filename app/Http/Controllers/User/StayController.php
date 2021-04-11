@@ -6,6 +6,7 @@ use App\Stay;
 use Illuminate\Support\Facades\Auth; /*MPORTANTE PARA CADA VEZ QUE SE UTILIZA AUTH*/ 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StayRequest;
 
 class StayController extends Controller
 {
@@ -57,7 +58,7 @@ class StayController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StayRequest $request)
     {
         $request['user_id'] = Auth::user()->id;
 
@@ -117,7 +118,7 @@ class StayController extends Controller
      * @param  \App\stay  $stay
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stay $stay)
+    public function update(StayRequest $request, stay $stay)
     {
         $stay=Stay::findOrFail($stay->id);
 

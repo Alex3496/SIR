@@ -6,103 +6,19 @@
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
   </div>
-  <div class="form-group col-md-1">
+  <div class="form-group col-md-2">
     {!! Form::label('check_in_hours','Hora') !!}
-    {!! Form::select('check_in_hours',[
-      '00' =>'00', 
-      '01' =>'01',
-      '02' =>'02',
-      '04' =>'04',
-      '05' =>'05',
-      '06' =>'06',
-      '07' =>'07',
-      '08' =>'08',
-      '09' =>'09',
-      '10' =>'10',
-      '11' =>'11',
-      '12' =>'12',
-      '13' =>'13',
-      '14' =>'14',
-      '15' =>'15',
-      '16' =>'16',
-      '17' =>'17',
-      '18' =>'18',
-      '19' =>'19',
-      '20' =>'20',
-      '21' =>'21',
-      '22' =>'22',
-      '23' =>'23'],$stay->check_in_hours ?? '12',['class' =>'form-control']) !!}
+    <div class="input-group date" id="timepicker" data-target-input="nearest">
+      <input name="check_in_hours" type="text" class="form-control datetimepicker-input" data-target="#timepicker" data-toggle="datetimepicker" value="{{$stay->check_in_hours ?? old('check_in_hours') ?? 12  }}"/>
+      <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="far fa-clock"></i></div>
+      </div>
+    </div>
     @error('check_in_hours')
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
   </div>
-  <div class="form-group col-md-1">
-    {!! Form::label('check_in_minutes','Minutos') !!}
-    {!! Form::select('check_in_minutes',[
-      '00' =>'00', 
-      '01' =>'01',
-      '02' =>'02',
-      '04' =>'04',
-      '05' =>'05',
-      '06' =>'06',
-      '07' =>'07',
-      '08' =>'08',
-      '09' =>'09',
-      '10' =>'10',
-      '11' =>'11',
-      '12' =>'12',
-      '13' =>'13',
-      '14' =>'14',
-      '15' =>'15',
-      '16' =>'16',
-      '17' =>'17',
-      '18' =>'18',
-      '19' =>'19',
-      '20' =>'20',
-      '21' =>'21',
-      '22' =>'22',
-      '23' =>'23',
-      '24' =>'24',
-      '25' =>'25',
-      '26' =>'26',
-      '27' =>'27',
-      '28' =>'28',
-      '29' =>'29',
-      '30' =>'30',
-      '31' =>'31',
-      '32' =>'32',
-      '33' =>'33',
-      '34' =>'34',
-      '35' =>'35',
-      '36' =>'36',
-      '37' =>'37',
-      '38' =>'38',
-      '39' =>'39',
-      '40' =>'40',
-      '41' =>'41',
-      '42' =>'42',
-      '43' =>'43',
-      '44' =>'44',
-      '45' =>'45',
-      '46' =>'46',
-      '47' =>'47',
-      '48' =>'48',
-      '49' =>'49',
-      '50' =>'50',
-      '51' =>'51',
-      '52' =>'52',
-      '53' =>'53',
-      '54' =>'54',
-      '55' =>'55',
-      '56' =>'56',
-      '57' =>'57',
-      '58' =>'58',
-      '59' =>'59',
-      ],$stay->check_in_minutes ?? '',['class' =>'form-control']) !!}
-    @error('check_in_minutes')
-    <small class="mt-0" style="color:red">{{ $message }}</small>
-    @enderror
-  </div>
+  
   <div class="form-group col-md-4">
     {!! Form::label('check_out','Check-Out') !!}
     {!! Form::date('check_out', $stay->check_out ?? \Carbon\Carbon::now(),['class' =>'form-control']) !!}
@@ -110,103 +26,19 @@
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
   </div>
-  <div class="form-group col-md-1">
+  <div class="form-group col-md-2">
     {!! Form::label('check_out_hours','Hora') !!}
-    {!! Form::select('check_out_hours',[
-      '00' =>'00', 
-      '01' =>'01',
-      '02' =>'02',
-      '04' =>'04',
-      '05' =>'05',
-      '06' =>'06',
-      '07' =>'07',
-      '08' =>'08',
-      '09' =>'09',
-      '10' =>'10',
-      '11' =>'11',
-      '12' =>'12',
-      '13' =>'13',
-      '14' =>'14',
-      '15' =>'15',
-      '16' =>'16',
-      '17' =>'17',
-      '18' =>'18',
-      '19' =>'19',
-      '20' =>'20',
-      '21' =>'21',
-      '22' =>'22',
-      '23' =>'23'],$stay->check_out_hours ?? '12',['class' =>'form-control']) !!}
+    <div class="input-group date" id="timepicker2" data-target-input="nearest">
+      <input name="check_out_hours" type="text" class="form-control datetimepicker-input" data-target="#timepicker2" data-toggle="datetimepicker" value="{{$stay->check_out_hours ?? old('check_out_hours') ?? 13 }}"/>
+      <div class="input-group-append" data-target="#timepicker2" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="far fa-clock"></i></div>
+      </div>
+    </div>
     @error('check_out_hours')
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
   </div>
-  <div class="form-group col-md-1">
-    {!! Form::label('check_out_minutes','Minutos') !!}
-    {!! Form::select('check_out_minutes',[
-      '00' =>'00', 
-      '01' =>'01',
-      '02' =>'02',
-      '04' =>'04',
-      '05' =>'05',
-      '06' =>'06',
-      '07' =>'07',
-      '08' =>'08',
-      '09' =>'09',
-      '10' =>'10',
-      '11' =>'11',
-      '12' =>'12',
-      '13' =>'13',
-      '14' =>'14',
-      '15' =>'15',
-      '16' =>'16',
-      '17' =>'17',
-      '18' =>'18',
-      '19' =>'19',
-      '20' =>'20',
-      '21' =>'21',
-      '22' =>'22',
-      '23' =>'23',
-      '24' =>'24',
-      '25' =>'25',
-      '26' =>'26',
-      '27' =>'27',
-      '28' =>'28',
-      '29' =>'29',
-      '30' =>'30',
-      '31' =>'31',
-      '32' =>'32',
-      '33' =>'33',
-      '34' =>'34',
-      '35' =>'35',
-      '36' =>'36',
-      '37' =>'37',
-      '38' =>'38',
-      '39' =>'39',
-      '40' =>'40',
-      '41' =>'41',
-      '42' =>'42',
-      '43' =>'43',
-      '44' =>'44',
-      '45' =>'45',
-      '46' =>'46',
-      '47' =>'47',
-      '48' =>'48',
-      '49' =>'49',
-      '50' =>'50',
-      '51' =>'51',
-      '52' =>'52',
-      '53' =>'53',
-      '54' =>'54',
-      '55' =>'55',
-      '56' =>'56',
-      '57' =>'57',
-      '58' =>'58',
-      '59' =>'59',
-      ],$stay->check_out_minutes ?? '',['class' =>'form-control']) !!}
-    @error('check_out_minutes')
-    <small class="mt-0" style="color:red">{{ $message }}</small>
-    @enderror
-  </div>
+  
 </div>
 
 <div class="row">
@@ -219,14 +51,14 @@
   </div>
   <div class="form-group col-md-4">
     {!! Form::label('free_hours','Horas Libres') !!}
-    {!! Form::number('free_hours',$stay->free_hours ?? 0,['class' =>'form-control']) !!}
+    {!! Form::number('free_hours',$stay->free_hours ?? 0,['class' =>'form-control', 'min' => '0']) !!}
     @error('free_hours')
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
   </div>
   <div class="form-group col-md-4">
     {!! Form::label('cost_hour','Coste por Hora') !!}
-    {!! Form::number('cost_hour',$stay->cost_hour ?? 0,['class' =>'form-control']) !!}
+    {!! Form::number('cost_hour',$stay->cost_hour ?? 0,['class' =>'form-control','min' => '0']) !!}
     @error('cost_hour')
     <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
@@ -306,7 +138,7 @@
     <div class="form-group col-md-6" id="col-paid" style="display: none;">
       {!! Form::label('payment_operator', 'Pago a Operador') !!}
       <div class="input-group-sm">
-        {!! Form::number('payment_operator',$stay->payment_operator ?? 0,['class' =>'form-control']) !!}
+        {!! Form::number('payment_operator',$stay->payment_operator ?? 0,['class' =>'form-control','min' => '0']) !!}
       </div>
       @error('payment_operator')
         <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -317,7 +149,7 @@
     <div class="form-group col-md-6" id="col-charge" style="display: none;">
       {!! Form::label('customer_charge', 'Cobro a Cliente') !!}
       <div class="input-group-sm">
-        {!!  Form::number('customer_charge', $stay->customer_charge ?? 0, ['class' => 'form-control']); !!}
+        {!!  Form::number('customer_charge', $stay->customer_charge ?? 0, ['class' => 'form-control','min' => '0']); !!}
       </div>
       @error('customer_charge')
         <small class="mt-0" style="color:red">{{ $message }}</small>
