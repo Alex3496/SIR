@@ -94,12 +94,21 @@
               @if($user['delivery_address'])
                 <li><b>{{__('Dirección de Entrega')}}:</b> {{$user['delivery_address']}}</li>
               @endif
+              @if($user['scac_code'])
+                <li><b>{{__('CAT/SCAC CODE')}}</b><p>{{$user['scac_code']}}</p></li>
+              @endif
+              @if($user['economic'])
+                <li><b>{{__('Tractor (Económico)')}}</b><p>{{$user['economic']}}</p></li>
+              @endif
+              @if($user['equipment'])
+                <li><b>{{__('Equipo (Económico)')}}</b><p>{{$user['equipment']}}</p></li>
+              @endif
               @if($user['message'])
                 <li><b>{{__('Mesanje')}}</b><br><p>{{$user['message']}}</p></li>
               @endif
             </ul>
             <hr>
-            <label>Ponte en contacto con el usuario para realizar la negociación.</label>
+            <label>Cantacta con el usuario para realizar la negociación.</label>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ class EquipmentRequest extends FormRequest
     {
          $rules = [
             'economic'  => 'required|string|max:25',
-            'vin'       => 'required|string|max:15',
+            'vin'       => 'required|string|max:25',
             'type'      => 'required|string',
         ];
 
@@ -64,7 +64,7 @@ class EquipmentRequest extends FormRequest
             'plates_mx.max' => 'Máximo 10 caracteres.',
             'state_us.max'  => 'Máximo 3 caracteres.',
             'state_mx.max'  => 'Máximo 3 caracteres.',
-            'vin.max'       => 'Máximo 15 caracteres.',
+            'vin.max'       => 'Máximo 25 caracteres.',
         ];
     }
 }

@@ -73,7 +73,7 @@
 		                  <th>{{__('Licencia')}}</th>
 		                  <th>{{__('Visa')}}</th>
 		                  <th>{{__('Fast')}}</th>
-		                  <th>{{__('Gafete Unico')}}</th>
+		                  <th>{{__('Gafete Único')}}</th>
 		                  <th>{{__('R-Control')}}</th>
 		                  <th>{{__('Acciones')}}</th>
 		                </tr>

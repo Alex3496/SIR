@@ -34,7 +34,7 @@
 				<h2>${{$petition->rate}}</h2><span> {{$petition->currency}}</span>
 			</div>
 			<div class="d-flex justify-content-center">
-				<a href="{{route('booking.showPetition',$petition->id)}}" class="btn btn-SIR btn-block">{{__('Contactar')}}</a>
+				<a href="{{route('booking.showPetition',$petition->id)}}" class="btn btn-SIR btn-block">{{__('Booking')}}</a>
 			</div>
 			</div>
 		</div>

@@ -89,7 +89,7 @@
 </div>
 <div class="row">
   <dic class="col-md-6">
-    <p>Seleecione el tipo de movimiento:</p>
+    <p>Seleccione el tipo de movimiento:</p>
   </dic>
   <div class="col-12 col-radio">
     @if(isset($stay))

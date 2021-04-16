@@ -24,7 +24,7 @@ class OperatorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required|string|max:25',
+            'name'          => 'required|string|max:50',
             'last_name'     => 'required|string|max:25',
             'license'       => 'required|string|max:15',
             'visa'          => 'required|string|max:15',
@@ -50,6 +50,7 @@ class OperatorRequest extends FormRequest
             'fast.max'          => 'Máximo 15 caracteres.',
             'unique_badge.max'  => 'Máximo 15 caracteres.',
             'r_control.max'     => 'Máximo 15 caracteres.',
+            'name.max'          => 'Máximo 50 caracteres.',
         ];
     }
 }

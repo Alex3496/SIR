@@ -54,12 +54,11 @@
 		@enderror
 	  </div>
 
-	  <!-- Gafete Unico -->
+	  <!-- Gafete Único -->
 	  <div class="form-group col-md-6">
-		{!! Form::label('unique_badge', 'Gafete Unico') !!}
+		{!! Form::label('unique_badge', 'Gafete Único') !!}
 		<div class="input-group-sm">
 			{!! Form::text('unique_badge',$OperatorToUpdate->unique_badge ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
-		</div>
 		</div>
 		@error('unique_badge')
 		  <small class="mt-0" style="color:red">{{ $message }}</small>
@@ -76,6 +75,7 @@
 		  <small class="mt-0" style="color:red">{{ $message }}</small>
 		@enderror
 	  </div>
+	</div>
 
 
 	<!-- Acepatar -->

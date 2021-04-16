@@ -39,7 +39,7 @@
         </div>
         <div class="form-check form-check-inline">
         	{!! Form::radio('type_company_user','Carriers',false,['class' =>'form-check-input', 'id' => 'type_company_user-1']) !!}
-          {!! Form::label('type_company_user-1','Trasnportista',['class' => 'form-check-label']) !!}
+          {!! Form::label('type_company_user-1','Transportista',['class' => 'form-check-label']) !!}
         </div>
         <div class="form-check form-check-inline">
         	{!! Form::radio('type_company_user','Broker',false,['class' =>'form-check-input', 'id' => 'type_company_user-2']) !!}
