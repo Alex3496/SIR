@@ -119,3 +119,32 @@ input:checked + .slider:before {
     align-items: flex-start;
   }
 }
+
+/*-------------------select e input conbinados--------------------*/
+
+.select-input-container{
+  display: flex;
+}
+.select-input-container .input-number{
+  width: 70%;
+  border-radius: 0.2rem 0 0 0.2rem;
+  border-right: transparent;
+}
+
+.select-input-container .select-in{
+  border-radius: 0 0.2rem 0.2rem 0;
+}
+
+/*------------------------------collapse----------------------------*/
+.btn-collapse{
+  background: transparent;
+  text-decoration: underline;
+  color: #5f5f75;
+}
+
+.div-collapse{
+  padding-top: 2rem;
+  padding-left: 3rem;
+}
+
+

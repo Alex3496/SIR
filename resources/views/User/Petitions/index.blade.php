@@ -10,7 +10,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<h2 class="mb-4">{{ __('Públicar carga') }}</h2>
+			<h2 class="mb-4">{{ __('Mis Cargas') }}</h2>
 		</div>
 	</div>
 
@@ -30,7 +30,7 @@
 	<!-- Content -->
 
 	<div class="row">
-	<div class="col-md-10 ">
+	<div class="col-md-11 ">
 		<div class="card card-info">
 			<div class="card-header">
 				<h3 class="card-title">
@@ -108,42 +108,51 @@
 					</div>
 				</div>
 				<hr/>
+				<div class="row mb-3">
+					<div class="col-12">
+						<button class="btn btn-collapse" type="button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample" {{ isset($petitionToUpdate->origin_address) ? 'aria-expanded=true' : 'aria-expanded=false' }}
+						>
+					    	Añadir Dirección <small>(opcional)</small>
+					  	</button>
+						<div class="collapse {{ isset($petitionToUpdate->origin_address) ? 'show' : '' }}" id="collapseExample">
+							<div class="row div-collapse">
+							    <div class="form-group col-md-4">
+									{!! Form::label('origin_address', 'Dirección de Recolección') !!}
+									<div class="input-group-sm">
+										{!! Form::text('origin_address',$petitionToUpdate->origin_address ?? '',['class' =>'form-control', 'autocomplete' => 'off', 'placeholder' => 'Max. 150 caraceteres']) !!}
+									</div>
+									@error('origin_address')
+									<small class="mt-0" style="color:red">{{ $message }}</small>
+									@enderror
+								</div>
+								<div class="form-group col-md-4">
+									{!! Form::label('destiny_address', 'Dirección de Entrega') !!}
+									<div class="input-group-sm">
+										{!! Form::text('destiny_address',$petitionToUpdate->destiny_address ?? '',['class' =>'form-control', 'autocomplete' => 'off', 'placeholder' => 'Max. 150 caraceteres']) !!}
+									</div>
+									@error('destiny_address')
+									<small class="mt-0" style="color:red">{{ $message }}</small>
+									@enderror
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-3">
 						{!! Form::label('approx_weight','Peso estimado *') !!}
-						<div class="input-group-sm">
-							{!! Form::number('approx_weight',$petitionToUpdate->approx_weight ?? '',['class' =>'form-control', 'min' =>0]) !!}
+						<div class="input-group-sm select-input-container">
+							{!! Form::text('approx_weight',$petitionToUpdate->approx_weight ?? '0',['class' =>'form-control input-number',]) !!}
+							{!! Form::select('type_weight',['kg' => 'Kg', 'lb' => 'Lb'],$petitionToUpdate-> type_weight ?? '',['class' => 'form-control select-in']) !!}
 						</div>
 						@error('approx_weight')
-						<small class="mt-0" style="color:red">{{ $message }}</small>
+							<small class="mt-0" style="color:red">{{ $message }}</small>
+						@enderror
+						@error('type_weight')
+							<small class="mt-0" style="color:red">{{ $message }}</small>
 						@enderror
 					</div>
-					<div class="col-sm-2 d-flex align-items-end hide">
-						<div class="form-check ml-2 mb-4 hide">
-							<input class="form-check-input" type="radio" name="type_weight" id="kg" value="kg" checked 
-							{{ (old('type_weight') == 'kg') ? 'checked' : '' }} 
-								@if(isset($petitionToUpdate))  
-									@if($petitionToUpdate->type_weight == 'kg')
-										checked
-									@endif
-								@endif/>
-							<label class="form-check-label" for="kg">Kg.</label>
-						</div>
-						<div class="form-check ml-2 mb-4 hide">
-							<input class="form-check-input" type="radio" name="type_weight" id="lb" value="lb"   
-							{{ (old('type_weight') == 'lb') ? 'checked' : '' }} 
-							@if(isset($petitionToUpdate))  
-								@if($petitionToUpdate->type_weight == 'lb')
-									checked
-								@endif
-							@endif/>
-							<label class="form-check-label" for="lb">Lb.</label>
-						</div>
-						@error('Type_weigh')
-						<small class="mt-0" style="color:red">{{ $message }}</small>
-						@enderror
-					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-3">
 						{!! Form::label('type_equipment','Tipo de equipo *') !!}
 						<div class="input-group-sm">{{ Form::select('type_equipment',[
 							'Dry Box 48 ft'    => 'Caja seca 48 pies', 
@@ -162,21 +171,15 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-2">
+					<div class="form-group col-md-3">
 						{!! Form::label('rate','Tarifa') !!} *
-						<div class="input-group-sm">
-							{!! Form::text('rate',$petitionToUpdate->rate ?? '',['class' =>'form-control','autocomplete' => 'off']) !!}
+						<div class="input-group-sm select-input-container">
+							{!! Form::text('rate',$petitionToUpdate->rate ?? '0.00',['class' =>'form-control input-number','autocomplete' => 'off',]) !!}
+							{!! Form::select('currency',['MXN' => 'MXN', 'USD' => 'USD'],$petitionToUpdate-> currency ?? '',['class' => 'form-control select-in']) !!}
 						</div>
 						@error('rate')
-						<small class="mt-0" style="color:red">{{ $message }}</small>
+							<small class="mt-0" style="color:red">{{ $message }}</small>
 						@enderror
-					</div>
-
-					<div class="form-group col-md-2">
-						{!! Form::label('currency','Moneda') !!} *
-						<div class="input-group-sm">
-							{!! Form::select('currency',['MXN' => 'MXN', 'USD' => 'USD'],$petitionToUpdate-> currency ?? '',['class' => 'form-control']) !!}
-						</div>
 						@error('currency')
 							<small class="mt-0" style="color:red">{{ $message }}</small>
 						@enderror
@@ -201,7 +204,7 @@
 						@endif
 					</div>
 					<div class="col-6">
-						{!! Form::submit('Aceptar',['class' =>'btn btn-success btn-block']); !!}
+						{!! Form::submit('Guadar',['class' =>'btn btn-success btn-block']); !!}
 					</div>
 				</div>
 				{!! Form::close() !!}

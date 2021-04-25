@@ -10,7 +10,7 @@ class Petition extends Model
 {
     protected $fillable = [
         'user_id','origin', 'origin_country','origin_state','destiny','destiny_country','destiny_state', 
-        'approx_weight','type_weight', 'type_equipment','rate','currency','complete_origin','complete_destiny','extra'
+        'approx_weight','type_weight', 'type_equipment','rate','currency','complete_origin','complete_destiny','extra', 'origin_address','destiny_address'
     ];
 
      //--------------Relations----------------//

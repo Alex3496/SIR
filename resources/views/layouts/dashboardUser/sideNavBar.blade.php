@@ -68,8 +68,14 @@
       </li>
       <li class="nav-item">
         <a href="{{ route('petitions.index') }}" class="nav-link">
-          <i class="nav-icon fas fa-map-pin"> </i>
+          <i class="nav-icon fas fa-map-signs"> </i>
           <p>{{ __('Públicar carga') }}</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ route('stays.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-map-pin"> </i>
+          <p>{{ __('Estancias') }}</p>
         </a>
       </li>
       <!-- Activos -->
@@ -103,12 +109,6 @@
         </ul>
       </li>
       <!-- /Activos -->
-      <li class="nav-item">
-        <a href="{{ route('stays.index') }}" class="nav-link">
-          <i class="nav-icon fas fa-map-pin"> </i>
-          <p>{{ __('Estancias') }}</p>
-        </a>
-      </li>
     </ul>
   </nav>
   <!-- /.sidebar-menu -->
