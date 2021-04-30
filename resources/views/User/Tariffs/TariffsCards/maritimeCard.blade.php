@@ -92,22 +92,17 @@
             <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>
-          <div class="form-group col-md-2">
+
+          <div class="form-group col-md-4">
             {!! Form::label('rate','Tarifa') !!} *
-            <div class="input-group-sm">
-              {!! Form::text('rate',$tariffToUpdate->rate ?? '',['class' =>'form-control','autocomplete' => 'off']) !!}
+            <div class="input-group-sm select-input-container">
+              {!! Form::text('rate',$tariffToUpdate->rate ?? '',['class' =>'form-control input-number','autocomplete' => 'off']) !!}
+              {!! Form::select('currency',['MXN' => 'MXN', 'USD' => 'USD'],$tariffToUpdate-> currency ?? '',['class' => 'form-control select-in']) !!}
             </div>
             @error('rate')
-            <small class="mt-0" style="color:red">{{ $message }}</small>
+              <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
-          </div>
-
-          <div class="form-group col-md-2">
-            {!! Form::label('currency','Moneda') !!} *
-            <div class="input-group-sm">
-              {!! Form::select('currency',['MXN' => 'MXN', 'USD' => 'USD'],$tariffToUpdate-> currency ?? '',['class' => 'form-control']) !!}
-            </div>
-            @error('currency')
+             @error('currency')
               <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>
@@ -123,7 +118,6 @@
           </div>
   
         </div>
-        <hr/>
         <div class="row">
           <div class="form-group col-md-4">
             {!! Form::label('end_date','Disponibilidad hasta:') !!} 

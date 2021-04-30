@@ -57,7 +57,7 @@
     @enderror
   </div>
   <div class="form-group col-md-4">
-    {!! Form::label('cost_hour','Coste por Hora') !!}
+    {!! Form::label('cost_hour','Costo por Hora') !!}
     {!! Form::number('cost_hour',$stay->cost_hour ?? 0,['class' =>'form-control','min' => '0']) !!}
     @error('cost_hour')
     <small class="mt-0" style="color:red">{{ $message }}</small>

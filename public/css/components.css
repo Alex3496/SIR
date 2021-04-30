@@ -126,12 +126,13 @@ input:checked + .slider:before {
   display: flex;
 }
 .select-input-container .input-number{
-  width: 70%;
+  width: 70% !important;
   border-radius: 0.2rem 0 0 0.2rem;
   border-right: transparent;
 }
 
 .select-input-container .select-in{
+  width: 30%;
   border-radius: 0 0.2rem 0.2rem 0;
 }
 

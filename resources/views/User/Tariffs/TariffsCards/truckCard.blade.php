@@ -82,36 +82,15 @@
         <div class="row">
           <div class="form-group col-md">
             {!! Form::label('approx_weight','Peso estimado *') !!}
-            <div class="input-group-sm">
-              {!! Form::number('approx_weight',$tariffToUpdate->approx_weight ?? '',['class' =>'form-control', 'min' =>0]) !!}
+            <div class="input-group-sm select-input-container">
+              {!! Form::text('approx_weight',$tariffToUpdate->approx_weight ?? '',['class' =>'form-control input-number', 'min' =>0]) !!}
+              {!! Form::select('type_weight',['kg' => 'Kg', 'lb' => 'Lb'],$tariffToUpdate-> type_weight ?? '',['class' => 'form-control select-in']) !!}
             </div>
             @error('approx_weight')
-            <small class="mt-0" style="color:red">{{ $message }}</small>
+              <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
-          </div>
-          <div class="col-sm-2 d-flex align-items-end hide">
-            <div class="form-check ml-2 mb-4 hide">
-              <input class="form-check-input" type="radio" name="type_weight" id="kg" value="kg" checked 
-              {{ (old('type_weight') == 'kg') ? 'checked' : '' }} 
-                @if(isset($tariffToUpdate))  
-                  @if($tariffToUpdate->type_weight == 'kg')
-                    checked
-                  @endif
-                @endif/>
-              <label class="form-check-label" for="kg">Kg.</label>
-            </div>
-            <div class="form-check ml-2 mb-4 hide">
-              <input class="form-check-input" type="radio" name="type_weight" id="lb" value="lb"   
-              {{ (old('type_weight') == 'lb') ? 'checked' : '' }} 
-              @if(isset($tariffToUpdate))  
-                @if($tariffToUpdate->type_weight == 'lb')
-                  checked
-                @endif
-              @endif/>
-              <label class="form-check-label" for="lb">Lb.</label>
-            </div>
-            @error('Type_weigh')
-            <small class="mt-0" style="color:red">{{ $message }}</small>
+            @error('type_weight')
+              <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>
           <div class="form-group col-md">
@@ -143,27 +122,21 @@
           </div>
         </div>
         <div class="row">
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-4">
             {!! Form::label('rate','Tarifa') !!} *
-            <div class="input-group-sm">
-              {!! Form::number('rate',$tariffToUpdate->rate ?? '',['class' =>'form-control','autocomplete' => 'off']) !!}
+            <div class="input-group-sm select-input-container">
+              {!! Form::text('rate',$tariffToUpdate->rate ?? '',['class' =>'form-control input-number','autocomplete' => 'off']) !!}
+              {!! Form::select('currency',['MXN' => 'MXN', 'USD' => 'USD'],$tariffToUpdate-> currency ?? '',['class' => 'form-control select-in']) !!}
             </div>
             @error('rate')
-            <small class="mt-0" style="color:red">{{ $message }}</small>
+              <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
-          </div>
-
-          <div class="form-group col-md-2">
-            {!! Form::label('currency','Moneda') !!} *
-            <div class="input-group-sm">
-              {!! Form::select('currency',['MXN' => 'MXN', 'USD' => 'USD'],$tariffToUpdate-> currency ?? '',['class' => 'form-control']) !!}
-            </div>
             @error('currency')
               <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>
 
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
             {!! Form::label('extra','Mercancia') !!} *
             <div class="input-group-sm">
               {!! Form::text('extra',$tariffToUpdate->extra ?? '',['class' =>'form-control','autocomplete' => 'off', 'maxlength' => '25', 'placeholder' => 'max. 25 caracteres']) !!}
@@ -172,10 +145,7 @@
               <small class="mt-0" style="color:red">{{ $message }}</small>
             @enderror
           </div>
-  
-        </div>
 
-        <div class="row">
           <div class="form-group col-md-4">
             {!! Form::label('end_date','Disponibilidad hasta:') !!} 
             <div class="input-group-sm">
