@@ -30,6 +30,10 @@ class CreatePetitionsTable extends Migration
             $table->string('complete_destiny')->nullable();
             $table->integer('approx_weight')->nullable();
             $table->string('type_weight',7)->nullable();
+            $table->string('po_reference')->nullable();
+            $table->string('bill_landing')->nullable();
+            $table->date('load_date')->nullable();
+            $table->string('load_hour')->nullable();
             $table->string('type_equipment');
             $table->string('extra')->nullable();
             $table->decimal('rate',9,2);

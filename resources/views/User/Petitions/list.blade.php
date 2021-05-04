@@ -7,12 +7,13 @@
     <table id="example2" class="table table-bordered table-hover example2">
       <thead>
         <tr>
-          <th>{{ __('Fecha de creación') }}</th>
+          <th>{{ __('Fecha') }}</th>
           <th>{{ __('Origen') }}</th>
           <th>{{ __('Destino') }}</th>
           <th>{{ __('Tipo de equipo') }}</th>
           <th>{{ __('Peso') }}<small style="color: gray"> Aprox.</small></th>
           <th>{{ __('Tarifa') }}</th>
+          <th>{{ __('Disponibilidad') }}</th>
           <th>{{ __('Acciones') }}</th>
         </tr>
       </thead>
@@ -25,6 +26,7 @@
           <td>{{ $petition->get_type_equipment }}</td>
           <td>{{ $petition->approx_weight }} {{ $petition->type_weight }}</td>
           <td>$ {{ $petition->rate }} {{$petition->currency}}</td>
+          <td class="center"><span class="{{ $petition->get_available }}">{{ $petition->get_available }}</span></td>
           <td>
             <div class="d-flex justify-content-center">
               <!-- Edit button -->

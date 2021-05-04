@@ -70,6 +70,14 @@ class PetitionController extends Controller
         $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
         $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;
 
+        if($request['info'] == 'bill_landing'){
+            $request['po_reference'] = null;
+        }
+
+        if($request['info'] == 'po_reference'){
+            $request['bill_landing'] = null;
+        }
+
         $petition = Petition::create($request->all());
 
         $this->storeLocation($request['origin'],$request['origin_state'],$request['origin_country']);
@@ -98,6 +106,14 @@ class PetitionController extends Controller
         $countries = $this->getCountries();
         $states_origin = CountryState::getStates($petitionToUpdate->origin_country);
         $states_destiny = CountryState::getStates($petitionToUpdate->destiny_country);
+
+        if($petitionToUpdate->po_reference && $petitionToUpdate->bill_landing){
+            $petitionToUpdate->info = 'both';
+        }else if($petitionToUpdate->po_reference){
+            $petitionToUpdate->info = 'po_reference';
+        }else if($petitionToUpdate->bill_landing){
+            $petitionToUpdate->info = 'bill_landing';
+        }
 
         return view('User.Petitions.index',[
                 'user'=>$user,
@@ -134,7 +150,15 @@ class PetitionController extends Controller
         //Obtener la ubicacion completa del destino
         $country = $countries[$request->destiny_country];
         $state =  CountryState::getStateName($request->destiny_state,$request->destiny_country);
-        $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country;       
+        $request['complete_destiny'] = $request->destiny.', '.$state.', '.$country; 
+
+        if($request['info'] == 'bill_landing'){
+            $request['po_reference'] = null;
+        }
+
+        if($request['info'] == 'po_reference'){
+            $request['bill_landing'] = null;
+        }      
 
         $petitionToUpdate->update($request->all());
 

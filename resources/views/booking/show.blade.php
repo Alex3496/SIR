@@ -54,6 +54,13 @@
 									</div>
 								</div>
 								<hr>
+								<div class="row">
+					                <div class="col flex-column">
+					                  <small class="mb-2">{{ __('Datos extra de la Tarifa') }}</small>
+					                  <label><b>Mercancia: </b>  {{ $tariff->extra }}</label>
+					            	</div>
+					            </div>
+					            <hr>
 								<div>
 									<label>{{__('Ingrese sus datos de contacto e información de envío')}}</label>
 									<div class="form-group row">

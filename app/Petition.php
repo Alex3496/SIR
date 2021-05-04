@@ -10,9 +10,9 @@ class Petition extends Model
 {
     protected $fillable = [
         'user_id','origin', 'origin_country','origin_state','destiny','destiny_country','destiny_state', 
-        'approx_weight','type_weight', 'type_equipment','rate','currency','complete_origin','complete_destiny','extra', 'origin_address','destiny_address'
+        'approx_weight','type_weight', 'type_equipment','rate','currency','complete_origin','complete_destiny','extra', 'origin_address','destiny_address','po_reference','bill_landing','load_date','load_hour'
     ];
-
+    
      //--------------Relations----------------//
     
     public function user()
@@ -82,6 +82,17 @@ class Petition extends Model
     {
         if($complete_destiny){
             return $query->where('complete_destiny','LIKE',"%$complete_destiny%");
+        }
+    }
+
+     /*
+    *
+    * Metodo que sirve para filtrar si las cargas estan disponibles por medio de la fecha, si es menor a al actual
+    */
+    public function scopeavailable($query, $date)
+    {
+        if($date){
+            return $query->where('load_date','>=',"$date");
         }
     }
 
@@ -199,5 +210,20 @@ class Petition extends Model
         $country = CountryState::getCountryName($this->destiny_country);
 
         return "$city, $state, $country";
+    }
+
+    /*
+    * muestra si la carga esta diponible o no, por medio de la fecha
+    */
+    public function getGetAvailableAttribute()
+    {
+        $final = $this->load_date;
+        $now = date('Y-m-d');
+        if( $final >= $now ){
+            return 'Disponible';
+        }else{
+            return 'Vencido';
+        }
+
     }
 }

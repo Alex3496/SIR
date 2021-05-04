@@ -530,3 +530,8 @@ main {
 .ml-05{
     margin-left: 0.5rem;
 }
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}

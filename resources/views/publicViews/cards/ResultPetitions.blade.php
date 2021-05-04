@@ -26,6 +26,7 @@
 					<div class="ml-4">
 						<small>{{__('Empresa')}}:</small>
 						<h5>{{ $petition->user->company_name }}</h5>
+						<small>Disponible hasta: {{$petition->load_date}}</small>
 					</div>
 				</div>
 			</div>	

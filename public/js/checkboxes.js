@@ -77,9 +77,47 @@ function onloadHidePayments() {
         } 
 } 
 
+function hideinfo(id) {
+	var row = document.getElementById('col-po');
+	var row2 = document.getElementById('col-bill');
+	if(id == 'po_reference'){
+		row.style.display = 'block';
+		row2.style.display = 'none';
+	}else if ( id == 'bill_landing' ){
+		row2.style.display = 'block';
+		row.style.display = 'none';
+	}else if (id == 'both'){
+		row2.style.display = 'block';
+		row.style.display = 'block';
+	}
+
+}
+
+function onloadHideInfo() {
+	var row = document.getElementById('col-po');
+	var row2 = document.getElementById('col-bill'); 
+    var radios = document.getElementsByName('info');       
+        for(i = 0; i < radios.length; i++) { 
+            if(radios[i].checked){
+            	if(radios[i].value == 'po_reference'){
+					row.style.display = 'block';
+					row2.style.display = 'none';
+				}else if ( radios[i].value == 'bill_landing' ){
+					row2.style.display = 'block';
+					row.style.display = 'none';
+				}else if (radios[i].value == 'both'){
+					row2.style.display = 'block';
+					row.style.display = 'block';
+				}
+            }
+            
+        } 
+} 
+
 function load(){
 	onloadHidePlates();
 	onloadHidePayments();
+	onloadHideInfo();
 
 }
 

@@ -30,7 +30,7 @@
 	<!-- Content -->
 
 	<div class="row">
-	<div class="col-md-11 ">
+	<div class="col-md-12 ">
 		<div class="card card-info">
 			<div class="card-header">
 				<h3 class="card-title">
@@ -112,11 +112,11 @@
 					<div class="col-12">
 						<button class="btn btn-collapse" type="button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample" {{ isset($petitionToUpdate->origin_address) ? 'aria-expanded=true' : 'aria-expanded=false' }}
 						>
-					    	Añadir Dirección <small>(opcional)</small>
-					  	</button>
+							Añadir Dirección <small>(opcional)</small>
+						</button>
 						<div class="collapse {{ isset($petitionToUpdate->origin_address) ? 'show' : '' }}" id="collapseExample">
 							<div class="row div-collapse">
-							    <div class="form-group col-md-4">
+								<div class="form-group col-md-4">
 									{!! Form::label('origin_address', 'Dirección de Recolección') !!}
 									<div class="input-group-sm">
 										{!! Form::text('origin_address',$petitionToUpdate->origin_address ?? '',['class' =>'form-control', 'autocomplete' => 'off', 'placeholder' => 'Max. 150 caraceteres']) !!}
@@ -169,6 +169,25 @@
 						<small class="mt-0" style="color:red">{{ $message }}</small>
 						@enderror
 					</div>
+					<div class="form-group col-md-4">
+					    {!! Form::label('load_date','Fecha de Carga') !!} *
+					    {!! Form::date('load_date', $petitionToUpdate->load_date ?? \Carbon\Carbon::now(),['class' =>'form-control']) !!}
+					    @error('load_date')
+					    	<small class="mt-0" style="color:red">{{ $message }}</small>
+					    @enderror
+					</div>
+					<div class="form-group col-md-2">
+					    {!! Form::label('load_hour','Hora de carga') !!}
+					    <div class="input-group date" id="timepicker" data-target-input="nearest">
+					      <input name="load_hour" type="text" class="form-control datetimepicker-input" data-target="#timepicker" data-toggle="datetimepicker" value="{{$petitionToUpdate->load_hour ?? old('load_hour') ?? 12  }}"/>
+					      <div class="input-group-append" data-target="#timepicker" data-toggle="datetimepicker">
+					        <div class="input-group-text"><i class="far fa-clock"></i></div>
+					      </div>
+					    </div>
+					    @error('load_hour')
+					    <small class="mt-0" style="color:red">{{ $message }}</small>
+					    @enderror
+					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-md-3">
@@ -196,7 +215,72 @@
 					</div>
 	
 				</div>
+				<div class="row">
+					<div class="col-6 col-radio">
+					@if(isset($petitionToUpdate))
+						<label for="po_reference">
+							<input type="radio" id="po_reference" name="info" value="po_reference" onclick="hideinfo('po_reference')" checked
+							  {{ (old('info') == 'po_reference') || $petitionToUpdate->info == 'po_reference' ? 'checked' : '' }}
+							>
+							# PO
+					  	</label>
+					  	<label for="bill_landing">
+							<input type="radio" id="bill_landing" name="info" value="bill_landing" onclick="hideinfo('bill_landing')"
+							  {{ (old('info') == 'bill_landing') || $petitionToUpdate->info == 'bill_landing'  ? 'checked' : '' }}
+							>
+							Bill of Landing
+					  	</label>
+					  	<label for="both">
+							<input type="radio" id="both" name="info" value="both" onclick="hideinfo('both')"
+						  		{{ (old('info') == 'both') || $petitionToUpdate->info == 'both'  ? 'checked' : '' }}
+							>
+							Ambas
+					  	</label>
+					@else
+						<label for="po_reference">
+							<input type="radio" id="po_reference" name="info" value="po_reference" onclick="hideinfo('po_reference')" checked
+							  {{ (old('info') == 'po_reference') ? 'checked' : '' }}
+							>
+							# PO
+						</label>
+						<label for="bill_landing">
+							<input type="radio" id="bill_landing" name="info" value="bill_landing" onclick="hideinfo('bill_landing')"
+							  {{ (old('info') == 'bill_landing') ? 'checked' : '' }}
+							>
+							Bill of Landing
+						</label>
+						<label for="both">
+							<input type="radio" id="both" name="info" value="both" onclick="hideinfo('both')"
+							  {{ (old('info') == 'both')? 'checked' : '' }}
+							>
+							Ambas
+						</label>
+					@endif
+				  	</div>
+				</div>
+				<div class="row" >
+				    <!-- Pago a operador -->
+				    <div class="form-group col-md-6" id="col-po" style="display: none;">
+				      {!! Form::label('po_reference', '#PO / Referencia') !!}
+				      <div class="input-group-sm">
+				        {!! Form::text('po_reference',$petitionToUpdate->po_reference ?? 0,['class' =>'form-control','min' => '0', 'autocomplete' => 'off']) !!}
+				      </div>
+				      @error('po_reference')
+				        <small class="mt-0" style="color:red">{{ $message }}</small>
+				      @enderror
+				    </div>
 
+				    <!-- Cobro a cliente-->
+				    <div class="form-group col-md-6" id="col-bill" style="display: none;">
+				      {!! Form::label('bill_landing', 'Bill of Landing') !!}
+				      <div class="input-group-sm">
+				        {!!  Form::text('bill_landing', $petitionToUpdate->bill_landing ?? 0, ['class' => 'form-control','min' => '0','autocomplete' => 'off']); !!}
+				      </div>
+				      @error('bill_landing')
+				        <small class="mt-0" style="color:red">{{ $message }}</small>
+				      @enderror
+				    </div>
+				</div>
 				<div class="row mt-4">
 					<div class="col-6">
 						@if(isset($petitionToUpdate))
@@ -232,6 +316,8 @@
 @endsection
 
 @section('extraScript')
+
+
 <!-- DataTables -->
 <script src="{{asset('adminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('adminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -239,6 +325,7 @@
 <script src="{{asset('adminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminLTE/js/demo.js')}}"></script>
+<script src="{{asset('js/checkboxes.js')}}"></script>
 <!-- page script -->
 <script>
 	$(function () {

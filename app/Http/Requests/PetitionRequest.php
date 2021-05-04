@@ -28,7 +28,9 @@ class PetitionRequest extends FormRequest
         $countries = CountryState::getCountries();
         $countries = array_keys($countries);
 
-        $rules = [
+       // dd($this->request);
+
+         $rules = [
             'origin'            => 'required|regex:/^[\pL\s\-]+$/u|max:50',
             'origin_country'    => ['required',Rule::in($countries)],
             'origin_state'      => 'required|string|max:3',
@@ -43,8 +45,28 @@ class PetitionRequest extends FormRequest
             'extra'             => ['required','string','max:25'],
             'origin_address'    => ['string','max:150','nullable'],
             'destiny_address'   => ['string','max:150','nullable'],
+            'load_date'        => 'required|date|after:yesterday',
+            'load_hour'        => 'required|max:10'
+
+
 
         ];
+        
+        if($this->request->get('info') == 'po_reference'){
+            $rules['po_reference'] = ['required','string','max:15'];
+        }
+
+        if ($this->request->get('info') == 'bill_landing'){
+            $rules['bill_landing'] = ['required','string','max:15'];                              
+        }
+
+        if ($this->request->get('info') == 'both'){
+            $rules['po_reference'] = ['required','string','max:15'];
+            $rules['bill_landing'] = ['required','string','max:15'];    
+                         
+        }
+
+       
                            
         return $rules;
     }
@@ -69,7 +91,10 @@ class PetitionRequest extends FormRequest
             'approx_weight.max'     => 'El peso máximo es de 80,000',
             'extra.max'             => 'Máximo 25 caracteres',
             'origin_address.max'    => 'Máximo 150 caracteres',
-            'destiny_address.max'   => 'Máximo 150 caracteres'
+            'destiny_address.max'   => 'Máximo 150 caracteres',
+            'po_reference.max'      => 'Máximo 15 caracteres',
+            'bill_landing.max'      => 'Máximo 15 caracteres',
+            'load_date.after'       => 'Fecha mayor a la actual',
         ];
     }
 }

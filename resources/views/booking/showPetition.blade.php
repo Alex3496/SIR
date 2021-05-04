@@ -8,22 +8,34 @@
           <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
               <h2>Enviale un mensaje a la empresa transportista.</h2>
-              <p>A continuación se muestra la información básica sobre la petición seleccionada.</p>
+              <p>A continuación se muestra la información básica sobre la carga seleccionada.</p>
             </div>
           </div>
           <hr/>
           <div class="row">
             <div class="col-md-8 pr-2">
-              <div>
-                <small>{{ __('Origen') }}:</small>
-                <h2>{{ $petition->origin }}</h2>
-                <h5>{{ $petition->get_state_origin }}, {{ $petition->get_country_origin }}</h5>
+              <div class="row">
+                <div class="col-6">
+                  <small>{{ __('Origen') }}:</small>
+                  <h2>{{ $petition->origin }}</h2>
+                  <h5>{{ $petition->get_state_origin }}, {{ $petition->get_country_origin }}</h5>
+                </div>
+                <div class="col-md-6  pt-2">
+                    <label>{{__('Dirección de Recolección')}}</label>
+                    <h5>{{ $petition->origin_address ?? '-'}}</h5>
+                  </div>
               </div>
               <hr/>
-              <div>
-                <small>{{ __('Destino') }}:</small>
-                <h2>{{ $petition->destiny }}</h2>
-                <h5>{{ $petition->get_state_destiny }}, {{ $petition->get_country_destiny }}</h5>
+              <div class="row">
+                <div class="col-6">
+                  <small>{{ __('Destino') }}:</small>
+                  <h2>{{ $petition->destiny }}</h2>
+                  <h5>{{ $petition->get_state_destiny }}, {{ $petition->get_country_destiny }}</h5>
+                </div>
+                <div class="col-md-6  pt-2">
+                  <label>{{__('Dirección de Entrega')}}</label>
+                  <h5>{{ $petition->destiny_address ?? '-'}}</h5>
+                </div>
               </div>
               <hr/>
               <div class="d-flex align-items-center">
@@ -31,7 +43,17 @@
                 <div class="ml-4">
                   <small>{{ __('Empresa') }}:</small>
                   <h5>{{ $petition->user->company_name }}</h5>
+                  <small>Disponible hasta: {{$petition->load_date}} {{$petition->load_hour}}</small>
                 </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col flex-column">
+                  <small class="mb-2">{{ __('Datos extra de la carga') }}</small>
+                  <label><b>Mercancia: </b>  {{ $petition->extra }}</label>
+                  @if(isset($petition->po_reference))<label><b>#PO / Referencia:</b> {{ $petition->po_reference }}</label>@endif
+                  @if(isset($petition->bill_landing))<label><b>Bill of Landing:</b>  {{ $petition->bill_landing }}</label>@endif
+                </div>  
               </div>
               <hr/>
               <div>
@@ -62,7 +84,7 @@
                     {!! Form::text('phone', Auth::user()-> phone ?? '', ['class' => 'form-control']) !!}
                   </div>
                 </div>
-                <div class="form-group row">
+               <!--  <div class="form-group row">
                   <label for="collection_address" class="col-md-4 col-form-label">{{__('Dirección de Recolección')}}</label>
                   <div class="col-md-5">
                     {!! Form::text('collection_address','', ['class' => 'form-control']) !!}
@@ -73,7 +95,7 @@
                   <div class="col-md-5">
                     {!! Form::text('delivery_address','', ['class' => 'form-control']) !!}
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
                   <label for="date" class="col-md-4 col-form-label">{{ __('Fecha de envío') }}</label>
                   <div class="col-md-5">
@@ -82,7 +104,7 @@
                 </div>
                 <div class="form-group">
                   <label for="message">{{ __('Mensaje') }}</label>
-                  {!! Form::textarea('message', '', ['class' => 'form-control','placeholder' => '(Opcional) Puedes enviar más detalles tu empresa', 'rows' => '5' ]) !!}
+                  {!! Form::textarea('message', '', ['class' => 'form-control','placeholder' => '(Opcional) Puedes enviar más detalles de tu empresa', 'rows' => '5' ]) !!}
                 </div>
                 <div class="form-group">
                   {!!  Form::submit('Enviar',['class' => 'btn btn-SIR col-md-5']); !!}

@@ -90,7 +90,8 @@ class PublicController extends Controller
         if($request['Peticion'] && $destinyLocation != null && $originLocation != null){
             $petitions = Petition::origin($originLocation->city)
                 ->destiny($destinyLocation->city)
-                ->equipment($request->tpye_equipment)->paginate(10);
+                ->equipment($request->tpye_equipment)
+                ->available(date('Y-m-d'))->paginate(10);
             $total = $petitions->total();
         } else if($destinyLocation != null && $originLocation != null){
             $tariffs = Tariff::where('type_tariff',$request->type_tariff)

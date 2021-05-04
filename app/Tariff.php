@@ -124,9 +124,9 @@ class Tariff extends Model
         }
     }
 
-     /*
+    /*
     *
-    * Metodo que sirve para filtrar si las tarifas estan disponibles por medio de la fecha
+    * Metodo que sirve para filtrar si las tarifas estan disponibles por medio de la fecha, si es menor a al actual
     */
     public function scopeavailable($query, $date)
     {
@@ -251,7 +251,7 @@ class Tariff extends Model
     }
 
     /*
-    * muestra si la tarifa esta diponible o no
+    * muestra si la tarifa esta diponible o no, por medio de la fecha
     */
     public function getGetAvailableAttribute()
     {
