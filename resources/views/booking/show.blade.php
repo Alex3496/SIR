@@ -58,6 +58,7 @@
 					                <div class="col flex-column">
 					                  <small class="mb-2">{{ __('Datos extra de la Tarifa') }}</small>
 					                  <label><b>Mercancia: </b>  {{ $tariff->extra }}</label>
+					                  <label><b>Disponible hasta: </b>  {{ date_format(date_create($tariff->end_date),'d - m - Y') }}</label>
 					            	</div>
 					            </div>
 					            <hr>
@@ -124,21 +125,21 @@
 
 						<!-- Columna der -->
 						<div class="col-md-4 d-flex flex-column justify-content-between pr-2" id="info-column">
-							<div id="info-inner" class="d-flex flex-column justify-content-around">
-								<div  class="d-flex justify-content-center">
+							<div id="info-inner" class="d-flex flex-column">
+								<div  class="d-flex justify-content-center mt-4">
 									<h2>${{$tariff->rate}}</h2><span class="pl-1 pt-2">{{$tariff->currency}}.</span>
 								</div>
-								<div class="text-center">
+								<div class="text-center mt-4">
 									<small>{{ __('Tipo de Equipo') }} :</small>
 									<br/>
 									<label>{{$tariff->get_type_equipment}}</label>
 								</div>
-								<div class="text-center">
+								<div class="text-center mt-4">
 									<small>{{ __('Peso aprox.') }} :</small>
 									<br/>
 									<label>{{$tariff->approx_weight }} {{$tariff->type_weight}}</label>
 								</div>
-								<div class="text-center">
+								<div class="text-center mt-4">
 									<small>{{ __('Tipo de Transporte') }} :</small>
 									<br/>
 									<label>{{$tariff->get_type_tariff}}</label>

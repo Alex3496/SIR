@@ -48,11 +48,14 @@
               </div>
               <hr/>
               <div class="row">
-                <div class="col flex-column">
+                <div class="col-md-6 flex-column">
                   <small class="mb-2">{{ __('Datos extra de la carga') }}</small>
                   <label><b>Mercancia: </b>  {{ $petition->extra }}</label>
                   @if(isset($petition->po_reference))<label><b>#PO / Referencia:</b> {{ $petition->po_reference }}</label>@endif
                   @if(isset($petition->bill_landing))<label><b>Bill of Landing:</b>  {{ $petition->bill_landing }}</label>@endif
+                </div>  
+                <div class="col-md-6 center pt-4">
+                  <label><b>Fecha de carga:</b> {{ date_format(date_create($petition->load_date),'d - m - Y') }}</label>
                 </div>  
               </div>
               <hr/>
@@ -96,12 +99,12 @@
                     {!! Form::text('delivery_address','', ['class' => 'form-control']) !!}
                   </div>
                 </div> -->
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                   <label for="date" class="col-md-4 col-form-label">{{ __('Fecha de envío') }}</label>
                   <div class="col-md-5">
                     {!! Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control','required']) !!}
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="message">{{ __('Mensaje') }}</label>
                   {!! Form::textarea('message', '', ['class' => 'form-control','placeholder' => '(Opcional) Puedes enviar más detalles de tu empresa', 'rows' => '5' ]) !!}
@@ -113,17 +116,17 @@
               </div>
             </div>
             <div class="col-md-4 d-flex flex-column justify-content-between pr-2" id="info-column">
-              <div id="info-inner" class="d-flex flex-column justify-content-around">
+              <div id="info-inner" class="d-flex flex-column mt-4">
                 <div  class="d-flex justify-content-center">
                   <h2>${{ $petition->rate }}</h2>
                   <span class="pl-1 pt-2">{{$petition->currency}}</span>
                 </div>
-                <div class="text-center">
+                <div class="text-center mt-4">
                   <small>{{ __('Tipo de Equipo') }} :</small>
                   <br/>
                   <label>{{ $petition->get_type_equipment }}</label>
                 </div>
-                <div class="text-center">
+                <div class="text-center mt-4">
                   <small>{{ __('Peso aprox.') }} :</small>
                   <br/>
                   <label>{{ $petition->approx_weight }} {{ $petition->type_weight }}</label>
