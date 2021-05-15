@@ -43,7 +43,6 @@
                 <div class="ml-4">
                   <small>{{ __('Empresa') }}:</small>
                   <h5>{{ $petition->user->company_name }}</h5>
-                  <small>Disponible hasta: {{$petition->load_date}} {{$petition->load_hour}}</small>
                 </div>
               </div>
               <hr/>
@@ -55,7 +54,7 @@
                   @if(isset($petition->bill_landing))<label><b>Bill of Landing:</b>  {{ $petition->bill_landing }}</label>@endif
                 </div>  
                 <div class="col-md-6 center pt-4">
-                  <label><b>Fecha de carga:</b> {{ date_format(date_create($petition->load_date),'d - m - Y') }}</label>
+                  <label><b>Fecha de carga:</b> {{ date_format(date_create($petition->load_date),'d - m - Y') }} {{$petition->load_hour}}</label>
                 </div>  
               </div>
               <hr/>

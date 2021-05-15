@@ -55,7 +55,12 @@
         justify-content: center;
         align-items: center;
         background-color: #c8c8c8; ;
-      } 
+      }
+      .flex-start{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
     </style>
   </head>
   <body>
@@ -67,24 +72,28 @@
             <h1>{{__('IBooking System')}}</h1>
           </div>
           <div class="card-body">
-            <h4>Interesado en tu petición</h4>
-            <p>El usuario: {{$user['name']}}, esta interesado en una de las peticiones publicadas</p>
+            <h4>Interesado en tu Carga publicada</h4>
+            <p>El usuario: {{$user['name']}}, esta interesado en una de tu Cargas publicadas</p>
               <div>
                 <small>{{ __('Origen') }}:</small>
-                <h4>{{$petition->origin}}</h4>
-                <p>{{$petition->get_state_origin}}, {{$petition->get_country_origin}}</p>
+                <p> {{$petition->origin}} {{$petition->get_state_origin}}, {{$petition->get_country_origin}}</p>
               </div>   
               <div>
                 <small>{{ __('Destino') }}:</small>
-                <h4>{{$petition->destiny}}</h4>
-                <p>{{$petition->get_state_destiny}}, {{$petition->get_country_destiny}}</p>
+                <p> {{$petition->destiny}} {{$petition->get_state_destiny}}, {{$petition->get_country_destiny}}</p>
               </div>
               <ul>
                 <li><b>{{__('Precio')}}:</b> {{$petition->rate}} <small>{{$petition->currency}}</small> </li>
                 <li><b>{{__('Contenedor')}}:</b> {{$petition->get_type_equipment}} </li>
+                <li><b>{{__('Disponible hasta:')}}</b> {{$petition->load_date}} {{$petition->load_hour}} </li>
+                @if(isset($petition->po_reference))
+                  <li><b>#PO / Referencia:</b> {{ $petition->po_reference }}</li>
+                @endif
+                @if(isset($petition->bill_landing))
+                  <li><b>Bill of Landing:</b>  {{ $petition->bill_landing }}</li>
+                @endif
               </ul>
             <hr/>
-            <label>Datos del Usuario y/o Empresa</label>
             <ul>
               <li><b>{{__('Nombre')}}:</b> {{$user['name']}}</li>
               <li><b>{{__('Empresa')}}:</b> {{$user['company_name']}}</li>
@@ -92,24 +101,15 @@
               @if($user['phone'])
                 <li><b>{{__('Telefono')}}:</b> {{$user['phone']}}</li>
               @endif
-              @if($user['date'])
-                <li><b>{{__('Fecha de envio')}}:</b> {{$user['date']}}</li>
-              @endif
               @if($user['message'])
-                <li><b>{{__('Mesanje')}}</b><br><p>{{$user['message']}}</p></li>
-              @endif
-              @if($user['collection_address'])
-                <li><b>{{__('Dirección de Recolección')}}:</b> {{$user['collection_address']}}</li>
-              @endif
-              @if($user['delivery_address'])
-                <li><b>{{__('Dirección de Entrega')}}:</b> {{$user['delivery_address']}}</li>
+                <li><b>{{__('Mesanje')}}:</b><br><p>{{$user['message']}}</p></li>
               @endif
             </ul>
             <hr>
             <label>Ponte en contacto con el usuario para realizar la negociación.</label>
           </div>
           <div class="card-footer">
-            <p>Todos los derechos reservados 2020 SIR</p>
+            <p>Todos los derechos reservados 2021 SIR</p>
           </div>
         </div>
       </div>
