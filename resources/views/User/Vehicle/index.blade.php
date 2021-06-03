@@ -42,7 +42,7 @@
          <!--start card User List-->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">{{ __('Vehículos Regsitradas') }}: {{$vehicles->total()}}</h3>
+            <h3 class="card-title">{{ __('Vehículos Regsitrados') }}: {{$vehicles->total()}}</h3>
           </div>
           <div class="card-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">
@@ -70,13 +70,17 @@
                     <div class="d-flex justify-content-center">
                       <!-- Edit button -->
                       <a href="{{ route('vehicle.edit',$vehicle->id) }}" >
-                        <button type="submit" class="btn btn-primary">{{__('Editar')}}</button>
+                        <button type="submit" class="btn btn-primary btn-edit">
+                          <img src="{{ asset('images/icons/edit.svg') }}" alt="edit">
+                        </button>
                       </a>
                       <!-- Delete button -->
                       <form action="{{ route('vehicle.destroy',$vehicle->id) }}" method="POST" class="ml-2">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('{{ __("Desea Eliminar?") }}')">{{__('Eliminar')}}</button>
+                        <button type="submit" class="btn btn-danger btn-delete" onclick="return confirm('{{ __("Desea Eliminar?") }}')">
+                          <img src="{{ asset('images/icons/delete.svg') }}" alt="delete">
+                        </button>
                       </form>
                     </div>
                   </td>

@@ -26,13 +26,20 @@ class BookingController extends Controller
         return view('booking.show',compact('tariff'));
     }
 
-
+     /**
+     * Enviar un correo al usuario dueño de la tarifa, al enviarle el mensaje se desactiva la tarifa 
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function sendMessage(Request $request)
     {
 
         //validar
-
         $tariff = Tariff::findOrFail($request->id);
+
+        $tariff->available = false;
+        $tariff->save();
 
         $user = $request->all();
 
@@ -106,6 +113,9 @@ class BookingController extends Controller
         //validar que si exista la peticion por id
 
         $petition = Petition::findOrFail($request->id);
+
+        $petition->available = false;
+        $petition->save();
 
         $user = $request->all();
 

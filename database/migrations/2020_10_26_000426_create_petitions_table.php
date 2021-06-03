@@ -36,6 +36,7 @@ class CreatePetitionsTable extends Migration
             $table->string('load_hour')->nullable();
             $table->string('type_equipment');
             $table->string('extra')->nullable();
+            $table->boolean('available')->default(1);
             $table->decimal('rate',9,2);
             $table->string('currency');
 

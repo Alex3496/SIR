@@ -29,6 +29,21 @@
           <td class="center"><span class="{{ $petition->get_available }}">{{ $petition->get_available }}</span></td>
           <td>
             <div class="d-flex justify-content-center">
+              <form action="{{ route('petitions.available',$petition->id) }}" method="POST" class="ml-2">
+                @method('PUT')
+                @csrf
+
+                @if($petition->available)
+                <button type="submit" class="btn btn-eye" onclick="return confirm('{{ __("¿Desea DESACTIVAR la Carga?") }}')">
+                  <img src="{{ asset('images/icons/eye.svg') }}" alt="delete">
+                </button>
+                @else
+                <button type="submit" class="btn btn-eye" onclick="return confirm('{{ __("¿Desea ACTIVAR la Carga?") }}')">
+                  <img src="{{ asset('images/icons/private.svg') }}" alt="delete">
+                </button>
+                @endif
+              </form>
+
               <!-- Edit button -->
               <a href="{{ route('petitions.edit',$petition->id) }}" >
                 <button type="submit" class="btn btn-primary btn-edit">
@@ -39,7 +54,7 @@
               <form action="{{ route('petitions.destroy',$petition->id) }}" method="POST" class="ml-2">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-delete" onclick="return confirm('{{ __("Desea Eliminar?") }}')">
+                <button type="submit" class="btn btn-danger btn-delete" onclick="return confirm('{{ __("¿Desea Eliminar?") }}')">
                   <img src="{{ asset('images/icons/delete.svg') }}" alt="delete">
                 </button>
               </form>

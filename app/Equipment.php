@@ -15,7 +15,7 @@ class Equipment extends Model
     */
     
     protected $fillable = [
-        'user_id','type','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin', 
+        'user_id','type','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin', 'trademark', 'model'
     ];
 
     //--------------ATRIBUTTES------------------

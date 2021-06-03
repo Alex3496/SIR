@@ -186,6 +186,25 @@ class PetitionController extends Controller
         return redirect()->route('petitions.index')->with('status', 'Eliminado con exito');
 	}
 
+	/**
+	 * ctualiza el campo de available de una peticion para que deje de apaarcer en las busquedas
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function available($id)
+	{
+		$Petition = Petition::findOrFail($id);
+
+        $this->authorize('pass',$Petition); 
+
+
+        $Petition->available = !$Petition->available;
+        $Petition->save();
+
+        return redirect()->route('petitions.index')->with('status', 'Actualizado con exito');
+	}
+
 	/*
 	* Retorna el array de paises que si tienen registrados sus estados, o alguno errores
 	*

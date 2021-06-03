@@ -26,6 +26,8 @@ class VehicleRequest extends FormRequest
         $rules = [
             'economic'  => 'required|string|max:25',
             'vin'       => 'required|string|max:15',
+            'trademark' => 'required|string|max:35',
+            'model'     => 'required|string|max:35'
         ];
 
 
@@ -64,6 +66,8 @@ class VehicleRequest extends FormRequest
             'state_us.max'  => 'Máximo 3 caracteres.',
             'state_mx.max'  => 'Máximo 3 caracteres.',
             'vin.max'       => 'Máximo 15 caracteres.',
+            'trademark.max' => 'Máximo 35 caracteres.',
+            'model.max'     => 'Máximo 35 caracteres.',
         ];
     }
 }

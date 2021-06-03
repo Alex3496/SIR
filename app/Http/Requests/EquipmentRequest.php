@@ -27,6 +27,8 @@ class EquipmentRequest extends FormRequest
             'economic'  => 'required|string|max:25',
             'vin'       => 'required|string|max:25',
             'type'      => 'required|string',
+            'trademark' => 'required|string|max:35',
+            'model'     => 'required|string|max:35'
         ];
 
 
@@ -65,6 +67,8 @@ class EquipmentRequest extends FormRequest
             'state_us.max'  => 'Máximo 3 caracteres.',
             'state_mx.max'  => 'Máximo 3 caracteres.',
             'vin.max'       => 'Máximo 25 caracteres.',
+            'trademark.max' => 'Máximo 35 caracteres.',
+            'model.max'     => 'Máximo 35 caracteres.',
         ];
     }
 }

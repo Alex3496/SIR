@@ -29,8 +29,8 @@ class OperatorRequest extends FormRequest
             'license'       => 'required|string|max:15',
             'visa'          => 'required|string|max:15',
             'fast'          => 'required|string|max:15',
-            'unique_badge'  => 'required|string|max:15',
-            'r_control'     => 'required|string|max:15',
+            'unique_badge'  => 'required|string|max:30',
+            'r_control'     => 'required|string|max:20',
 
         ];
     }
@@ -48,8 +48,8 @@ class OperatorRequest extends FormRequest
             'license.max'       => 'Máximo 15 caracteres.',
             'visa.max'          => 'Máximo 15 caracteres.',
             'fast.max'          => 'Máximo 15 caracteres.',
-            'unique_badge.max'  => 'Máximo 15 caracteres.',
-            'r_control.max'     => 'Máximo 15 caracteres.',
+            'unique_badge.max'  => 'Máximo 30 caracteres.',
+            'r_control.max'     => 'Máximo 20 caracteres.',
             'name.max'          => 'Máximo 50 caracteres.',
         ];
     }

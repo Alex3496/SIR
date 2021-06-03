@@ -25,6 +25,8 @@ class CreateEquipmentTable extends Migration
             $table->string('state_us')->nullable();
             $table->string('state_mx')->nullable();
             $table->string('vin')->nullable();
+            $table->string('trademark')->nullable();
+            $table->string('model')->nullable();
             
             $table->timestamps();
 

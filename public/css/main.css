@@ -24,8 +24,15 @@
     padding: 0 6px 2px 6px;
 }
 
+.btn-eye{
+    padding: 0 6px 2px 6px;
+    margin:0 10px;
+    background-color: #dd8af4; 
+}
+
 .btn-edit img,
-.btn-delete img{
+.btn-delete img,
+.btn-eye img{
     width: 15px;
 }
 
@@ -482,7 +489,8 @@ main {
 
 /*==============CLASES GENERALES=================*/
 
-.Disponible {
+.Disponible,
+.Activada {
     background: #1a8c1a;
     padding: 2px 4px;
     border-radius: 5px;
@@ -491,7 +499,8 @@ main {
     font-size: 14px;
 }
 
-.Vencido {
+.Vencida,
+.Desactivada {
     background: #db4e2d;
     padding: 2px 5px;
     border-radius: 5px;

@@ -262,6 +262,25 @@ class TariffsController extends Controller
         return redirect()->route('tariffs.index')->with('status', 'Eliminado con exito'); 
     }
 
+    /**
+     * ctualiza el campo de available de una peticion para que deje de apaarcer en las busquedas
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function available($id)
+    {
+        $Tariff = Tariff::findOrFail($id);
+
+        $this->authorize('pass',$Tariff); 
+
+
+        $Tariff->available = !$Tariff->available;
+        $Tariff->save();
+
+        return redirect()->route('tariffs.index')->with('status', 'Actualizado con exito');
+    }
+
 
     /*-------------------------------------------------------------------------------------*/
 

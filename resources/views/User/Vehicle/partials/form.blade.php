@@ -1,12 +1,30 @@
 <div class="row">
 
 	<!-- Economic -->
-	<div class="form-group col-md-6">
+	<div class="form-group col-md-4">
 		{!! Form::label('economic', 'Economico') !!}*
 		<div class="input-group-sm">
 			{!! Form::text('economic',$vehicleToUpdate->economic ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
 		</div>
 		@error('economic')
+			<small class="mt-0" style="color:red">{{ $message }}</small>
+		@enderror
+	</div>
+	<div class="form-group col-md-4">
+		{!! Form::label('trademark', 'Marca') !!}*
+		<div class="input-group-sm">
+			{!! Form::text('trademark',$vehicleToUpdate->trademark ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
+		</div>
+		@error('trademark')
+			<small class="mt-0" style="color:red">{{ $message }}</small>
+		@enderror
+	</div>
+	<div class="form-group col-md-4">
+		{!! Form::label('model', 'Modelo') !!}*
+		<div class="input-group-sm">
+			{!! Form::text('model',$vehicleToUpdate->model ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
+		</div>
+		@error('model')
 			<small class="mt-0" style="color:red">{{ $message }}</small>
 		@enderror
 	</div>

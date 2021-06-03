@@ -29,6 +29,22 @@
           <td class="center"><span class="{{ $tariff->get_available }}">{{ $tariff->get_available }}</span></td>
           <td>
             <div class="d-flex justify-content-center">
+
+              <form action="{{ route('tariffs.available',$tariff->id) }}" method="POST" class="ml-2">
+                @method('PUT')
+                @csrf
+
+                @if($tariff->available)
+                <button type="submit" class="btn btn-eye" onclick="return confirm('{{ __("¿Desea DESACTIVAR la Tarifa?") }}')">
+                  <img src="{{ asset('images/icons/eye.svg') }}" alt="delete">
+                </button>
+                @else
+                <button type="submit" class="btn btn-eye" onclick="return confirm('{{ __("¿Desea ACTIVAR la Tarifa?") }}')">
+                  <img src="{{ asset('images/icons/private.svg') }}" alt="delete">
+                </button>
+                @endif
+              </form>
+
               <!-- Edit button -->
               <a href="{{ route('tariffs.edit',$tariff->id) }}" >
                 <button type="submit" class="btn btn-primary btn-edit">

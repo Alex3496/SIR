@@ -14,7 +14,7 @@ class Vehicle extends Model
      */
     
     protected $fillable = [
-        'user_id','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin', 
+        'user_id','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin','trademark', 'model' 
     ];
 
     //--------------ATRIBUTTES------------------

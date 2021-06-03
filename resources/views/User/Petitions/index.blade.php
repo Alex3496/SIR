@@ -216,7 +216,7 @@
 	
 				</div>
 				<div class="row">
-					<div class="col-6 col-radio">
+					<div class="col-md-6 col-radio">
 					@if(isset($petitionToUpdate))
 						<label for="po_reference">
 							<input type="radio" id="po_reference" name="info" value="po_reference" onclick="hideinfo('po_reference')" checked

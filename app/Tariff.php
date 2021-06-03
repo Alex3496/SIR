@@ -131,7 +131,7 @@ class Tariff extends Model
     public function scopeavailable($query, $date)
     {
         if($date){
-            return $query->where('end_date','>=',"$date");
+            return $query->where('end_date','>=',"$date")->where('available',true);
         }
     }
 
@@ -250,17 +250,48 @@ class Tariff extends Model
         return "$city, $state, $country";
     }
 
-    /*
-    * muestra si la tarifa esta diponible o no, por medio de la fecha
+     /*
+    * muestra si la tarifa esta diponible o no, por medio de la fecha y del campo available
     */
     public function getGetAvailableAttribute()
     {
         $final = $this->end_date;
         $now = date('Y-m-d');
+        $resultado = 0;
+
+        //dd($final);
+
         if( $final >= $now ){
-            return 'Disponible';
+            //return 'Disponible';
+            $resultado += 2;
         }else{
-            return 'Vencido';
+            //return 'Vencido';
+            $resultado += 1;
+        }
+        //dd($resultado);
+
+        if($this->available){
+            $resultado += 5; 
+        }else{
+            $resultado += 3;
+        }
+
+        switch ($resultado) {
+            case 7:
+                return 'Activada';
+                break;
+            case 5:
+                return 'Desactivada';
+                break;
+            case 6:
+                return 'Vencida';
+                break;
+            case 4:
+                return 'Desactivada';
+                break;
+            default:
+                return 'Activada';
+                break;
         }
 
     }

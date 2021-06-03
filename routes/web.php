@@ -61,6 +61,7 @@ Route::namespace('User')->group(function(){
 	Route::post('profile/avatar','ProfileUserController@updateAvatar')->name('profile.avatar');
 		
 		//tariffs routes
+	Route::put('tariffs/available/{id}','TariffsController@available')->name('tariffs.available');
 
 	Route::resource('tariffs','TariffsController',['except' => ['create','show']]);
 
@@ -86,7 +87,10 @@ Route::namespace('User')->group(function(){
 
 		//Petitions routes
 	
-	Route::resource('petitions','PetitionController',['except' => ['show','create']]);	
+	Route::put('petitions/available/{id}','PetitionController@available')->name('petitions.available');
+
+	Route::resource('petitions','PetitionController',['except' => ['show','create']]);
+
 
 		//Rutas para Estancias
 
