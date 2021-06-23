@@ -1,4 +1,15 @@
 <div class="row">
+  @if ($errors->any())
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-ban"></i>Alerta</h5>
+            <ul>
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
   <div class="form-group col-md-4">
     {!! Form::label('check_in','Check-In') !!}
     {!! Form::date('check_in', $stay->check_in ?? \Carbon\Carbon::now(),['class' =>'form-control']) !!}
@@ -57,10 +68,20 @@
     @enderror
   </div>
   <div class="form-group col-md-4">
-    {!! Form::label('cost_hour','Costo por Hora') !!}
-    {!! Form::number('cost_hour',$stay->cost_hour ?? 0,['class' =>'form-control','min' => '0']) !!}
-    @error('cost_hour')
-    <small class="mt-0" style="color:red">{{ $message }}</small>
+    {!! Form::label('cost','Costo') !!}
+    <div class="input-group-sm select-input-container">
+      {!! Form::number('cost',$stay->cost ?? 0,['class' =>'form-control','min' => '0']) !!}
+      {!! Form::select('cost_type',['dia' => 'Dia', 'hora' => 'Hora'],$stay-> cost_type ?? '',['class' => 'form-control select-in']) !!}
+      {!! Form::select('cost_currency',['mxn' => 'MXN', 'usd' => 'USD'],$stay-> cost_currency ?? '',['class' => 'form-control select-in']) !!}
+    </div>
+    @error('cost')
+      <small class="mt-0" style="color:red">{{ $message }}</small>
+    @enderror
+    @error('cost_type')
+      <small class="mt-0" style="color:red">{{ $message }}</small>
+    @enderror
+    @error('cost_currency')
+      <small class="mt-0" style="color:red">{{ $message }}</small>
     @enderror
   </div>
 </div>

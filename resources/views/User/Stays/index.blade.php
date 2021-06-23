@@ -57,7 +57,7 @@
 			                <td>{{ $stay->check_out }} - {{ $stay->check_out_hours }} </td>
 			                <td>{{ $stay->free_hours }}</td>
 			                <td>{{ $stay->get_type }}</td>
-			                <td>$ {{ $stay->cost_hour }}</td>
+			                <td>$ {{ $stay->cost }} / {{ $stay->get_cost_type }} {{ $stay->get_cost_currency }}</td>
 			                <td>{{ $stay->operator }}</td>
 			              	 <td class="d-flex justify-content-around">
 			                  <a href="{{route('stays.edit',$stay->id)}}" class="float-left">

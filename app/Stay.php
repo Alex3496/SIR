@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stay extends Model
 {
     protected $fillable = [
-        'user_id','check_in','check_in_hours','check_in_minutes','free_hours', 'check_out','check_out_hours','check_out_minutes','type','cost_hour','company','unity','operator','client', 'direction','payment_operator','customer_charge'
+        'user_id','check_in','check_in_hours','check_in_minutes','free_hours', 'check_out','check_out_hours','check_out_minutes','type','cost','cost_type','cost_currency','company','unity','operator','client', 'direction','payment_operator','customer_charge'
     ];
 
     //--------------Relations----------------//
@@ -32,5 +32,29 @@ class Stay extends Model
         }
      
 	}
+
+    public function getGetCostTypeAttribute()
+    {
+        if ($this->cost_type == 'dia') {
+            return 'Dia';
+        }
+
+        if ($this->cost_type == 'hora') {
+            return 'Hora';
+        }
+     
+    }
+
+    public function getGetCostCurrencyAttribute()
+    {
+        if ($this->cost_currency == 'mxn') {
+            return 'MXN';
+        }
+
+        if ($this->cost_currency == 'usd') {
+            return 'USD';
+        }
+     
+    }
 
 }

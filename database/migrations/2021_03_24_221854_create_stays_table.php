@@ -26,7 +26,9 @@ class CreateStaysTable extends Migration
             $table->string('check_out_hours')->nullable();
             $table->string('check_out_minutes')->nullable();
             $table->string('type')->nullable();
-            $table->string('cost_hour')->nullable();
+            $table->string('cost')->nullable();
+            $table->string('cost_type')->nullable();
+            $table->string('cost_currency')->nullable();
             $table->string('company')->nullable();
             $table->string('unity')->nullable();
             $table->string('operator')->nullable();
