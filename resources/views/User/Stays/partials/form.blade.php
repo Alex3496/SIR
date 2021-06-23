@@ -1,15 +1,4 @@
 <div class="row">
-  @if ($errors->any())
-          <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h5><i class="icon fas fa-ban"></i>Alerta</h5>
-            <ul>
-              @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
   <div class="form-group col-md-4">
     {!! Form::label('check_in','Check-In') !!}
     {!! Form::date('check_in', $stay->check_in ?? \Carbon\Carbon::now(),['class' =>'form-control']) !!}
