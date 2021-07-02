@@ -83,7 +83,7 @@
         <a href="#" class="nav-link">
           <i class="nav-icon fas fa-check-circle"> </i>
           <p>
-            {{ __('Activos') }}
+            {{ __('Catálogos') }}
             <i class="right fas fa-angle-left"> </i>
           </p>
         </a>

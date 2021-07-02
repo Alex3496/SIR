@@ -64,7 +64,7 @@ class Equipment extends Model
         }
 
         if ($this->type == 'Refrigerated Box 53 ft') {
-            return 'Caja Refigerada 53 pies';
+            return 'Caja Refrigerada 53 pies';
         }
 
         if ($this->type == 'Plataform 48 ft') {

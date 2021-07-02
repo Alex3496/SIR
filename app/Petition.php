@@ -130,7 +130,7 @@ class Petition extends Model
         }
 
         if ($this->type_equipment == 'Refrigerated Box 53 ft') {
-            return 'Caja Refigerada 53 pies';
+            return 'Caja Refrigerada 53 pies';
         }
 
         if ($this->type_equipment == 'Plataform 48 ft') {

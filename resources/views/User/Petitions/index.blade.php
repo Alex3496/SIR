@@ -157,7 +157,7 @@
 						<div class="input-group-sm">{{ Form::select('type_equipment',[
 							'Dry Box 48 ft'    => 'Caja seca 48 pies', 
 							'Dry Box 53 ft'    => 'Caja seca 53 pies',
-							'Refrigerated Box 53 ft'   => 'Caja Refigerada 53 pies',
+							'Refrigerated Box 53 ft'   => 'Caja Refrigerada 53 pies',
 							'Plataform 48 ft'  => 'Plataforma 48 pies',
 							'Plataform 53 ft'  => 'Plataforma 53 pies',
 							'Container 20 ft'  => 'Contenedor 20 pies',
