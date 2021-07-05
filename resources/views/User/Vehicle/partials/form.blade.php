@@ -1,7 +1,7 @@
 <div class="row">
 
 	<!-- Economic -->
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-6">
 		{!! Form::label('economic', 'Economico') !!}*
 		<div class="input-group-sm">
 			{!! Form::text('economic',$vehicleToUpdate->economic ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
@@ -10,7 +10,7 @@
 			<small class="mt-0" style="color:red">{{ $message }}</small>
 		@enderror
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-6">
 		{!! Form::label('trademark', 'Marca') !!}*
 		<div class="input-group-sm">
 			{!! Form::text('trademark',$vehicleToUpdate->trademark ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
@@ -19,7 +19,7 @@
 			<small class="mt-0" style="color:red">{{ $message }}</small>
 		@enderror
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-6">
 		{!! Form::label('model', 'Modelo') !!}*
 		<div class="input-group-sm">
 			{!! Form::text('model',$vehicleToUpdate->model ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
@@ -28,6 +28,25 @@
 			<small class="mt-0" style="color:red">{{ $message }}</small>
 		@enderror
 	</div>
+	<div class="form-group col-md-6">
+		{!! Form::label('vin', 'VIN') !!}
+		<div class="input-group-sm">
+		  {!! Form::text('vin',$vehicleToUpdate->vin ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
+		</div>
+		@error('vin')
+		  <small class="mt-0" style="color:red">{{ $message }}</small>
+		@enderror
+	 </div>
+
+	 <div class="form-group col-md-6">
+		{!! Form::label('estatus', 'Estatus') !!}
+		<div class="input-group-sm">
+		  {!! Form::select('estatus',['active' => 'Activo', 'inactive' => 'Inactivo'],$vehicleToUpdate-> estatus ?? '',['class' => 'form-control select-in']) !!}
+		</div>
+		@error('estatus')
+		  <small class="mt-0" style="color:red">{{ $message }}</small>
+		@enderror
+	 </div>
 </div>	
 
 <div class="row">
@@ -125,18 +144,7 @@
 	</div>
 </div>
 
-<div class="row">	
-	  <!-- VIN -->
-	<div class="form-group col-md-6">
-		{!! Form::label('vin', 'VIN') !!}
-		<div class="input-group-sm">
-		  {!! Form::text('vin',$vehicleToUpdate->vin ?? null,['class' =>'form-control', 'autocomplete' => 'off']) !!}
-		</div>
-		@error('vin')
-		  <small class="mt-0" style="color:red">{{ $message }}</small>
-		@enderror
-	 </div>
-</div>
+
 
 	<!-- Acepatar -->
 	<div class="row mt-4">

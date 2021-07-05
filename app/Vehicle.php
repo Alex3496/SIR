@@ -14,7 +14,7 @@ class Vehicle extends Model
      */
     
     protected $fillable = [
-        'user_id','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin','trademark', 'model' 
+        'user_id','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin','trademark', 'model','estatus' 
     ];
 
     //--------------ATRIBUTTES------------------
@@ -50,5 +50,16 @@ class Vehicle extends Model
         }
         return CountryState::getStateName($this->state_mx,'MX');
         
+    }
+
+    public function getGetEstatusAttribute()
+    {
+        if ($this->estatus == 'active') {
+            echo '<span class="badge badge-success">Activo</span>';
+        }
+
+        if ($this->estatus == 'inactive') {
+            echo '<span class="badge  badge-danger">Inactivo</span>';
+        }
     }
 }

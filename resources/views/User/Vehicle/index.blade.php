@@ -54,6 +54,7 @@
                   <th>{{__('Placas MX')}}</th>
                   <th>{{__('Estado MX')}}</th>
                   <th>{{__('VIN')}}</th>
+                  <th>{{__('Estatus')}}</th>
                   <th>{{__('Acciones')}}</th>
                 </tr>
               </thead>
@@ -66,6 +67,7 @@
                   <td>{{ $vehicle->get_plates_mx }}</td>
                   <td>{{ $vehicle->get_state_mx }}</td>
                   <td>{{ $vehicle->vin }}</td>
+                  <td>{{ $vehicle->get_estatus }}</td>
                   <td>
                     <div class="d-flex justify-content-center">
                       <!-- Edit button -->

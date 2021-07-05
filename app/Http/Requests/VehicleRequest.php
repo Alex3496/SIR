@@ -27,7 +27,8 @@ class VehicleRequest extends FormRequest
             'economic'  => 'required|string|max:25',
             'vin'       => 'required|string|max:15',
             'trademark' => 'required|string|max:35',
-            'model'     => 'required|string|max:35'
+            'model'     => 'required|string|max:35',
+            'estatus'   => 'required|string|max:11',
         ];
 
 
@@ -68,6 +69,7 @@ class VehicleRequest extends FormRequest
             'vin.max'       => 'Máximo 15 caracteres.',
             'trademark.max' => 'Máximo 35 caracteres.',
             'model.max'     => 'Máximo 35 caracteres.',
+            'estatus.max'   => 'Error longitud',
         ];
     }
 }

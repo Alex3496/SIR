@@ -27,6 +27,7 @@ class CreateEquipmentTable extends Migration
             $table->string('vin')->nullable();
             $table->string('trademark')->nullable();
             $table->string('model')->nullable();
+            $table->string('estatus')->nullable();
             
             $table->timestamps();
 
