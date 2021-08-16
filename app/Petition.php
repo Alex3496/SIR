@@ -61,6 +61,28 @@ class Petition extends Model
         }
     }
 
+     /*
+    *
+    * Metodo que sirve para filtrar por tipo de equipo, pero solo si estan dentro de un array
+    */
+    public function scopeequipmentArray($query, $type_equipment_array)
+    {
+        if(is_array($type_equipment_array)){
+            return $query->whereIn('type_equipment',$type_equipment_array);
+        }
+    }
+
+    /*
+    *
+    * Metodo que sirve para filtrar por fecha de carga
+    */
+    public function scopeloadDate($query, $fecha)
+    {
+        if($fecha){
+            return $query->where('load_date',$fecha);
+        }
+    }
+
     /*
     *
     * Metodo que busca las tarifas con el Origen que tenga alguna coincidencia con los buscado por el Admin

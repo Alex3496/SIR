@@ -32,6 +32,8 @@ class PetitionsController extends Controller
         $petitions = Petition::orderby('id','DESC')
                     ->completeOrigin($origin)
                     ->completeDestiny($destiny)
+                    ->equipmentArray($request->get('type'))
+                    ->loadDate($request->get('fecha'))
                     ->paginate(15);
 
 
@@ -40,6 +42,8 @@ class PetitionsController extends Controller
             'petitions' => $petitions,
             'origin' => $origin,
             'destiny' => $destiny,
+            'type' => $request->get('type'),
+            'fecha' => $request->get('fecha')
         ]);
     }
 }

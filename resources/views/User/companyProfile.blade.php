@@ -3,16 +3,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
-			 @if (session('status'))
-				<div class="alert alert-success alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<h5>
-						<i class="icon fas fa-check"> </i>
-						Exito
-					</h5>
-					<p>{{ session('status') }}</p>
-				</div>
-				@endif
 			<div class="card "><!-- collapsed-card -->
 				<div class="card-header" style="background-color:#343a40; color: white">
 					<h2 class="card-title">{{ __('Informacion de la compañia') }}</h2>

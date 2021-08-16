@@ -16,16 +16,18 @@
             {!! Form::open(['route' => 'admin.users.find', 'method' => 'GET']) !!}
               <div class="row">
                 <div class="col-md mb-2">
-                  {!! Form::text('company_name',null,['class' => 'form-control', 'placeholder' => 'Nombre de la Empresa']) !!}
+                  {!! Form::text('company_name',$company_name ?? null,['class' => 'form-control', 'placeholder' => 'Nombre de la Empresa']) !!}
                 </div>
                 <div class="col-md mb-2">
-                  {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Nombre']) !!}
+                  {!! Form::text('name',$name ?? null,['class' => 'form-control', 'placeholder' => 'Nombre']) !!}
                 </div>
                 <div class="col-md mb-2">
-                  {!! Form::text('email',null,['class' => 'form-control', 'placeholder' => 'Correo']) !!}
+                  {!! Form::text('email',$email ?? null,['class' => 'form-control', 'placeholder' => 'Correo']) !!}
                 </div>
                 <div class="col-md-2">
-                  {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!}
+                  <button type="submit" class="btn btn-primary col">
+                    <img src="{{ asset('images/logos/search.svg') }}" height="20px" />
+                  </button>
                 </div>
               </div>
             {!! Form::close() !!}
@@ -72,12 +74,16 @@
 
                 <td class="d-flex justify-content-around">
                   <a href="{{ route('admin.users.edit',$userB->id) }}" class="float-left">
-                    <button type="submit" class="btn btn-success">{{__('Ver')}}</button>
+                    <button type="submit" class="btn btn-eye">
+                      <img src="{{ asset('images/icons/eye.svg') }}" alt="delete">
+                    </button>
                   </a>
                   <form action="{{ route('admin.users.destroy',$userB) }}" method="POST" class="float-left">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Desea Eliminar?')">{{__('Borrar')}}</button>
+                    <button type="submit" class="btn btn-danger btn-delete"  onclick="return confirm('Desea Eliminar?')">
+                      <img src="{{ asset('images/icons/delete.svg') }}" alt="delete">
+                    </button>
                   </form>
                 </td>
               </tr>
@@ -87,7 +93,7 @@
         </div>
         <div class="row">
           <div class="col-12 center">
-           {{ $users->links() }}
+           {{ $users->withQueryString()->links() }}
           </div>
         </div>
       </div>

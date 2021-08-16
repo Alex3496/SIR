@@ -68,6 +68,28 @@ class Tariff extends Model
         }
     }
 
+    /*
+    *
+    * Metodo que sirve para filtrar por tipo de equipo, pero solo si estan dentro de un array
+    */
+    public function scopeequipmentArray($query, $type_equipment_array)
+    {
+        if(is_array($type_equipment_array)){
+            return $query->whereIn('type_equipment',$type_equipment_array);
+        }
+    }
+
+    /*
+    *
+    * Metodo que sirve para filtrar por fecha
+    */
+    public function scopeendDate($query, $fecha)
+    {
+        if($fecha){
+            return $query->where('end_date',$fecha);
+        }
+    }
+
     public function scopetruckTariffs($query, $id)
     {
         if($id){

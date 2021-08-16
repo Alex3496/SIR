@@ -29,10 +29,12 @@ class TariffsController extends Controller
 
         $origin = $request->get('origin');
         $destiny = $request->get('destiny');
-
+        
         $tariffs = Tariff::orderby('id','DESC')
                     ->completeOrigin($origin)
                     ->completeDestiny($destiny)
+                    ->equipmentArray($request->get('type'))
+                    ->endDate($request->get('fecha'))
                     ->paginate(15);
 
 
@@ -42,6 +44,8 @@ class TariffsController extends Controller
             'tariffs' => $tariffs,
             'origin' => $origin,
             'destiny' => $destiny,
+            'type' => $request->get('type'),
+            'fecha' => $request->get('fecha')
         ]);
     }
 }

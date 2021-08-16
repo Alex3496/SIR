@@ -5,24 +5,45 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('adminLTE/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{ asset('adminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 @endsection
 @section('content')
 <div class="container-fluid">
   <!--Start row User List-->
     <div class="row justify-content-center">
-      <div class="col-md-11">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-body">
             {!! Form::open(['route' => 'admin.petitions.list', 'method' => 'GET']) !!}
               <div class="row">
-                <div class="col-md mb-2">
+                <div class="col-md-3 mb-1">
                   {!! Form::text('origin',$origin,['class' => 'form-control', 'placeholder' => 'Ciudad Origen']) !!}
                 </div>
-                <div class="col-md mb-2">
+                <div class="col-md-3 mb-1">
                   {!! Form::text('destiny',$destiny,['class' => 'form-control', 'placeholder' => 'Ciudad Destino']) !!}
                 </div>
-                <div class="col-md-2">
-                  {!! Form::submit('Buscar',['class' => 'btn btn-primary col']) !!}
+                <div class="col-md-3">
+                  <div class="form-group">
+                    {!!  Form::select('type[]', [
+                      'Dry Box 48 ft'    => 'Caja seca 48 pies', 
+                      'Dry Box 53 ft'    => 'Caja seca 53 pies',
+                      'Refrigerated Box 53 ft'   => 'Caja Refrigerada 53 pies',
+                      'Plataform 48 ft'  => 'Plataforma 48 pies',
+                      'Plataform 53 ft'  => 'Plataforma 53 pies',
+                      'Container 20 ft'  => 'Contenedor 20 pies',
+                      'Container 40 ft'  => 'Contenedor 40 pies',
+                      'Container 40 ft High cube' => 'Contenedor 40 pies High cube',], 
+                        $type ?? null, ['class' => 'select2bs4', 'multiple' => 'multiple','data-placeholder' => 'Equipo', 'style' => 'width:100%; max-height: 38px;']); !!}
+                  </div>
+                </div>
+                <div class="col-md-2 mb-2">
+                  {!! Form::date('fecha',$fecha ?? null,['class' => 'form-control']) !!}
+                </div>
+                <div class="col-md">
+                  <button type="submit" class="btn btn-primary col">
+                    <img src="{{ asset('images/logos/search.svg') }}" height="20px" />
+                  </button>
                 </div>
               </div>
             {!! Form::close() !!}
@@ -42,22 +63,20 @@
           <table id="example2" class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th>Id</th>
                 <th>{{__('Origen')}}</th>
                 <th>{{__('Destino')}}</th>
                 <th>{{__('Empresa')}}</th>
-                <th>{{__('Precio')}}</th>
+                <th>{{__('Fecha de Carga')}}</th>
                 <th>{{__('Acciones')}}</th>
               </tr>
             </thead>
             <tbody>
               @foreach($petitions as $petition)
               <tr>
-                <td>{{ $petition->id }}</td>
                 <td>{{ $petition->complete_origin }}</td>
                 <td>{{ $petition->complete_destiny }}</td>
-                <td>{{ $petition->user->company_name }}</td>
-                <td>{{ $petition->rate }} <small>{{$petition->currency}}</small> </td>
+                <td>{{ $petition->get_type_equipment }}</td>
+                <td>{{ $petition->load_date }} {{ $petition->load_hour }} </td>
               </tr>
               @endforeach
             </tbody>
@@ -86,7 +105,8 @@
 <script src="{{asset('adminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminLTE/js/demo.js')}}"></script>
-<!-- page script -->
+<!-- Select2 -->
+<script src="{{asset('adminLTE/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -102,6 +122,17 @@
           "autoWidth": false,
           "responsive": true,
     });
-  }); 
+  });
+
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+  }) 
 </script>
 @endsection

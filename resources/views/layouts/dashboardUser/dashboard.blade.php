@@ -25,6 +25,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
   <link rel="stylesheet" href="{{asset('css/components.css') }}">
   <link rel="icon" href="{{ asset('images/logos/logo.png') }}">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('adminLTE/plugins/toastr/toastr.min.css') }}">
   <!--Css used in specific views -->
   @yield('extraCss')
 
@@ -124,9 +126,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('adminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Bootstrap Switch -->
 <script src="{{asset('adminLTE/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('adminLTE/plugins/toastr/toastr.min.js')}}"></script>
 <!-- Page script -->
 <script>
   $(function () {
+
+    //Despliega mensaje de confirmacion
+
+    toastr.options = {
+        "positionClass": "toast-top-center"
+      }
+
+    let message = "{{ session('status') }}"
+
+    if(message){
+      toastr.success(message)
+    }
+
     //Initialize Select2 Elements
     $('.select2').select2()
 

@@ -262,18 +262,28 @@ class UserController extends Controller
         return back()->with('status', 'Eliminado con exito'); 
     }
 
+    /**
+     *  Lista de usuarios registrados con filtros
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function find (Request $request)
     {
 
+        $company_name = $request->company_name;
+        $name = $request->name;
+        $email = $request->email;
+
         $users = User::orderby('id','DESC')
-            ->name($request->name)
-            ->company($request->company_name)
-            ->email($request->email)
+            ->name($name)
+            ->company($company_name)
+            ->email($email)
             ->paginate(10);
 
         $user = Auth::user();
 
-        return view('Admin.Users.Index',compact('users','user'));
+        return view('Admin.Users.Index',compact('users','user','company_name','name','email'));
     }
 
     /**

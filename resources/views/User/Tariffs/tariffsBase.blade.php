@@ -5,25 +5,13 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"/>
 <link rel="stylesheet" href="{{ asset('adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"/>
+
 @endsection
 @section('content')
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
 			<h2 class="mb-4">{{ __('Mis Tarifas') }}</h2>
-		</div>
-	</div>
-
-	<!--Alert-->
-	<div class="row">
-		<div class="col-md-11">
-			@if (session('status'))
-			<div class="alert alert-success alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<h5><i class="icon fas fa-check"></i>{{ __('Exito') }}</h5>
-				<p>{{ session('status') }}</p>
-			</div>
-			@endif
 		</div>
 	</div>
 
@@ -89,7 +77,9 @@
 			"responsive": true,
 		});
 
-	}); 
+	});
+
+
 </script>
 <script defer>
 
@@ -148,10 +138,10 @@ function onSelectCountry2() {
 <!-- Si se va a editar una tarifa que no se actualizce los valores de los selects -->
 @if(!isset($tariffToUpdate) || $errors->any())
 <script>
-	$( document ).ready(function() {
+	$(document).ready(function() {
 		onSelectCountry();
 		onSelectCountry2();
-});
+	});
 </script>          
 @endif
 
