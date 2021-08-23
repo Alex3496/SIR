@@ -544,3 +544,7 @@ main {
     display: flex;
     flex-direction: column;
 }
+
+.col-form-label{
+    color: gray;
+}

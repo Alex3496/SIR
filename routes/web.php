@@ -75,7 +75,7 @@ Route::namespace('User')->group(function(){
 
 		//Rutas para Equipos
 
-	Route::resource('equipment','EquipmentController',['except' => ['show','create']]);
+	Route::resource('equipment','EquipmentController',['except' => ['show']]);
 
 		//Rutas para Operadores
 

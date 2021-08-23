@@ -37,6 +37,9 @@
             <a class="nav-link" href="{{route('principal')}}">Inicio</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{route('principal')}}">Equipos</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{route('posts')}}">Blog</a>
           </li>
           <li class="nav-item">

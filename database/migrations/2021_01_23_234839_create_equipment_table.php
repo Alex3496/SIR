@@ -28,6 +28,13 @@ class CreateEquipmentTable extends Migration
             $table->string('trademark')->nullable();
             $table->string('model')->nullable();
             $table->string('estatus')->nullable();
+
+            $table->string('start_date')->nullable();
+            $table->string('start_hour')->nullable();
+            $table->string('end_date')->nullable();
+            $table->string('end_hour')->nullable();
+
+
             
             $table->timestamps();
 

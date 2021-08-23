@@ -29,7 +29,6 @@ class EquipmentRequest extends FormRequest
             'type'      => 'required|string',
             'trademark' => 'required|string|max:35',
             'model'     => 'required|string|max:35',
-            'estatus'   => 'required|string|max:11',
         ];
 
 

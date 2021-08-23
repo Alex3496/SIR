@@ -15,7 +15,8 @@ class Equipment extends Model
     */
     
     protected $fillable = [
-        'user_id','type','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin', 'trademark', 'model','estatus'
+        'user_id','type','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin', 'trademark', 'model','estatus','start_date',
+        'start_hour', 'end_date', 'end_hour'
     ];
 
     //--------------ATRIBUTTES------------------
@@ -104,12 +105,24 @@ class Equipment extends Model
 
     public function getGetEstatusAttribute()
     {
-        if ($this->estatus == 'active') {
+
+        $today = date('Y-m-d');
+        $start = date($this->start_date);
+        $end = date($this->end_date);
+
+        if($today > $start && $today < $end){
+            echo '<span class="badge badge-success">Activo</span>';
+        }else{
+            echo '<span class="badge  badge-danger">Inactivo</span>';
+        }
+
+
+        /*if ($this->estatus == 'active') {
             echo '<span class="badge badge-success">Activo</span>';
         }
 
         if ($this->estatus == 'inactive') {
             echo '<span class="badge  badge-danger">Inactivo</span>';
-        }
+        }*/
     }
 }

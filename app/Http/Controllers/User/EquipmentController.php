@@ -31,14 +31,10 @@ class EquipmentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $states_mx = CountryState::getStates('MX');
-        $states_us = CountryState::getStates('US');
         $equipments = Equipment::where('user_id',$user->id)->paginate(15);
 
         return view('User.Equipment.index',[
             'user'          => $user,
-            'states_mx'      => $states_mx,
-            'states_us'      => $states_us,
             'equipments'     => $equipments,
         ]);
     }
@@ -73,6 +69,26 @@ class EquipmentController extends Controller
         return redirect()->route('equipment.index')->with('status','Equipo agregado con exito');
     }
 
+     /**
+     * Muestra el formulario para AÑADIR un equipo nuevo
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $user = Auth::user();
+        $states_mx = CountryState::getStates('MX');
+        $states_us = CountryState::getStates('US');
+        $equipments = Equipment::where('user_id',$user->id)->paginate(15);
+
+        return view('User.Equipment.show',[
+            'user'          => $user,
+            'states_mx'      => $states_mx,
+            'states_us'      => $states_us,
+            'equipments'     => $equipments,
+        ]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -97,7 +113,7 @@ class EquipmentController extends Controller
         $states_mx = CountryState::getStates('MX');
         $states_us = CountryState::getStates('US');
 
-        return view('User.Equipment.index',[
+        return view('User.Equipment.show',[
             'user'=>$user,
             'equipmentToUpdate' => $equipmentToUpdate,
             'states_mx' => $states_mx,

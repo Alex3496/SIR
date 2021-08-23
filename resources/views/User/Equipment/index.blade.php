@@ -1,41 +1,24 @@
 @extends('layouts.dashboardUser.dashboard')
 @section('content')
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-md-11">
-      <div class="row">
-        <div class="col">
-          <div class="card card-info">
-            <div class="card-header">
-              @if(isset($equipmentToUpdate))
-              {{__('Editar Equipo')}}
-              @else
-              {{__('Añadir Equipo')}}
-              @endif
-            </div>
-            <div class="card-body">
-              @if(isset($equipmentToUpdate))
-              {!! Form::open(['route' =>['equipment.update', $equipmentToUpdate->id], 'method' =>'PUT']) !!}
-              @else
-              {!! Form::open(['route'=>['equipment.store']]) !!}
-              @endif
-                
-                @include('User.Equipment.partials.form')
-                
-              {!! Form::close() !!}
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   @if(isset($equipments))
     <div class="row justify-content-center">
       <div class="col-md-12">
          <!--start card User List-->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">{{ __('Equipos Regsitrados') }}: {{$equipments->total()}}</h3>
+            <div class="row">
+              <div class="col-6">
+                <h3 class="card-title">{{ __('Equipos Regsitrados') }}: {{$equipments->total()}}</h3>
+              </div>
+              <div class="col-6" style="display: flex; justify-content: flex-end;"> 
+                <a href="{{ route('equipment.create') }}" >
+                  <button class="btn btn-primary btn-edit">
+                    <img src="{{ asset('images/icons/plus.svg') }}" alt="edit">
+                  </button>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="card-body table-responsive">
             <table id="example2" class="table table-bordered table-hover">
