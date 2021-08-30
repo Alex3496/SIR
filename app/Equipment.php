@@ -19,6 +19,29 @@ class Equipment extends Model
         'start_hour', 'end_date', 'end_hour'
     ];
 
+    //--------------Relations----------------//
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    //----------------SCOPES--------------
+
+    public function scopeavailable($query)
+    {
+        $today = date('Y-m-d');
+
+        return $query->whereDate('end_date', '>=', $today);
+    }
+
+    public function scopetype($query, $type)
+    {
+        if($type){
+            return $query->where('type','LIKE',"$type%");
+        }
+    }
+
     //--------------ATRIBUTTES------------------
 
     public function getGetPlatesUsAttribute()

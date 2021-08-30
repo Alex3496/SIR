@@ -35,6 +35,8 @@ Route::get('/rates-results/', 'PublicController@tariffsResults')->name('tariffsR
 
 Route::get('/infomation/send', 'PublicController@sendInformation')->name('infomation.send');
 
+Route::get('/equipments/available', 'PublicController@equipment')->name('equipment');
+
 
 //USER ROUTES
 

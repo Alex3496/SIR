@@ -65,7 +65,7 @@
               <tr>
                 <th>{{__('Origen')}}</th>
                 <th>{{__('Destino')}}</th>
-                <th>{{__('Empresa')}}</th>
+                <th>{{__('Tipo de Equipo')}}</th>
                 <th>{{__('Fecha de Carga')}}</th>
                 <th>{{__('Acciones')}}</th>
               </tr>

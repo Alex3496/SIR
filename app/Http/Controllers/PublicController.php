@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\InfoMessage;
 use Illuminate\Support\Facades\Mail;
-use App\{Post,Category,Location,Tariff,Faq,Petition};
+use App\{Post,Category,Location,Tariff,Faq,Petition, Equipment};
 use App\Http\Requests\{SearchTeariffsRequest,InformationRequest};
 
 class PublicController extends Controller
@@ -142,6 +142,23 @@ class PublicController extends Controller
         Mail::to('info@ibookingsystem.com')->send(new InfoMessage($request));
 
         return redirect()->route('principal')->with('status','Tu mensaje ha sido enviado, recibiras una repuesta proximamente');
+    }
+
+
+     /*
+    *
+    *   Un usuario manda un mensaje a el personal encargado para resolver alguna duda
+    *
+    */
+    public function equipment(Request $request)
+    {
+        $type = $request->get('type');
+
+        $equipments = Equipment::available()->
+                        type($type)->paginate(15);
+
+
+        return view('publicViews.equipments', compact('equipments','type'));
     }
 
 /*------------------------------Methods-----------------------------------*/
