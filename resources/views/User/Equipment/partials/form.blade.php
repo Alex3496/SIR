@@ -17,8 +17,14 @@
 					'Plataform 53 ft'  => 'Plataforma 53 pies',
 					'Container 20 ft'  => 'Contenedor 20 pies',
 					'Container 40 ft'  => 'Contenedor 40 pies',
-					'Container 40 ft High cube' => 'Contenedor 40 pies High cube',], 
-					  $equipmentToUpdate->type ?? null, ['id' => 'type', 'class' => 'custom-select']); !!}
+					'Container 40 ft High cube' => 'Contenedor 40 pies High cube',
+					'Panel'  => 'Panel',
+                  	'Rabon'  => 'Rabon',
+                  	'Torton'  => 'Torton',
+                  	'Cama Z'  => 'Cama Z',
+                  	'Cama baja'  => 'Cama baja',
+                  	'Lowboy'  => 'Lowboy'], 
+					 $equipmentToUpdate->type ?? null, ['id' => 'type', 'class' => 'custom-select']); !!}
 				</div>
 			</div>
 			@error('type')
@@ -198,7 +204,7 @@
 	</div>
 
 	<div class="col-12 mb-4">
-		<h5 class="font-weight-bold" >Diponibilidad</h5>
+		<h5 class="font-weight-bold" >Disponibilidad</h5>
 	</div>
 
 	<!-- <div class="col-12">
@@ -260,6 +266,68 @@
 		</div>
 	  </div>
 	</div>
+
+	<div class="col-12 mb-4">
+		<h5 class="font-weight-bold" >Localización</h5>
+	</div>
+
+	<div class="col-12">
+		<div class="form-group row">
+			{!! Form::label('type', 'Origen',['class' => 'col-sm-3 col-form-label text-right']) !!}
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="input-group-sm">
+						  {!! Form::select('origin_country', $countries , $equipmentToUpdate->origin_country ?? 'MX' , ['class' =>'form-control','placeholder' => 'Pais','id'=>'origin_country']) !!}
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="input-group-sm">
+						  {!! Form::select('origin_state', $states_origin ?? [], $equipmentToUpdate->origin_state ?? '', ['class' =>'form-control','id'=>'origin_state']) !!}
+						</div>
+					</div>
+					<div class="col-sm-12 mt-2">
+						<div class="input-group-sm">
+							{!! Form::text('origin',$equipmentToUpdate->origin ?? '',['class' =>'form-control', 'autocomplete' => 'off','placeholder' => 'Ciudad']) !!}
+						</div>
+					</div>
+				</div>
+			@error('type')
+			  <small class="mt-0" style="color:red">{{ $message }}</small>
+			@enderror	
+			</div>
+		</div>
+	</div>
+
+	<div class="col-12">
+		<div class="form-group row">
+			{!! Form::label('type', 'Destino',['class' => 'col-sm-3 col-form-label text-right']) !!}
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="input-group-sm">
+						  {!! Form::select('destiny_country', $countries , $equipmentToUpdate->destiny_country ?? 'MX' , ['class' =>'form-control','placeholder' => 'Pais','id'=>'destiny_country']) !!}
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="input-group-sm">
+						  {!! Form::select('destiny_state', $states_origin ?? [], $equipmentToUpdate->destiny_state ?? '', ['class' =>'form-control','id'=>'destiny_state']) !!}
+						</div>
+					</div>
+					<div class="col-sm-12 mt-2">
+						<div class="input-group-sm">
+							{!! Form::text('destiny',$equipmentToUpdate->destiny ?? '',['class' =>'form-control', 'autocomplete' => 'off','placeholder' => 'Ciudad']) !!}
+						</div>
+					</div>
+				</div>
+			@error('type')
+			  <small class="mt-0" style="color:red">{{ $message }}</small>
+			@enderror	
+			</div>
+		</div>
+	</div>
+
+
 </div>
 
 <!-- Acepatar -->

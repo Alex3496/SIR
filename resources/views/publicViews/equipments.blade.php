@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('content')
-<div class="container-md container-results">
+<div style="   max-width: 1400px; margin: 0 auto; min-height: 70vh;">
   <div class="row">
     <div class="col">
       <div class="card mt-2 mb-2 p-2">
@@ -62,6 +62,8 @@
                   <th scope="col">Tipo</th>
                   <th scope="col">Empresa</th>
                   <th scope="col">Disponible hasta:</th>
+                  <th scope="col">Origen</th>
+                  <th scope="col">Destino</th>
                   <th scope="col">Contacto</th>
                 </tr>
               </thead>
@@ -71,6 +73,8 @@
                   <td>{{ $equipment->get_type_equipment }}</td>
                   <td>{{ $equipment->user->company_name }}</td>
                   <td>{{ $equipment->end_date }} {{$equipment->end_hour}}</td>
+                  <td>{{ $equipment->complete_origin }}</td>
+                  <td>{{ $equipment->complete_destiny }}</td>
                   <td>{{ $equipment->user->phone }}</td>
                 </tr>
                 @endforeach

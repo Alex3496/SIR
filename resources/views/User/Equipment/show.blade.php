@@ -33,4 +33,69 @@
 
 @section('extraScript')
 	<script src="{{asset('js/checkboxes.js')}}"></script>
+
+<script defer>
+
+$(function(){
+	$('#origin_country').on('change',onSelectCountry);
+});
+
+
+function onSelectCountry() {
+	var country_code = document.getElementById("origin_country").value;
+
+	var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+
+	$.get(url,function(data) {
+		console.log('12313',data);
+		var html_select = '';
+		Object.keys(data).forEach(function(key) {
+			var OldValue = '{{ old('origin_state') }}';
+			if(key === OldValue){
+				html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
+			}
+			else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
+		})
+		$('#origin_state').html(html_select);
+	});
+}
+
+
+$(function(){
+	$('#destiny_country').on('change',onSelectCountry2);
+});
+
+function onSelectCountry2() {
+	var country_code = document.getElementById("destiny_country").value
+
+	var url = "{{url('/')}}"+'/api/country/'+country_code+'/states';
+
+	$.get(url,function(data) {
+		console.log(data);
+		var html_select = '';
+		Object.keys(data).forEach(function(key) {
+			var OldValue = '{{ old('destiny_state') }}';
+			if(key === OldValue){
+				html_select += '<option selected value = "'+key+'">'+data[key]+'</option>';
+			}
+			else { html_select += '<option value = "'+key+'">'+data[key]+'</option>';} 
+		})
+		$('#destiny_state').html(html_select);
+
+	});
+}
+
+
+</script>
+
+<!-- Si se va a editar una tarifa que no se actualizce los valores de los selects -->
+@if(!isset($equipmentToUpdate) || $errors->any())
+<script>
+	$( document ).ready(function() {
+		onSelectCountry();
+		onSelectCountry2();
+});
+</script>          
+@endif
+
 @endsection

@@ -34,6 +34,15 @@ class CreateEquipmentTable extends Migration
             $table->string('end_date')->nullable();
             $table->string('end_hour')->nullable();
 
+            $table->string('origin');
+            $table->string('origin_state')->nullable();
+            $table->string('origin_country')->nullable();
+            $table->string('complete_origin')->nullable();
+            $table->string('destiny');
+            $table->string('destiny_state')->nullable();
+            $table->string('destiny_country')->nullable();
+            $table->string('complete_destiny')->nullable();
+
 
             
             $table->timestamps();

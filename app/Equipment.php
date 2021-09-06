@@ -16,7 +16,8 @@ class Equipment extends Model
     
     protected $fillable = [
         'user_id','type','economic', 'plates_us', 'plates_mx','state_us','state_mx', 'vin', 'trademark', 'model','estatus','start_date',
-        'start_hour', 'end_date', 'end_hour'
+        'start_hour', 'end_date', 'end_hour','origin', 'origin_state', 'origin_country', 'complete_origin', 'destiny', 'destiny_state', 'destiny_country',
+        'complete_destiny'
     ];
 
     //--------------Relations----------------//
