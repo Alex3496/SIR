@@ -134,8 +134,29 @@ class Equipment extends Model
         $start = date($this->start_date);
         $end = date($this->end_date);
 
-        if($today > $start && $today < $end){
-            echo '<span class="badge badge-success">Activo</span>';
+        $end_24  = date("H:i", strtotime($this->end_hour));
+        $start_24  = date("H:i", strtotime($this->start_hour));
+
+
+        if($today >= $start && $today <= $end){
+
+
+            if($today == $start){
+                if(time() >=  strtotime($start_24)){
+                    echo '<span class="badge badge-success">Activo</span>';
+                }else{
+                    echo '<span class="badge  badge-danger">Inactivo</span>';
+                }
+            }else if ($today == $end) {
+               if(time() <=  strtotime($start_24)){
+                    echo '<span class="badge badge-success">Activo</span>';
+                }else{
+                    echo '<span class="badge  badge-danger">Inactivo</span>';
+                }
+            }else{
+                echo '<span class="badge badge-success">Activo</span>';
+            }
+
         }else{
             echo '<span class="badge  badge-danger">Inactivo</span>';
         }
