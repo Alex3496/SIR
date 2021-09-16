@@ -33,7 +33,7 @@ class Equipment extends Model
     {
         $today = date('Y-m-d');
 
-        return $query->whereDate('end_date', '>=', $today);
+        return $query->whereDate('start_date', '<=', $today)->whereDate('end_date', '>=', $today);
     }
 
     public function scopetype($query, $type)
