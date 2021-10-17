@@ -38,11 +38,29 @@
                 </div>
               </div>
               <hr/>
-              <div class="d-flex align-items-center">
-                <img src="{{ $petition->user->get_image }}" class="logo-company-tariff-card">
-                <div class="ml-4">
-                  <small>{{ __('Empresa') }}:</small>
-                  <h5>{{ $petition->user->company_name }}</h5>
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="d-flex align-items-center">
+                    <img src="{{$tariff->user->get_image}}" class="logo-company-tariff-card">
+                    <div class="ml-4">
+                      <small>{{__('Empresa')}}:</small>
+                      <h5>{{ $tariff->user->company_name }}</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  @if(isset($tariff->user->usdot))
+                  <div class="ml-4">
+                    <small>{{__('USDOT')}}:</small>
+                    <h5>{{ $tariff->user->usdot }}</h5>
+                  </div>
+                  @endif
+                  @if(isset($tariff->user->mc_mx ))
+                  <div class="ml-4">
+                    <small>{{__('MC / MX')}}:</small>
+                    <h5>{{ $tariff->user->mc_mx }}</h5>
+                  </div>
+                  @endif
                 </div>
               </div>
               <hr/>

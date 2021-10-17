@@ -92,7 +92,7 @@ class ProfileUserController extends Controller
     {
         $user = Auth::user();
 
-        $user->update($request->only(['company_name','company_address','city','zip_code','country','state']));
+        $user->update($request->only(['company_name','company_address','city','zip_code','country','state','usdot','mc_mx']));
 
         return back()->with('status', 'Actualizado con exito');
     }

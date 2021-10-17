@@ -20,6 +20,24 @@
       </div>
     </div>
     <div class="row">
+      <div class="form-group col-lg-6">
+        {!! Form::label('usdot', 'USDOT') !!} 
+        {!! Form::text('usdot',$user->usdot,['class' =>'form-control','autocomplete' => 'off']) !!}
+        @error('usdot')
+          <small class="mt-0" style="color:red">{{ $message }}</small>
+        @enderror
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-6">
+        {!! Form::label('mc_mx', 'MC / MX') !!} 
+        {!! Form::text('mc_mx',$user->mc_mx,['class' =>'form-control','autocomplete' => 'off']) !!}
+        @error('mc_mx')
+          <small class="mt-0" style="color:red">{{ $message }}</small>
+        @enderror
+      </div>
+    </div>
+    <div class="row">
       <div class="form-group col">
         {!! Form::label('company_address', 'Dirección') !!} *
         {!! Form::text('company_address',$user->company_address,['class' =>'form-control', 'autocomplete' => 'off']) !!}

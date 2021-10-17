@@ -30,6 +30,8 @@ class CompanyRequest extends FormRequest
             'city'            => ['required', 'string', 'max:50'],
             'state'           => ['required', 'string', 'max:3'],
             'country'         => ['required', 'string', 'max:2'],
+            'usdot'         => ['string', 'max:50'],
+            'mc_mx'         => ['string', 'max:50'],
         ];
     }
 
@@ -50,6 +52,8 @@ class CompanyRequest extends FormRequest
             'country.max'           => 'Máximo 2 caracteres.',
             'company_name.min'      => 'Mínimo 3 caracteres.',
             'company_address.min'   => 'Mínimo 4 caracteres.',
+            'usdot.max'             => 'Máximo 50 caracteres.',
+            'mc_mx.max'             => 'Máximo 50 caracteres.',
         ];
     }
 }
