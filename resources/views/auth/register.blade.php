@@ -15,15 +15,15 @@
               </div>
               <div class="col-md-7 d-flex align-items-center justify-content-left">
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="type_company_user" id="Shipper" value="Shipper" checked {{ (old('type_company_user') == 'Shipper') ? 'checked' : '' }}/>
+                  <input class="form-check-input" type="radio" onclick="hide()" name="type_company_user" id="Shipper" value="Shipper" checked {{ (old('type_company_user') == 'Shipper') ? 'checked' : '' }}/>
                   <label class="form-check-label" for="Shipper">Shipper</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="type_company_user" id="Carriers" value="Carriers" {{ (old('type_company_user') == 'Carriers') ? 'checked' : '' }}/>
+                  <input class="form-check-input" type="radio" onclick="show()" name="type_company_user" id="Carriers" value="Carriers" {{ (old('type_company_user') == 'Carriers') ? 'checked' : '' }}/>
                   <label class="form-check-label" for="Carriers">Transportista</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="type_company_user" id="Broker" value="Broker" {{ (old('type_company_user') == 'Broker') ? 'checked' : '' }}/>
+                  <input class="form-check-input" type="radio" onclick="show()" name="type_company_user" id="Broker" value="Broker" {{ (old('type_company_user') == 'Broker') ? 'checked' : '' }}/>
                   <label class="form-check-label" for="Broker">Broker</label>
                 </div>
               </div>
@@ -72,6 +72,32 @@
                 @enderror
               </div>
             </div>
+
+            <div id="hide" class="hide">
+              <div class="form-group row justify-content-center">
+                <div class="col-md-9">
+                  <input id="usdot" type="tel" class="form-control @error('usdot') is-invalid @enderror" name="usdot" required value="{{ old('usdot') }}" autocomplete="" placeholder="{{ __('USDOT') }}"/>
+                  @error('usdot')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="form-group row justify-content-center">
+                <div class="col-md-9">
+                  <input id="mc_mx" type="tel" class="form-control @error('mc_mx') is-invalid @enderror" name="mc_mx" required value="{{ old('mc_mx') }}" autocomplete="" placeholder="{{ __('MC / MX') }}"/>
+                  @error('mc_mx')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                  @enderror
+                </div>
+              </div>
+            </div>
+
+
             <!--email-->
             <div class="form-group row justify-content-center">
               <div class="col-md-9">
@@ -114,4 +140,33 @@
 </div>
 @endsection
 @section('scripts')
+  <script type="text/javascript">
+    
+    function hide() {
+      let element = document.getElementById('hide')
+      element.classList.remove('active');
+    }
+
+    function show() {
+      let element = document.getElementById('hide')
+      element.classList.add('active');
+    }
+
+    function displayRadioValue() {
+        var ele = document.getElementsByName('type_company_user');
+
+        let element = document.getElementById('hide')
+          
+        for(i = 0; i < ele.length; i++) {
+            if(ele[i].checked && ele[i].value != 'Shipper')
+              element.style.display = 'block'
+            
+        }
+    }
+
+    window.onload = function(e){ 
+      displayRadioValue()
+    }
+
+  </script>
 @endsection

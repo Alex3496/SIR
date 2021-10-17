@@ -489,6 +489,11 @@ main {
 
 /*==============CLASES GENERALES=================*/
 
+
+.hide{
+    display: none
+}
+
 .Disponible,
 .Activada {
     background: #1a8c1a;

@@ -19,6 +19,8 @@ class AddColumnsUsersTable extends Migration
             $table->string('company_name');
             $table->string('position');
             $table->string('phone',16);
+            $table->string('usdot')->nullable();
+            $table->string('mc_mx')->nullable();
 
             $table->string('company_address')->nullable();
             $table->string('city')->nullable();

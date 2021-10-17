@@ -93,6 +93,9 @@ class RegisterController extends Controller
             'phone' => 'required|numeric|regex:/[0-9]{10}/',
             'email' => ['required', 'string', 'email', 'max:62', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed','max:50'],
+            'password' => ['required', 'string', 'min:8', 'confirmed','max:50'],
+            'usdot' => ['string', 'max:50'],
+            'mc_mx' => ['string', 'max:50'],
         ]);
     }
 
@@ -111,6 +114,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'phone' => $data['phone'],
             'email' => $data['email'],
+            'usdot' => $data['usdot'],
+            'mc_mx' => $data['mc_mx'],
             'password' => Hash::make($data['password']),
         ]);
 
