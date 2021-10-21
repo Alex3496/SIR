@@ -67,6 +67,7 @@
                 <th>{{__('Destino')}}</th>
                 <th>{{__('Equipo')}}</th>
                 <th>{{__('Fecha de Envio')}}</th>
+                <th>{{__('Empresa')}}</th>
                 <th>{{__('Acciones')}}</th>
               </tr>
             </thead>
@@ -77,6 +78,7 @@
                 <td>{{ $tariff->get_destiny }}</td>
                 <td>{{ $tariff->get_type_equipment }}</td>
                 <td>{{ $tariff->end_date }}</td>
+                <td>{{ $tariff->user->company_name }}</td>
                <!--  <td>{{ $tariff->rate }} <small>{{$tariff->currency}}</small> </td> -->
               </tr>
               @endforeach

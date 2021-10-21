@@ -67,6 +67,7 @@
                 <th>{{__('Destino')}}</th>
                 <th>{{__('Tipo de Equipo')}}</th>
                 <th>{{__('Fecha de Carga')}}</th>
+                <th>{{__('Empresa')}}</th>
                 <th>{{__('Acciones')}}</th>
               </tr>
             </thead>
@@ -77,6 +78,7 @@
                 <td>{{ $petition->complete_destiny }}</td>
                 <td>{{ $petition->get_type_equipment }}</td>
                 <td>{{ $petition->load_date }} {{ $petition->load_hour }} </td>
+                <td>{{ $petition->user->company_name }}</td>
               </tr>
               @endforeach
             </tbody>
