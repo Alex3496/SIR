@@ -91,7 +91,7 @@
           <li class="nav-item">
             <a href="{{ route('equipment.index') }}" class="nav-link">
               <i class="nav-icon fas fa-bus"> </i>
-              <p>{{ __('Equipo') }}</p>
+              <p>{{ __('Publicar Equipo') }}</p>
             </a>
           </li>
           <li class="nav-item">
