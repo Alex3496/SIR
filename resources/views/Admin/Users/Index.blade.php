@@ -52,7 +52,7 @@
               <tr>
                 <th>Id</th>
                 <th>{{__('Tipo de Empresa')}}</th>
-                <th>{{__('nombre de la Empresa')}}</th>
+                <th>{{__('Nombre de la Empresa')}}</th>
                 <th>{{__('Nombre')}}</th>
                 <th>{{__('Email')}}</th>
                 <th>{{__('Rol')}}</th>

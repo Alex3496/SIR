@@ -155,7 +155,7 @@ class UserController extends Controller
     public function updateCompany(CompanyRequest $request, User $user)
     {
 
-        $user->update($request->only(['company_name', 'company_address', 'zip_code','city','country','state']));
+        $user->update($request->only(['company_name', 'company_address', 'zip_code','city','country','state', 'usdot', 'mc_mx']));
 
         return back()->with('status', 'Actualizado con exito');
 

@@ -17,6 +17,18 @@
     </div>
     <div class="row">
       <div class="form-group col-md-6">
+        {!! Form::label('usdot', 'DOT') !!}
+        {!! Form::text('usdot',$userToEdit->usdot,['class' =>'form-control',]) !!}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        {!! Form::label('mc_mx', 'Número MC / MX') !!}
+        {!! Form::text('mc_mx',$userToEdit->mc_mx,['class' =>'form-control',]) !!}
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
         {!! Form::label('company_name', 'Nombre') !!}*
         {!! Form::text('company_name',$userToEdit->company_name,['class' =>'form-control']) !!}
         @error('company_name')
