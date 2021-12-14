@@ -288,6 +288,36 @@
 </div>
 
 
+<div class="container" id="info-user">
+    <h2 class="text-center mt-5">Cargas</h2>
+    <div id="cuadro"></div>
+  <div class="row mt-4 center">
+    <div class="col-md-7">
+      <div class="card-body">
+        <p class="text-center" style="font-size: 20px">¿Busca una empresa de transporte con los servicios de transporte de mercancías adecuados para satisfacer sus necesidades? Publique su carga / envío GRATIS!!! en el tablero de carga SIR</p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+  </div>
+</div>
+
+<div class="container" id="info-user">
+    <h2 class="text-center mt-5">Equipos</h2>
+    <div id="cuadro"></div>
+  <div class="row mt-4 center">
+    <div class="col-md-7">
+      <div class="card-body">
+        <p class="text-center" style="font-size: 20px">¿Quieres que tu equipo disponible lo veas más clientes?  Publícalo gratis!!! En el tablero de equipo disponible y encuentra embarcadores /Shipper´s, cerca de tu ubicación.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+  </div>
+</div>
+
+
+
 <!-- START NEWS -->
 <div class="container container-news">
   <div class="row text-center">
